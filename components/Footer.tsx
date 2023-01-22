@@ -1,4 +1,4 @@
-import { Github, Twitter } from "@icons-pack/react-simple-icons";
+import { Discord, Github, Twitter } from "@icons-pack/react-simple-icons";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,12 +16,22 @@ export default function Footer() {
             </div>
             {/* Second row */}
             <div>
+                <Link href="https://discord.gg/3gvSPdW" className="mr-5">
+                    <Discord className="inline"></Discord>
+                </Link>
                 <Link href="https://github.com/BlueDragonMC" className="mr-5">
                     <Github className="inline"></Github>
                 </Link>
                 <Link href="https://twitter.com/BDMCNetwork">
                     <Twitter className="inline"></Twitter>
                 </Link>
+            </div>
+            <div className="md:text-right lg:col-span-2">
+                <span>&copy; 2023 BlueDragonMC</span>
+                <br />
+                <Link href="/page/changelog" className="underline font-medium">Changelog</Link>{" "}&middot;{" "}
+                <Link href="/page/rules" className="underline font-medium">Server Rules</Link>{" "}&middot;{" "}
+                <Link href="/page/oss" className="underline font-medium">Open&#8209;Source&nbsp;Software</Link>
             </div>
         </footer>
     )

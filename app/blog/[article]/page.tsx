@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { join } from "path";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import remarkGfm from "remark-gfm";
 import styles from "./article.module.css";
 
 export default async function Page({ params: { article } }: { params: { article: string } }) {
@@ -24,7 +25,7 @@ export default async function Page({ params: { article } }: { params: { article:
             <span className="font-bold">{frontMatter.data.author}</span>
             <span className="font-medium">{" "}on {frontMatter.data.created?.toLocaleString()}</span>
 
-            <ReactMarkdown children={markdown ?? ""} className={styles.markdown}></ReactMarkdown>
+            <ReactMarkdown children={markdown ?? ""} remarkPlugins={[remarkGfm]} className={styles.markdown}></ReactMarkdown>
         </main>
     )
 }

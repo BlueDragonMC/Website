@@ -41,4 +41,32 @@
         display: list-item;
         list-style: inside disc;
     }
+
+    .markdown ul li li {
+        @apply ml-8;
+    }
+
+    .markdown ul li li li {
+        @apply ml-16;
+    }
+
+    .markdown ul li li li {
+        @apply ml-24;
+    }
+
+    .markdown table {
+        @apply dark:border-neutral-400 border-2 rounded-md border-separate;
+    }
+
+    .markdown table tr td {
+        @apply p-2;
+    }
+
+    .markdown table thead th {
+        @apply pb-2;
+    }
+
+    .markdown table tr:nth-child(even) {
+        @apply dark:bg-neutral-900 bg-gray-300;
+    }
 }
