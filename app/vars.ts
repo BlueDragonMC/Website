@@ -1,0 +1,1 @@
+export const BASE_PATH = process.env.NODE_ENV === "production" ? "https://bluedragonmc.com" : "http://localhost:3000";

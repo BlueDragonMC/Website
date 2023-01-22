@@ -1,90 +1,56 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+"use client";
 
-const inter = Inter({ subsets: ['latin'] })
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+
+  const [image, setImage] = useState(0);
+  const images = [1, 2, 3, 4, 5].map((n) => `/hero/${n}.png`);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setImage(image => (image + 1) % images.length);
+    }, 5000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="h-screen block md:flex justify-center lg:block">
+      <div className="fixed h-screen grid grid-rows-3 md:grid-cols-1 lg:grid-cols-12 lg:grid-rows-4">
+        <div className="lg:col-start-2 lg:col-span-3 row-start-2 text-center lg:text-left">
+          <h1 className="text-3xl text-white font-bold">BlueDragon</h1>
+          <p className="text-white">A Minecraft server featuring minigames like WackyMaze, PvPMaster, FastFall, and many&nbsp;more!</p>
+          <div className="mt-1">
+            <Link href="/join">
+              <button className="font-medium bg-blue-600 text-white px-3 py-2 mr-2 rounded-md">
+                Join
+              </button>
+            </Link>
+            <Link href="/games">
+              <button className="font-medium bg-slate-600 text-white px-3 py-2 rounded-md">
+                View Games
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="-z-20 blur-sm w-screen h-screen fixed top-0 left-0">
+        {images.map((img, i) => {
+          return <Image
+            key={img}
+            className="fixed top-0 left-0 w-screen h-screen transition-opacity brightness-50 object-cover"
+            src={img}
+            alt="Background image"
+            width={1080}
+            height={0}
+            style={{ opacity: image == i ? 1 : 0, transitionDuration: "2.5s" }}
+          />
+        })}
       </div>
     </main>
   )

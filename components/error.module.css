@@ -1,0 +1,4 @@
+#main-404-div {
+    background-image: linear-gradient(rgba(var(--background-start-rgb), 0) 0%,
+            rgba(var(--background-start-rgb), 1) 75%), url(/favicon_hq.png);
+}

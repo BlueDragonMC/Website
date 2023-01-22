@@ -1,0 +1,44 @@
+@tailwind components;
+
+@layer components {
+    .markdown h1 {
+        @apply text-4xl font-bold mt-5;
+    }
+
+    .markdown h2 {
+        @apply text-3xl font-bold mt-3;
+    }
+
+    .markdown h3 {
+        @apply text-2xl font-bold mt-3;
+    }
+
+    .markdown h4 {
+        @apply text-xl font-bold mt-3;
+    }
+
+    .markdown h5 {
+        @apply text-lg font-bold mt-3;
+    }
+
+    .markdown h6 {
+        @apply text-base font-bold mt-1;
+    }
+
+    .markdown b {
+        @apply font-bold;
+    }
+
+    .markdown a {
+        @apply text-blue-400 font-medium underline;
+    }
+
+    .markdown img {
+        @apply max-h-64 rounded-md;
+    }
+
+    .markdown ul li {
+        display: list-item;
+        list-style: inside disc;
+    }
+}
