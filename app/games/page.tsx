@@ -80,7 +80,16 @@ export default function Page() {
             images: ["/infection-1.png", "/infection-2.png", "/infection-3.png", "/infection-4.png", "/infection-5.png", "/infection-6.png"]
         },
         {
-            name: "BedWars"
+            name: "BedWars",
+            description: "Defend your bed while attacking the beds of other players!",
+            steps: [
+                "Each player or team spawns on their own island.",
+                "Purchase blocks to protect your bed.",
+                "Visit other islands to collect resources and attack other teams.",
+                "Break another team's bed to prevent them from respawning.",
+                "The last team standing wins!"
+            ],
+            images: ["/bedwars-2.png", "/bedwars-3.png", "/bedwars-4.png", "/bedwars-5.png", "/bedwars-7.png"]
         },
         {
             name: "SkyWars"
@@ -95,7 +104,14 @@ export default function Page() {
             name: "ArenaPvP"
         },
         {
-            name: "Lobby Parkour"
+            name: "Lobby Parkour",
+            description: "Finish multiple parkour courses, race your friends, and climb the leaderboards, all without leaving the lobby!",
+            steps: [
+                "Step on a silver pressure plate to start a course.",
+                "Hit checkpoints along the way so you never need to start over.",
+                "After you finish, visit the leaderboard to see how you stack up against the competition."
+            ],
+            images: ["/lobby-5.png", "/lobby-6.png", "/lobby-3.png", "/lobby-7.png", "/lobby-8.png"]
         }
     ]
 
