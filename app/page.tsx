@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
 
   const [image, setImage] = useState(0);
-  const images = [1, 2, 3, 4, 5].map((n) => `/hero/${n}.png`);
+  const images = ["/hero/1.png", "/hero/2.png", "/hero/3.png", "/hero/5.png", "/lobby-3.png", "/wackymaze-1.png", "/wackymaze-6.png"];
 
   useEffect(() => {
     const interval = setInterval(() => {

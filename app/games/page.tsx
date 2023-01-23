@@ -46,14 +46,14 @@ export default function Page() {
         {
             name: "FastFall",
             description: "Get from the top to the bottom of a randomly-generated world as fast as possible!",
-            images: [],
+            images: ["/fastfall-1.png", "/fastfall-2.png", "/fastfall-3.png", "/fastfall-4.png"],
             steps: [
                 "Each player spawns at a designated spawn point with 2 HP (one heart)",
                 "Fall damage is applied when you fall 3 blocks or more",
                 "Certain blocks, like slime blocks, break your fall",
                 "Without taking over two points of fall damage, make your way to the bottom of the world",
                 "The first player to break the glass at the bottom of the world and step on the an emerald block wins"
-            ]
+            ],
         },
         {
             name: "WackyMaze",
@@ -65,7 +65,7 @@ export default function Page() {
                 "Falling in the void eliminates you from the game",
                 "The last player standing wins!"
             ],
-            images: ["/infinijump.png"]
+            images: ["/wackymaze-1.png", "/wackymaze-2.png", "/wackymaze-6.png", "/wackymaze-8.png"]
         },
         {
             name: "Infection",
@@ -76,7 +76,8 @@ export default function Page() {
                 "The alpha zombie is able to infect other players by attacking them",
                 "Infected players can spread the infection in the same way (attacking) until there is only one survivor left",
                 "The final survivor wins the game"
-            ]
+            ],
+            images: ["/infection-1.png", "/infection-2.png", "/infection-3.png", "/infection-4.png", "/infection-5.png", "/infection-6.png"]
         },
         {
             name: "BedWars"
@@ -141,10 +142,10 @@ export default function Page() {
                             {({ ref, open }) => (
                                 <Image
                                     src={img}
-                                    className="max-h-48 rounded-md cursor-pointer"
+                                    className="inline rounded-md cursor-pointer mr-4 mb-4"
                                     alt="Gameplay screenshot"
-                                    width={256}
-                                    height={0}
+                                    width={1920/4}
+                                    height={1080/4}
                                     ref={ref as React.MutableRefObject<HTMLImageElement>}
                                     onClick={open}
                                 />
