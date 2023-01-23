@@ -3,6 +3,8 @@
 import Step from "@/components/Step";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Gallery, Item } from "react-photoswipe-gallery";
+import "photoswipe/dist/photoswipe.css";
 
 type Game = {
     name: string,
@@ -133,9 +135,23 @@ export default function Page() {
 
             <div className="mt-5">
                 <p>{game.description}</p>
-                {game.images?.map((img) => {
-                    return <Image key={img} src={img} className="max-h-48 rounded-md" alt="Gameplay screenshot" width={256} height={0} />
-                })}
+                <Gallery>
+                    {game.images?.map((img) => {
+                        return <Item key={img} original={img} thumbnail={img} width={1920} height={1080}>
+                            {({ ref, open }) => (
+                                <Image
+                                    src={img}
+                                    className="max-h-48 rounded-md cursor-pointer"
+                                    alt="Gameplay screenshot"
+                                    width={256}
+                                    height={0}
+                                    ref={ref as React.MutableRefObject<HTMLImageElement>}
+                                    onClick={open}
+                                />
+                            )}
+                        </Item>
+                    })}
+                </Gallery>
                 {getSteps(game)}
             </div>
         </main>

@@ -2,19 +2,9 @@ import { readdir, readFile } from "fs/promises";
 import matter, { GrayMatterFile } from "gray-matter";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { join } from "path";
-
-const frontMatterCache: { [key: string]: GrayMatterFile<Buffer> } = {};
-
-const getFrontMatter = async (article: string) => {
-    if (frontMatterCache.hasOwnProperty(article)) {
-        return frontMatterCache[article];
-    } else {
-        const frontMatter = matter(await readFile(join(process.cwd(), "articles", article)));
-        frontMatterCache[article] = frontMatter;
-        return frontMatter;
-    }
-}
+import { getFrontMatter } from "../utils";
 
 export default async function Page() {
 
@@ -24,9 +14,9 @@ export default async function Page() {
             .filter((file) => file.name.includes(".md"))
             .map((file): Promise<[string, GrayMatterFile<Buffer>]> => {
                 return new Promise((resolve, reject) => {
-                    getFrontMatter(file.name).then((data) => {
-                        resolve([file.name, data]);
-                    })
+                    getFrontMatter("articles", file.name.substring(0, file.name.lastIndexOf(".md"))).then((data) => {
+                        resolve([file.name, data as GrayMatterFile<Buffer>]);
+                    });
                 });
             })
     ));
@@ -42,7 +32,7 @@ export default async function Page() {
             <h1 className="text-3xl font-bold mb-3">Blog Posts</h1>
             <div className="grid grid-flow-row-dense grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
                 {articles.map((article) => {
-                    {/* @ts-expect-error Server Component */}
+                    {/* @ts-expect-error Server Component */ }
                     return <Article key={article} slug={article.substring(0, article.indexOf(".md"))}></Article>
                 })}
             </div>
@@ -52,7 +42,7 @@ export default async function Page() {
 
 async function Article({ slug }: { slug: string }) {
 
-    const frontMatter = await getFrontMatter(slug + ".md");
+    const frontMatter = await getFrontMatter("articles", slug) ?? notFound();
     const data = frontMatter.data;
 
     return (

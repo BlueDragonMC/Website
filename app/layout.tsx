@@ -1,8 +1,5 @@
 import { Inter } from '@next/font/google'
-import Link from 'next/link'
-import Image from 'next/image'
 import './globals.css'
-import { Github, Twitter } from '@icons-pack/react-simple-icons'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 

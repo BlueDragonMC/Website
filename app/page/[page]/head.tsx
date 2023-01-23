@@ -1,11 +1,11 @@
 import OpenGraphImage from "@/components/OpenGraphImage";
 import OpenGraphURL from "@/components/OpenGraphURL";
 import { default as ParentHead } from "@/app/head";
-import { getFrontMatter } from "./page";
+import { getFrontMatter } from "@/app/utils";
 
 export default async function Head({ params: { page } }: { params: { page: string } }) {
 
-    const frontMatter = await getFrontMatter(page);
+    const frontMatter = await getFrontMatter("pages", page);
     if (!frontMatter) return <ParentHead />;
 
     return (
