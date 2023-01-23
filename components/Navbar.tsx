@@ -11,7 +11,7 @@ export default function Navbar() {
         { text: "About", href: "/about", icon: faInfoCircle },
         { text: "Blog", href: "/blog", icon: faBook },
         { text: "Leaderboards", href: "/leaderboards", icon: faRankingStar },
-        { text: "Join", href: "/join", color: "bg-blue-500 hover:bg-blue-600", activeColor: "bg-blue-500 hover:bg-blue-600", icon: faShare },
+        { text: "Join", href: "/join", color: "bg-blue-600 hover:bg-blue-700", activeColor: "bg-blue-500 hover:bg-blue-600", icon: faShare },
     ]
 
     return (

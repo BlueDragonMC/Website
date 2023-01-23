@@ -1,9 +1,8 @@
-import OpenGraphImage from "@/components/OpenGraphImage";
-import OpenGraphURL from "@/components/OpenGraphURL";
 import { readFile } from "fs/promises";
 import matter, { GrayMatterFile } from "gray-matter";
 import { join } from "path";
 import { default as ParentHead } from "@/app/head";
+import BaseHead from "@/components/BaseHead";
 
 export default async function Head({ params: { article } }: { params: { article: string } }) {
 
@@ -19,13 +18,11 @@ export default async function Head({ params: { article } }: { params: { article:
 
     return (
         <>
-            <title>{frontMatter.data.title + " | BlueDragon Blog"}</title>
-            <meta name="description" content={frontMatter.data.description} />
+            <BaseHead image={frontMatter.data.image} />
+            <title>{frontMatter.data.title ? frontMatter.data.title + " | BlueDragon Blog" : "BlueDragon Blog"}</title>
             <meta name="og:title" content={frontMatter.data.title} />
             <meta name="og:description" content={frontMatter.data.description} />
             <meta name="og:type" content="article" />
-            <OpenGraphImage relative={frontMatter.data.image ?? "/favicon_hq.png"} />
-            <OpenGraphURL />
         </>
     )
 }

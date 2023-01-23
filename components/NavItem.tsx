@@ -23,8 +23,8 @@ export default function NavItem({ text, href, active, color, activeColor, icon }
 
     return (
         <Link href={href} className={`font-sans ${isActive ? activeColorClasses : inactiveColorClasses} transition-colors text-base font-medium p-2 rounded-md text-white`}>
-            <span className="hidden md:inline">{text}</span>
-            <span className="md:hidden">
+            <span className="hidden md:inline" id={`header-nav-item-${text}`}>{text}</span>
+            <span className="md:hidden" aria-labelledby={`header-nav-item-${text}`}>
                 {icon ? <FontAwesomeIcon icon={icon} /> : <></> }
             </span>
         </Link>
