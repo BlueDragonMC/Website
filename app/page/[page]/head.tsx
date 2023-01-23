@@ -5,7 +5,7 @@ import { getFrontMatter } from "@/app/utils";
 
 export default async function Head({ params: { page } }: { params: { page: string } }) {
 
-    const frontMatter = await getFrontMatter("pages", page);
+    const frontMatter = await getFrontMatter("static-pages", page);
     if (!frontMatter) return <ParentHead />;
 
     return (

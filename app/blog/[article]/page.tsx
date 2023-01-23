@@ -1,4 +1,4 @@
-import { readFile } from "fs/promises";
+import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -6,6 +6,15 @@ import { join } from "path";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import remarkGfm from "remark-gfm";
 import styles from "./article.module.css";
+
+export async function generateStaticParams() {
+    const pages = await readdir(join(process.cwd(), "articles"));
+
+    return pages.map((fileName) => {
+        const slug = fileName.substring(0, fileName.lastIndexOf(".md"));
+        return { article: slug };
+    });
+}
 
 export default async function Page({ params: { article } }: { params: { article: string } }) {
 

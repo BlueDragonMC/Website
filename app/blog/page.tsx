@@ -1,5 +1,5 @@
-import { readdir, readFile } from "fs/promises";
-import matter, { GrayMatterFile } from "gray-matter";
+import { readdir } from "fs/promises";
+import { GrayMatterFile } from "gray-matter";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
