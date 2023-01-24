@@ -1,15 +1,48 @@
 "use client";
 
 import Step from "@/components/Step";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import "photoswipe/dist/photoswipe.css";
 
+// Images are statically imported so that they can have automatically-generated blur data URLs during the loading phase.
+// For more info: https://nextjs.org/docs/api-reference/next/image#blurdataurl
+import infinijump from "@/public/infinijump.png";
+
+import fastfall1 from "@/public/fastfall-1.png";
+import fastfall2 from "@/public/fastfall-2.png";
+import fastfall3 from "@/public/fastfall-3.png";
+import fastfall4 from "@/public/fastfall-4.png";
+
+import wackymaze1 from "@/public/wackymaze-1.png";
+import wackymaze2 from "@/public/wackymaze-2.png";
+import wackymaze6 from "@/public/wackymaze-6.png";
+import wackymaze8 from "@/public/wackymaze-8.png";
+
+import infection1 from "@/public/infection-1.png"
+import infection2 from "@/public/infection-2.png"
+import infection3 from "@/public/infection-3.png"
+import infection4 from "@/public/infection-4.png"
+import infection5 from "@/public/infection-5.png"
+import infection6 from "@/public/infection-6.png"
+
+import bedwars2 from "@/public/bedwars-2.png"
+import bedwars3 from "@/public/bedwars-3.png"
+import bedwars4 from "@/public/bedwars-4.png"
+import bedwars5 from "@/public/bedwars-5.png"
+import bedwars7 from "@/public/bedwars-7.png"
+
+import lobby5 from "@/public/lobby-5.png"
+import lobby6 from "@/public/lobby-6.png"
+import lobby3 from "@/public/lobby-3.png"
+import lobby7 from "@/public/lobby-7.png"
+import lobby8 from "@/public/lobby-8.png"
+
 type Game = {
     name: string,
     description?: string,
-    images?: Array<string>,
+    images?: Array<StaticImageData>,
     steps?: Array<string> | { [key: string]: Array<string> }
 }
 
@@ -19,7 +52,7 @@ export default function Page() {
         {
             name: "Infinijump",
             description: "Get the highest score or be the first to complete a parkour course in the void.",
-            images: ["/infinijump.png"],
+            images: [infinijump],
             steps: {
                 "Solo Mode": [
                     "Start the game by moving in any direction",
@@ -46,7 +79,7 @@ export default function Page() {
         {
             name: "FastFall",
             description: "Get from the top to the bottom of a randomly-generated world as fast as possible!",
-            images: ["/fastfall-1.png", "/fastfall-2.png", "/fastfall-3.png", "/fastfall-4.png"],
+            images: [fastfall1, fastfall2, fastfall3, fastfall4],
             steps: [
                 "Each player spawns at a designated spawn point with 2 HP (one heart)",
                 "Fall damage is applied when you fall 3 blocks or more",
@@ -65,7 +98,7 @@ export default function Page() {
                 "Falling in the void eliminates you from the game",
                 "The last player standing wins!"
             ],
-            images: ["/wackymaze-1.png", "/wackymaze-2.png", "/wackymaze-6.png", "/wackymaze-8.png"]
+            images: [wackymaze1, wackymaze2, wackymaze6, wackymaze8]
         },
         {
             name: "Infection",
@@ -77,7 +110,7 @@ export default function Page() {
                 "Infected players can spread the infection in the same way (attacking) until there is only one survivor left",
                 "The final survivor wins the game"
             ],
-            images: ["/infection-1.png", "/infection-2.png", "/infection-3.png", "/infection-4.png", "/infection-5.png", "/infection-6.png"]
+            images: [infection1, infection2, infection3, infection4, infection5, infection6]
         },
         {
             name: "BedWars",
@@ -89,7 +122,7 @@ export default function Page() {
                 "Break another team's bed to prevent them from respawning.",
                 "The last team standing wins!"
             ],
-            images: ["/bedwars-2.png", "/bedwars-3.png", "/bedwars-4.png", "/bedwars-5.png", "/bedwars-7.png"]
+            images: [bedwars2, bedwars3, bedwars4, bedwars5, bedwars7]
         },
         {
             name: "SkyWars"
@@ -111,7 +144,7 @@ export default function Page() {
                 "Hit checkpoints along the way so you never need to start over.",
                 "After you finish, visit the leaderboard to see how you stack up against the competition."
             ],
-            images: ["/lobby-5.png", "/lobby-6.png", "/lobby-3.png", "/lobby-7.png", "/lobby-8.png"]
+            images: [lobby3, lobby5, lobby6, lobby7, lobby8]
         }
     ]
 
@@ -154,14 +187,16 @@ export default function Page() {
                 <p>{game.description}</p>
                 <Gallery>
                     {game.images?.map((img) => {
-                        return <Item key={img} original={img} thumbnail={img} width={1920} height={1080}>
+                        return <Item key={img.src} original={img.src} thumbnail={img.src} width={1920} height={1080}>
                             {({ ref, open }) => (
                                 <Image
                                     src={img}
+                                    placeholder="blur"
+                                    loading="lazy"
                                     className="inline rounded-md cursor-pointer mr-4 mb-4"
                                     alt="Gameplay screenshot"
-                                    width={1920/4}
-                                    height={1080/4}
+                                    width={1920 / 4}
+                                    height={1080 / 4}
                                     ref={ref as React.MutableRefObject<HTMLImageElement>}
                                     onClick={open}
                                 />

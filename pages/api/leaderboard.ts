@@ -13,7 +13,11 @@ type Data = {
     }>
 }
 
-const client = new MongoClient("mongodb://localhost:27017").connect();
+const hostname = process.env.MONGO_HOSTNAME ?? "mongodb://localhost:27017";
+const client = new MongoClient(hostname, {
+    connectTimeoutMS: 3000,
+    serverSelectionTimeoutMS: 3000
+}).connect();
 
 export default async function handler(
     req: NextApiRequest,

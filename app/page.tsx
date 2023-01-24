@@ -4,10 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import hero1 from "@/public/hero/1.png";
+import hero2 from "@/public/hero/2.png";
+import hero3 from "@/public/hero/3.png";
+import hero5 from "@/public/hero/5.png";
+import lobby3 from "@/public/lobby-3.png";
+import wackymaze1 from "@/public/wackymaze-1.png";
+import wackymaze6 from "@/public/wackymaze-6.png";
+
 export default function Home() {
 
   const [image, setImage] = useState(0);
-  const images = ["/hero/1.png", "/hero/2.png", "/hero/3.png", "/hero/5.png", "/lobby-3.png", "/wackymaze-1.png", "/wackymaze-6.png"];
+  const images = [hero1, hero2, hero3, hero5, lobby3, wackymaze1, wackymaze6];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,6 +25,15 @@ export default function Home() {
       clearInterval(interval);
     };
   }, []);
+
+  const isVisible = (idx: number): boolean => {
+    if (Math.abs(image - idx) <= 1) return true;
+
+    if (image == 0) return idx == images.length - 1;
+    if (image == images.length - 1) return idx == 0;
+
+    return false;
+  }
 
   return (
     <main className="h-screen block md:flex justify-center lg:block">
@@ -39,18 +56,29 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="-z-20 blur-sm w-screen h-screen fixed top-0 left-0">
+      <div className="-z-20 w-screen h-screen fixed top-0 left-0">
         {images.map((img, i) => {
-          return <Image
-            key={img}
-            className="fixed top-0 left-0 w-screen h-screen transition-opacity brightness-50 object-cover"
-            src={img}
-            alt="Background image"
-            width={1080}
-            height={0}
-            style={{ opacity: image == i ? 1 : 0, transitionDuration: "2.5s" }}
-          />
+          if (isVisible(i)) {
+            return <Image
+              key={img.src}
+              className="fixed blur-sm scale-110 top-0 left-0 w-screen h-screen transition-opacity brightness-50 object-cover"
+              src={img}
+              alt="Background image"
+              width={512}
+              quality={10}
+              height={0}
+              loading="lazy"
+              placeholder="blur"
+              style={{
+                opacity: image == i ? 1 : 0,
+                transitionDuration: "2.5s"
+              }}
+            />
+          } else {
+            return <div key={img.src} />
+          }
         })}
+        <div className="-z-40 w-screen h-screen fixed top-0 left-0 bg-black bg-cover brightness-75" style={{ backgroundImage: `url(${images[0].blurDataURL})` }} />
       </div>
     </main>
   )
