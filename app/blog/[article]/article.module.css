@@ -34,7 +34,7 @@
     }
 
     .markdown img {
-        @apply max-h-64 rounded-md;
+        @apply rounded-md;
     }
 
     .markdown ul li {

@@ -1,9 +1,14 @@
+import BlurredPreviewableImage from "@/components/BlurredPreviewableImage";
+import CustomMarkdown from "@/components/CustomMarkdown";
 import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import { notFound } from "next/navigation";
 import { join } from "path";
+import { getPlaiceholder } from "plaiceholder";
+import { ReactElement } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { Gallery, Item } from "react-photoswipe-gallery";
 import remarkGfm from "remark-gfm";
 import styles from "./article.module.css";
 
@@ -34,7 +39,7 @@ export default async function Page({ params: { article } }: { params: { article:
             <span className="font-bold">{frontMatter.data.author}</span>
             <span className="font-medium">{" "}on {frontMatter.data.created?.toLocaleString()}</span>
 
-            <ReactMarkdown children={markdown ?? ""} remarkPlugins={[remarkGfm]} className={styles.markdown}></ReactMarkdown>
+            <CustomMarkdown children={markdown} />
         </main>
     )
 }
