@@ -96,6 +96,11 @@ const nextConfig = {
         source: '/d/22-20221230-new-infinijump-mode',
         destination: '/blog/2022-12-30-new-infinijump-mode',
         permanent: true
+      },
+      {
+        source: '/d/12-bluedragon-update-20220823',
+        destination: '/blog/2022-08-23-bluedragon-update',
+        permanent: true
       }
     ]
   }

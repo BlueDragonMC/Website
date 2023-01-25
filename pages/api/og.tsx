@@ -35,6 +35,13 @@ export default async function OpenGraphImage(req: NextRequest) {
     const author = searchParams.get("author")
     const date = searchParams.get("date")
     const readTime = searchParams.get("readTime")
+    const player = searchParams.get("player")
+
+    let image = <img src={favicon} width={256} height={256} />;
+
+    if (player) {
+        image = <img src={`https://minotar.net/helm/${player}/192.png`} width={192} height={192} style={{ margin: "48px" }} />;
+    }
 
     if (!title && !ogPreview) {
         title = "BlueDragon";
@@ -47,7 +54,7 @@ export default async function OpenGraphImage(req: NextRequest) {
                 <div style={{ display: "flex", justifyItems: "center", height: "100%", width: "100%", padding: "32px", gap: "32px" }} tw="bg-gray-900">
                     <div style={{ display: "flex", flexDirection: "column", height: "80%", justifyContent: "center" }}>
                         <div style={{ display: "flex", borderRadius: 9999, padding: "10px", backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
-                            <img src={favicon} width={256} height={256} />
+                            {image}
                         </div>
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", height: "80%", width: "825px", justifyContent: "center" }}>
