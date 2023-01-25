@@ -169,12 +169,14 @@ export const leaderboards: Array<Category> = [
             {
                 name: "Fastest Time (Cave Parkour)",
                 stat: "lobby_parkour_cave_best_time",
-                format: "time"
+                format: "time",
+                sort: 1
             },
             {
                 name: "Fastest Time (World Tour Parkour)",
                 stat: "lobby_parkour_world_tour_best_time",
-                format: "time"
+                format: "time",
+                sort: 1
             }
         ]
     }
