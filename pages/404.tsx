@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 import NotFound from "@/app/not-found";
-import { inter } from "@/app/utils";
+import { inter } from "@/app/font";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 

@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import { inter } from "@/app/utils";
+import { inter } from "@/app/font";
 import Error from "@/components/Error";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";

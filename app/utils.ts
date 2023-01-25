@@ -1,11 +1,8 @@
-import { Inter } from "@next/font/google";
 import { readFile } from "fs/promises";
 import matter, { GrayMatterFile } from "gray-matter";
 import { join } from "path";
 
 const frontMatterCache: { [key: string]: GrayMatterFile<Buffer> } = {};
-
-export const inter = Inter({ subsets: ["latin"], fallback: ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"] });
 
 export const getFrontMatter = async (parent: string, slug: string) => {
     const sanitized = slug.replace(/[^a-z0-9-]/gi, '_').toLowerCase() + ".md";

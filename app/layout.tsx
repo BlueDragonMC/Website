@@ -1,8 +1,7 @@
-import { Inter } from '@next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { inter } from './utils'
+import { inter } from './font'
 
 export default function RootLayout({
   children,

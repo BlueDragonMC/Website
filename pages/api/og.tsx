@@ -28,7 +28,7 @@ export const config = {
     runtime: 'edge',
 };
 
-export default async function (req: NextRequest) {
+export default async function OpenGraphImage(req: NextRequest) {
     const { searchParams } = req.nextUrl;
     let title = searchParams.get("title")
     let ogPreview = searchParams.get("ogPreview")
