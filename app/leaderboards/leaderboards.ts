@@ -4,14 +4,17 @@ export const leaderboards: Array<Category> = [
         leaderboards: [
             {
                 name: "Most Wins",
+                statName: "Wins",
                 stat: "game_wackymaze_wins",
             },
             {
                 name: "Most Whacks",
+                statName: "Whacks",
                 stat: "game_wackymaze_whacks",
             },
             {
                 name: "Most Kills",
+                statName: "Kills",
                 stat: "game_wackymaze_kills"
             }
         ]
@@ -21,14 +24,17 @@ export const leaderboards: Array<Category> = [
         leaderboards: [
             {
                 name: "Most Wins",
+                statName: "Wins",
                 stat: "game_skywars_wins"
             },
             {
                 name: "Most Kills",
+                statName: "Kills",
                 stat: "game_skywars_kills"
             },
             {
                 name: "Most Deaths",
+                statName: "Deaths",
                 stat: "game_skywars_deaths"
             }
         ]
@@ -38,14 +44,17 @@ export const leaderboards: Array<Category> = [
         leaderboards: [
             {
                 name: "Most Wins",
+                statName: "Wins",
                 stat: "game_skyfall_wins"
             },
             {
                 name: "Most Kills",
+                statName: "Kills",
                 stat: "game_skyfall_kills"
             },
             {
                 name: "Most Deaths",
+                statName: "Deaths",
                 stat: "game_skyfall_deaths"
             }
         ]
@@ -55,18 +64,22 @@ export const leaderboards: Array<Category> = [
         leaderboards: [
             {
                 name: "Most Wins",
+                statName: "Wins",
                 stat: "game_bedwars_wins"
             },
             {
                 name: "Most Kills",
+                statName: "Kills",
                 stat: "game_bedwars_kills"
             },
             {
                 name: "Most Deaths",
+                statName: "Deaths",
                 stat: "game_bedwars_deaths"
             },
             {
                 name: "Most Beds Broken",
+                statName: "Beds Broken",
                 stat: "game_bedwars_beds_brokwn"
             }
         ]
@@ -76,10 +89,12 @@ export const leaderboards: Array<Category> = [
         leaderboards: [
             {
                 name: "Most Wins (Versus)",
+                statName: "Wins (Versus)",
                 stat: "game_infinijump_wins_versus"
             },
             {
                 name: "Most Wins (Race)",
+                statName: "Wins (Race)",
                 stat: "game_infinijump_wins_race"
             },
             {
@@ -123,6 +138,7 @@ export const leaderboards: Array<Category> = [
             },
             {
                 name: "Most Wins",
+                statName: "Wins",
                 stat: "game_fastfall_wins"
             }
         ]
@@ -132,23 +148,69 @@ export const leaderboards: Array<Category> = [
         leaderboards: [
             {
                 name: "Most Wins",
+                statName: "Wins",
                 stat: "game_pvpmaster_wins"
             },
             {
                 name: "Most Kills",
+                statName: "Kills",
                 stat: "game_pvpmaster_kills"
             },
             {
                 name: "Most Deaths",
+                statName: "Deaths",
                 stat: "game_pvpmaster_deaths"
             },
         ]
+    },
+    {
+        name: "Lobby Parkour",
+        leaderboards: [
+            {
+                name: "Fastest Time (Cave Parkour)",
+                stat: "lobby_parkour_cave_best_time",
+                format: "time"
+            },
+            {
+                name: "Fastest Time (World Tour Parkour)",
+                stat: "lobby_parkour_world_tour_best_time",
+                format: "time"
+            }
+        ]
     }
 ]
+
+export const getLeaderboard = (stat: string) => {
+    for (const cat of leaderboards) {
+        for (const lb of cat.leaderboards) {
+            if (lb.stat == stat) {
+                return {
+                    leaderboard: lb,
+                    category: cat
+                };
+            }
+        }
+    }
+    return null;
+}
+
+export const format = (format: string | undefined, value: number | undefined) => {
+    if (value === undefined || value === null) return undefined;
+    if (!format || format == "whole_number") {
+        return value;
+    } else if (format == "time") {
+        const date = new Date(value);
+
+        return date.getUTCHours().toString().padStart(2, "0") + ":" +
+            date.getUTCMinutes().toString().padStart(2, "0") + ":" +
+            date.getUTCSeconds().toString().padStart(2, "0") + "." +
+            date.getUTCMilliseconds().toString().padStart(3, "0");
+    }
+}
 
 export type Category = {
     name: string;
     leaderboards: Array<Leaderboard>
 }
 
-export type Leaderboard = { name: string, stat: string, format?: "time" | "whole_number", sort?: -1 | 1 }
+export type Leaderboard = { name: string, statName?: string, stat: string, format?: "time" | "whole_number", sort?: -1 | 1 }

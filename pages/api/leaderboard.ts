@@ -1,9 +1,9 @@
+import { getLeaderboard } from '@/app/leaderboards/leaderboards'
+import { MONGO_HOSTNAME } from '@/app/vars'
 import { MongoClient } from 'mongodb'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
-    success: boolean,
-    message?: string,
+export type LeaderboardResponse = {
     statistic?: string,
     sort?: number,
     leaderboard?: Array<{
@@ -13,19 +13,18 @@ type Data = {
     }>
 }
 
-const hostname = process.env.MONGO_HOSTNAME ?? "mongodb://localhost:27017";
-const client = new MongoClient(hostname, {
+const client = new MongoClient(MONGO_HOSTNAME, {
     connectTimeoutMS: 3000,
     serverSelectionTimeoutMS: 3000
 }).connect();
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Data>
+    res: NextApiResponse<LeaderboardResponse>
 ) {
     const stat = Array.isArray(req.query.statistic) ? req.query.statistic[0] : req.query.statistic;
-    if (!stat) {
-        return res.status(400).send({ success: false, message: "Bad Request" });
+    if (!stat || getLeaderboard(stat) === null) {
+        return res.status(400).send({ message: "Bad request" } as unknown as LeaderboardResponse);
     }
     const filter: { [key: string]: { [key: string]: any } } = {};
     const sort = req.query.sort == "1" ? 1 : -1;
@@ -45,7 +44,6 @@ export default async function handler(
             };
         });
     return res.send({
-        success: true,
         statistic: stat,
         sort: sort,
         leaderboard: lb

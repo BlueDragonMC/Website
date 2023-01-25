@@ -5,6 +5,16 @@ const nextConfig = {
     appDir: true,
   },
   output: "standalone",
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "minotar.net",
+        port: "",
+        pathname: "/helm/*/*"
+      }
+    ]
+  },
   async redirects() {
     return [
       {
