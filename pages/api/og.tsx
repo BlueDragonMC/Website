@@ -40,7 +40,7 @@ export default async function OpenGraphImage(req: NextRequest) {
     let image = <img src={favicon} width={256} height={256} />;
 
     if (player) {
-        image = <img src={`https://minotar.net/helm/${player}/192.png`} width={192} height={192} style={{ margin: "48px" }} />;
+        image = <img src={`https://minotar.net/helm/${player}/192.png`} width={180} height={180} style={{ margin: "36px" }} />;
     }
 
     if (!title && !ogPreview) {

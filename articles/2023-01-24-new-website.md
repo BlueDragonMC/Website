@@ -18,3 +18,9 @@ Our previous website was an instance of [Flarum](https://flarum.org/), but we wa
 ## What's New?
 ### Leaderboards
 You can now view leaderboards from the website. Click the "Leaderboards" link in the navigation and select the leaderboard that you want to view. It will show the top 10 players for each leaderboard. Also, the leaderboards on the website update almost instantaneously.
+
+### Statistics
+Clicking on a player's name in a leaderboard will bring you to their statistics page. Here, you can see things like wins, losses, kills, deaths, and more for every game.
+
+### Games Page
+A page that lists every game on the server and how to play. Great for those just getting into BlueDragon or want to show their friends!
