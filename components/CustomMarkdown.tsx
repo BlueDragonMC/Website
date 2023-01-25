@@ -2,6 +2,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import remarkGfm from "remark-gfm";
 import styles from "../app/blog/[article]/article.module.css";
 import BlurredPreviewableImage from "./BlurredPreviewableImage";
+import "photoswipe/dist/photoswipe.css";
 
 export default function CustomMarkdown({ children }: { children: string }) {
     return <ReactMarkdown
