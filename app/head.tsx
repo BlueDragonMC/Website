@@ -4,7 +4,7 @@ export default function Head() {
 
   return (
     <>
-      <BaseHead image="/favicon_hq.png" />
+      <BaseHead image="/api/og" />
 
       <title key="page-title">BlueDragon</title>
 

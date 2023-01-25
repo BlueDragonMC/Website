@@ -3,6 +3,7 @@ import matter, { GrayMatterFile } from "gray-matter";
 import { join } from "path";
 import { default as ParentHead } from "@/app/head";
 import BaseHead from "@/components/BaseHead";
+import { getOGImageURL } from "@/app/utils";
 
 export default async function Head({ params: { article } }: { params: { article: string } }) {
 
@@ -18,7 +19,7 @@ export default async function Head({ params: { article } }: { params: { article:
 
     return (
         <>
-            <BaseHead image={frontMatter.data.image} />
+            <BaseHead image={getOGImageURL(frontMatter)} />
             <title>{frontMatter.data.title ? frontMatter.data.title + " | BlueDragon Blog" : "BlueDragon Blog"}</title>
             <meta name="og:title" content={frontMatter.data.title} />
             <meta name="og:description" content={frontMatter.data.description} />
