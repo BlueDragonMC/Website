@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { join } from "path";
+import { getPlaiceholder } from "plaiceholder";
 import { getFrontMatter } from "../utils";
 
 export default async function Page() {
@@ -45,10 +46,19 @@ async function Article({ slug }: { slug: string }) {
     const frontMatter = await getFrontMatter("articles", slug) ?? notFound();
     const data = frontMatter.data;
 
+    let base64, img;
+    if (data.image) {
+        const placeholder = await getPlaiceholder(data.image);
+        base64 = placeholder.base64;
+        img = placeholder.img;
+    }
+
     return (
         <Link href={"/blog/" + slug}>
             <div className={`rounded-lg bg-gray-400 dark:bg-neutral-800 h-96 hover:scale-105 transition-transform ${data.image ? "" : "flex justify-center flex-col"}`}>
-                {data.image ? <Image src={data.image} alt={data["image-alt"] ?? data.title} width={1024} height={0} className="object-cover w-full h-48 rounded-t-lg"></Image> : <></>}
+                {img ?
+                    <Image src={img} blurDataURL={base64} placeholder="blur" loading="lazy" alt={data["image-alt"] ?? data.title} width={1024} height={0} className="object-cover w-full h-48 rounded-t-lg"></Image>
+                    : <></>}
                 <div className="p-3">
                     <h1 className="text-2xl font-medium mb-auto">{data.title || "Untitled Post"}</h1>
                     <Image src="/favicon_hq.png" height={32} width={32} className="inline rounded-full" alt="Profile image" />
