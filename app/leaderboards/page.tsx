@@ -33,7 +33,7 @@ export default function Page() {
                                 return (
                                     <Link
                                         key={lb.stat}
-                                        className="text-xl underline font-medium mx-2 bg-gray-700 rounded-md p-2"
+                                        className="text-xl underline font-medium mx-2 bg-gray-400 dark:bg-gray-700 rounded-md p-2"
                                         href={"/leaderboards/" + lb.stat}
                                     >
                                         {lb.name}
