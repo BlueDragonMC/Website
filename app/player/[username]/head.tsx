@@ -29,11 +29,11 @@ export default async function Head({
                 )}&player=${encodeURIComponent(nonDashedUUID)}`}
             />
 
-            <title>{`${info.username}'s stats | BlueDragon`}</title>
+            <title>{`${info.username}'s Stats | BlueDragon`}</title>
 
             <meta
                 name="og:title"
-                content={`${info.username}'s stats | BlueDragon`}
+                content={`${info.username}'s Stats | BlueDragon`}
             />
             <meta
                 name="og:description"

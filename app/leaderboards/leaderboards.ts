@@ -86,44 +86,64 @@ export const leaderboards: Array<Category> = [
     },
     {
         name: "Infinijump",
+        mode: "Versus",
         leaderboards: [
             {
-                name: "Most Wins (Versus)",
-                statName: "Wins (Versus)",
+                name: "Most Wins",
+                statName: "Wins",
                 stat: "game_infinijump_wins_versus",
             },
             {
-                name: "Most Wins (Race)",
-                statName: "Wins (Race)",
-                stat: "game_infinijump_wins_race",
-            },
-            {
-                name: "Highest Score (All Modes)",
-                stat: "game_infinijump_highest_score",
-            },
-            {
-                name: "Highest Score (Solo)",
-                stat: "game_infinijump_highest_score_solo",
-            },
-            {
-                name: "Highest Score (Versus)",
+                name: "Highest Score",
                 stat: "game_infinijump_highest_score_versus",
             },
             {
-                name: "Total Points (All Modes)",
-                stat: "game_infinijump_total_points",
+                name: "Total Points",
+                stat: "game_infinijump_total_points_versus",
+            },
+        ],
+    },
+    {
+        name: "Infinijump",
+        mode: "Race",
+        leaderboards: [
+            {
+                name: "Most Wins",
+                statName: "Wins",
+                stat: "game_infinijump_wins_race",
             },
             {
-                name: "Total Points (Solo)",
-                stat: "game_infinijump_total_points_solo",
-            },
-            {
-                name: "Total Points (Race)",
+                name: "Total Points",
                 stat: "game_infinijump_total_points_race",
             },
+        ],
+    },
+    {
+        name: "Infinijump",
+        mode: "Solo",
+        leaderboards: [
             {
-                name: "Total Points (Versus)",
-                stat: "game_infinijump_total_points_versus",
+                name: "Highest Score",
+                stat: "game_infinijump_highest_score_solo",
+            },
+            {
+                name: "Total Points",
+                stat: "game_infinijump_total_points_solo",
+            },
+        ],
+    },
+    {
+        name: "Infinijump",
+        mode: "All Modes",
+        leaderboards: [
+            {
+                name: "Highest Score",
+                stat: "game_infinijump_highest_score",
+            },
+
+            {
+                name: "Total Points",
+                stat: "game_infinijump_total_points",
             },
         ],
     },
@@ -164,16 +184,23 @@ export const leaderboards: Array<Category> = [
         ],
     },
     {
-        name: "Lobby Parkour",
+        name: "Lobby",
+        mode: "Cave Parkour",
         leaderboards: [
             {
-                name: "Fastest Time (Cave Parkour)",
+                name: "Fastest Time",
                 stat: "lobby_parkour_cave_best_time",
                 format: "time",
                 sort: 1,
             },
+        ],
+    },
+    {
+        name: "Lobby",
+        mode: "World Tour Parkour",
+        leaderboards: [
             {
-                name: "Fastest Time (World Tour Parkour)",
+                name: "Fastest Time",
                 stat: "lobby_parkour_world_tour_best_time",
                 format: "time",
                 sort: 1,
@@ -220,6 +247,7 @@ export const format = (
 
 export type Category = {
     name: string;
+    mode?: string;
     leaderboards: Array<Leaderboard>;
 };
 

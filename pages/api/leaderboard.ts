@@ -40,7 +40,7 @@ export default async function handler(
         .collection("players")
         .find(filter)
         .sort("statistics." + stat, sort)
-        .limit(10)
+        .limit(50)
         .toArray();
     const lb = documents.map((row) => {
         return {

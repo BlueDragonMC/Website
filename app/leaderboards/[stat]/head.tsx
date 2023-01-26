@@ -19,8 +19,10 @@ export default function Head({
             <BaseHead
                 image={`/api/og?title=${encodeURIComponent(
                     cat.name + ": " + lb.name
+                )}&subtitle=${encodeURIComponent(
+                    cat.mode ?? "All modes"
                 )}&ogPreview=${encodeURIComponent(
-                    "View the top 10 players for this leaderboard on bluedragonmc.com, or join the server and climb the ranks yourself."
+                    "View the top players for this leaderboard on bluedragonmc.com, or join the server and climb the ranks yourself."
                 )}`}
             />
             <meta name="og:type" content="article" />
@@ -30,7 +32,7 @@ export default function Head({
             />
             <meta
                 name="og:description"
-                content={`View the top 10 players for the ${cat.name} ${lb.name} leaderboard online, or join the server and climb the ranks yourself.`}
+                content={`View the top players for the ${cat.name} ${lb.name} leaderboard online, or join the server and climb the ranks yourself.`}
             />
         </>
     );

@@ -67,6 +67,7 @@ export default async function OpenGraphImage(req: NextRequest) {
     const { searchParams } = req.nextUrl;
     let title = searchParams.get("title");
     let ogPreview = searchParams.get("ogPreview");
+    const subtitle = searchParams.get("subtitle");
     const author = searchParams.get("author");
     const date = searchParams.get("date");
     const readTime = searchParams.get("readTime");
@@ -135,6 +136,9 @@ export default async function OpenGraphImage(req: NextRequest) {
                     >
                         <span style={{ fontSize: 72, color: "white" }}>
                             {title ? title : ""}
+                        </span>
+                        <span style={{ fontSize: 48, color: "#d1d5db" }}>
+                            {subtitle ? subtitle : ""}
                         </span>
                         <span style={{ fontSize: 36, color: "#9ca3af" }}>
                             {ogPreview ? ogPreview : ""}

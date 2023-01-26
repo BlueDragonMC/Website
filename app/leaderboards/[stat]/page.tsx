@@ -33,9 +33,13 @@ export default async function Page({
         const json = (await res.json()) as LeaderboardResponse;
         return (
             <main>
-                <h1 className="text-3xl font-bold">{obj.name}</h1>
-                <h2 className="text-reg font-medium">{category?.name}</h2>
-                <div>
+                <h1 className="text-3xl font-bold text-center">{obj.name}</h1>
+                <h2 className="text-xl text-center">
+                    {category?.mode
+                        ? `${category?.name}: ${category?.mode}`
+                        : category?.name}
+                </h2>
+                <div className="mx-auto w-max">
                     {json.leaderboard?.map((item, i) => {
                         return (
                             <Step key={i} number={i + 1}>
