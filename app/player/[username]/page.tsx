@@ -12,6 +12,8 @@ import { PropsWithChildren } from "react";
 
 TimeAgo.addDefaultLocale(en);
 
+export const dynamic = "force-dynamic";
+
 export default async function Player({ params: { username } }: { params: { username: string } }) {
     const res = await fetch(`${BASE_PATH}/api/player?username=${encodeURIComponent(username)}`);
 

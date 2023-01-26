@@ -1,22 +1,14 @@
 import BaseHead from "@/components/BaseHead";
-import { Category, Leaderboard, leaderboards } from "../leaderboards";
+import { getLeaderboard } from "../leaderboards";
 import ParentHead from "../../head";
 
 export default function Head({ params: { stat } }: { params: { stat: string } }) {
 
-    let lb: Leaderboard | undefined;
-    let cat: Category | undefined;
-    out: for (const category of leaderboards) {
-        for (const leaderboard of category.leaderboards) {
-            if (leaderboard.stat === stat) {
-                lb = leaderboard;
-                cat = category;
-                break out;
-            }
-        }
-    }
+    const info = getLeaderboard(stat);
 
-    if (!lb || !cat) return <ParentHead />
+    if (!info) return <ParentHead />
+
+    const { leaderboard: lb, category: cat } = info;
 
     return <>
         <title>{`${cat.name}: ${lb.name} | BlueDragon`}</title>

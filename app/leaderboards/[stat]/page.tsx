@@ -5,6 +5,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Category, format, Leaderboard, leaderboards } from "../leaderboards"
 
+export const dynamic = "force-dynamic";
+
 export default async function Page({ params: { stat } }: { params: { stat: string } }) {
 
     let obj: Leaderboard | undefined, category: Category | undefined;

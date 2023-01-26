@@ -1,5 +1,5 @@
 import NavItem, { NavItemProps } from '@/components/NavItem'
-import { faBook, faGamepad, faHouse, faInfoCircle, faRankingStar, faShare } from '@fortawesome/free-solid-svg-icons'
+import { faBook, faGamepad, faHouse, faRankingStar, faShare } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,7 +8,6 @@ export default function Navbar() {
     const navItems: Array<NavItemProps> = [
         { text: "Home", href: "/", icon: faHouse },
         { text: "Games", href: "/games", icon: faGamepad },
-        { text: "About", href: "/about", icon: faInfoCircle },
         { text: "Blog", href: "/blog", icon: faBook },
         { text: "Leaderboards", href: "/leaderboards", icon: faRankingStar },
         { text: "Join", href: "/join", color: "bg-blue-600 hover:bg-blue-700", activeColor: "bg-blue-500 hover:bg-blue-600", icon: faShare },
