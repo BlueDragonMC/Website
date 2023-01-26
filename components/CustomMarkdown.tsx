@@ -5,16 +5,20 @@ import BlurredPreviewableImage from "./BlurredPreviewableImage";
 import "photoswipe/dist/photoswipe.css";
 
 export default function CustomMarkdown({ children }: { children: string }) {
-    return <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        className={styles.markdown}
-        components={{
-            /* @ts-expect-error Server Component */
-            "p": ParagraphRenderer,
-            /* @ts-expect-error Server Component */
-            "img": ImageRenderer
-        }}
-    >{children}</ReactMarkdown>
+    return (
+        <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            className={styles.markdown}
+            components={{
+                /* @ts-expect-error Server Component */
+                p: ParagraphRenderer,
+                /* @ts-expect-error Server Component */
+                img: ImageRenderer,
+            }}
+        >
+            {children}
+        </ReactMarkdown>
+    );
 }
 
 async function ParagraphRenderer(props: any) {
@@ -29,14 +33,19 @@ async function ParagraphRenderer(props: any) {
         }
     }
 
-    return <p>{children}</p>
+    return <p>{children}</p>;
 }
 
 async function ImageRenderer(props: any) {
     if (!props.src) return <></>;
 
-    return <>
-        {/* @ts-expect-error Server Component */}
-        <BlurredPreviewableImage src={props.src} alt={props.alt ?? "Image"} />
-    </>
+    return (
+        <>
+            {/* @ts-expect-error Server Component */}
+            <BlurredPreviewableImage
+                src={props.src}
+                alt={props.alt ?? "Image"}
+            />
+        </>
+    );
 }

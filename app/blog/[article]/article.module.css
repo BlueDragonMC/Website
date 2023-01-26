@@ -38,8 +38,7 @@
     }
 
     .markdown ul li {
-        display: list-item;
-        list-style: inside disc;
+        @apply list-item list-inside;
     }
 
     .markdown ul li li {

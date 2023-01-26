@@ -15,13 +15,20 @@ export async function generateStaticParams() {
     });
 }
 
-export default async function Page({ params: { page } }: { params: { page: string } }) {
-
-    const frontMatter = await getFrontMatter("static-pages", page) ?? notFound();
+export default async function Page({
+    params: { page },
+}: {
+    params: { page: string };
+}) {
+    const frontMatter =
+        (await getFrontMatter("static-pages", page)) ?? notFound();
 
     return (
         <main className={`${styles.markdown} lg:w-2/3 lg:mx-auto`}>
-            <ReactMarkdown children={frontMatter.content} remarkPlugins={[remarkGfm]} />
+            <ReactMarkdown
+                children={frontMatter.content}
+                remarkPlugins={[remarkGfm]}
+            />
         </main>
     );
 }

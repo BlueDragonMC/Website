@@ -4,6 +4,7 @@ description: At BlueDragon, we make and use open-source software daily. Here is 
 ---
 
 # Open-Source Software
+
 At BlueDragon, we make and use open-source software daily. Here is a list of the technologies that make the server possible.
 
 | Name                   | Website                                          | Description                                                       | License                     |
@@ -24,4 +25,4 @@ At BlueDragon, we make and use open-source software daily. Here is a list of the
 | Tekton                 | https://tekton.dev                               | a cloud-native CI/CD platform running in Kubernetes               | Apache 2.0                  |
 | Agones                 | https://agones.dev                               | a gameserver orchestration engine for Kubernetes                  | Apache 2.0                  |
 
-*Last updated: 2023-01-22*
+_Last updated: 2023-01-22_

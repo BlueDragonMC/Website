@@ -3,7 +3,19 @@
 import Image from "next/image";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-export default function PreviewableImage({ src, width, height, blur, alt }: { src: string, width: number, height: number, blur: string, alt: string }) {
+export default function PreviewableImage({
+    src,
+    width,
+    height,
+    blur,
+    alt,
+}: {
+    src: string;
+    width: number;
+    height: number;
+    blur: string;
+    alt: string;
+}) {
     return (
         <Gallery>
             <Item original={src} thumbnail={src} width={width} height={height}>
@@ -23,5 +35,5 @@ export default function PreviewableImage({ src, width, height, blur, alt }: { sr
                 )}
             </Item>
         </Gallery>
-    )
+    );
 }
