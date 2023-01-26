@@ -38,7 +38,7 @@
     }
 
     .markdown ul li {
-        @apply list-item list-inside;
+        @apply list-item list-disc list-inside;
     }
 
     .markdown ul li li {
