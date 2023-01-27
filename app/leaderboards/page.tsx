@@ -21,12 +21,10 @@ export default function Page() {
                         <span className="text-2xl font-extrabold mr-2">
                             {category.name}
                         </span>
-                        {category.mode ? (
+                        {category.mode && (
                             <span className="text-2xl font-light text-blue-500 mr-2">
                                 {category.mode}
                             </span>
-                        ) : (
-                            ""
                         )}
                         <div className="inline">
                             {category.leaderboards.map((lb) => {

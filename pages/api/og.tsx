@@ -135,13 +135,13 @@ export default async function OpenGraphImage(req: NextRequest) {
                         }}
                     >
                         <span style={{ fontSize: 72, color: "white" }}>
-                            {title ? title : ""}
+                            {title}
                         </span>
                         <span style={{ fontSize: 48, color: "#d1d5db" }}>
-                            {subtitle ? subtitle : ""}
+                            {subtitle}
                         </span>
                         <span style={{ fontSize: 36, color: "#9ca3af" }}>
-                            {ogPreview ? ogPreview : ""}
+                            {ogPreview}
                         </span>
                     </div>
                 </div>

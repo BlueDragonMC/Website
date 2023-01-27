@@ -19,9 +19,14 @@ export default async function Page() {
                     getFrontMatter(
                         "articles",
                         file.name.substring(0, file.name.lastIndexOf(".md"))
-                    ).then((data) => {
-                        resolve([file.name, data as GrayMatterFile<Buffer>]);
-                    });
+                    )
+                        .then((data) => {
+                            resolve([
+                                file.name,
+                                data as GrayMatterFile<Buffer>,
+                            ]);
+                        })
+                        .catch((err) => reject(err));
                 });
             })
     );
@@ -38,16 +43,15 @@ export default async function Page() {
             <div className="grid grid-flow-row-dense grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
                 {articles.map((article) => {
                     return (
-                        <>
+                        <div key={article}>
                             {/* @ts-expect-error Server Component */}
                             <Article
-                                key={article}
                                 slug={article.substring(
                                     0,
                                     article.indexOf(".md")
                                 )}
                             ></Article>
-                        </>
+                        </div>
                     );
                 })}
             </div>
@@ -73,7 +77,7 @@ async function Article({ slug }: { slug: string }) {
                     data.image ? "" : "flex justify-center flex-col"
                 }`}
             >
-                {img ? (
+                {img && (
                     <Image
                         src={img}
                         blurDataURL={base64}
@@ -84,8 +88,6 @@ async function Article({ slug }: { slug: string }) {
                         height={0}
                         className="object-cover w-full h-48 rounded-t-lg"
                     ></Image>
-                ) : (
-                    <></>
                 )}
                 <div className="p-3">
                     <h1 className="text-2xl font-medium mb-auto">

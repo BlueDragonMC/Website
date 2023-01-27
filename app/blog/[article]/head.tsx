@@ -34,6 +34,15 @@ export default async function Head({
                 content={frontMatter.data.description}
             />
             <meta name="og:type" content="article" />
+            <meta name="og:author" content={frontMatter.data.author} />
+            <meta
+                name="og:article:published_time"
+                content={frontMatter.data.created.toISOString()}
+            />
+            <meta
+                name="og:article:modified_time"
+                content={frontMatter.data.modified.toISOString()}
+            />
         </>
     );
 }

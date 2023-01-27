@@ -43,7 +43,7 @@ export default function NavItem({
                 className="md:hidden"
                 aria-labelledby={`header-nav-item-${text}`}
             >
-                {icon ? <FontAwesomeIcon icon={icon} /> : <></>}
+                {icon && <FontAwesomeIcon icon={icon} />}
             </span>
         </Link>
     );
