@@ -22,6 +22,6 @@ We've added a new map to WackyMaze: Canopy! It's a fast-paced map with many vert
 - Falling in lava on the Canopy map instantly kills you
 - Players glow with their team color _(as shown in the first screenshot)_
 
-We hope you enjoy the new map. Have a greay day!
+We hope you enjoy the new map. Have a great day!
 
 Flux and ex4
