@@ -5,7 +5,18 @@ description: A list of everything new on the server, all in one place.
 
 # Changelog
 
-_Last Updated: January 23, 2023_
+_Last Updated: January 26, 2023_
+
+### 2023-01-26
+
+#### Server
+
+- Fixed an issue where the countdown would go down faster than the intended rate
+- Fixed an issue where games would not start when the last required player had to switch game servers to join the game
+
+#### Website
+
+- Redesigned leaderboards page
 
 ### 2023-01-23
 
