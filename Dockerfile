@@ -7,6 +7,7 @@ WORKDIR /app
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json* ./
 RUN npm_config_platform=linux npm_config_arch=x64 npm_config_libc=glibc npm ci
+RUN npm rebuild --platform=linux --arch=x64 --libc=musl sharp
 
 # Rebuild the source code only when needed
 FROM node:16-alpine AS builder
