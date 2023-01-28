@@ -7,23 +7,24 @@ export default function Head({
 }: {
     params: { game: string };
 }) {
-    const selected = games.find((g) => g.name === decodeURIComponent(game));
+    const title = decodeURIComponent(game).toLowerCase().replaceAll(/-/g, " ");
+    const selected = games.find((g) => g.name.toLowerCase() === title);
 
     if (!selected) notFound();
 
     return (
         <>
             <BaseHead
-                image={`/api/og?title=${game}&ogPreview=${encodeURIComponent(
-                    selected.description ?? ""
-                )}`}
+                image={`/api/og?title=${
+                    selected.name
+                }&ogPreview=${encodeURIComponent(selected.description ?? "")}`}
             />
-            <title>{game + " | BlueDragon"}</title>
+            <title>{selected.name + " | BlueDragon"}</title>
+            <meta name="og:title" content={selected.name + " | BlueDragon"} />
             <meta
-                name="og:title"
-                content={decodeURIComponent(game) + " | BlueDragon"}
+                name="og:description"
+                content={selected.description ?? "A game on BlueDragon."}
             />
-            <meta name="og:description" content={selected.description} />
             <meta name="og:type" content="article" />
         </>
     );

@@ -13,7 +13,8 @@ export default function Page({
 }: {
     params: { game: string };
 }) {
-    const selected = games.find((g) => g.name === decodeURIComponent(game));
+    const title = decodeURIComponent(game).toLowerCase().replaceAll(/-/g, " ");
+    const selected = games.find((g) => g.name.toLowerCase() === title);
 
     if (!selected) notFound();
 
@@ -55,7 +56,9 @@ export default function Page({
             {games.map((game, i) => {
                 return (
                     <Link
-                        href={`/games/${encodeURIComponent(game.name)}`}
+                        href={`/games/${game.name
+                            .toLowerCase()
+                            .replaceAll(/ /g, "-")}`}
                         key={game.name}
                         className={`${
                             game.name == selected.name
