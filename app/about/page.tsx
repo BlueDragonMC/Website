@@ -55,7 +55,9 @@ export default function About() {
                 <div className="bg-neutral-800 p-4 my-4 rounded-md">
                     {games.map((game, i) => (
                         <Link
-                            href={`/games/${game}`}
+                            href={`/games/${game
+                                .toLowerCase()
+                                .replaceAll(/ /g, "-")}`}
                             className="inline-block mr-2 text-2xl font-black text-neutral-500 hover:text-neutral-200 transition-colors"
                             key={game}
                         >
