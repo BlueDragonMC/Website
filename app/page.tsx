@@ -8,9 +8,9 @@ import hero1 from "@/public/hero/1.png";
 import hero2 from "@/public/hero/2.png";
 import hero3 from "@/public/hero/3.png";
 import hero5 from "@/public/hero/5.png";
-import lobby3 from "@/public/lobby-3.png";
-import wackymaze1 from "@/public/wackymaze-1.png";
-import wackymaze6 from "@/public/wackymaze-6.png";
+import lobby3 from "@/public/games/lobby/lobby-3.png";
+import wackymaze1 from "@/public/games/wackymaze/wackymaze-1.png";
+import wackymaze6 from "@/public/games/wackymaze/wackymaze-6.png";
 
 export default function Home() {
     const [image, setImage] = useState(0);

@@ -1,16 +1,9 @@
-import BlurredPreviewableImage from "@/components/BlurredPreviewableImage";
 import CustomMarkdown from "@/components/CustomMarkdown";
 import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
-import Image, { ImageProps } from "next/image";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { join } from "path";
-import { getPlaiceholder } from "plaiceholder";
-import { ReactElement } from "react";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Gallery, Item } from "react-photoswipe-gallery";
-import remarkGfm from "remark-gfm";
-import styles from "./article.module.css";
 
 export async function generateStaticParams() {
     const pages = await readdir(join(process.cwd(), "articles"));
