@@ -156,7 +156,6 @@ const Section = ({ children }: PropsWithChildren<{}>) => (
 );
 
 const Button = ({
-    className,
     icon,
     href,
     text,
