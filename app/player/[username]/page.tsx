@@ -9,6 +9,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import en from "javascript-time-ago/locale/en";
 import { PropsWithChildren } from "react";
+import RelativeDate from "./components/RelativeDate";
 
 TimeAgo.addDefaultLocale(en);
 
@@ -32,11 +33,6 @@ export default async function Player({
     }
 
     const info = (await res.json()) as PlayerResponse;
-
-    const formatter = new Intl.DateTimeFormat(undefined, {
-        dateStyle: "long",
-        timeStyle: "long",
-    });
 
     const nonDashedUUID = info.uuid.replaceAll(/-/g, "");
     const timeAgo = new TimeAgo("en-US");
@@ -77,15 +73,12 @@ export default async function Player({
                         : undefined
                 }
             >
-                <span
-                    title={
-                        info.firstLogin
-                            ? formatter.format(info.firstLogin)
-                            : "Unknown"
+                <RelativeDate
+                    date={info.firstLogin}
+                    text={
+                        info.firstLogin ? timeAgo.format(info.firstLogin) : "-"
                     }
-                >
-                    {info.firstLogin ? timeAgo.format(info.firstLogin) : "-"}
-                </span>
+                />
             </Statistic>
             <Statistic
                 name="Last Login"
@@ -93,15 +86,10 @@ export default async function Player({
                     info.lastLogin ? timeAgo.format(info.lastLogin) : undefined
                 }
             >
-                <span
-                    title={
-                        info.lastLogin
-                            ? formatter.format(info.lastLogin)
-                            : "Unknown"
-                    }
-                >
-                    {info.lastLogin ? timeAgo.format(info.lastLogin) : "-"}
-                </span>
+                <RelativeDate
+                    date={info.lastLogin}
+                    text={info.lastLogin ? timeAgo.format(info.lastLogin) : "-"}
+                />
             </Statistic>
             {leaderboards.map((category) => (
                 <div key={category.mode ?? category.name}>

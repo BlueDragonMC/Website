@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { JavaStatusResponse, status } from "minecraft-server-util";
+import RelativeDate from "./components/RelativeDate";
 
 export const dynamic = "force-dynamic";
 
@@ -46,11 +47,7 @@ export default async function Status() {
             )}
             <p>
                 <Icon icon={faCalendar} />
-                Last Updated:{" "}
-                {new Intl.DateTimeFormat(undefined, {
-                    dateStyle: "short",
-                    timeStyle: "short",
-                }).format()}
+                Last Updated: <RelativeDate />
             </p>
         </main>
     );
