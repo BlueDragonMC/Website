@@ -57,6 +57,10 @@ export default function Footer() {
                 &middot;{" "}
                 <Link href="/page/oss" className="underline font-medium">
                     Open&#8209;Source&nbsp;Software
+                </Link>{" "}
+                &middot;{" "}
+                <Link href="/status" className="underline font-medium">
+                    Server&nbsp;Status
                 </Link>
             </div>
         </footer>

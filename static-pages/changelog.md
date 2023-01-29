@@ -5,12 +5,31 @@ description: A list of everything new on the server, all in one place.
 
 # Changelog
 
-_Last Updated: January 26, 2023_
+_Last Updated: January 28, 2023_
+
+### 2023-01-28
+
+#### Website
+
+- Added a new status page: [bluedragonmc.com/status](/status)
+  - This page displays connected players and latency, and is updated whenever the page is refreshed
+
+### 2023-01-27
+
+#### Server
+
+- Fixed an issue where players could be declared the winner of a game before it started
+- Fixed an issue where players would be invisible to each other due to a problem with player info packets not being sent
+- Fixed an issue where blocks would be duplicated upon joining, leaving, and rejoining the same multiplayer Infinijump game
+- Fixed an issue where the "total points" Infinijump statistic was not recorded in Race mode
 
 ### 2023-01-26
 
 #### Server
 
+- Added a new WackyMaze map: Canopy! (see the blog post [here](/blog/2023-01-27-new-wackymaze-map))
+- Made lava lethal in WackyMaze - _this change is only applicable to Canopy as it is the only map with lava_
+- Started recording kill and death statistics in PvPMaster
 - Fixed an issue where the countdown would go down faster than the intended rate
 - Fixed an issue where games would not start when the last required player had to switch game servers to join the game
 
