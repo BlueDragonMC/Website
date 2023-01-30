@@ -6,7 +6,12 @@ import {
     IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { JavaStatusResponse, status } from "minecraft-server-util";
+import {
+    JavaStatusResponse,
+    parseAddress,
+    ParsedAddress,
+    status,
+} from "minecraft-server-util";
 import RelativeDate from "./components/RelativeDate";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +19,11 @@ export const dynamic = "force-dynamic";
 export default async function Status() {
     let ping: JavaStatusResponse | undefined;
     try {
-        ping = await status(process.env.SERVER_IP ?? "bluedragonmc.com");
+        const { host, port } = parseAddress(
+            process.env.SERVER_IP ?? "bluedragonmc.com",
+            25565
+        ) as ParsedAddress;
+        ping = await status(host, port);
     } catch (e) {}
 
     return (
