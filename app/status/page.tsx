@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 export default async function Status() {
     let ping: JavaStatusResponse | undefined;
     try {
-        ping = await status("bluedragonmc.com");
+        ping = await status(process.env.SERVER_IP ?? "bluedragonmc.com");
     } catch (e) {}
 
     return (

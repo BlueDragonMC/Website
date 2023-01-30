@@ -22,7 +22,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<StatusResponse>
 ) {
-    const s = await status("bluedragonmc.com");
+    const s = await status(process.env.SERVER_IP ?? "bluedragonmc.com");
     // Reply with a limited version of the given status
     return res.send({
         version: { name: s.version.name, protocol: s.version.protocol },
