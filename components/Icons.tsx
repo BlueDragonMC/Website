@@ -18,7 +18,7 @@ export const GitHub = ({ ...props }: ComponentProps<"svg">) => (
 
 export const Twitter = ({ ...props }: ComponentProps<"svg">) => (
     <svg
-        className="inline fill-black dark:fill-white h-8"
+        className="inline h-8 fill-black dark:fill-white"
         role="img"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ export const Twitter = ({ ...props }: ComponentProps<"svg">) => (
 
 export const Discord = ({ ...props }: ComponentProps<"svg">) => (
     <svg
-        className="inline fill-black dark:fill-white h-8"
+        className="inline h-8 fill-black dark:fill-white"
         role="img"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"

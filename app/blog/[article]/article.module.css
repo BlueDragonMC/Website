@@ -2,27 +2,27 @@
 
 @layer components {
     .markdown h1 {
-        @apply text-4xl font-bold mt-5;
+        @apply mt-5 text-4xl font-bold;
     }
 
     .markdown h2 {
-        @apply text-3xl font-bold mt-3;
+        @apply mt-3 text-3xl font-bold;
     }
 
     .markdown h3 {
-        @apply text-2xl font-bold mt-3;
+        @apply mt-3 text-2xl font-bold;
     }
 
     .markdown h4 {
-        @apply text-xl font-bold mt-3;
+        @apply mt-3 text-xl font-bold;
     }
 
     .markdown h5 {
-        @apply text-lg font-bold mt-3;
+        @apply mt-3 text-lg font-bold;
     }
 
     .markdown h6 {
-        @apply text-base font-bold mt-1;
+        @apply mt-1 text-base font-bold;
     }
 
     .markdown b {
@@ -30,7 +30,7 @@
     }
 
     .markdown a {
-        @apply text-blue-400 font-medium underline;
+        @apply font-medium text-blue-400 underline;
     }
 
     .markdown p {
@@ -38,11 +38,11 @@
     }
 
     .markdown img {
-        @apply my-4 rounded-md max-w-xl;
+        @apply my-4 max-w-xl rounded-md;
     }
 
     .markdown ul li {
-        @apply list-item list-disc list-inside;
+        @apply list-item list-inside list-disc;
     }
 
     .markdown ul li li {
@@ -58,7 +58,7 @@
     }
 
     .markdown table {
-        @apply dark:border-neutral-400 border-2 rounded-md border-separate;
+        @apply border-separate rounded-md border-2 dark:border-neutral-400;
     }
 
     .markdown table tr td {
@@ -70,6 +70,6 @@
     }
 
     .markdown table tr:nth-child(even) {
-        @apply dark:bg-neutral-900 bg-gray-300;
+        @apply bg-gray-300 dark:bg-neutral-900;
     }
 }

@@ -23,7 +23,7 @@ export default function Page() {
                 </Step>
                 <Step number={4}>
                     Double click on the server you just added.{" "}
-                    <span className="text-green-500 font-medium">
+                    <span className="font-medium text-green-500">
                         That's it! 🎉
                     </span>
                 </Step>
@@ -31,7 +31,7 @@ export default function Page() {
                     <em>(Optional)</em> Click{" "}
                     <Link
                         href="/games"
-                        className="text-blue-500 font-medium underline"
+                        className="font-medium text-blue-500 underline"
                     >
                         here
                     </Link>{" "}

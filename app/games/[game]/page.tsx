@@ -52,7 +52,7 @@ export default function Page({
 
     return (
         <main>
-            <h1 className="text-3xl font-bold mb-2">{selected.name}</h1>
+            <h1 className="mb-2 text-3xl font-bold">{selected.name}</h1>
             {games.map((game, i) => {
                 return (
                     <Link
@@ -63,8 +63,8 @@ export default function Page({
                         className={`${
                             game.name == selected.name
                                 ? "bg-blue-700 text-white"
-                                : "bg-slate-200 text-black mb-2"
-                        } rounded-md p-2 mr-2 inline-block transition-colors font-medium cursor-pointer`}
+                                : "mb-2 bg-slate-200 text-black"
+                        } mr-2 inline-block cursor-pointer rounded-md p-2 font-medium transition-colors`}
                     >
                         {game.name}
                     </Link>
@@ -88,7 +88,7 @@ export default function Page({
                                         src={img}
                                         placeholder="blur"
                                         loading="lazy"
-                                        className="inline rounded-md cursor-pointer mr-4 mb-4"
+                                        className="mr-4 mb-4 inline cursor-pointer rounded-md"
                                         alt="Gameplay screenshot"
                                         width={1920 / 4}
                                         height={1080 / 4}

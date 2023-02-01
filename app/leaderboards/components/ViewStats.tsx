@@ -19,13 +19,13 @@ export default function ViewStats() {
                 <input
                     type="text"
                     placeholder="Username"
-                    className="h-10 w-full bg-gray-100 text-gray-700 px-2 py-2 border border-gray-100 outline-none rounded-l-lg"
+                    className="h-10 w-full rounded-l-lg border border-gray-100 bg-gray-100 px-2 py-2 text-gray-700 outline-none"
                     onInput={(e) => setPlayer(e.currentTarget.value)}
                 ></input>
             </form>
-            <span className="flex items-center bg-gray-100 font-bold text-gray-100 rounded-r-lg">
+            <span className="flex items-center rounded-r-lg bg-gray-100 font-bold text-gray-100">
                 <Link role="button" href={`/player/${player}`}>
-                    <button className="bg-blue-600 hover:bg-blue-700 text-lg text-white font-medium py-2 px-4 h-10 rounded-r-lg w-max">
+                    <button className="h-10 w-max rounded-r-lg bg-blue-600 py-2 px-4 text-lg font-medium text-white hover:bg-blue-700">
                         View Stats
                     </button>
                 </Link>

@@ -24,7 +24,7 @@ export default async function Page({
         (await getFrontMatter("static-pages", page)) ?? notFound();
 
     return (
-        <main className={`${styles.markdown} lg:w-2/3 lg:mx-auto`}>
+        <main className={`${styles.markdown} lg:mx-auto lg:w-2/3`}>
             <ReactMarkdown
                 children={frontMatter.content}
                 remarkPlugins={[remarkGfm]}

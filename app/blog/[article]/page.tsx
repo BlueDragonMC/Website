@@ -31,7 +31,7 @@ export default async function Page({
     }
 
     return (
-        <main className="lg:w-2/3 lg:mx-auto">
+        <main className="lg:mx-auto lg:w-2/3">
             <h1 className="text-3xl font-bold">{frontMatter.data.title}</h1>
             <Image
                 src="/favicon_hq.png"

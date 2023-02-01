@@ -33,8 +33,8 @@ export default async function Page({
         const json = (await res.json()) as LeaderboardResponse;
         return (
             <main>
-                <h1 className="text-3xl font-bold text-center">{obj.name}</h1>
-                <h2 className="text-xl text-center">
+                <h1 className="text-center text-3xl font-bold">{obj.name}</h1>
+                <h2 className="text-center text-xl">
                     {category?.mode
                         ? `${category?.name}: ${category?.mode}`
                         : category?.name}
@@ -43,11 +43,11 @@ export default async function Page({
                     {json.leaderboard?.map((item, i) => {
                         return (
                             <Step key={i} number={i + 1}>
-                                <div className="inline-flex justify-between w-72 md:w-96">
+                                <div className="inline-flex w-72 justify-between md:w-96">
                                     <span>
                                         <Link
                                             href={`/player/${item.username}`}
-                                            className="underline font-medium"
+                                            className="font-medium underline"
                                         >
                                             {item.username}
                                         </Link>
@@ -69,7 +69,7 @@ export default async function Page({
             <h1 className="text-3xl font-bold">Leaderboard Failed to Load</h1>
             <p>
                 Please try again later, or{" "}
-                <Link href="/leaderboards" className="underline font-medium">
+                <Link href="/leaderboards" className="font-medium underline">
                     click here
                 </Link>{" "}
                 to go back.

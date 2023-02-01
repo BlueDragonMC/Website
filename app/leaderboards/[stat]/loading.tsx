@@ -3,15 +3,15 @@ import Step from "@/components/Step";
 export default function Loading() {
     return (
         <main>
-            <span className="block h-9 mb-2 w-72 animate-pulse bg-neutral-600 mx-auto"></span>
+            <span className="mx-auto mb-2 block h-9 w-72 animate-pulse bg-neutral-600"></span>
             <span
-                className="block h-7 mb-2 w-24 animate-pulse bg-neutral-600 mx-auto"
+                className="mx-auto mb-2 block h-7 w-24 animate-pulse bg-neutral-600"
                 style={{ animationDelay: "0.05s" }}
             ></span>
-            <div className="w-max mx-auto">
+            <div className="mx-auto w-max">
                 {Array.from({ length: 10 }, (_, i) => (
                     <Step key={i} number={i + 1}>
-                        <div className="inline-flex justify-between w-72 md:w-96">
+                        <div className="inline-flex w-72 justify-between md:w-96">
                             <span
                                 className="inline-block h-5 w-48 animate-pulse bg-neutral-600"
                                 style={{ animationDelay: `${i * 0.1}s` }}

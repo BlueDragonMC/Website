@@ -33,11 +33,11 @@ export default async function Status() {
             <p>
                 <Icon icon={faCircle} />
                 {ping ? (
-                    <span className="text-green-500 font-bold underline">
+                    <span className="font-bold text-green-500 underline">
                         Online
                     </span>
                 ) : (
-                    <span className="text-red-500 font-bold underline">
+                    <span className="font-bold text-red-500 underline">
                         Offline
                     </span>
                 )}
@@ -64,7 +64,7 @@ export default async function Status() {
 
 const Icon = ({ icon }: { icon: IconDefinition }) => (
     <FontAwesomeIcon
-        className="w-8 h-8 mr-4 my-2 inline align-middle"
+        className="my-2 mr-4 inline h-8 w-8 align-middle"
         icon={icon}
     />
 );

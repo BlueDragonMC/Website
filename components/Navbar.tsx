@@ -27,9 +27,9 @@ export default function Navbar() {
     ];
 
     return (
-        <header className="h-16 z-50">
+        <header className="z-50 h-16">
             <nav
-                className={`fixed top-0 z-50 w-full bg-gray-900 h-16 flex items-center justify-center md:justify-between`}
+                className={`fixed top-0 z-50 flex h-16 w-full items-center justify-center bg-gray-900 md:justify-between`}
             >
                 <div
                     className={`flex items-center justify-center md:justify-start`}
@@ -37,14 +37,14 @@ export default function Navbar() {
                     <Link href="/">
                         <Image
                             src="/logo_wordmark.png"
-                            className="hidden md:block mx-4"
+                            className="mx-4 hidden md:block"
                             alt="BlueDragon Logo"
                             height={30}
                             width={155}
                         />
                         <Image
                             src="/favicon_hq.png"
-                            className="md:hidden mx-4"
+                            className="mx-4 md:hidden"
                             alt="BlueDragon Logo"
                             height={48}
                             width={48}
@@ -52,7 +52,7 @@ export default function Navbar() {
                     </Link>
                 </div>
                 <div
-                    className={`flex flex-1 items-center justify-end space-x-4 px-4 h-full`}
+                    className={`flex h-full flex-1 items-center justify-end space-x-4 px-4`}
                 >
                     {navItems.map((item) => {
                         return <NavItem {...item} key={item.href}></NavItem>;

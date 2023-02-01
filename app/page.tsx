@@ -35,10 +35,10 @@ export default function Home() {
     };
 
     return (
-        <main className="h-screen block md:flex justify-center lg:block">
-            <div className="fixed h-screen grid grid-rows-3 md:grid-cols-1 lg:grid-cols-12 lg:grid-rows-4">
-                <div className="lg:col-start-2 lg:col-span-3 row-start-2 text-center lg:text-left">
-                    <h1 className="text-3xl text-white font-bold">
+        <main className="block h-screen justify-center md:flex lg:block">
+            <div className="fixed grid h-screen grid-rows-3 md:grid-cols-1 lg:grid-cols-12 lg:grid-rows-4">
+                <div className="row-start-2 text-center lg:col-span-3 lg:col-start-2 lg:text-left">
+                    <h1 className="text-3xl font-bold text-white">
                         BlueDragon
                     </h1>
                     <p className="text-white">
@@ -47,12 +47,12 @@ export default function Home() {
                     </p>
                     <div className="mt-1">
                         <Link href="/join">
-                            <button className="font-medium bg-blue-600 text-white px-3 py-2 mr-2 rounded-md">
+                            <button className="mr-2 rounded-md bg-blue-600 px-3 py-2 font-medium text-white">
                                 Join
                             </button>
                         </Link>
                         <Link href="/games">
-                            <button className="font-medium bg-slate-600 text-white px-3 py-2 rounded-md">
+                            <button className="rounded-md bg-slate-600 px-3 py-2 font-medium text-white">
                                 View Games
                             </button>
                         </Link>
@@ -60,13 +60,13 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="-z-20 w-screen h-screen fixed top-0 left-0">
+            <div className="fixed top-0 left-0 -z-20 h-screen w-screen">
                 {images.map((img, i) => {
                     if (isVisible(i)) {
                         return (
                             <Image
                                 key={img.src}
-                                className="fixed blur-sm scale-110 top-0 left-0 w-screen h-screen transition-opacity brightness-50 object-cover"
+                                className="fixed top-0 left-0 h-screen w-screen scale-110 object-cover blur-sm brightness-50 transition-opacity"
                                 src={img}
                                 alt="Background image"
                                 width={512}
@@ -85,7 +85,7 @@ export default function Home() {
                     }
                 })}
                 <div
-                    className="-z-40 w-screen h-screen fixed top-0 left-0 bg-black bg-cover brightness-75"
+                    className="fixed top-0 left-0 -z-40 h-screen w-screen bg-black bg-cover brightness-75"
                     style={{ backgroundImage: `url(${images[0].blurDataURL})` }}
                 />
             </div>

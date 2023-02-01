@@ -34,7 +34,7 @@ export default function NavItem({
             href={href}
             className={`font-sans ${
                 isActive ? activeColorClasses : inactiveColorClasses
-            } transition-colors text-base font-medium p-2 rounded-md text-white`}
+            } rounded-md p-2 text-base font-medium text-white transition-colors`}
         >
             <span className="hidden md:inline" id={`header-nav-item-${text}`}>
                 {text}

@@ -25,7 +25,7 @@ export default function PreviewableImage({
                         placeholder="blur"
                         loading="lazy"
                         blurDataURL={blur}
-                        className="rounded-md cursor-pointer"
+                        className="cursor-pointer rounded-md"
                         alt={alt}
                         width={width / 2}
                         height={height / 2}

@@ -8,7 +8,7 @@ export default function NotFoundPage() {
     return (
         <div className={inter.className}>
             <Navbar />
-            <div className="min-h-screen px-2 md:px-10 pt-16 md:pt-24">
+            <div className="min-h-screen px-2 pt-16 md:px-10 md:pt-24">
                 <NotFound />
             </div>
             <Footer />

@@ -21,16 +21,16 @@ export default function Page() {
                         key={category.mode ?? category.name}
                         className="min-h-[3rem] py-3"
                     >
-                        <span className="text-2xl font-semibold block lg:hidden">
+                        <span className="block text-2xl font-semibold lg:hidden">
                             {category.mode
                                 ? `${category.name}: ${category.mode}`
                                 : category.name}
                         </span>
-                        <span className="text-2xl font-extrabold mr-2 hidden lg:inline">
+                        <span className="mr-2 hidden text-2xl font-extrabold lg:inline">
                             {category.name}
                         </span>
                         {category.mode && (
-                            <span className="text-2xl font-light text-blue-500 hidden lg:inline mr-2">
+                            <span className="mr-2 hidden text-2xl font-light text-blue-500 lg:inline">
                                 {category.mode}
                             </span>
                         )}
@@ -43,7 +43,7 @@ export default function Page() {
                                     >
                                         <Link
                                             key={lb.stat}
-                                            className="text-xl underline font-medium lg:mx-2 lg:bg-gray-400 dark:lg:bg-gray-700 rounded-md lg:p-2"
+                                            className="rounded-md text-xl font-medium underline lg:mx-2 lg:bg-gray-400 lg:p-2 dark:lg:bg-gray-700"
                                             href={"/leaderboards/" + lb.stat}
                                         >
                                             {lb.name}
@@ -51,7 +51,7 @@ export default function Page() {
                                                 icon={faUpRightFromSquare}
                                                 width={14}
                                                 height={14}
-                                                className="hidden lg:inline align-middle px-1"
+                                                className="hidden px-1 align-middle lg:inline"
                                             />
                                         </Link>
                                     </div>

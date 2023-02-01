@@ -39,7 +39,7 @@ export default async function Player({
 
     return (
         <main>
-            <h1 className="text-3xl font-bold text-center">
+            <h1 className="text-center text-3xl font-bold">
                 <Image
                     src={`https://minotar.net/helm/${nonDashedUUID}/32`}
                     alt={"Minecraft player head"}
@@ -51,7 +51,7 @@ export default async function Player({
             </h1>
 
             <Link
-                className="block mx-auto w-max bg-black text-white dark:bg-white dark:text-black rounded-md my-4 p-2 text-sm"
+                className="mx-auto my-4 block w-max rounded-md bg-black p-2 text-sm text-white dark:bg-white dark:text-black"
                 href={`https://namemc.com/profile/${info.uuid}`}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -93,7 +93,7 @@ export default async function Player({
             </Statistic>
             {leaderboards.map((category) => (
                 <div key={category.mode ?? category.name}>
-                    <h1 className="text-2xl text-center font-bold mt-6 mb-2">
+                    <h1 className="mt-6 mb-2 text-center text-2xl font-bold">
                         {category.mode
                             ? `${category.name}: ${category.mode}`
                             : category.name}
@@ -123,7 +123,7 @@ function Statistic({
     stat?: string;
 }>) {
     return (
-        <p className="flex mx-auto w-72 lg:w-96 justify-between">
+        <p className="mx-auto flex w-72 justify-between lg:w-96">
             <span className="font-medium">
                 {stat ? (
                     <Link href={`/leaderboards/${stat}`} className="underline">

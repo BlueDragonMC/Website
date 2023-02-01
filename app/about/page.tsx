@@ -32,7 +32,7 @@ export default function About() {
         .reduce((acc, category) => acc + category, 0);
 
     return (
-        <main className="md:w-2/3 mx-auto">
+        <main className="mx-auto md:w-2/3">
             <Section>
                 <div>
                     <h1 className="text-3xl font-bold">About</h1>
@@ -52,18 +52,18 @@ export default function About() {
                         text="View Games"
                     />
                 </div>
-                <div className="bg-neutral-800 p-4 my-4 rounded-md">
+                <div className="my-4 rounded-md bg-neutral-800 p-4">
                     {games.map((game, i) => (
                         <Link
                             href={`/games/${game
                                 .toLowerCase()
                                 .replaceAll(/ /g, "-")}`}
-                            className="inline-block mr-2 text-2xl font-black text-neutral-500 hover:text-neutral-200 transition-colors"
+                            className="mr-2 inline-block text-2xl font-black text-neutral-500 transition-colors hover:text-neutral-200"
                             key={game}
                         >
                             {game}
                             {i !== games.length - 1 && (
-                                <span className="text-2xl ml-2 text-neutral-700">
+                                <span className="ml-2 text-2xl text-neutral-700">
                                     &middot;
                                 </span>
                             )}
@@ -76,7 +76,7 @@ export default function About() {
                     src={jukebox}
                     placeholder="blur"
                     alt="Jukebox menu screenshot"
-                    className="rounded-lg my-4 row-start-2 lg:row-start-1"
+                    className="row-start-2 my-4 rounded-lg lg:row-start-1"
                 />
                 <div className="row-start-1">
                     <h1 className="text-3xl font-bold">Jukebox</h1>
@@ -124,12 +124,12 @@ export default function About() {
                     src={leaderboard}
                     placeholder="blur"
                     alt="Lobby leaderboard screenshot"
-                    className="rounded-lg my-4"
+                    className="my-4 rounded-lg"
                 />
             </Section>
             <section className="flex flex-col justify-center">
                 <div>
-                    <h1 className="text-3xl font-bold text-center">
+                    <h1 className="text-center text-3xl font-bold">
                         Open-Source
                     </h1>
                     <p className="text-center">
@@ -141,7 +141,7 @@ export default function About() {
                     <Button
                         href="https://github.com/BlueDragonMC"
                         icon={
-                            <GitHub className="inline h-4 align-middle fill-white" />
+                            <GitHub className="inline h-4 fill-white align-middle" />
                         }
                         text="View on GitHub"
                     />
@@ -152,7 +152,7 @@ export default function About() {
 }
 
 const Section = ({ children }: PropsWithChildren<{}>) => (
-    <section className="grid grid-cols-1 lg:grid-cols-2 my-10 gap-x-8">
+    <section className="my-10 grid grid-cols-1 gap-x-8 lg:grid-cols-2">
         {children}
     </section>
 );
@@ -167,9 +167,9 @@ const Button = ({
     text: string;
 }) => (
     <Link href={href}>
-        <button className="bg-blue-700 hover:bg-blue-800 focus:bg-blue-900 text-white rounded-md mt-2 px-4 py-2">
+        <button className="mt-2 rounded-md bg-blue-700 px-4 py-2 text-white hover:bg-blue-800 focus:bg-blue-900">
             <span className="fill-black dark:fill-white">{icon}</span>
-            <span className="font-medium align-middle ml-2">{text}</span>
+            <span className="ml-2 align-middle font-medium">{text}</span>
         </button>
     </Link>
 );

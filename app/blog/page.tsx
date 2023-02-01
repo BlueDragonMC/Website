@@ -39,8 +39,8 @@ export default async function Page() {
 
     return (
         <main>
-            <h1 className="text-3xl font-bold mb-3">Blog Posts</h1>
-            <div className="grid grid-flow-row-dense grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+            <h1 className="mb-3 text-3xl font-bold">Blog Posts</h1>
+            <div className="grid grid-flow-row-dense grid-cols-1 gap-4 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                 {articles.map((article) => {
                     return (
                         <div key={article}>
@@ -73,8 +73,8 @@ async function Article({ slug }: { slug: string }) {
     return (
         <Link href={"/blog/" + slug}>
             <div
-                className={`rounded-lg bg-gray-400 dark:bg-neutral-800 h-96 hover:scale-105 transition-transform ${
-                    data.image ? "" : "flex justify-center flex-col"
+                className={`h-96 rounded-lg bg-gray-400 transition-transform hover:scale-105 dark:bg-neutral-800 ${
+                    data.image ? "" : "flex flex-col justify-center"
                 }`}
             >
                 {img && (
@@ -86,11 +86,11 @@ async function Article({ slug }: { slug: string }) {
                         alt={data["image-alt"] ?? data.title}
                         width={1024}
                         height={0}
-                        className="object-cover w-full h-48 rounded-t-lg"
+                        className="h-48 w-full rounded-t-lg object-cover"
                     ></Image>
                 )}
                 <div className="p-3">
-                    <h1 className="text-2xl font-medium mb-auto">
+                    <h1 className="mb-auto text-2xl font-medium">
                         {data.title || "Untitled Post"}
                     </h1>
                     <Image
