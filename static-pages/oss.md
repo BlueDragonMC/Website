@@ -12,8 +12,8 @@ At BlueDragon, we make and use open-source software daily. Here is a list of the
 | Minestom               | https://minestom.net/                            | a Minecraft server implementation without any code from Mojang    | Apache 2.0                  |
 | adventure              | https://github.com/KyoriPowered/adventure        | a user-interface library for Minecraft                            | MIT                         |
 | Configurate            | https://github.com/SpongePowered/Configurate/    | a library for quickly creating configurations in multiple formats | Apache 2.0                  |
-| kotlinx.serialization  | https://github.com/Kotlin/kotlinx.serialization/ | a multi-platform serialization library for Kotlin                 | Apache 2.0                  |
-| kotlinx.coroutines     | https://github.com/Kotlin/kotlinx.coroutines     | a library for asynchronous programming in Kotlin using coroutines | Apache 2.0                  |
+| kotlinx-serialization  | https://github.com/Kotlin/kotlinx.serialization/ | a multi-platform serialization library for Kotlin                 | Apache 2.0                  |
+| kotlinx-coroutines     | https://github.com/Kotlin/kotlinx.coroutines     | a library for asynchronous programming in Kotlin using coroutines | Apache 2.0                  |
 | Logback                | https://logback.qos.ch/                          | a spiritual successor for Log4j 1.x                               | Eclipse Public License v1.0 |
 | Caffeine               | https://github.com/ben-manes/caffeine            | a high-performance caching library for Java                       | Apache 2.0                  |
 | Velocity               | https://velocitypowered.com/                     | a modern Minecraft proxy                                          | API: MIT, Proxy: GPL v3.0   |

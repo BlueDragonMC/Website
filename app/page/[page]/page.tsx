@@ -1,10 +1,8 @@
 import { getFrontMatter } from "@/app/utils";
+import CustomMarkdown from "@/components/CustomMarkdown";
 import { readdir } from "fs/promises";
 import { notFound } from "next/navigation";
 import { join } from "path";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import remarkGfm from "remark-gfm";
-import styles from "../../blog/[article]/article.module.css";
 
 export async function generateStaticParams() {
     const pages = await readdir(join(process.cwd(), "static-pages"));
@@ -24,11 +22,8 @@ export default async function Page({
         (await getFrontMatter("static-pages", page)) ?? notFound();
 
     return (
-        <main className={`${styles.markdown} lg:mx-auto lg:w-2/3`}>
-            <ReactMarkdown
-                children={frontMatter.content}
-                remarkPlugins={[remarkGfm]}
-            />
+        <main className="lg:mx-auto lg:w-2/3">
+            <CustomMarkdown children={frontMatter.content} />
         </main>
     );
 }

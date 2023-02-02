@@ -30,7 +30,11 @@
     }
 
     .markdown a {
-        @apply font-medium text-blue-400 underline;
+        @apply font-medium underline;
+    }
+
+    .markdown table a {
+        @apply inline-block w-full truncate;
     }
 
     .markdown p {
@@ -58,7 +62,7 @@
     }
 
     .markdown table {
-        @apply border-separate rounded-md border-2 dark:border-neutral-400;
+        @apply border-separate rounded-sm border-2 border-black p-2 dark:border-white;
     }
 
     .markdown table tr td {
