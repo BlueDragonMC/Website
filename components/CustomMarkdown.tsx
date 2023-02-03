@@ -10,21 +10,24 @@ import {
 import { ReactMarkdownProps } from "react-markdown/lib/complex-types";
 import React from "react";
 import Link from "next/link";
+import Gallery from "./Gallery";
 
 export default function CustomMarkdown({ children }: { children: string }) {
     return (
-        <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            className={styles.markdown}
-            components={{
-                img: ImageRenderer,
-                table: TableRenderer,
-                tr: TableRowRenderer,
-                a: AnchorRenderer,
-            }}
-        >
-            {children}
-        </ReactMarkdown>
+        <Gallery>
+            <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                className={styles.markdown}
+                components={{
+                    img: ImageRenderer,
+                    table: TableRenderer,
+                    tr: TableRowRenderer,
+                    a: AnchorRenderer,
+                }}
+            >
+                {children}
+            </ReactMarkdown>
+        </Gallery>
     );
 }
 
