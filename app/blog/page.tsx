@@ -1,46 +1,20 @@
-import { readdir } from "fs/promises";
-import { GrayMatterFile } from "gray-matter";
+import { faCalendar, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { join } from "path";
 import { getPlaiceholder } from "plaiceholder";
-import { getFrontMatter } from "../utils";
+import { getArticles, getFrontMatter } from "../utils";
+
+export const dynamic = "force-static";
 
 export default async function Page() {
-    const files = await readdir(join(process.cwd(), "articles"), {
-        withFileTypes: true,
-    });
-    const tuples: Array<[string, GrayMatterFile<Buffer>]> = await Promise.all(
-        files
-            .filter((file) => file.name.includes(".md"))
-            .map((file): Promise<[string, GrayMatterFile<Buffer>]> => {
-                return new Promise((resolve, reject) => {
-                    getFrontMatter(
-                        "articles",
-                        file.name.substring(0, file.name.lastIndexOf(".md"))
-                    )
-                        .then((data) => {
-                            resolve([
-                                file.name,
-                                data as GrayMatterFile<Buffer>,
-                            ]);
-                        })
-                        .catch((err) => reject(err));
-                });
-            })
-    );
-
-    const articles = tuples
-        .sort((a, b) => {
-            return b[1].data.created?.getTime() - a[1].data.created?.getTime();
-        })
-        .map((article) => article[0]);
+    const articles = (await getArticles()).map((article) => article[0]);
 
     return (
         <main>
             <h1 className="mb-3 text-3xl font-bold">Blog Posts</h1>
-            <div className="grid grid-flow-row-dense grid-cols-1 gap-4 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                 {articles.map((article) => {
                     return (
                         <div key={article}>
@@ -70,10 +44,15 @@ async function Article({ slug }: { slug: string }) {
         img = placeholder.img;
     }
 
+    const created = new Intl.DateTimeFormat(undefined, {
+        dateStyle: "medium",
+        timeStyle: undefined,
+    }).format(data.created);
+
     return (
         <Link href={"/blog/" + slug}>
             <div
-                className={`h-96 rounded-lg bg-gray-400 transition-transform hover:scale-105 dark:bg-neutral-800 ${
+                className={`group rounded-lg bg-gray-200 shadow-lg transition-all hover:bg-gray-300 hover:shadow-2xl dark:bg-neutral-900 dark:hover:bg-neutral-800 md:h-[26rem] ${
                     data.image ? "" : "flex flex-col justify-center"
                 }`}
             >
@@ -86,23 +65,27 @@ async function Article({ slug }: { slug: string }) {
                         alt={data["image-alt"] ?? data.title}
                         width={1024}
                         height={0}
-                        className="h-48 w-full rounded-t-lg object-cover"
+                        className="h-48 w-full rounded-t-lg object-cover transition-all group-hover:brightness-75"
                     ></Image>
                 )}
                 <div className="p-3">
                     <h1 className="mb-auto text-2xl font-medium">
                         {data.title || "Untitled Post"}
                     </h1>
-                    <Image
-                        src="/favicon_hq.png"
-                        height={32}
-                        width={32}
-                        className="inline rounded-full"
-                        alt="Profile image"
-                    />
-                    <span className="font-medium">{data.author}</span>
+                    <div className="flex flex-wrap items-center py-3">
+                        <FontAwesomeIcon
+                            icon={faUser}
+                            className="mr-2 h-4 w-4 align-middle"
+                        />
+                        <span className="font-medium">{data.author}</span>
+                        <FontAwesomeIcon
+                            icon={faCalendar}
+                            className="mx-2 h-4 w-4 align-middle"
+                        />
+                        <span>{created}</span>
+                    </div>
                     <p
-                        className={`${
+                        className={`text-gray-800 dark:text-gray-300 ${
                             data.image ? "line-clamp-3" : "line-clamp-6"
                         }`}
                     >
