@@ -102,6 +102,11 @@ const nextConfig = {
                 destination: "/blog/2022-08-23-bluedragon-update",
                 permanent: true,
             },
+            {
+                source: "/p/3-about",
+                destination: "/about",
+                permanent: true,
+            },
         ];
     },
 };
