@@ -1,9 +1,10 @@
+import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import { faCalendar, faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlaiceholder } from "plaiceholder";
+import React from "react";
 import { getArticles, getFrontMatter } from "../utils";
 
 export const dynamic = "force-static";
@@ -17,15 +18,10 @@ export default async function Page() {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                 {articles.map((article) => {
                     return (
-                        <div key={article}>
+                        <React.Fragment key={article}>
                             {/* @ts-expect-error Server Component */}
-                            <Article
-                                slug={article.substring(
-                                    0,
-                                    article.indexOf(".md")
-                                )}
-                            ></Article>
-                        </div>
+                            <Article slug={article} />
+                        </React.Fragment>
                     );
                 })}
             </div>

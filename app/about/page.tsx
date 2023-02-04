@@ -5,13 +5,13 @@ import Link from "next/link";
 import jukebox from "@/public/images/jukebox-1.png";
 import leaderboard from "@/public/images/leaderboards-1.png";
 import { PropsWithChildren, ReactElement } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faGamepad,
     faShare,
     faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 import { leaderboards } from "../leaderboards/leaderboards";
+import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 
 export default function About() {
     const games = [

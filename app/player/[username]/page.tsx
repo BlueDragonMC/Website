@@ -2,7 +2,6 @@ import { format, leaderboards } from "@/app/leaderboards/leaderboards";
 import { BASE_PATH } from "@/app/vars";
 import { PlayerResponse } from "@/pages/api/player";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TimeAgo from "javascript-time-ago";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +9,7 @@ import { notFound } from "next/navigation";
 import en from "javascript-time-ago/locale/en";
 import { PropsWithChildren } from "react";
 import RelativeDate from "./components/RelativeDate";
+import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 
 TimeAgo.addDefaultLocale(en);
 

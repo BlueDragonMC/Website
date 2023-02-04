@@ -2,8 +2,8 @@ import Link from "next/link";
 import ViewStats from "./components/ViewStats";
 import { leaderboards } from "./leaderboards";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 
 export default function Page() {
     return (
@@ -49,9 +49,7 @@ export default function Page() {
                                             {lb.name}
                                             <FontAwesomeIcon
                                                 icon={faUpRightFromSquare}
-                                                width={14}
-                                                height={14}
-                                                className="hidden px-1 align-middle lg:inline"
+                                                className="text-md inline-block h-4 w-4 px-1 align-middle"
                                             />
                                         </Link>
                                     </div>

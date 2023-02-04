@@ -1,9 +1,9 @@
 "use client";
 
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import FontAwesomeIcon from "./FontAwesomeIcon";
 
 export interface NavItemProps {
     text: string;
@@ -11,7 +11,7 @@ export interface NavItemProps {
     active?: boolean;
     color?: string;
     activeColor?: string;
-    icon?: IconProp;
+    icon?: IconDefinition;
 }
 
 export default function NavItem({

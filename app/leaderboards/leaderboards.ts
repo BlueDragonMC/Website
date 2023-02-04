@@ -12,11 +12,6 @@ export const leaderboards: Array<Category> = [
                 statName: "Whacks",
                 stat: "game_wackymaze_whacks",
             },
-            {
-                name: "Most Kills",
-                statName: "Kills",
-                stat: "game_wackymaze_kills",
-            },
         ],
     },
     {

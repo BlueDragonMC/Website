@@ -4,8 +4,8 @@ import { join } from "path";
 
 const frontMatterCache: { [key: string]: GrayMatterFile<Buffer> } = {};
 
-export async function getArticles() {
-    const files = await readdir(join(process.cwd(), "articles"), {
+export async function getArticles(folder: string = "articles") {
+    const files = await readdir(join(process.cwd(), folder), {
         withFileTypes: true,
     });
     const tuples: Array<[string, GrayMatterFile<Buffer>]> = await Promise.all(
@@ -13,15 +13,13 @@ export async function getArticles() {
             .filter((file) => file.name.includes(".md"))
             .map((file): Promise<[string, GrayMatterFile<Buffer>]> => {
                 return new Promise((resolve, reject) => {
-                    getFrontMatter(
-                        "articles",
-                        file.name.substring(0, file.name.lastIndexOf(".md"))
-                    )
+                    const slug = file.name.substring(
+                        0,
+                        file.name.lastIndexOf(".md")
+                    );
+                    getFrontMatter(folder, slug)
                         .then((data) => {
-                            resolve([
-                                file.name,
-                                data as GrayMatterFile<Buffer>,
-                            ]);
+                            resolve([slug, data as GrayMatterFile<Buffer>]);
                         })
                         .catch((err) => reject(err));
                 });
