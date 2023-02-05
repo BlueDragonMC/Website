@@ -5,6 +5,7 @@ module.exports = {
         "./app/globals.css",
         "./app/*.module.css",
         "./components/*.{js,ts,jsx,tsx,css}",
+        "./components/mdx/*.{js,ts,jsx,tsx,css}",
         "./pages/*.{js,ts,jsx,tsx,css}",
     ],
     theme: {
