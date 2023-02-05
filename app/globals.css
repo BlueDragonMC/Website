@@ -1,5 +1,15 @@
 @tailwind base;
 @tailwind components;
+
+.fa-icon {
+    /*
+    These styles are similar to Font Awesome's default icon styles.
+    They are defined before Tailwind utility classes so that 
+    TW utility classes override the default `.fa-icon` styles.
+    */
+    @apply box-content inline-block h-4 overflow-hidden align-[-0.125em];
+}
+
 @tailwind utilities;
 
 :root {

@@ -1,6 +1,5 @@
 import { config, IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { PropsWithoutRef, SVGProps } from "react";
-import styles from "./icon.module.css";
 
 config.autoAddCss = false;
 
@@ -27,7 +26,7 @@ export default function FontAwesomeIcon(
             xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 ${width} ${height}`}
             {...extraProps}
-            className={`${styles.icon} ${extraProps.className}`}
+            className={`fa-icon ${extraProps.className}`}
         >
             {paths.map((path) => (
                 <path key={path} fill="currentColor" d={path} />
