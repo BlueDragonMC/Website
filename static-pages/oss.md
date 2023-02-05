@@ -1,7 +1,8 @@
 ---
 title: Open-Source Software
 description: At BlueDragon, we make and use open-source software daily. Here is a list of the technologies that make the server possible.
-modified: 2023-01-22
+ogPreview: At BlueDragon, we make and use open-source software daily. Here is a list of the technologies that make the server possible.
+modified: 2023-02-05
 ---
 
 > At BlueDragon, we make and use open-source software daily. Here is a list of the technologies that make the server possible.

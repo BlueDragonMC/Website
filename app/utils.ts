@@ -50,20 +50,28 @@ export const getFrontMatter = async (parent: string, slug: string) => {
 };
 
 export const getOGImageURL = (frontMatter: GrayMatterFile<any>): string => {
-    const { title, author, ogPreview, description, created } = frontMatter.data;
+    const { title, author, ogPreview, description, created, modified } =
+        frontMatter.data;
 
     const wordCount = frontMatter.content.split(" ").length;
     const readingTime = `${Math.max(1, Math.ceil(wordCount / 250))} min read`;
 
-    const date = Intl.DateTimeFormat("en-US", {
+    const fmt = new Intl.DateTimeFormat("en-US", {
         dateStyle: "medium",
-    }).format(created);
+    });
+
+    const createdStr = created ? fmt.format(created) : undefined;
+    const modifiedStr = modified ? fmt.format(modified) : undefined;
 
     let params = [];
 
     if (title) params.push(`title=${encodeURIComponent(title)}`);
     if (author) params.push(`author=${encodeURIComponent(author)}`);
-    if (date) params.push(`date=${encodeURIComponent(date)}`);
+
+    if (createdStr) params.push(`date=${encodeURIComponent(createdStr)}`);
+    else if (modifiedStr)
+        params.push(`date=${encodeURIComponent(modifiedStr)}`);
+
     if (readingTime) params.push(`readTime=${encodeURIComponent(readingTime)}`);
     if (ogPreview) params.push(`ogPreview=${encodeURIComponent(ogPreview)}`);
     else if (description)
