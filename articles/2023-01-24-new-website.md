@@ -3,6 +3,7 @@ title: 2023/01/24 - New Website
 image: /images/2022-01-24-new-website-1.png
 author: Flux
 description: "BlueDragon has a new official website, featuring a blog, leaderboards, game information, and more!"
+ogPreview: "BlueDragon has a new official website, featuring a blog, leaderboards, game information, and more!"
 created: 2023-01-24T13:30:00-04:00
 modified: 2023-02-05T01:39:00-04:00
 ---

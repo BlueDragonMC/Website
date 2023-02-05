@@ -2,7 +2,7 @@ import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 
 const boldFont = fetch(
-    new URL("../../assets/Inter-SemiBold.ttf", import.meta.url)
+    new URL("../../assets/Inter-ExtraBold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 const mediumFont = fetch(
     new URL("../../assets/Inter-Medium.ttf", import.meta.url)
@@ -134,10 +134,24 @@ export default async function OpenGraphImage(req: NextRequest) {
                             justifyContent: "center",
                         }}
                     >
-                        <span style={{ fontSize: 72, color: "white" }}>
+                        <span
+                            style={{
+                                fontSize: 72,
+                                color: "white",
+                                fontWeight: 700,
+                            }}
+                        >
                             {title}
                         </span>
-                        <span style={{ fontSize: 48, color: "#d1d5db" }}>
+                        <span
+                            style={{
+                                fontSize: 48,
+                                color: "#d1d5db",
+                                fontWeight: 700,
+                                marginTop: subtitle ? "-10px" : "",
+                                marginBottom: subtitle ? "36px" : "",
+                            }}
+                        >
                             {subtitle}
                         </span>
                         <span style={{ fontSize: 36, color: "#9ca3af" }}>
@@ -198,13 +212,13 @@ export default async function OpenGraphImage(req: NextRequest) {
             height: 630,
             fonts: [
                 {
-                    name: "Inter-Bold",
+                    name: "Inter",
                     data: await boldFont,
                     style: "normal",
                     weight: 700,
                 },
                 {
-                    name: "Inter-Medium",
+                    name: "Inter",
                     data: await mediumFont,
                     style: "normal",
                     weight: 500,
