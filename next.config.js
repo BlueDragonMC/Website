@@ -107,6 +107,16 @@ const nextConfig = {
                 destination: "/about",
                 permanent: true,
             },
+            {
+                source: "/discord",
+                destination: "https://discord.gg/3gvSPdW",
+                permanent: false,
+            },
+            {
+                source: "/page/discord",
+                destination: "https://discord.gg/3gvSPdW",
+                permanent: false,
+            },
         ];
     },
 };

@@ -11,7 +11,7 @@ To make BlueDragon a better place, we have a set of simple rules. Nothing too cr
 
 - No use of gameplay-altering modifications is allowed. Visual and performance mods like Sodium and Iris are allowed.
 - No griefing or sabotaging teammates unless the game specifically allows it.
-- Do not abuse glitches or exploits in the game to gain an unfair advantage. Please [report](/page/discord) any bugs in our Discord server.
+- Do not abuse glitches or exploits in the game to gain an unfair advantage. Please [report](https://discord.gg/3gvSPdW) any bugs in our Discord server.
 - Do not log in with another account or otherwise attempt to evade a punishment. This will result in a longer or stricter punishment.
 
 # Forum and Chat Rules
