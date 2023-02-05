@@ -1,9 +1,9 @@
 ---
 title: Server Rules
 description: To make BlueDragon a better place, we have a set of simple rules.
+author: ex4
+modified: 2023-02-04
 ---
-
-# Server Rules
 
 To make BlueDragon a better place, we have a set of simple rules. Nothing too crazy, just the standard stuff. It is up to the discretion of the moderator whether you have broken the rules.
 

@@ -1,61 +1,39 @@
-import CustomMarkdown from "@/components/CustomMarkdown";
+import "photoswipe/dist/photoswipe.css";
+import React from "react";
+import MDX from "@/components/mdx/MDX";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import {
-    faCalendar,
-    faUser,
     faChevronCircleLeft,
     faChevronCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getArticles, getFrontMatter } from "../../utils";
+import { getArticles } from "@/app/utils";
 
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-    const articles = await getArticles();
-    return articles.map((article) => {
+    return (await getArticles("articles")).map((article) => {
         return {
-            article: article[0],
+            post: article[0],
         };
     });
 }
 
 export default async function Page({
-    params: { article },
+    params: { post },
 }: {
-    params: { article: string };
+    params: { post: string };
 }) {
-    const frontMatter =
-        (await getFrontMatter("articles", article)) ?? notFound();
-
-    const created = new Intl.DateTimeFormat(undefined, {
-        dateStyle: "medium",
-        timeStyle: undefined,
-    }).format(frontMatter.data.created);
-
     const articles = await getArticles();
-    const currentIndex = articles.findIndex((other) => other[0] === article);
+    const currentIndex = articles.findIndex((other) => other[0] === post);
     const next = articles[currentIndex + 1];
     const prev = articles[currentIndex - 1];
 
     return (
-        <main className="lg:mx-auto lg:w-2/3">
-            <h1 className="text-3xl font-bold">{frontMatter.data.title}</h1>
-            <div className="flex flex-wrap items-center pt-3">
-                <FontAwesomeIcon
-                    icon={faUser}
-                    className="mr-2 h-4 w-4 align-middle"
-                />
-                <span className="font-medium">{frontMatter.data.author}</span>
-                <FontAwesomeIcon
-                    icon={faCalendar}
-                    className="mx-2 h-4 w-4 align-middle"
-                />
-                <span>{created}</span>
-            </div>
-            <CustomMarkdown children={frontMatter.content} />
-            <div className="mt-16 grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+        <main className="prose mx-auto max-w-prose dark:prose-invert">
+            {/* @ts-expect-error Server Component */}
+            <MDX dirName="articles" slug={post} />
+            <div className="not-prose mt-16 grid w-full grid-cols-1 gap-8 md:grid-cols-2">
                 {prev && (
                     <Link
                         href={"/blog/" + prev[0]}

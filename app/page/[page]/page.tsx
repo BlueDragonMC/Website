@@ -1,15 +1,13 @@
-import { getFrontMatter } from "@/app/utils";
-import CustomMarkdown from "@/components/CustomMarkdown";
-import { readdir } from "fs/promises";
-import { notFound } from "next/navigation";
-import { join } from "path";
+import { getArticles } from "@/app/utils";
+import MDX from "@/components/mdx/MDX";
+
+export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-    const pages = await readdir(join(process.cwd(), "static-pages"));
-
-    return pages.map((fileName) => {
-        const slug = fileName.substring(0, fileName.lastIndexOf(".md"));
-        return { page: slug };
+    return (await getArticles("static-pages")).map((article) => {
+        return {
+            page: article[0],
+        };
     });
 }
 
@@ -18,12 +16,10 @@ export default async function Page({
 }: {
     params: { page: string };
 }) {
-    const frontMatter =
-        (await getFrontMatter("static-pages", page)) ?? notFound();
-
     return (
-        <main className="lg:mx-auto lg:w-2/3">
-            <CustomMarkdown children={frontMatter.content} />
+        <main className="prose mx-auto max-w-prose dark:prose-invert">
+            {/* @ts-expect-error Server Component */}
+            <MDX dirName="static-pages" slug={page} />
         </main>
     );
 }

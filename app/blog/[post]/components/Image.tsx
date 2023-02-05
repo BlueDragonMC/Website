@@ -1,14 +1,14 @@
 "use client";
 
-import Image from "next/image";
+import { default as NextJsImage } from "next/image";
 import { Item } from "react-photoswipe-gallery";
 
-export default function PreviewableImage({
+export default function Image({
     src,
-    width,
-    height,
-    blur,
     alt,
+    width,
+    blur,
+    height,
 }: {
     src: string;
     width: number;
@@ -19,7 +19,7 @@ export default function PreviewableImage({
     return (
         <Item original={src} thumbnail={src} width={width} height={height}>
             {({ ref, open }) => (
-                <Image
+                <NextJsImage
                     src={src}
                     placeholder="blur"
                     loading="lazy"

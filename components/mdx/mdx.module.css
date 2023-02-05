@@ -1,0 +1,5 @@
+.row {
+    /* Makes the first column take up only the space it needs, 
+    and allows the second column to take up the remaining space. */
+    grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+}

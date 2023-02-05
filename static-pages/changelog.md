@@ -1,11 +1,10 @@
 ---
 title: Changelog
 description: A list of everything new on the server, all in one place.
+author: Flux
+created: 2022-06-27
+modified: 2023-01-28
 ---
-
-# Changelog
-
-_Last Updated: January 28, 2023_
 
 ### 2023-01-28
 
@@ -361,7 +360,7 @@ _Last Updated: January 28, 2023_
 #### Server
 
 - Added themes to FastFall
-- Added a "<player> is in the lead!" alert in FastFall
+- Added a "\<player\> is in the lead!" alert in FastFall
 - Added a glowing effect to the lead player in FastFall
 - Fixed an issue when there were multiple FastFall spawnpoints
 - Added a `/list` command for viewing the players in a player's current game

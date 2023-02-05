@@ -1,22 +1,15 @@
-import { readFile } from "fs/promises";
-import matter, { GrayMatterFile } from "gray-matter";
-import { join } from "path";
 import { default as ParentHead } from "@/app/head";
 import BaseHead from "@/components/BaseHead";
-import { getOGImageURL } from "@/app/utils";
+import { getFrontMatter, getOGImageURL } from "@/app/utils";
 
 export default async function Head({
-    params: { article },
+    params: { post },
 }: {
-    params: { article: string };
+    params: { post: string };
 }) {
-    let frontMatter: GrayMatterFile<Buffer>;
-    try {
-        frontMatter = matter(
-            await readFile(join(process.cwd(), "articles", article + ".md"))
-        );
-    } catch (e) {
-        // If the article couldn't be found, use the app's <Head> component.
+    const frontMatter = await getFrontMatter("articles", post);
+
+    if (!frontMatter) {
         return <ParentHead />;
     }
 

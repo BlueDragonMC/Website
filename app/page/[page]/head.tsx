@@ -18,7 +18,14 @@ export default async function Head({
                     ? frontMatter.data.title + " | BlueDragon"
                     : "BlueDragon"}
             </title>
-            <meta name="og:title" content={frontMatter.data.title} />
+            <meta
+                name="og:title"
+                content={
+                    frontMatter.data.title
+                        ? frontMatter.data.title + " | BlueDragon"
+                        : "BlueDragon"
+                }
+            />
             <meta
                 name="og:description"
                 content={frontMatter.data.description}

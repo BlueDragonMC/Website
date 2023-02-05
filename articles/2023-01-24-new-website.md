@@ -4,7 +4,7 @@ image: /images/2022-01-24-new-website-1.png
 author: Flux
 description: "BlueDragon has a new official website, featuring a blog, leaderboards, game information, and more!"
 created: 2023-01-24T13:30:00-04:00
-modified: 2023-01-24T13:30:00-04:00
+modified: 2023-02-05T01:39:00-04:00
 ---
 
 BlueDragon has a new official website, and you're looking at it right now!
@@ -29,3 +29,7 @@ Clicking on a player's name in a leaderboard will bring you to their statistics 
 ### Games Page
 
 A page that lists every game on the server and how to play. Great for those just getting into BlueDragon or want to show their friends!
+
+### Open-Source
+
+View the source code on GitHub [here](https://github.com/BlueDragonMC/Website). All contributions are welcome!
