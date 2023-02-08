@@ -75,7 +75,7 @@ export const leaderboards: Array<Category> = [
             {
                 name: "Most Beds Broken",
                 statName: "Beds Broken",
-                stat: "game_bedwars_beds_brokwn",
+                stat: "game_bedwars_beds_broken",
             },
         ],
     },
