@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
-    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@next/font": "13.1.6",
     "@plaiceholder/next": "^2.5.0",
     "@types/node": "18.13.0",
