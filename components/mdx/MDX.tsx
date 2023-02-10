@@ -87,23 +87,18 @@ export default async function MDX({
     return (
         <Gallery>
             <h1 className="mb-0">{frontmatter?.title}</h1>
-            <p className="mt-0">
+            <p className="mt-2">
                 {frontmatter?.author && (
                     <Icon
                         icon={faUser}
-                        hover="Author"
-                        text={frontmatter?.author}
+                        text={"Posted by: " + frontmatter?.author}
                     />
                 )}
                 {created && (
-                    <Icon icon={faClock} hover="Created" text={created} />
+                    <Icon icon={faClock} text={"Created: " + created} />
                 )}
                 {modified && created !== modified && (
-                    <Icon
-                        icon={faPencil}
-                        hover="Last Modified"
-                        text={modified}
-                    />
+                    <Icon icon={faPencil} text={"Last Modified: " + modified} />
                 )}
             </p>
             {content}
@@ -114,17 +109,15 @@ export default async function MDX({
 const Icon = ({
     icon,
     text,
-    hover,
 }: {
     icon: IconDefinition;
     text: string | undefined;
-    hover: string;
 }) => {
     if (!text) {
         return <></>;
     }
     return (
-        <span className="mr-4" title={hover}>
+        <span className="mr-4 whitespace-nowrap">
             <FontAwesomeIcon icon={icon} className="mr-2" />
             {text}
         </span>

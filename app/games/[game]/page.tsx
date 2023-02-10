@@ -36,7 +36,7 @@ export default function Page({
                 ] as Array<string>;
                 return (
                     <div key={mode}>
-                        <h1 className="text-xl font-bold">{mode}</h1>
+                        <h3 className="text-xl font-bold">{mode}</h3>
                         {steps.map((step, i) => {
                             return (
                                 <Step key={step} number={i + 1}>
@@ -71,39 +71,40 @@ export default function Page({
                 );
             })}
 
-            <div className="mt-5">
-                <p>{selected.description}</p>
-                <Gallery>
-                    {selected.images?.map((img) => {
-                        return (
-                            <Item
-                                key={img.src}
-                                original={img.src}
-                                thumbnail={img.src}
-                                width={1920}
-                                height={1080}
-                            >
-                                {({ ref, open }) => (
-                                    <Image
-                                        src={img}
-                                        placeholder="blur"
-                                        loading="lazy"
-                                        className="mr-4 mb-4 inline cursor-pointer rounded-md"
-                                        alt="Gameplay screenshot"
-                                        width={1920 / 4}
-                                        height={1080 / 4}
-                                        ref={
-                                            ref as React.MutableRefObject<HTMLImageElement>
-                                        }
-                                        onClick={open}
-                                    />
-                                )}
-                            </Item>
-                        );
-                    })}
-                </Gallery>
-                {getSteps(selected)}
-            </div>
+            <p className="my-5">{selected.description}</p>
+            <Gallery>
+                {selected.images?.map((img) => {
+                    return (
+                        <Item
+                            key={img.src}
+                            original={img.src}
+                            thumbnail={img.src}
+                            width={1920}
+                            height={1080}
+                        >
+                            {({ ref, open }) => (
+                                <Image
+                                    src={img}
+                                    placeholder="blur"
+                                    loading="lazy"
+                                    className="mr-4 mb-4 inline cursor-pointer rounded-md"
+                                    alt="Gameplay screenshot"
+                                    width={1920 / 4}
+                                    height={1080 / 4}
+                                    ref={
+                                        ref as React.MutableRefObject<HTMLImageElement>
+                                    }
+                                    onClick={open}
+                                />
+                            )}
+                        </Item>
+                    );
+                })}
+            </Gallery>
+            {selected.steps && (
+                <h2 className="mb-4 text-2xl font-bold">How to Play</h2>
+            )}
+            {getSteps(selected)}
         </main>
     );
 }

@@ -28,15 +28,11 @@ export default function Page() {
                     </span>
                 </Step>
                 <Step number={5}>
-                    <em>(Optional)</em> Click{" "}
-                    <Link
-                        href="/games"
-                        className="font-medium text-blue-500 underline"
-                    >
-                        here
-                    </Link>{" "}
-                    to check out our games, or join the server to see them
-                    firsthand!
+                    <em>(Optional)</em>{" "}
+                    <Link href="/games" className="font-medium underline">
+                        Check out our games
+                    </Link>
+                    , or join the server to see them firsthand!
                 </Step>
             </ul>
         </main>

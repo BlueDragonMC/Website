@@ -16,8 +16,21 @@ export default function Image({
     blur: string;
     alt: string;
 }) {
+    const slide = (
+        <NextJsImage
+            src={src}
+            placeholder="blur"
+            loading="eager"
+            blurDataURL={blur}
+            className="w-full cursor-pointer rounded-md object-contain"
+            alt={alt}
+            width={width}
+            height={height}
+        />
+    );
+
     return (
-        <Item original={src} thumbnail={src} width={width} height={height}>
+        <Item content={slide} thumbnail={src} width={width} height={height}>
             {({ ref, open }) => (
                 <NextJsImage
                     src={src}
@@ -26,8 +39,8 @@ export default function Image({
                     blurDataURL={blur}
                     className="cursor-pointer rounded-md"
                     alt={alt}
-                    width={width / 2}
-                    height={height / 2}
+                    width={width > 1000 ? width / 2 : width}
+                    height={width > 1000 ? height / 2 : height}
                     ref={ref as React.MutableRefObject<HTMLImageElement>}
                     onClick={open}
                 />
