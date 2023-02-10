@@ -9,7 +9,7 @@ export default function Footer() {
             }
         >
             <div className="col-span-2 md:col-span-3 lg:col-span-2">
-                <h1 className={"text-2xl font-bold"}>BlueDragon</h1>
+                <p className={"text-2xl font-bold"}>BlueDragon</p>
                 <p>
                     BlueDragon is an original Minecraft server featuring
                     minigames like WackyMaze, PvPMaster, FastFall, and
