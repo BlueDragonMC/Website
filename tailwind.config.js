@@ -10,16 +10,22 @@ module.exports = {
     ],
     theme: {
         extend: {
-            animation: {
-                "fade-infinite": "fade-loop 5.0s linear infinite",
-            },
-            keyframes: {
-                "fade-loop": {
-                    "0%": { opacity: 0 },
-                    "25%, 50%, 75%": { opacity: 1 },
-                    "100%": { opacity: 0 },
+            typography: (theme) => ({
+                DEFAULT: {
+                    css: {
+                        // Remove "`" before and after inline code elements
+                        "code::before": {
+                            content: "none",
+                        },
+                        "code::after": {
+                            content: "none",
+                        },
+                        // Make bullets more visible
+                        "--tw-prose-bullets": theme("colors.slate[500]"),
+                        "--tw-prose-invert-bullets": theme("colors.slate[300]"),
+                    },
                 },
-            },
+            }),
         },
     },
     plugins: [
