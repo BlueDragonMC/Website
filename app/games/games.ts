@@ -129,15 +129,46 @@ export const games: Array<Game> = [
     },
     {
         name: "SkyWars",
+        description: "Be the last player standing in a fast-paced combat game!",
+        steps: [
+            "Each player spawns on their own island.",
+            "Collect loot from your island's chests.",
+            "Venture to the middle island to be the player with the best gear.",
+            "Fight the other players with a combination of 1.8-style combat mechanics and newer items.",
+            "The last player standing wins!"
+        ]
     },
     {
         name: "Skyfall",
+        description: "Fly around, loot islands, and fight in the sky in a 1.8-style combat game with modern Minecraft elements.",
+        steps: [
+            "Each player spawns on their own island.",
+            "Collect loot from your island's chests.",
+            "Use your elytra to fly to other islands.",
+            "Punching a chicken while flying gives a similar boost to using a Firework Rocket.",
+            "Islands near the middle and bottom of the map have more powerful loot, but also fiercer competition.",
+            "The last player standing wins!"
+        ]
     },
     {
         name: "PvPMaster",
+        description: "A PvP strategy game with 1.8-style combat.",
+        steps: [
+            "Each player spawns in a random location on the map with netherite armor.",
+            "Killing a player reduces the quality of your armor by one level.",
+            "Armor quality decreases from netherite → diamond → iron → chainmail → gold → leather.",
+            "The first player to get a kill while wearing leather armor wins!"
+        ]
     },
     {
         name: "ArenaPvP",
+        description: "An endless, open-ended combat game with a small arena and varied kits.",
+        steps: [
+            "Each player spawns at the top of the map.",
+            "Choose from a selection of kits.",
+            "Jump down and fight enemies.",
+            "Fight endlessly! There are no winners or objectives in ArenaPvP."
+        ]
     },
     {
         name: "Lobby Parkour",
