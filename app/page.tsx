@@ -23,7 +23,7 @@ export default function Home() {
         return () => {
             clearInterval(interval);
         };
-    }, []);
+    });
 
     const isVisible = (idx: number): boolean => {
         if (Math.abs(image - idx) <= 1) return true;

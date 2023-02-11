@@ -24,7 +24,7 @@ export default function Page() {
                 <Step number={4}>
                     Double click on the server you just added.{" "}
                     <span className="font-medium text-green-500">
-                        That's it! 🎉
+                        That&apos;s it! 🎉
                     </span>
                 </Step>
                 <Step number={5}>

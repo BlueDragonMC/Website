@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlaiceholder } from "plaiceholder";
 import React from "react";
-import { getArticles, getFrontMatter } from "../utils";
+import { getArticles, getFrontMatter } from "../utils/articles";
 
 export const dynamic = "force-static";
 

@@ -1,7 +1,5 @@
-import { GitHub } from "@/components/Icons";
 import Image from "next/image";
 import Link from "next/link";
-
 import jukebox from "@/public/images/jukebox-1.png";
 import leaderboard from "@/public/images/leaderboards-1.png";
 import { PropsWithChildren, ReactElement } from "react";
@@ -10,23 +8,25 @@ import {
     faShare,
     faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
+import { GitHub } from "@/components/Icons";
 import { leaderboards } from "../leaderboards/leaderboards";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
+import { games } from "../games/games";
+import { Metadata } from "next";
+import { getOGImageURL } from "../utils/og";
+
+export const metadata: Metadata = {
+    title: "About",
+    openGraph: {
+        title: {
+            template: "%s",
+            default: "About",
+        },
+        images: [getOGImageURL({})],
+    },
+};
 
 export default function About() {
-    const games = [
-        "Infinijump",
-        "WackyMaze",
-        "FastFall",
-        "Infection",
-        "BedWars",
-        "SkyWars",
-        "Skyfall",
-        "PvPMaster",
-        "ArenaPvP",
-        "Lobby Parkour",
-    ];
-
     const lbCount = leaderboards
         .map((category) => category.leaderboards.length)
         .reduce((acc, category) => acc + category, 0);
@@ -55,13 +55,13 @@ export default function About() {
                 <div className="my-4 rounded-md bg-neutral-800 p-4">
                     {games.map((game, i) => (
                         <Link
-                            href={`/games/${game
+                            href={`/games/${game.name
                                 .toLowerCase()
                                 .replaceAll(/ /g, "-")}`}
                             className="mr-2 inline-block text-2xl font-black text-neutral-500 transition-colors hover:text-neutral-200"
-                            key={game}
+                            key={game.name}
                         >
-                            {game}
+                            {game.name}
                             {i !== games.length - 1 && (
                                 <span className="ml-2 text-2xl text-neutral-700">
                                     &middot;

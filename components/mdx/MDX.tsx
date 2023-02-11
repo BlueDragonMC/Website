@@ -9,7 +9,7 @@ import { join } from "path";
 import { ComponentPropsWithoutRef, Fragment } from "react";
 import remarkGfm from "remark-gfm";
 import FontAwesomeIcon from "../FontAwesomeIcon";
-import Gallery from "../Gallery";
+import Gallery from "../client/Gallery";
 import styles from "./mdx.module.css";
 
 let header: React.ReactElement[] = [];

@@ -1,30 +1,57 @@
+import { getOGImageURL } from "@/app/utils/og";
 import { BASE_PATH } from "@/app/vars";
 import Step from "@/components/Step";
 import { LeaderboardResponse } from "@/pages/api/leaderboard";
+import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Category, format, Leaderboard, leaderboards } from "../leaderboards";
+import { format, getLeaderboard } from "../leaderboards";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+    params: { stat },
+}: {
+    params: { stat: string };
+}): Promise<Metadata> {
+    const lbInfo = getLeaderboard(stat);
+
+    if (!lbInfo) return {};
+
+    const { leaderboard: lb, category: cat } = lbInfo;
+
+    return {
+        title: `${cat.name}: ${lb.name}`,
+        description: `View the top players for the ${cat.name} ${lb.name} leaderboard online, or join the server and climb the ranks yourself.`,
+        openGraph: {
+            type: "article",
+            title: {
+                absolute: `${cat.name}: ${lb.name} | BlueDragon`,
+            },
+            description: `View the top players for the ${cat.name} ${lb.name} leaderboard online, or join the server and climb the ranks yourself.`,
+            images: [
+                getOGImageURL({
+                    title: `${cat.name}: ${lb.name}`,
+                    subtitle: cat.mode ?? "All modes",
+                    ogPreview:
+                        "View the top players for this leaderboard on bluedragonmc.com, or join the server and climb the ranks yourself.",
+                }),
+            ],
+        },
+    };
+}
 
 export default async function Page({
     params: { stat },
 }: {
     params: { stat: string };
 }) {
-    let obj: Leaderboard | undefined, category: Category | undefined;
-    for (const cat of leaderboards) {
-        for (const lb of cat.leaderboards) {
-            if (lb.stat == stat) {
-                obj = lb;
-                category = cat;
-            }
-        }
-    }
+    const lb = getLeaderboard(stat);
 
-    if (!obj) {
+    if (!lb) {
         notFound();
     }
+    const { leaderboard: obj, category } = lb;
 
     const res = await fetch(
         `${BASE_PATH}/api/leaderboard?statistic=${stat}&sort=${obj.sort ?? -1}`
@@ -70,9 +97,9 @@ export default async function Page({
             <p>
                 Please try again later, or{" "}
                 <Link href="/leaderboards" className="font-medium underline">
-                    click here
-                </Link>{" "}
-                to go back.
+                    go back to the leaderboards page
+                </Link>
+                .
             </p>
         </main>
     );

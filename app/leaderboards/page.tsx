@@ -62,7 +62,7 @@ export default function Page() {
 
             <div className="my-4">
                 <p>
-                    Enter a player's username to view their individual
+                    Enter a player&apos;s username to view their individual
                     statistics.
                 </p>
                 <div className="my-2">
