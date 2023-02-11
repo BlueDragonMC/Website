@@ -1,12 +1,44 @@
-"use client"; // Required for PhotoSwipe
-
 import Step from "@/components/Step";
-import Image from "next/image";
-import { Gallery, Item } from "react-photoswipe-gallery";
 import "photoswipe/dist/photoswipe.css";
 import { Game, games } from "../games";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Metadata } from "next";
+import { getOGImageURL } from "@/app/utils/og";
+import GalleryComponent from "./GalleryComponent";
+
+export function generateMetadata({
+    params: { game },
+}: {
+    params: { game: string };
+}): Metadata {
+    const title = decodeURIComponent(game).toLowerCase().replaceAll(/-/g, " ");
+    const selected = games.find((g) => g.name.toLowerCase() === title);
+
+    if (!selected) return {};
+
+    return {
+        title: selected.name,
+        description: selected.description,
+        openGraph: {
+            type: "article",
+            title: {
+                absolute: `${selected.name} | BlueDragon`,
+            },
+            description: selected.description,
+            images: [
+                getOGImageURL({
+                    title: selected.name,
+                    subtitle: "BlueDragon Minecraft minigame",
+                    ogPreview: selected.description,
+                }),
+                // ...(selected.images?.map(
+                //     (img) => new URL(img.src, BASE_PATH)
+                // ) ?? []),
+            ],
+        },
+    };
+}
 
 export default function Page({
     params: { game },
@@ -72,35 +104,7 @@ export default function Page({
             })}
 
             <p className="my-5">{selected.description}</p>
-            <Gallery>
-                {selected.images?.map((img) => {
-                    return (
-                        <Item
-                            key={img.src}
-                            original={img.src}
-                            thumbnail={img.src}
-                            width={1920}
-                            height={1080}
-                        >
-                            {({ ref, open }) => (
-                                <Image
-                                    src={img}
-                                    placeholder="blur"
-                                    loading="lazy"
-                                    className="mr-4 mb-4 inline cursor-pointer rounded-md"
-                                    alt="Gameplay screenshot"
-                                    width={1920 / 4}
-                                    height={1080 / 4}
-                                    ref={
-                                        ref as React.MutableRefObject<HTMLImageElement>
-                                    }
-                                    onClick={open}
-                                />
-                            )}
-                        </Item>
-                    );
-                })}
-            </Gallery>
+            <GalleryComponent selected={selected} />
             {selected.steps && (
                 <h2 className="mb-4 text-2xl font-bold">How to Play</h2>
             )}

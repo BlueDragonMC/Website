@@ -33,11 +33,11 @@ export default async function OpenGraphImage(req: NextRequest) {
     const readTime = searchParams.get("readTime");
     const player = searchParams.get("player");
 
-    let image = <img src={favicon} width={256} height={256} />;
+    let image = <img src={favicon} width={256} height={256} />; // eslint-disable-line @next/next/no-img-element, jsx-a11y/alt-text
 
     if (player) {
         image = (
-            <img
+            <img // eslint-disable-line @next/next/no-img-element, jsx-a11y/alt-text
                 src={`https://minotar.net/helm/${player}/192.png`}
                 width={180}
                 height={180}

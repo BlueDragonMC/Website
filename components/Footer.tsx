@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { Discord, GitHub, Twitter } from "./Icons";
+import FontAwesomeIcon from "./FontAwesomeIcon";
+import {
+    faGithub,
+    faTwitter,
+    faDiscord,
+} from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
     return (
@@ -9,7 +14,9 @@ export default function Footer() {
             }
         >
             <div className="col-span-2 md:col-span-3 lg:col-span-2">
-                <p className={"text-2xl font-bold"}>BlueDragon</p>
+                <p className={"text-2xl font-bold"}>
+                    <Link href="/">BlueDragon</Link>
+                </p>
                 <p>
                     BlueDragon is an original Minecraft server featuring
                     minigames like WackyMaze, PvPMaster, FastFall, and
@@ -51,21 +58,30 @@ export default function Footer() {
                     Server&nbsp;Status
                 </Link>
                 <Link href="/page/oss" className="font-medium underline">
-                    Open&#8209;Source&nbsp;Software
+                    Open&#8209;Source
                 </Link>
             </div>
             <div className="col-span-1 flex flex-col leading-10 sm:col-span-2 md:col-span-1">
                 <p className="font-bold">Follow Us</p>
                 <Link href="https://github.com/BlueDragonMC">
-                    <GitHub className="inline h-6 fill-black dark:fill-white" />
+                    <FontAwesomeIcon
+                        icon={faGithub}
+                        className="inline h-6 w-6 fill-black align-middle dark:fill-white"
+                    />
                     <span className="ml-2 underline">GitHub</span>
                 </Link>
                 <Link href="https://discord.gg/3gvSPdW">
-                    <Discord className="inline h-6 fill-black dark:fill-white" />
+                    <FontAwesomeIcon
+                        icon={faDiscord}
+                        className="inline h-6 w-6 fill-black align-middle dark:fill-white"
+                    />
                     <span className="ml-2 underline">Discord</span>
                 </Link>
                 <Link href="https://twitter.com/BDMCNetwork">
-                    <Twitter className="inline h-6 fill-black dark:fill-white" />
+                    <FontAwesomeIcon
+                        icon={faTwitter}
+                        className="inline h-6 w-6 fill-black align-middle dark:fill-white"
+                    />
                     <span className="ml-2 underline">Twitter</span>
                 </Link>
             </div>

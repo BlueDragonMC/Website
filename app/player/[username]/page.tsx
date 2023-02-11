@@ -10,10 +10,47 @@ import en from "javascript-time-ago/locale/en";
 import { PropsWithChildren } from "react";
 import RelativeDate from "./components/RelativeDate";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
+import { Metadata } from "next";
+import { getOGImageURL } from "@/app/utils/og";
 
 TimeAgo.addDefaultLocale(en);
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+    params: { username },
+}: {
+    params: { username: string };
+}): Promise<Metadata> {
+    const res = await fetch(
+        `${BASE_PATH}/api/player?username=${encodeURIComponent(username)}`
+    );
+    if (!res.ok) {
+        return {};
+    }
+    const info = (await res.json()) as PlayerResponse;
+    const nonDashedUUID = info.uuid.replaceAll(/-/g, "");
+    return {
+        title: `${info.username}'s Stats`,
+        description: `View ${info.username}'s BlueDragon profile and statistics online.`,
+        openGraph: {
+            type: "profile",
+            username: info.username,
+            title: {
+                template: "%s",
+                default: `${info.username}'s Statistics`,
+            },
+            description: `View ${info.username}'s BlueDragon profile and statistics online.`,
+            images: [
+                getOGImageURL({
+                    title: info.username,
+                    player: nonDashedUUID,
+                    ogPreview: `View ${info.username}'s BlueDragon profile and statistics online.`,
+                }),
+            ],
+        },
+    };
+}
 
 export default async function Player({
     params: { username },

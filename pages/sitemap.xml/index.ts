@@ -1,6 +1,6 @@
 import { games } from "@/app/games/games";
 import { leaderboards } from "@/app/leaderboards/leaderboards";
-import { getArticles } from "@/app/utils";
+import { getArticles } from "@/app/utils/articles";
 import { BASE_PATH, MONGO_HOSTNAME } from "@/app/vars";
 import { GrayMatterFile } from "gray-matter";
 import { fromMarkdown } from "mdast-util-from-markdown";
