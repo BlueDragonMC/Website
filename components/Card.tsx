@@ -12,14 +12,16 @@ export default function Card({
     return (
         <div className="group rounded-lg bg-gray-200 shadow-lg transition-all hover:bg-gray-300 hover:shadow-2xl dark:bg-neutral-900 dark:hover:bg-neutral-800">
             {imageSrc && imageAlt && (
-                <Image
-                    src={imageSrc}
-                    alt={imageAlt}
-                    blurDataURL={imageSrc.blurDataURL}
-                    loading="lazy"
-                    placeholder="blur"
-                    className="inline-block h-64 w-full rounded-t-md object-cover transition-all group-hover:brightness-75"
-                />
+                <div className="overflow-hidden rounded-t-md">
+                    <Image
+                        src={imageSrc}
+                        alt={imageAlt}
+                        blurDataURL={imageSrc.blurDataURL}
+                        loading="lazy"
+                        placeholder="blur"
+                        className="inline-block h-32 w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-75"
+                    />
+                </div>
             )}
             <div
                 className={

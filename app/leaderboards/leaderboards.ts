@@ -190,11 +190,11 @@ export const leaderboards: Array<Category> = [
     },
     {
         name: "Lobby Parkour",
-        mode: "Cave Parkour",
+        mode: "World Tour Parkour",
         leaderboards: [
             {
                 name: "Fastest Time",
-                stat: "lobby_parkour_cave_best_time",
+                stat: "lobby_parkour_world_tour_best_time",
                 format: "time",
                 sort: 1,
             },
@@ -202,11 +202,11 @@ export const leaderboards: Array<Category> = [
     },
     {
         name: "Lobby Parkour",
-        mode: "World Tour Parkour",
+        mode: "Cave Parkour",
         leaderboards: [
             {
                 name: "Fastest Time",
-                stat: "lobby_parkour_world_tour_best_time",
+                stat: "lobby_parkour_cave_best_time",
                 format: "time",
                 sort: 1,
             },
