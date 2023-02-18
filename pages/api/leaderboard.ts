@@ -18,37 +18,51 @@ const client = new MongoClient(MONGO_HOSTNAME, {
     serverSelectionTimeoutMS: 3000,
 }).connect();
 
+export async function fetchLeaderboard(
+    stat: string,
+    sort: 1 | -1,
+    limit: number = 50
+) {
+    const filter: { [key: string]: { [key: string]: any } } = {};
+
+    filter[`statistics.${stat}`] = {
+        $exists: true,
+    };
+
+    const _client = await client;
+    return (
+        // Get a list of MongoDB documents matching the selection
+        (
+            await _client
+                .db("bluedragon")
+                .collection("players")
+                .find(filter)
+                .sort("statistics." + stat, sort)
+                .limit(limit)
+                .toArray()
+        ).map((row) => ({
+            uuid: row._id.toString(),
+            username: row["username"],
+            value: row["statistics"][stat],
+        }))
+    );
+}
+
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<LeaderboardResponse>
+    res: NextApiResponse<LeaderboardResponse | string>
 ) {
     const stat = Array.isArray(req.query.statistic)
         ? req.query.statistic[0]
         : req.query.statistic;
     if (!stat || getLeaderboard(stat) === null) {
-        return res
-            .status(400)
-            .send({ message: "Bad request" } as unknown as LeaderboardResponse);
+        return res.status(400).send("Bad request");
     }
-    const filter: { [key: string]: { [key: string]: any } } = {};
+
     const sort = req.query.sort == "1" ? 1 : -1;
-    filter["statistics." + stat] = { $exists: true };
-    const documents = await (
-        await client
-    )
-        .db("bluedragon")
-        .collection("players")
-        .find(filter)
-        .sort("statistics." + stat, sort)
-        .limit(50)
-        .toArray();
-    const lb = documents.map((row) => {
-        return {
-            uuid: row._id.toString(),
-            username: row["username"],
-            value: row["statistics"][stat],
-        };
-    });
+
+    const lb = await fetchLeaderboard(stat, sort);
+
     return res.send({
         statistic: stat,
         sort: sort,

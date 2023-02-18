@@ -1,6 +1,6 @@
 import { format, leaderboards } from "@/app/leaderboards/leaderboards";
 import { BASE_PATH } from "@/app/vars";
-import { PlayerResponse } from "@/pages/api/player";
+import { fetchPlayer, PlayerResponse } from "@/pages/api/player";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import TimeAgo from "javascript-time-ago";
 import Image from "next/image";
@@ -22,13 +22,8 @@ export async function generateMetadata({
 }: {
     params: { username: string };
 }): Promise<Metadata> {
-    const res = await fetch(
-        `${BASE_PATH}/api/player?username=${encodeURIComponent(username)}`
-    );
-    if (!res.ok) {
-        return {};
-    }
-    const info = (await res.json()) as PlayerResponse;
+    const info = await fetchPlayer(username);
+    if (!info) return {};
     const nonDashedUUID = info.uuid.replaceAll(/-/g, "");
     return {
         title: `${info.username}'s Stats`,
@@ -57,19 +52,8 @@ export default async function Player({
 }: {
     params: { username: string };
 }) {
-    const res = await fetch(
-        `${BASE_PATH}/api/player?username=${encodeURIComponent(username)}`
-    );
-
-    if (!res.ok) {
-        if (res.status == 404) {
-            notFound();
-        } else {
-            throw new Error("Internal server error");
-        }
-    }
-
-    const info = (await res.json()) as PlayerResponse;
+    const info = await fetchPlayer(username);
+    if (!info) notFound();
 
     const nonDashedUUID = info.uuid.replaceAll(/-/g, "");
     const timeAgo = new TimeAgo("en-US");

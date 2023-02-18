@@ -103,13 +103,9 @@ body {
     overflow-x: hidden;
 }
 
-#__next {
-    min-height: 100vh; /* Only applies on 404 page */
-}
-
 body {
     color: rgb(var(--foreground-rgb));
-    background: rgb(var(--background-start-rgb));
+    background-color: rgb(var(--background-start-rgb));
 }
 
 a {

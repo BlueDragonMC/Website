@@ -1,7 +1,7 @@
 import { getOGImageURL } from "@/app/utils/og";
 import { BASE_PATH } from "@/app/vars";
 import Step from "@/components/Step";
-import { LeaderboardResponse } from "@/pages/api/leaderboard";
+import { fetchLeaderboard, LeaderboardResponse } from "@/pages/api/leaderboard";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -53,54 +53,35 @@ export default async function Page({
     }
     const { leaderboard: obj, category } = lb;
 
-    const res = await fetch(
-        `${BASE_PATH}/api/leaderboard?statistic=${stat}&sort=${obj.sort ?? -1}`
-    );
-    if (res.ok) {
-        const json = (await res.json()) as LeaderboardResponse;
-        return (
-            <main>
-                <h1 className="text-center text-3xl font-bold">{obj.name}</h1>
-                <h2 className="text-center text-xl">
-                    {category?.mode
-                        ? `${category?.name}: ${category?.mode}`
-                        : category?.name}
-                </h2>
-                <div className="mx-auto w-max">
-                    {json.leaderboard?.map((item, i) => {
-                        return (
-                            <Step key={i} number={i + 1}>
-                                <div className="inline-flex w-72 justify-between md:w-96">
-                                    <span>
-                                        <Link
-                                            href={`/player/${item.username}`}
-                                            className="font-medium underline"
-                                        >
-                                            {item.username}
-                                        </Link>
-                                    </span>
-                                    <span>
-                                        {format(obj?.format, item.value)}
-                                    </span>
-                                </div>
-                            </Step>
-                        );
-                    })}
-                </div>
-            </main>
-        );
-    }
+    const result = await fetchLeaderboard(stat, lb.leaderboard.sort ?? -1);
 
     return (
         <main>
-            <h1 className="text-3xl font-bold">Leaderboard Failed to Load</h1>
-            <p>
-                Please try again later, or{" "}
-                <Link href="/leaderboards" className="font-medium underline">
-                    go back to the leaderboards page
-                </Link>
-                .
-            </p>
+            <h1 className="text-center text-3xl font-bold">{obj.name}</h1>
+            <h2 className="text-center text-xl">
+                {category?.mode
+                    ? `${category?.name}: ${category?.mode}`
+                    : category?.name}
+            </h2>
+            <div className="mx-auto w-max">
+                {result?.map((item, i) => {
+                    return (
+                        <Step key={i} number={i + 1}>
+                            <div className="inline-flex w-72 justify-between md:w-96">
+                                <span>
+                                    <Link
+                                        href={`/player/${item.username}`}
+                                        className="font-medium underline"
+                                    >
+                                        {item.username}
+                                    </Link>
+                                </span>
+                                <span>{format(obj?.format, item.value)}</span>
+                            </div>
+                        </Step>
+                    );
+                })}
+            </div>
         </main>
     );
 }
