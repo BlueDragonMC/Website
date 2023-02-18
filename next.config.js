@@ -42,11 +42,6 @@ const nextConfig = {
                 permanent: true,
             },
             {
-                source: "/u/:user",
-                destination: "/blog",
-                permanent: true,
-            },
-            {
                 source: "/t/information",
                 destination: "/about",
                 permanent: true,

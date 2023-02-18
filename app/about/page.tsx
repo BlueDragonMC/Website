@@ -2,18 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import jukebox from "@/public/images/jukebox-1.png";
 import leaderboard from "@/public/images/leaderboards-1.png";
-import { PropsWithChildren, ReactElement } from "react";
+import { PropsWithChildren } from "react";
 import {
+    faCodeFork,
     faGamepad,
     faShare,
     faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
-import { GitHub } from "@/components/Icons";
 import { leaderboards } from "../leaderboards/leaderboards";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import { games } from "../games/games";
 import { Metadata } from "next";
 import { getOGImageURL } from "../utils/og";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { Button } from "@/components/Button";
 
 export const metadata: Metadata = {
     title: "About",
@@ -141,9 +143,23 @@ export default function About() {
                     <Button
                         href="https://github.com/BlueDragonMC"
                         icon={
-                            <GitHub className="inline h-4 fill-white align-middle" />
+                            <FontAwesomeIcon
+                                icon={faGithub}
+                                className="inline h-4 fill-white align-middle"
+                            />
                         }
                         text="View on GitHub"
+                    />
+                    <Button
+                        href="/page/oss"
+                        icon={
+                            <FontAwesomeIcon
+                                icon={faCodeFork}
+                                className="inline h-4 fill-white align-middle"
+                            />
+                        }
+                        text="View Open-Source Software"
+                        intent="secondary"
                     />
                 </div>
             </section>
@@ -155,21 +171,4 @@ const Section = ({ children }: PropsWithChildren<{}>) => (
     <section className="my-10 grid grid-cols-1 gap-x-8 lg:grid-cols-2">
         {children}
     </section>
-);
-
-const Button = ({
-    icon,
-    href,
-    text,
-}: {
-    icon: ReactElement;
-    href: string;
-    text: string;
-}) => (
-    <Link href={href}>
-        <button className="mt-2 rounded-md bg-blue-700 px-4 py-2 text-white hover:bg-blue-800 focus:bg-blue-900">
-            <span className="fill-black dark:fill-white">{icon}</span>
-            <span className="ml-2 align-middle font-medium">{text}</span>
-        </button>
-    </Link>
 );
