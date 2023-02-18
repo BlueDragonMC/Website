@@ -1,6 +1,5 @@
 import { format, leaderboards } from "@/app/leaderboards/leaderboards";
-import { BASE_PATH } from "@/app/vars";
-import { fetchPlayer, PlayerResponse } from "@/pages/api/player";
+import { fetchPlayer } from "@/pages/api/player";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import TimeAgo from "javascript-time-ago";
 import Image from "next/image";

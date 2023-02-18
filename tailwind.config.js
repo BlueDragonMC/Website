@@ -13,16 +13,25 @@ module.exports = {
             typography: (theme) => ({
                 DEFAULT: {
                     css: {
-                        // Remove "`" before and after inline code elements
+                        // Remove "`" before and after inline code elements and blockquotes
                         "code::before": {
                             content: "none",
                         },
                         "code::after": {
                             content: "none",
                         },
-                        // Make bullets more visible
+                        "blockquote p::before": {
+                            content: "none",
+                        },
+                        "blockquote p::after": {
+                            content: "none",
+                        },
+                        // Make bullets and other border elements more visible
                         "--tw-prose-bullets": theme("colors.slate[500]"),
                         "--tw-prose-invert-bullets": theme("colors.slate[300]"),
+                        "--tw-prose-quote-borders": theme("colors.slate[400]"),
+                        "--tw-prose-th-borders": theme("colors.slate[400]"),
+                        "--tw-prose-td-borders": theme("colors.slate[400]"),
                     },
                 },
             }),

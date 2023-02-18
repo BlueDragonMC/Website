@@ -189,7 +189,7 @@ export const leaderboards: Array<Category> = [
         ],
     },
     {
-        name: "Lobby",
+        name: "Lobby Parkour",
         mode: "Cave Parkour",
         leaderboards: [
             {
@@ -201,7 +201,7 @@ export const leaderboards: Array<Category> = [
         ],
     },
     {
-        name: "Lobby",
+        name: "Lobby Parkour",
         mode: "World Tour Parkour",
         leaderboards: [
             {
