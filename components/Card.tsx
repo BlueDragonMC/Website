@@ -18,7 +18,7 @@ export default function Card({
                     blurDataURL={imageSrc.blurDataURL}
                     loading="lazy"
                     placeholder="blur"
-                    className="inline-block h-64 w-full rounded-t-md object-cover"
+                    className="inline-block h-64 w-full rounded-t-md object-cover transition-all group-hover:brightness-75"
                 />
             )}
             <div
