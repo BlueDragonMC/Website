@@ -2,7 +2,16 @@ import { StaticImageData } from "next/image";
 
 // Images are statically imported so that they can have automatically-generated blur data URLs during the loading phase.
 // For more info: https://nextjs.org/docs/api-reference/next/image#blurdataurl
-import infinijump from "@/public/games/infinijump/infinijump.png";
+import paintbrawl1 from "@/public/games/paintbrawl/paintbrawl-1.png";
+import paintbrawl2 from "@/public/games/paintbrawl/paintbrawl-2.png";
+import paintbrawl3 from "@/public/games/paintbrawl/paintbrawl-3.png";
+import paintbrawl4 from "@/public/games/paintbrawl/paintbrawl-4.png";
+import paintbrawl5 from "@/public/games/paintbrawl/paintbrawl-5.png";
+
+import infinijump1 from "@/public/games/infinijump/infinijump-1.png";
+import infinijump2 from "@/public/games/infinijump/infinijump-2.png";
+import infinijump3 from "@/public/games/infinijump/infinijump-3.png";
+import infinijump4 from "@/public/games/infinijump/infinijump-4.png";
 
 import fastfall1 from "@/public/games/fastfall/fastfall-1.png";
 import fastfall2 from "@/public/games/fastfall/fastfall-2.png";
@@ -27,6 +36,24 @@ import bedwars4 from "@/public/games/bedwars/bedwars-4.png";
 import bedwars5 from "@/public/games/bedwars/bedwars-5.png";
 import bedwars7 from "@/public/games/bedwars/bedwars-7.png";
 
+import skywars1 from "@/public/games/skywars/skywars-1.png";
+import skywars2 from "@/public/games/skywars/skywars-2.png";
+import skywars3 from "@/public/games/skywars/skywars-3.png";
+import skywars4 from "@/public/games/skywars/skywars-4.png";
+import skywars5 from "@/public/games/skywars/skywars-5.png";
+
+import skyfall1 from "@/public/games/skyfall/skyfall-1.png";
+import skyfall2 from "@/public/games/skyfall/skyfall-2.png";
+import skyfall3 from "@/public/games/skyfall/skyfall-3.png";
+import skyfall4 from "@/public/games/skyfall/skyfall-4.png";
+import skyfall5 from "@/public/games/skyfall/skyfall-5.png";
+
+import pvpmaster1 from "@/public/games/pvpmaster/pvpmaster-1.png";
+import pvpmaster2 from "@/public/games/pvpmaster/pvpmaster-2.png";
+import pvpmaster3 from "@/public/games/pvpmaster/pvpmaster-3.png";
+import pvpmaster4 from "@/public/games/pvpmaster/pvpmaster-4.png";
+import pvpmaster5 from "@/public/games/pvpmaster/pvpmaster-5.png";
+
 import lobby5 from "@/public/games/lobby/lobby-5.png";
 import lobby6 from "@/public/games/lobby/lobby-6.png";
 import lobby3 from "@/public/games/lobby/lobby-3.png";
@@ -42,10 +69,20 @@ export type Game = {
 
 export const games: Array<Game> = [
     {
+        name: "Paintbrawl",
+        images: [
+            paintbrawl1,
+            paintbrawl2,
+            paintbrawl3,
+            paintbrawl4,
+            paintbrawl5,
+        ],
+    },
+    {
         name: "Infinijump",
         description:
             "Get the highest score or be the first to complete a parkour course in the void.",
-        images: [infinijump],
+        images: [infinijump1, infinijump2, infinijump3, infinijump4],
         steps: {
             "Solo Mode": [
                 "Start the game by moving in any direction",
@@ -135,20 +172,23 @@ export const games: Array<Game> = [
             "Collect loot from your island's chests.",
             "Venture to the middle island to be the player with the best gear.",
             "Fight the other players with a combination of 1.8-style combat mechanics and newer items.",
-            "The last player standing wins!"
-        ]
+            "The last player standing wins!",
+        ],
+        images: [skywars1, skywars2, skywars3, skywars4, skywars5],
     },
     {
         name: "Skyfall",
-        description: "Fly around, loot islands, and fight in the sky in a 1.8-style combat game with modern Minecraft elements.",
+        description:
+            "Fly around, loot islands, and fight in the sky in a 1.8-style combat game with modern Minecraft elements.",
         steps: [
             "Each player spawns on their own island.",
             "Collect loot from your island's chests.",
             "Use your elytra to fly to other islands.",
             "Punching a chicken while flying gives a similar boost to using a Firework Rocket.",
             "Islands near the middle and bottom of the map have more powerful loot, but also fiercer competition.",
-            "The last player standing wins!"
-        ]
+            "The last player standing wins!",
+        ],
+        images: [skyfall1, skyfall2, skyfall3, skyfall4, skyfall5],
     },
     {
         name: "PvPMaster",
@@ -157,18 +197,20 @@ export const games: Array<Game> = [
             "Each player spawns in a random location on the map with netherite armor.",
             "Killing a player reduces the quality of your armor by one level.",
             "Armor quality decreases from netherite → diamond → iron → chainmail → gold → leather.",
-            "The first player to get a kill while wearing leather armor wins!"
-        ]
+            "The first player to get a kill while wearing leather armor wins!",
+        ],
+        images: [pvpmaster1, pvpmaster2, pvpmaster3, pvpmaster4, pvpmaster5],
     },
     {
         name: "ArenaPvP",
-        description: "An endless, open-ended combat game with a small arena and varied kits.",
+        description:
+            "An endless, open-ended combat game with a small arena and varied kits.",
         steps: [
             "Each player spawns at the top of the map.",
             "Choose from a selection of kits.",
             "Jump down and fight enemies.",
-            "Fight endlessly! There are no winners or objectives in ArenaPvP."
-        ]
+            "Fight endlessly! There are no winners or objectives in ArenaPvP.",
+        ],
     },
     {
         name: "Lobby Parkour",
