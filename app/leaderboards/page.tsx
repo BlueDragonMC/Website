@@ -14,7 +14,7 @@ export default function Page() {
             </p>
 
             <main className="mt-8 grid grid-cols-1 gap-8 overflow-x-auto md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {leaderboards.map((category) => {
+                {leaderboards.map((category, i) => {
                     const game = games.find(
                         (game) => game.name === category.name
                     );
@@ -23,10 +23,10 @@ export default function Page() {
                         <Card
                             key={category.name + category.mode}
                             imageAlt="Game screenshot"
-                            imageSrc={game.images?.[0]}
+                            imageSrc={game.images?.[i % game.images?.length]}
                         >
                             <h2 className="text-2xl font-bold">
-                                {category.name}{" "}
+                                {category.name}
                             </h2>
                             <h3 className="text-xl font-semibold text-gray-700">
                                 {category.mode ?? "All Modes"}
