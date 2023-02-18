@@ -44,6 +44,7 @@ export async function fetchPlayer(username: string) {
         firstLogin: doc["firstJoinDate"],
         lastLogin: doc["lastJoinDate"],
         xp: xp,
+        cosmeticCount: doc["cosmetics"].length,
         level: level,
         coins: doc["coins"],
     };

@@ -117,6 +117,7 @@ export default async function Player({
             />
             <Statistic name="Total Experience" value={info.xp} />
             <Statistic name="Coins" value={info.coins} />
+            <Statistic name="Owned Cosmetics" value={info.cosmeticCount} />
             {leaderboards.map((category) => (
                 <div key={category.mode ?? category.name}>
                     <h1 className="mt-6 mb-2 text-center text-2xl font-bold">
