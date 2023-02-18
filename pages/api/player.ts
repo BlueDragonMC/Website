@@ -31,12 +31,21 @@ export async function fetchPlayer(username: string) {
         }
     });
 
+    const xp = doc["experience"] as number;
+    const level =
+        xp < 45000
+            ? Math.log(xp / 1000 + 1) / Math.log(1.2) + 1
+            : xp / 10000 + 18;
+
     return {
         username: doc["username"],
         uuid: doc._id.toString(),
         stats: stats,
         firstLogin: doc["firstJoinDate"],
         lastLogin: doc["lastJoinDate"],
+        xp: xp,
+        level: level,
+        coins: doc["coins"],
     };
 }
 

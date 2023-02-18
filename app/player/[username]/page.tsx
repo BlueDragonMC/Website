@@ -111,6 +111,12 @@ export default async function Player({
                     text={info.lastLogin ? timeAgo.format(info.lastLogin) : "-"}
                 />
             </Statistic>
+            <Statistic
+                name="Network Level"
+                value={Math.round(info.level * 100) / 100}
+            />
+            <Statistic name="Total Experience" value={info.xp} />
+            <Statistic name="Coins" value={info.coins} />
             {leaderboards.map((category) => (
                 <div key={category.mode ?? category.name}>
                     <h1 className="mt-6 mb-2 text-center text-2xl font-bold">
@@ -155,7 +161,9 @@ function Statistic({
             </span>
             <span
                 className={
-                    value !== undefined ? "text-sky-600" : "text-gray-600"
+                    value !== undefined
+                        ? "font-medium text-blue-600"
+                        : "text-gray-600"
                 }
             >
                 {children ?? value ?? "-"}
