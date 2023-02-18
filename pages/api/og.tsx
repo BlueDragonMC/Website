@@ -8,12 +8,21 @@ import {
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 
+// Bold - font weight: 700
 const boldFont = fetch(
     new URL("../../assets/Inter-ExtraBold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
+
+// Medium - font weight: 500
 const mediumFont = fetch(
     new URL("../../assets/Inter-Medium.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
+
+// Regular - font weight: 400
+const regularFont = fetch(
+    new URL("../../assets/Inter-Regular.ttf", import.meta.url)
+).then((res) => res.arrayBuffer());
+
 const favicon = new URL(
     "../../public/favicon_hq.png",
     import.meta.url
@@ -105,10 +114,9 @@ export default async function OpenGraphImage(req: NextRequest) {
                         </span>
                         <span
                             style={{
-                                fontSize: 48,
+                                fontSize: 42,
                                 color: "#d1d5db",
-                                fontWeight: 700,
-                                marginTop: subtitle ? "-10px" : "",
+                                fontWeight: 500,
                                 marginBottom: subtitle ? "36px" : "",
                             }}
                         >
@@ -198,6 +206,12 @@ export default async function OpenGraphImage(req: NextRequest) {
                     data: await mediumFont,
                     style: "normal",
                     weight: 500,
+                },
+                {
+                    name: "Inter",
+                    data: await regularFont,
+                    style: "normal",
+                    weight: 400,
                 },
             ],
         }

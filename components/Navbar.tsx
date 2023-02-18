@@ -41,6 +41,7 @@ export default function Navbar() {
                             alt="BlueDragon Logo"
                             height={30}
                             width={155}
+                            priority
                         />
                         <Image
                             src="/favicon_hq.png"
@@ -48,6 +49,7 @@ export default function Navbar() {
                             alt="BlueDragon Logo"
                             height={48}
                             width={48}
+                            priority
                         />
                     </Link>
                 </div>
