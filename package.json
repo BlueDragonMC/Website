@@ -30,7 +30,7 @@
     "plaiceholder": "^2.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-photoswipe-gallery": "^2.2.5",
+    "react-photoswipe-gallery": "^2.2.6",
     "remark-gfm": "^3.0.1",
     "sharp": "^0.31.3",
     "sitemap": "^7.1.1",
