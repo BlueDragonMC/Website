@@ -45,9 +45,15 @@ export default function Footer() {
                 <Link href="/player" className="font-medium underline">
                     Player Stats
                 </Link>
+                <Link href="/page/api" className="font-medium underline">
+                    API
+                </Link>
             </div>
             <div className="flex flex-col leading-10">
                 <p className="font-bold">Community</p>
+                <Link href="/blog" className="font-medium underline">
+                    Blog
+                </Link>
                 <Link href="/page/changelog" className="font-medium underline">
                     Changelog
                 </Link>
