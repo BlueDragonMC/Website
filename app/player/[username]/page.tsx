@@ -57,6 +57,22 @@ export default async function Player({
     const nonDashedUUID = info.uuid.replaceAll(/-/g, "");
     const timeAgo = new TimeAgo("en-US");
 
+    const rank = info.meta?.primaryGroup
+        ? info.meta.primaryGroup.charAt(0)?.toUpperCase() +
+          info.meta.primaryGroup.substring(1)
+        : undefined;
+
+    let darkRankText = false;
+
+    if (info.meta?.rankcolor) {
+        const rankColorValue = Number("0x" + info.meta.rankcolor.substring(1));
+        const r = (rankColorValue >> 16) & 0xff;
+        const g = (rankColorValue >> 8) & 0xff;
+        const b = rankColorValue & 0xff;
+        const luminance = 0.289 * r + 0.587 * g + 0.114 * b;
+        if (luminance > 100) darkRankText = true;
+    }
+
     return (
         <main>
             <h1 className="text-center text-3xl font-bold">
@@ -66,8 +82,19 @@ export default async function Player({
                     width={32}
                     height={32}
                     className="inline rounded-sm align-middle"
+                    priority
                 />
                 <span className="ml-2">{username}</span>
+                {rank && (
+                    <span
+                        className={`mx-4 rounded-full p-2 align-middle text-xs font-medium uppercase ${
+                            darkRankText ? "text-black" : "text-white"
+                        }`}
+                        style={{ backgroundColor: info.meta?.rankcolor }}
+                    >
+                        {rank}
+                    </span>
+                )}
             </h1>
 
             <Link

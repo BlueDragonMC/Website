@@ -3,8 +3,21 @@ title: Changelog
 description: A list of everything new on the server, all in one place.
 author: Flux
 created: 2022-06-27
-modified: 2023-01-28
+modified: 2023-02-18
 ---
+
+### 2023-02-18
+
+#### Website
+
+- Redesigned the [leaderboards page](/leaderboards).
+- Added more information to player [statistic pages](/player/wsad_), including:
+  - Rank name and color
+  - Network level
+  - Total experience
+  - Coins
+  - Owned cosmetics
+- Added [API documentation](/page/api) for players and leaderboards.
 
 ### 2023-01-28
 

@@ -1,5 +1,5 @@
 import { getLeaderboard } from "@/app/leaderboards/leaderboards";
-import { MONGO_HOSTNAME } from "@/app/vars";
+import { LP_HOSTNAME, MONGO_HOSTNAME } from "@/app/vars";
 import { MongoClient } from "mongodb";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -9,6 +9,12 @@ export type PlayerResponse = {
     stats: { [key: string]: number };
     firstLogin: Date;
     lastLogin: Date;
+};
+
+export type LuckPermsUserMeta = {
+    primaryGroup: string;
+    prefix?: string;
+    rankcolor?: string;
 };
 
 const client = new MongoClient(MONGO_HOSTNAME, {
@@ -23,6 +29,8 @@ export async function fetchPlayer(username: string) {
         .findOne({ usernameLower: username.toLowerCase() });
 
     if (!doc) return null;
+
+    const permissionInfo = await fetchMeta(doc._id.toString());
 
     const stats: { [key: string]: number } = {};
     Object.keys(doc["statistics"]).forEach((stat) => {
@@ -47,6 +55,7 @@ export async function fetchPlayer(username: string) {
         cosmeticCount: doc["cosmetics"].length,
         level: level,
         coins: doc["coins"],
+        meta: permissionInfo,
     };
 }
 
@@ -67,4 +76,22 @@ export default async function handler(
     }
 
     return res.send(info);
+}
+
+async function fetchMeta(uuid: string) {
+    try {
+        const res = await fetch(`${LP_HOSTNAME}/user/${uuid}/meta`);
+        if (!res.ok) {
+            return null;
+        }
+        const json = await res.json();
+        return {
+            // Only include these allowed keys
+            prefix: json.prefix,
+            primaryGroup: json.primaryGroup,
+            rankcolor: json.meta.rankcolor,
+        } as LuckPermsUserMeta;
+    } catch {
+        return null;
+    }
 }
