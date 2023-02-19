@@ -68,16 +68,16 @@ export type Game = {
 };
 
 export const games: Array<Game> = [
-    // {
-    //     name: "Paintbrawl",
-    //     images: [
-    //         paintbrawl1,
-    //         paintbrawl2,
-    //         paintbrawl3,
-    //         paintbrawl4,
-    //         paintbrawl5,
-    //     ],
-    // },
+    {
+        name: "Paintbrawl",
+        images: [
+            paintbrawl1,
+            paintbrawl2,
+            paintbrawl3,
+            paintbrawl4,
+            paintbrawl5,
+        ],
+    },
     {
         name: "Infinijump",
         description:

@@ -1,14 +1,14 @@
 export const leaderboards: Array<Category> = [
-    // {
-    //     name: "Paintbrawl",
-    //     leaderboards: [
-    //         {
-    //             name: "Most Wins",
-    //             statName: "Wins",
-    //             stat: "game_paintbrawl_wins",
-    //         },
-    //     ],
-    // },
+    {
+        name: "Paintbrawl",
+        leaderboards: [
+            {
+                name: "Most Wins",
+                statName: "Wins",
+                stat: "game_paintbrawl_wins",
+            },
+        ],
+    },
     {
         name: "WackyMaze",
         leaderboards: [
