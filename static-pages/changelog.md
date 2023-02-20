@@ -6,6 +6,16 @@ created: 2022-06-27
 modified: 2023-02-18
 ---
 
+### 2023-02-19
+
+#### Server
+
+- Added [**Paintbrawl**](/blog/2023-02-19-new-game-paintbrawl), a fast-paced, action-packed multiplayer combat experience with tons of maps, weapons, and powerups to shake things up!
+
+#### Website
+
+- Added **Paintbrawl** leaderboards and statistics.
+
 ### 2023-02-18
 
 #### Website
