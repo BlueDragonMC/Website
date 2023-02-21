@@ -22,6 +22,11 @@ export const leaderboards: Array<Category> = [
                 name: "Total Points",
                 stat: "game_paintbrawl_total_points",
             },
+            {
+                name: "Most Blocks Vacuumed",
+                statName: "Blocks Vacuumed",
+                stat: "game_paintbrawl_blocks_vacuumed",
+            },
         ],
     },
     {

@@ -6,6 +6,16 @@ created: 2022-06-27
 modified: 2023-02-18
 ---
 
+### 2023-02-20
+
+#### Server
+
+- Added new Paintbrawl statistics:
+  - Total points
+  - Kills (per-weapon)
+  - Powerups claimed
+  - Blocks vacuumed
+
 ### 2023-02-19
 
 #### Server

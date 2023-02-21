@@ -128,6 +128,7 @@ https://bluedragonmc.com/api/leaderboard?statistic=game_wackymaze_wins&sort=-1
 | Paintbrawl    | All    | `game_paintbrawl_kills_snowball_paintball_gun` | Integer                 |
 | Paintbrawl    | All    | `game_paintbrawl_kills_snowball_paintbrush`    | Integer                 |
 | Paintbrawl    | All    | `game_paintbrawl_kills_snowball_shotgun`       | Integer                 |
+| Paintbrawl    | All    | `game_paintbrawl_blocks_vacuumed`              | Integer                 |
 | WackyMaze     | All    | `game_wackymaze_wins`                          | Integer                 |
 | WackyMaze     | All    | `game_wackymaze_whacks`                        | Integer                 |
 | SkyWars       | All    | `game_skywars_wins`                            | Integer                 |
