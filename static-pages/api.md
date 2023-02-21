@@ -117,35 +117,44 @@ https://bluedragonmc.com/api/leaderboard?statistic=game_wackymaze_wins&sort=-1
 
 ## List of Statistic Names
 
-| Game          | Mode   | Name                                   | Type                    |
-| ------------- | ------ | -------------------------------------- | ----------------------- |
-| WackyMaze     | All    | `game_wackymaze_wins`                  | Integer                 |
-| WackyMaze     | All    | `game_wackymaze_whacks`                | Integer                 |
-| SkyWars       | All    | `game_skywars_wins`                    | Integer                 |
-| SkyWars       | All    | `game_skywars_kills`                   | Integer                 |
-| SkyWars       | All    | `game_skywars_deaths`                  | Integer                 |
-| Skyfall       | All    | `game_skyfall_wins`                    | Integer                 |
-| Skyfall       | All    | `game_skyfall_kills`                   | Integer                 |
-| Skyfall       | All    | `game_skyfall_deaths`                  | Integer                 |
-| BedWars       | All    | `game_bedwars_wins`                    | Integer                 |
-| BedWars       | All    | `game_bedwars_kills`                   | Integer                 |
-| BedWars       | All    | `game_bedwars_deaths`                  | Integer                 |
-| BedWars       | All    | `game_bedwars_beds_broken`             | Integer                 |
-| Infinijump    | Versus | `game_infinijump_wins_versus`          | Integer                 |
-| Infinijump    | Versus | `game_infinijump_highest_score_versus` | Integer                 |
-| Infinijump    | Versus | `game_infinijump_total_points_versus`  | Integer                 |
-| Infinijump    | Race   | `game_infinijump_wins_race`            | Integer                 |
-| Infinijump    | Race   | `game_infinijump_total_points_race`    | Integer                 |
-| Infinijump    | Solo   | `game_infinijump_highest_score_solo`   | Integer                 |
-| Infinijump    | Solo   | `game_infinijump_total_points_solo`    | Integer                 |
-| Infinijump    | All    | `game_infinijump_highest_score`        | Integer                 |
-| Infinijump    | All    | `game_infinijump_total_points`         | Integer                 |
-| FastFall      | All    | `game_fastfall_best_time`              | Duration (milliseconds) |
-| FastFall      | All    | `game_fastfall_wins`                   | Integer                 |
-| PvPMaster     | All    | `game_pvpmaster_wins`                  | Integer                 |
-| PvPMaster     | All    | `game_pvpmaster_kills`                 | Integer                 |
-| PvPMaster     | All    | `game_pvpmaster_deaths`                | Integer                 |
-| Lobby Parkour | All    | `lobby_parkour_world_tour_best_time`   | Duration (milliseconds) |
-| Lobby Parkour | All    | `lobby_parkour_cave_best_time`         | Duration (milliseconds) |
+| Game          | Mode   | Name                                           | Type                    |
+| ------------- | ------ | ---------------------------------------------- | ----------------------- |
+| Paintbrawl    | All    | `game_paintbrawl_wins`                         | Integer                 |
+| Paintbrawl    | All    | `game_paintbrawl_kills`                        | Integer                 |
+| Paintbrawl    | All    | `game_paintbrawl_powerups_claimed`             | Integer                 |
+| Paintbrawl    | All    | `game_paintbrawl_total_points`                 | Integer                 |
+| Paintbrawl    | All    | `game_paintbrawl_kills_snowball_sniper_rifle`  | Integer                 |
+| Paintbrawl    | All    | `game_paintbrawl_kills_snowball_machine_gun`   | Integer                 |
+| Paintbrawl    | All    | `game_paintbrawl_kills_snowball_paintball_gun` | Integer                 |
+| Paintbrawl    | All    | `game_paintbrawl_kills_snowball_paintbrush`    | Integer                 |
+| Paintbrawl    | All    | `game_paintbrawl_kills_snowball_shotgun`       | Integer                 |
+| WackyMaze     | All    | `game_wackymaze_wins`                          | Integer                 |
+| WackyMaze     | All    | `game_wackymaze_whacks`                        | Integer                 |
+| SkyWars       | All    | `game_skywars_wins`                            | Integer                 |
+| SkyWars       | All    | `game_skywars_kills`                           | Integer                 |
+| SkyWars       | All    | `game_skywars_deaths`                          | Integer                 |
+| Skyfall       | All    | `game_skyfall_wins`                            | Integer                 |
+| Skyfall       | All    | `game_skyfall_kills`                           | Integer                 |
+| Skyfall       | All    | `game_skyfall_deaths`                          | Integer                 |
+| BedWars       | All    | `game_bedwars_wins`                            | Integer                 |
+| BedWars       | All    | `game_bedwars_kills`                           | Integer                 |
+| BedWars       | All    | `game_bedwars_deaths`                          | Integer                 |
+| BedWars       | All    | `game_bedwars_beds_broken`                     | Integer                 |
+| Infinijump    | Versus | `game_infinijump_wins_versus`                  | Integer                 |
+| Infinijump    | Versus | `game_infinijump_highest_score_versus`         | Integer                 |
+| Infinijump    | Versus | `game_infinijump_total_points_versus`          | Integer                 |
+| Infinijump    | Race   | `game_infinijump_wins_race`                    | Integer                 |
+| Infinijump    | Race   | `game_infinijump_total_points_race`            | Integer                 |
+| Infinijump    | Solo   | `game_infinijump_highest_score_solo`           | Integer                 |
+| Infinijump    | Solo   | `game_infinijump_total_points_solo`            | Integer                 |
+| Infinijump    | All    | `game_infinijump_highest_score`                | Integer                 |
+| Infinijump    | All    | `game_infinijump_total_points`                 | Integer                 |
+| FastFall      | All    | `game_fastfall_best_time`                      | Duration (milliseconds) |
+| FastFall      | All    | `game_fastfall_wins`                           | Integer                 |
+| PvPMaster     | All    | `game_pvpmaster_wins`                          | Integer                 |
+| PvPMaster     | All    | `game_pvpmaster_kills`                         | Integer                 |
+| PvPMaster     | All    | `game_pvpmaster_deaths`                        | Integer                 |
+| Lobby Parkour | All    | `lobby_parkour_world_tour_best_time`           | Duration (milliseconds) |
+| Lobby Parkour | All    | `lobby_parkour_cave_best_time`                 | Duration (milliseconds) |
 
 Have an idea for a statistic we should track? Let us know in our [Discord server](https://discord.gg/3gvSPdW).

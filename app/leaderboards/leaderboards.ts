@@ -1,11 +1,57 @@
 export const leaderboards: Array<Category> = [
     {
         name: "Paintbrawl",
+        mode: "General Statistics",
         leaderboards: [
             {
                 name: "Most Wins",
                 statName: "Wins",
                 stat: "game_paintbrawl_wins",
+            },
+            {
+                name: "Most Kills",
+                statName: "Kills",
+                stat: "game_paintbrawl_kills",
+            },
+            {
+                name: "Most Powerups Claimed",
+                statName: "Powerups Claimed",
+                stat: "game_paintbrawl_powerups_claimed",
+            },
+            {
+                name: "Total Points",
+                stat: "game_paintbrawl_total_points",
+            },
+        ],
+    },
+    {
+        name: "Paintbrawl",
+        mode: "Kills",
+        leaderboards: [
+            {
+                name: "Most Kills (Sniper Rifle)",
+                statName: "Sniper Rifle Kills",
+                stat: "game_paintbrawl_kills_snowball_sniper_rifle",
+            },
+            {
+                name: "Most Kills (Machine Gun)",
+                statName: "Machine Gun Kills",
+                stat: "game_paintbrawl_kills_snowball_machine_gun",
+            },
+            {
+                name: "Most Kills (Paintball Gun)",
+                statName: "Paintball Gun Kills",
+                stat: "game_paintbrawl_kills_snowball_paintball_gun",
+            },
+            {
+                name: "Most Kills (Paintbrush)",
+                statName: "Paintbrush Kills",
+                stat: "game_paintbrawl_kills_snowball_paintbrush",
+            },
+            {
+                name: "Most Kills (Shotgun)",
+                statName: "Shotgun Kills",
+                stat: "game_paintbrawl_kills_snowball_shotgun",
             },
         ],
     },
