@@ -21,7 +21,7 @@ const client = new MongoClient(MONGO_HOSTNAME, {
     serverSelectionTimeoutMS: 3000,
 }).connect();
 
-async function fetchLeaderboard(
+export async function fetchLeaderboard(
     stat: string,
     sort: 1 | -1,
     limit: number = 50

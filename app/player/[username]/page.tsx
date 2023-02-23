@@ -1,5 +1,4 @@
 import { format, leaderboards } from "@/app/leaderboards/leaderboards";
-import { fetchPlayer } from "@/pages/api/player";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import TimeAgo from "javascript-time-ago";
 import Image from "next/image";
@@ -11,6 +10,7 @@ import RelativeDate from "./components/RelativeDate";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import { Metadata } from "next";
 import { getOGImageURL } from "@/app/utils/og";
+import { fetchPlayer } from "@/app/api/player/route";
 
 TimeAgo.addDefaultLocale(en);
 

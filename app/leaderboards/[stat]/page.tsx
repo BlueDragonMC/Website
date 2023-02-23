@@ -1,7 +1,6 @@
+import { fetchLeaderboard } from "@/app/api/leaderboard/route";
 import { getOGImageURL } from "@/app/utils/og";
-import { BASE_PATH } from "@/app/vars";
 import Step from "@/components/Step";
-import { fetchLeaderboard, LeaderboardResponse } from "@/pages/api/leaderboard";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
