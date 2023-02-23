@@ -85,7 +85,7 @@ export default async function Player({
                     priority
                 />
                 <span className="ml-2">{username}</span>
-                {rank && (
+                {rank && info.meta?.rankcolor && (
                     <span
                         className={`mx-4 rounded-full p-2 align-middle text-xs font-medium uppercase ${
                             darkRankText ? "text-black" : "text-white"
