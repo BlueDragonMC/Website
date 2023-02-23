@@ -6,9 +6,11 @@ import { GrayMatterFile } from "gray-matter";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { Node } from "mdast-util-from-markdown/lib";
 import { Document, MongoClient, WithId } from "mongodb";
-import { GetServerSidePropsContext } from "next";
 import { EnumChangefreq, Img, SitemapItemLoose, SitemapStream } from "sitemap";
 import { Readable } from "stream";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 const client = new MongoClient(MONGO_HOSTNAME, {
     connectTimeoutMS: 3000,
@@ -18,7 +20,7 @@ const client = new MongoClient(MONGO_HOSTNAME, {
 const articles = getArticles("articles");
 const staticPages = getArticles("static-pages");
 
-export async function getServerSideProps({ res }: GetServerSidePropsContext) {
+export async function GET() {
     // Static pages
     const fields: SitemapItemLoose[] = [
         {
@@ -40,10 +42,6 @@ export async function getServerSideProps({ res }: GetServerSidePropsContext) {
         {
             url: `/leaderboards`,
             changefreq: EnumChangefreq.DAILY,
-        },
-        {
-            url: "/about",
-            changefreq: EnumChangefreq.WEEKLY,
         },
         {
             url: "/games",
@@ -103,18 +101,17 @@ export async function getServerSideProps({ res }: GetServerSidePropsContext) {
     });
 
     const stream = new SitemapStream({ hostname: BASE_PATH });
+    const piped = Readable.from(fields).pipe(
+        stream
+    ) as unknown as ReadableStream;
 
-    res.writeHead(200, {
-        "Content-Type": "application/xml",
-        "Cache-Control": "public, max-age=86400, stale-while-revalidate",
+    return new Response(piped, {
+        status: 200,
+        headers: {
+            "Content-Type": "application/xml",
+            "Cache-Control": "public, max-age=86400, stale-while-revalidate",
+        },
     });
-
-    await new Promise((resolve) => {
-        const pipe = Readable.from(fields).pipe(stream).pipe(res);
-        pipe.on("end", resolve);
-    });
-
-    return null;
 }
 
 function getImages(file: GrayMatterFile<Buffer>): Img[] {

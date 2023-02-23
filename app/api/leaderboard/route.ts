@@ -1,7 +1,10 @@
 import { getLeaderboard } from "@/app/leaderboards/leaderboards";
 import { MONGO_HOSTNAME } from "@/app/vars";
 import { MongoClient } from "mongodb";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 300; // 5 minutes
 
 export type LeaderboardResponse = {
     statistic?: string;
@@ -18,7 +21,7 @@ const client = new MongoClient(MONGO_HOSTNAME, {
     serverSelectionTimeoutMS: 3000,
 }).connect();
 
-export async function fetchLeaderboard(
+async function fetchLeaderboard(
     stat: string,
     sort: 1 | -1,
     limit: number = 50
@@ -48,24 +51,23 @@ export async function fetchLeaderboard(
     );
 }
 
-export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse<LeaderboardResponse | string>
-) {
-    const stat = Array.isArray(req.query.statistic)
-        ? req.query.statistic[0]
-        : req.query.statistic;
+export async function GET(request: NextRequest) {
+    const searchParams = request.nextUrl.searchParams;
+    const stat = searchParams.get("statistic");
     if (!stat || getLeaderboard(stat) === null) {
-        return res.status(400).send("Bad request");
+        return new Response("Bad request", { status: 400 });
     }
 
-    const sort = req.query.sort == "1" ? 1 : -1;
+    const sort = searchParams.get("sort") == "1" ? 1 : -1;
 
     const lb = await fetchLeaderboard(stat, sort);
 
-    return res.send({
-        statistic: stat,
-        sort: sort,
-        leaderboard: lb,
-    });
+    return NextResponse.json(
+        {
+            statistic: stat,
+            sort: sort,
+            leaderboard: lb,
+        },
+        { status: 200 }
+    );
 }
