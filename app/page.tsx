@@ -109,7 +109,7 @@ export default function Home() {
                         minigames like WackyMaze, PvPMaster, FastFall,
                         Infinijump, and many&nbsp;more!
                     </p>
-                    <Button href="/join" icon={faShare} text="Join" />
+                    <Button href="/join" icon={faShare} text="Join Now" />
                 </div>
                 <div className="my-4 h-72 overflow-hidden rounded-lg">
                     <ImageCarousel
@@ -159,16 +159,7 @@ export default function Home() {
                         play music in any game, at any time, automatically
                         continuing between games.
                     </p>
-                    <Button
-                        href="/join"
-                        icon={
-                            <FontAwesomeIcon
-                                icon={faShare}
-                                className="inline h-4 align-middle"
-                            />
-                        }
-                        text="Join Now"
-                    />
+                    <Button href="/join" icon={faShare} text="Join Now" />
                 </div>
                 <Image
                     src={jukeboxImage}
