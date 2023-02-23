@@ -32,7 +32,7 @@ export default function NavItem({
     return (
         <Link
             href={href}
-            className={`font-sans ${
+            className={`${
                 isActive ? activeColorClasses : inactiveColorClasses
             } rounded-md p-2 text-base font-medium text-white transition-colors`}
         >

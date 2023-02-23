@@ -3,7 +3,6 @@ import {
     faBook,
     faGamepad,
     faHouse,
-    faInfoCircle,
     faRankingStar,
     faShare,
 } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +13,6 @@ export default function Navbar() {
     const navItems: Array<NavItemProps> = [
         { text: "Home", href: "/", icon: faHouse },
         { text: "Games", href: "/games", icon: faGamepad },
-        { text: "About", href: "/about", icon: faInfoCircle },
         { text: "Blog", href: "/blog", icon: faBook },
         { text: "Leaderboards", href: "/leaderboards", icon: faRankingStar },
         {
