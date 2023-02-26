@@ -95,7 +95,7 @@ export default function Home() {
                         <div className="mx-auto hidden w-min lg:block">
                             <FontAwesomeIcon
                                 icon={faArrowDownLong}
-                                className="h-8 w-8 animate-bounce text-white transition-colors group-hover:text-blue-500"
+                                className="h-8 w-8 text-white transition-colors group-hover:text-blue-500 motion-safe:animate-bounce"
                             />
                         </div>
                     </a>
@@ -122,7 +122,7 @@ export default function Home() {
                 </div>
             </Section>
             <Section>
-                <div className="row-start-2 w-4/5 min-w-[24rem] rounded-lg bg-neutral-900 p-4 lg:row-start-1">
+                <div className="row-start-2 my-4 w-4/5 min-w-[24rem] rounded-lg bg-neutral-900 p-4 lg:row-start-1">
                     {games.map((game, i) => (
                         <Link
                             href={`/games/${game.name
@@ -173,7 +173,7 @@ export default function Home() {
                     src={leaderboardImage}
                     placeholder="blur"
                     alt="Lobby leaderboard screenshot"
-                    className="row-start-2 my-4 rounded-lg lg:row-start-1"
+                    className="row-start-2 my-4 max-h-72 rounded-lg object-cover lg:row-start-1"
                 />
                 <div className="row-start-1">
                     <h2 className="text-3xl font-bold">Leaderboards</h2>
