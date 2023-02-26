@@ -2,7 +2,6 @@ import { format, leaderboards } from "@/app/leaderboards/leaderboards";
 import { fetchPlayer } from "@/pages/api/player";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import TimeAgo from "javascript-time-ago";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import en from "javascript-time-ago/locale/en";
@@ -76,13 +75,12 @@ export default async function Player({
     return (
         <main>
             <h1 className="text-center text-3xl font-bold">
-                <Image
-                    src={`https://minotar.net/helm/${nonDashedUUID}/32`}
-                    alt={"Minecraft player head"}
+                <img
+                    src={`https://minotar.net/helm/${nonDashedUUID}/16`}
+                    alt={`${username}'s Minecraft player head`}
                     width={32}
                     height={32}
-                    className="inline rounded-sm align-middle"
-                    priority
+                    className="inline rounded-sm align-middle [image-rendering:pixelated]"
                 />
                 <span className="ml-2">{username}</span>
                 {rank && info.meta?.rankcolor && (
@@ -180,7 +178,11 @@ function Statistic({
         <p className="mx-auto flex w-72 justify-between lg:w-96">
             <span className="font-medium">
                 {stat ? (
-                    <Link href={`/leaderboards/${stat}`} className="underline">
+                    <Link
+                        href={`/leaderboards/${stat}`}
+                        className="underline"
+                        prefetch={false}
+                    >
                         {name}
                     </Link>
                 ) : (
