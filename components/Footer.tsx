@@ -36,9 +36,6 @@ export default function Footer() {
                 <Link href="/games" className="font-medium underline">
                     Games
                 </Link>
-                <Link href="/about" className="font-medium underline">
-                    About
-                </Link>
                 <Link href="/leaderboards" className="font-medium underline">
                     Leaderboards
                 </Link>
@@ -69,27 +66,27 @@ export default function Footer() {
             </div>
             <div className="col-span-1 flex flex-col leading-10 sm:col-span-2 md:col-span-1">
                 <p className="font-bold">Follow Us</p>
-                <Link href="https://github.com/BlueDragonMC">
+                <a href="https://github.com/BlueDragonMC">
                     <FontAwesomeIcon
                         icon={faGithub}
                         className="inline h-6 w-6 fill-black align-middle dark:fill-white"
                     />
                     <span className="ml-2 underline">GitHub</span>
-                </Link>
-                <Link href="https://discord.gg/3gvSPdW">
+                </a>
+                <a href="https://discord.gg/3gvSPdW">
                     <FontAwesomeIcon
                         icon={faDiscord}
                         className="inline h-6 w-6 fill-black align-middle dark:fill-white"
                     />
                     <span className="ml-2 underline">Discord</span>
-                </Link>
-                <Link href="https://twitter.com/BDMCNetwork">
+                </a>
+                <a href="https://twitter.com/BDMCNetwork">
                     <FontAwesomeIcon
                         icon={faTwitter}
                         className="inline h-6 w-6 fill-black align-middle dark:fill-white"
                     />
                     <span className="ml-2 underline">Twitter</span>
-                </Link>
+                </a>
             </div>
         </footer>
     );

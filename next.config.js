@@ -22,11 +22,6 @@ const nextConfig = {
     async redirects() {
         return [
             {
-                source: "/p/about",
-                destination: "/about",
-                permanent: true,
-            },
-            {
                 source: "/d/9-rules",
                 destination: "/page/rules",
                 permanent: true,
@@ -108,11 +103,6 @@ const nextConfig = {
             },
             {
                 source: "/discord",
-                destination: "https://discord.gg/3gvSPdW",
-                permanent: false,
-            },
-            {
-                source: "/page/discord",
                 destination: "https://discord.gg/3gvSPdW",
                 permanent: false,
             },

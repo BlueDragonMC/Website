@@ -5,7 +5,6 @@ import {
 } from "@/app/leaderboards/leaderboards";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import TimeAgo from "javascript-time-ago";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import en from "javascript-time-ago/locale/en";
@@ -16,6 +15,7 @@ import { Metadata } from "next";
 import { getOGImageURL } from "@/app/utils/og";
 import { fetchPlayer } from "@/app/api/player/route";
 import { fetchPosition } from "@/app/api/leaderboard/position/route";
+import Image from "next/image";
 
 TimeAgo.addDefaultLocale(en);
 
@@ -98,15 +98,16 @@ export default async function Player({
         <main>
             <h1 className="text-center text-3xl font-bold">
                 <Image
-                    src={`https://minotar.net/helm/${nonDashedUUID}/32`}
-                    alt={"Minecraft player head"}
+                    src={`https://minotar.net/helm/${nonDashedUUID}/16`}
+                    alt={`${username}'s Minecraft player head`}
                     width={32}
                     height={32}
-                    className="inline rounded-sm align-middle"
+                    className="inline rounded-sm align-middle [image-rendering:pixelated]"
+                    unoptimized
                     priority
                 />
                 <span className="ml-2">{username}</span>
-                {rank && (
+                {rank && info.meta?.rankcolor && (
                     <span
                         className={`mx-4 rounded-full p-2 align-middle text-xs font-medium uppercase ${
                             darkRankText ? "text-black" : "text-white"
@@ -204,7 +205,11 @@ function Statistic({
         <p className="mx-auto flex w-72 justify-between lg:w-96">
             <span className="font-medium">
                 {stat ? (
-                    <Link href={`/leaderboards/${stat}`} className="underline">
+                    <Link
+                        href={`/leaderboards/${stat}`}
+                        className="underline"
+                        prefetch={false}
+                    >
                         {name}
                     </Link>
                 ) : (
