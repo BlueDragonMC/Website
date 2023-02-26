@@ -1,7 +1,6 @@
 import { getLeaderboard } from "@/app/leaderboards/leaderboards";
-import { MONGO_HOSTNAME } from "@/app/vars";
-import { MongoClient } from "mongodb";
 import { NextRequest, NextResponse } from "next/server";
+import { client } from "../mongo";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 300; // 5 minutes
@@ -16,11 +15,6 @@ export type LeaderboardResponse = {
     }>;
 };
 
-const client = new MongoClient(MONGO_HOSTNAME, {
-    connectTimeoutMS: 3000,
-    serverSelectionTimeoutMS: 3000,
-}).connect();
-
 export async function fetchLeaderboard(
     stat: string,
     sort: 1 | -1,
@@ -32,11 +26,12 @@ export async function fetchLeaderboard(
         $exists: true,
     };
 
-    const _client = await client;
     return (
         // Get a list of MongoDB documents matching the selection
         (
-            await _client
+            await (
+                await client
+            )
                 .db("bluedragon")
                 .collection("players")
                 .find(filter)

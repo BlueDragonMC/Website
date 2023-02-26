@@ -1,7 +1,7 @@
 import { getLeaderboard } from "@/app/leaderboards/leaderboards";
-import { LP_HOSTNAME, MONGO_HOSTNAME } from "@/app/vars";
-import { MongoClient } from "mongodb";
+import { LP_HOSTNAME } from "@/app/vars";
 import { NextRequest, NextResponse } from "next/server";
+import { client } from "../mongo";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 300; // 5 minutes
@@ -19,11 +19,6 @@ export type LuckPermsUserMeta = {
     prefix?: string;
     rankcolor?: string;
 };
-
-const client = new MongoClient(MONGO_HOSTNAME, {
-    connectTimeoutMS: 3000,
-    serverSelectionTimeoutMS: 3000,
-}).connect();
 
 export async function fetchPlayer(username: string) {
     const doc = await (await client)

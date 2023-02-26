@@ -1,4 +1,8 @@
-import { format, leaderboards } from "@/app/leaderboards/leaderboards";
+import {
+    format,
+    getLeaderboard,
+    leaderboards,
+} from "@/app/leaderboards/leaderboards";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import TimeAgo from "javascript-time-ago";
 import Image from "next/image";
@@ -11,6 +15,7 @@ import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import { Metadata } from "next";
 import { getOGImageURL } from "@/app/utils/og";
 import { fetchPlayer } from "@/app/api/player/route";
+import { fetchPosition } from "@/app/api/leaderboard/position/route";
 
 TimeAgo.addDefaultLocale(en);
 
@@ -72,6 +77,22 @@ export default async function Player({
         const luminance = 0.289 * r + 0.587 * g + 0.114 * b;
         if (luminance > 100) darkRankText = true;
     }
+
+    const ranks: { [key: string]: number } = {};
+
+    await Promise.all(
+        Object.keys(info.stats).map((stat) => {
+            return fetchPosition(
+                info.username,
+                stat,
+                getLeaderboard(stat)?.leaderboard.sort ?? -1
+            ).then((info) => {
+                if (info !== undefined) {
+                    ranks[info.statistic] = info.position;
+                }
+            });
+        })
+    );
 
     return (
         <main>
@@ -158,6 +179,7 @@ export default async function Player({
                             stat={lb.stat}
                             key={lb.stat}
                             value={format(lb.format, info.stats[lb.stat])}
+                            position={ranks[lb.stat]}
                         />
                     ))}
                 </div>
@@ -171,10 +193,12 @@ function Statistic({
     value,
     stat,
     children,
+    position,
 }: PropsWithChildren<{
     name: string;
     value?: string | number | undefined;
     stat?: string;
+    position?: number;
 }>) {
     return (
         <p className="mx-auto flex w-72 justify-between lg:w-96">
@@ -195,7 +219,22 @@ function Statistic({
                 }
             >
                 {children ?? value ?? "-"}
+                {position ? (
+                    <span className={getColor(position)}> (#{position})</span>
+                ) : (
+                    <></>
+                )}
             </span>
         </p>
     );
+}
+
+function getColor(position: number): string {
+    if (position === 1)
+        return "font-medium text-yellow-600 dark:text-yellow-500";
+    if (position === 2)
+        return "font-medium text-orange-600 dark:text-orange-500";
+    if (position === 3) return "font-medium text-red-600 dark:text-red-500";
+
+    return "font-normal text-gray-600 dark:text-gray-300";
 }
