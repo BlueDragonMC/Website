@@ -3,7 +3,7 @@ title: BlueDragon Public API Reference
 description: BlueDragon's API endpoints, the data they provide, and how to access them.
 author: Flux
 created: 2023-02-18
-modified: 2023-02-18
+modified: 2023-02-26
 ---
 
 ## Usage
@@ -114,6 +114,43 @@ https://bluedragonmc.com/api/leaderboard?statistic=game_wackymaze_wins&sort=-1
 - The `leaderboard` list contains a set of entries, each containing a `uuid`, `username`, and `value`.
 - Any leaderboards involving time (namely Fastest Time) will be measured in milliseconds.
 - Only the first 50 entries (if present) will be included in the response.
+
+## Leaderboard Position Information
+
+### Path: `/leaderboard/position`
+
+#### Sample URL:
+
+```
+https://bluedragonmc.com/api/leaderboard/position?username=wsad_&statistic=game_wackymaze_wins
+```
+
+### Query Parameters
+
+| Name        | Description                                                                                 | Required |
+| ----------- | ------------------------------------------------------------------------------------------- | -------- |
+| `username`  | The name of the player. Case-insensitive.                                                   | Yes      |
+| `statistic` | The name of the statistic to rank.                                                          | Yes      |
+| `sort`      | The direction that the data is sorted. Must be either `-1` (descending) or `1` (ascending). | No       |
+
+### Sample Response
+
+```json
+{
+  "uuid": "110429e8-197f-4446-8bec-5d66f17be4d5",
+  "username": "wsad_",
+  "statistic": "game_wackymaze_wins",
+  "position": 2
+}
+```
+
+### Notes
+
+- The returned `statistic` will always be the same as the one specified in the URL parameter.
+- If the player has the requested statistic, the `position` field has a minimum of 1 (the first position according to the sort).
+  - If the player does _not_ have the requested statistic, a `404` error code will be returned.
+  - If the statistic is invalid, a `400` error code will be returned.
+- There is no reason to fetch data more frequently than once every 5 minutes as responses are cached.
 
 ## List of Statistic Names
 

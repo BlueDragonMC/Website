@@ -3,8 +3,22 @@ title: Changelog
 description: A list of everything new on the server, all in one place.
 author: Flux
 created: 2022-06-27
-modified: 2023-02-18
+modified: 2023-02-26
 ---
+
+### 2023-02-26
+
+#### Website
+
+- Added leaderboard positions to player pages where applicable ([example](/player/wsad_)).
+- Added a [new API endpoint](/page/api) to get leaderboard positions.
+
+### 2023-02-23
+
+#### Website
+
+- Created a new homepage design featuring Paintbrawl.
+- Moved contents from the About page to the homepage.
 
 ### 2023-02-20
 

@@ -1,7 +1,10 @@
 import { getLeaderboard } from "@/app/leaderboards/leaderboards";
-import { LP_HOSTNAME, MONGO_HOSTNAME } from "@/app/vars";
-import { MongoClient } from "mongodb";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { LP_HOSTNAME } from "@/app/vars";
+import { NextRequest, NextResponse } from "next/server";
+import { client } from "../mongo";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 300; // 5 minutes
 
 export type PlayerResponse = {
     uuid: string;
@@ -16,11 +19,6 @@ export type LuckPermsUserMeta = {
     prefix?: string;
     rankcolor?: string;
 };
-
-const client = new MongoClient(MONGO_HOSTNAME, {
-    connectTimeoutMS: 3000,
-    serverSelectionTimeoutMS: 3000,
-}).connect();
 
 export async function fetchPlayer(username: string) {
     const doc = await (await client)
@@ -59,23 +57,20 @@ export async function fetchPlayer(username: string) {
     };
 }
 
-export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse<PlayerResponse | string>
-) {
-    const username = req.query.username as string;
+export async function GET(req: NextRequest) {
+    const username = req.nextUrl.searchParams.get("username");
 
     if (!username) {
-        return res.status(400).send("Bad request");
+        return new Response("Bad request", { status: 400 });
     }
 
     const info = await fetchPlayer(username);
 
     if (!info) {
-        return res.status(404).send("Not found");
+        return new Response("Not found", { status: 404 });
     }
 
-    return res.send(info);
+    return NextResponse.json(info, { status: 200 });
 }
 
 async function fetchMeta(uuid: string) {
