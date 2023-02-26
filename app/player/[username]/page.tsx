@@ -10,6 +10,7 @@ import RelativeDate from "./components/RelativeDate";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import { Metadata } from "next";
 import { getOGImageURL } from "@/app/utils/og";
+import Image from "next/image";
 
 TimeAgo.addDefaultLocale(en);
 
@@ -75,12 +76,14 @@ export default async function Player({
     return (
         <main>
             <h1 className="text-center text-3xl font-bold">
-                <img
+                <Image
                     src={`https://minotar.net/helm/${nonDashedUUID}/16`}
                     alt={`${username}'s Minecraft player head`}
                     width={32}
                     height={32}
                     className="inline rounded-sm align-middle [image-rendering:pixelated]"
+                    unoptimized
+                    priority
                 />
                 <span className="ml-2">{username}</span>
                 {rank && info.meta?.rankcolor && (

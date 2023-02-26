@@ -40,7 +40,10 @@ export default function Page() {
                             {category.leaderboards.map((lb) => {
                                 return (
                                     <Fragment key={lb.stat}>
-                                        <Link href={`/leaderboards/${lb.stat}`}>
+                                        <Link
+                                            href={`/leaderboards/${lb.stat}`}
+                                            prefetch={false}
+                                        >
                                             <p className="font-medium underline">
                                                 {lb.name}
                                             </p>
