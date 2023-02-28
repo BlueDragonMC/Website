@@ -10,21 +10,21 @@ import { NextRequest } from "next/server";
 
 // Bold - font weight: 700
 const boldFont = fetch(
-    new URL("../../assets/Inter-ExtraBold.ttf", import.meta.url)
+    new URL("../../../assets/Inter-ExtraBold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 // Medium - font weight: 500
 const mediumFont = fetch(
-    new URL("../../assets/Inter-Medium.ttf", import.meta.url)
+    new URL("../../../assets/Inter-Medium.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 // Regular - font weight: 400
 const regularFont = fetch(
-    new URL("../../assets/Inter-Regular.ttf", import.meta.url)
+    new URL("../../../assets/Inter-Regular.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 const favicon = new URL(
-    "../../public/favicon_hq.png",
+    "../../../public/favicon_hq.png",
     import.meta.url
 ).toString();
 
@@ -32,7 +32,7 @@ export const config = {
     runtime: "edge",
 };
 
-export default async function OpenGraphImage(req: NextRequest) {
+export async function GET(req: NextRequest) {
     const { searchParams } = req.nextUrl;
     let title = searchParams.get("title");
     let ogPreview = searchParams.get("ogPreview");
