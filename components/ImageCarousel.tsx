@@ -51,7 +51,7 @@ export default function ImageCarousel({
                             width={imageWidth}
                             quality={blurred ? 10 : 75}
                             height={0}
-                            loading="lazy"
+                            loading={i <= 2 ? "eager" : "lazy"} // Don't lazily load the first two images
                             placeholder="blur"
                             style={{
                                 opacity: image == i ? 1 : 0,

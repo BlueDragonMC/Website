@@ -66,21 +66,21 @@ export default function Footer() {
             </div>
             <div className="col-span-1 flex flex-col leading-10 sm:col-span-2 md:col-span-1">
                 <p className="font-bold">Follow Us</p>
-                <a href="https://github.com/BlueDragonMC">
+                <a href="/github">
                     <FontAwesomeIcon
                         icon={faGithub}
                         className="inline h-6 w-6 fill-black align-middle dark:fill-white"
                     />
                     <span className="ml-2 underline">GitHub</span>
                 </a>
-                <a href="https://discord.gg/3gvSPdW">
+                <a href="/discord">
                     <FontAwesomeIcon
                         icon={faDiscord}
                         className="inline h-6 w-6 fill-black align-middle dark:fill-white"
                     />
                     <span className="ml-2 underline">Discord</span>
                 </a>
-                <a href="https://twitter.com/BDMCNetwork">
+                <a href="/twitter">
                     <FontAwesomeIcon
                         icon={faTwitter}
                         className="inline h-6 w-6 fill-black align-middle dark:fill-white"

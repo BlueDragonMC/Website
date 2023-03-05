@@ -40,7 +40,7 @@ Each NPC, when right-clicked, opens a cosmetics menu. From there, you can select
 
 ## Final Notes
 
-We are looking to greatly expand our currently-small list of cosmetics and bring this new system to all of our games. If you have any suggestions please reply to this thread or let us know on [Discord](https://discord.gg/3gvSPdW).
+We are looking to greatly expand our currently-small list of cosmetics and bring this new system to all of our games. If you have any suggestions please reply to this thread or let us know on [Discord](/discord).
 
 Have a great day!
 

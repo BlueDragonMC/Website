@@ -24,7 +24,7 @@ _Jungle block set (Includes 17 block types - 2500 coins)_
 
 In addition, we have made the process for restarting Infinijump games much smoother. Games can now be restarted instantly without changing worlds or re-entering the queue.
 
-Some bugs were also fixed, including the glow effect on "platform" parkour blocks, which has been expanded to the full platform. As always, if you have any ideas for new games, cosmetics, or any improvements, please join our [Discord](https://discord.gg/3gvSPdW) or reply to this post.
+Some bugs were also fixed, including the glow effect on "platform" parkour blocks, which has been expanded to the full platform. As always, if you have any ideas for new games, cosmetics, or any improvements, please join our [Discord](/discord) or reply to this post.
 
 Have a great day!
 

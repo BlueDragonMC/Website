@@ -33,4 +33,4 @@ A page that lists every game on the server and how to play. Great for those just
 
 ### Open-Source
 
-View the source code on GitHub [here](https://github.com/BlueDragonMC/Website). All contributions are welcome!
+View the source code on GitHub [here](/github/Website). All contributions are welcome!

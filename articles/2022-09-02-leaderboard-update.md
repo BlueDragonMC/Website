@@ -28,7 +28,7 @@ Leaderboards are grouped by category, and each category can contain a collection
 
 ## Suggestions
 
-If you have any suggestions for trackable statistics or have any leaderboard ideas, let us know by replying to this post or talking in our [Discord server](https://discord.gg/3gvSPdW).
+If you have any suggestions for trackable statistics or have any leaderboard ideas, let us know by replying to this post or talking in our [Discord server](/discord).
 
 Have a great day!
 

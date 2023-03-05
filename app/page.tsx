@@ -91,7 +91,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="group absolute top-[80%] w-full">
-                    <a href="#about">
+                    <a href="#about" aria-hidden="true">
                         <div className="mx-auto hidden w-min lg:block">
                             <FontAwesomeIcon
                                 icon={faArrowDownLong}
@@ -209,7 +209,7 @@ export default function Home() {
                 </div>
                 <div className="text-center">
                     <Button
-                        href="https://github.com/BlueDragonMC"
+                        href="/github"
                         icon={faGithub}
                         text="View on GitHub"
                     />

@@ -106,6 +106,21 @@ const nextConfig = {
                 destination: "https://discord.gg/3gvSPdW",
                 permanent: false,
             },
+            {
+                source: "/twitter",
+                destination: "https://twitter.com/BDMCNetwork",
+                permanent: false,
+            },
+            {
+                source: "/github",
+                destination: "https://github.com/BlueDragonMC",
+                permanent: false,
+            },
+            {
+                source: "/github/:repo*",
+                destination: "https://github.com/BlueDragonMC/:repo*",
+                permanent: false,
+            },
         ];
     },
 };

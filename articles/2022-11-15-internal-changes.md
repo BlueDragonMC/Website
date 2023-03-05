@@ -26,6 +26,6 @@ This was a huge improvement over our old system because, previously, our message
 
 **Second**, gRPC is more scalable for what we want to achieve. All of our current messaging scenarios require direct, server-to-server communication with one sender and one receiver, which is what gRPC specializes in. Essentially, it's a better fit for us.
 
-If you have any questions, feel free to reply to this post or join our [Discord server](https://discord.gg/3gvSPdW). Thanks for reading!
+If you have any questions, feel free to reply to this post or join our [Discord server](/discord). Thanks for reading!
 
 Flux

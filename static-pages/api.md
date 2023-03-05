@@ -66,7 +66,7 @@ https://bluedragonmc.com/api/player?username=wsad_
 
 - `firstLogin` may not be present on some users.
 - `firstLogin` and `lastLogin` are measured as [Unix timestamps](https://en.wikipedia.org/wiki/Unix_time).
-- A player's `level` is directly based on their `xp`. See the formula [here](https://github.com/BlueDragonMC/Website/blob/cd9645154f0c41bf3d92cbf237bb4affa830aa3c/pages/api/player.ts#L35-L38).
+- A player's `level` is directly based on their `xp`. See the formula [here](/github/Website/blob/cd9645154f0c41bf3d92cbf237bb4affa830aa3c/pages/api/player.ts#L35-L38).
 - The `meta.prefix` and `meta.rankcolor` may not be present on users without a rank.
 - If a player has not logged in to BlueDragon yet, the API will return a `404` error with the text `"Not found"`.
 
@@ -195,4 +195,4 @@ https://bluedragonmc.com/api/leaderboard/position?username=wsad_&statistic=game_
 | Lobby Parkour | All    | `lobby_parkour_world_tour_best_time`           | Duration (milliseconds) |
 | Lobby Parkour | All    | `lobby_parkour_cave_best_time`                 | Duration (milliseconds) |
 
-Have an idea for a statistic we should track? Let us know in our [Discord server](https://discord.gg/3gvSPdW).
+Have an idea for a statistic we should track? Let us know in our [Discord server](/discord).
