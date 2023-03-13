@@ -26,7 +26,7 @@
     "minecraft-server-util": "^5.4.0",
     "mongodb": "^5.1.0",
     "next": "^13.2.4-canary.5",
-    "next-mdx-remote": "^4.3.0",
+    "next-mdx-remote": "^4.4.1",
     "plaiceholder": "^2.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
