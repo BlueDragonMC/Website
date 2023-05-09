@@ -1,5 +1,4 @@
 import { fetchLeaderboard } from "@/app/api/leaderboard/route";
-import { getOGImageURL } from "@/app/utils/og";
 import Step from "@/components/Step";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -28,14 +27,6 @@ export async function generateMetadata({
                 absolute: `${cat.name}: ${lb.name} | BlueDragon`,
             },
             description: `View the top players for the ${cat.name} ${lb.name} leaderboard online, or join the server and climb the ranks yourself.`,
-            images: [
-                getOGImageURL({
-                    title: `${cat.name}: ${lb.name}`,
-                    subtitle: cat.mode ?? "All modes",
-                    ogPreview:
-                        "View the top players for this leaderboard on bluedragonmc.com, or join the server and climb the ranks yourself.",
-                }),
-            ],
         },
     };
 }

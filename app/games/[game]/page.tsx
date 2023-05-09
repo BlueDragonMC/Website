@@ -4,7 +4,6 @@ import { Game, games } from "../games";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
-import { getOGImageURL } from "@/app/utils/og";
 import GalleryComponent from "./GalleryComponent";
 
 export function generateMetadata({
@@ -27,11 +26,6 @@ export function generateMetadata({
             },
             description: selected.description,
             images: [
-                getOGImageURL({
-                    title: selected.name,
-                    subtitle: "BlueDragon Minecraft minigame",
-                    ogPreview: selected.description,
-                }),
                 // ...(selected.images?.map(
                 //     (img) => new URL(img.src, BASE_PATH)
                 // ) ?? []),
