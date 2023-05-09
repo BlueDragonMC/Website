@@ -143,5 +143,3 @@ async function getPlayers(): Promise<WithId<Document>[]> {
         .find({}, { projection: { _id: 0, username: 1, lastJoinDate: 1 } })
         .toArray();
 }
-
-export default function Sitemap() {}
