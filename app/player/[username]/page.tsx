@@ -12,7 +12,6 @@ import { PropsWithChildren } from "react";
 import RelativeDate from "./components/RelativeDate";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import { Metadata } from "next";
-import { getOGImageURL } from "@/app/utils/og";
 import { fetchPlayer } from "@/app/api/player/route";
 import { fetchPosition } from "@/app/api/leaderboard/position/route";
 import Image from "next/image";
@@ -28,7 +27,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const info = await fetchPlayer(username);
     if (!info) return {};
-    const nonDashedUUID = info.uuid.replaceAll(/-/g, "");
+
     return {
         title: `${info.username}'s Stats`,
         description: `View ${info.username}'s BlueDragon profile and statistics online.`,
@@ -40,13 +39,6 @@ export async function generateMetadata({
                 default: `${info.username}'s Statistics`,
             },
             description: `View ${info.username}'s BlueDragon profile and statistics online.`,
-            images: [
-                getOGImageURL({
-                    title: info.username,
-                    player: nonDashedUUID,
-                    ogPreview: `View ${info.username}'s BlueDragon profile and statistics online.`,
-                }),
-            ],
         },
     };
 }

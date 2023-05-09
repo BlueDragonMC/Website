@@ -6,6 +6,11 @@ import { Metadata } from "next";
 import { BASE_PATH } from "./vars";
 
 export const metadata: Metadata = {
+    metadataBase: new URL(
+        process.env.NODE_ENV === "production"
+            ? "https://bluedragonmc.com/"
+            : "http://localhost:3000"
+    ),
     title: {
         default: "BlueDragon | Minecraft Minigames",
         template: "%s | BlueDragon",
@@ -14,6 +19,7 @@ export const metadata: Metadata = {
     description:
         "BlueDragon is a Minecraft server that strives to produce high-quality, original content. Join for free to explore unique minigames like Paintbrawl, WackyMaze, and more!",
     openGraph: {
+        siteName: "BlueDragon",
         type: "website",
         title: {
             default: "BlueDragon | Minecraft Minigames",
