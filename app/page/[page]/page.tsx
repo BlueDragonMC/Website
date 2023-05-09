@@ -1,6 +1,4 @@
 import { getArticles, getFrontMatter } from "@/app/utils/articles";
-import { getArticleOGImageURL } from "@/app/utils/og";
-import { BASE_PATH } from "@/app/vars";
 import MDX from "@/components/mdx/MDX";
 import { Metadata } from "next";
 
@@ -28,11 +26,6 @@ export async function generateMetadata({
                     : "BlueDragon",
             },
             description: article.data.description,
-            images: [
-                article.data.image
-                    ? new URL(article.data.image, BASE_PATH)
-                    : getArticleOGImageURL(article),
-            ],
         },
     };
 }

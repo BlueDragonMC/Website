@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { getOGImageURL } from "../utils/og";
 import { games } from "./games";
 import Page from "./[game]/page";
 
@@ -11,13 +10,6 @@ export const metadata: Metadata = {
             default: "Games",
             template: "%s",
         },
-        images: [
-            getOGImageURL({
-                title: "Games",
-                ogPreview:
-                    "All of the minigames on the BlueDragon Minecraft server.",
-            }),
-        ],
     },
 };
 

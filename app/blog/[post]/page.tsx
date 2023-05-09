@@ -9,8 +9,6 @@ import {
 import Link from "next/link";
 import { getArticles, getFrontMatter } from "@/app/utils/articles";
 import { Metadata } from "next";
-import { BASE_PATH } from "@/app/vars";
-import { getArticleOGImageURL } from "@/app/utils/og";
 
 export const dynamic = "force-static";
 
@@ -39,11 +37,6 @@ export async function generateMetadata({
                     : "BlueDragon Blog",
             },
             description: article.data.description,
-            images: [
-                article.data.image
-                    ? new URL(article.data.image, BASE_PATH)
-                    : getArticleOGImageURL(article),
-            ],
         },
     };
 }

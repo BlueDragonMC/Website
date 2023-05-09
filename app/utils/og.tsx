@@ -5,44 +5,46 @@ import {
     faClock,
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { ImageResponse } from "@vercel/og";
-import { NextRequest } from "next/server";
+import { unstable_createNodejsStream } from "@vercel/og";
+import { readFile } from "fs/promises";
+import { join } from "path";
+import { cwd } from "process";
 
 // Bold - font weight: 700
-const boldFont = fetch(
-    new URL("../../../assets/Inter-ExtraBold.ttf", import.meta.url)
-).then((res) => res.arrayBuffer());
+const boldFont = readFile(join(cwd(), "assets/Inter-ExtraBold.ttf"));
 
 // Medium - font weight: 500
-const mediumFont = fetch(
-    new URL("../../../assets/Inter-Medium.ttf", import.meta.url)
-).then((res) => res.arrayBuffer());
+const mediumFont = readFile(join(cwd(), "assets/Inter-Medium.ttf"));
 
 // Regular - font weight: 400
-const regularFont = fetch(
-    new URL("../../../assets/Inter-Regular.ttf", import.meta.url)
-).then((res) => res.arrayBuffer());
+const regularFont = readFile(join(cwd(), "assets/Inter-Regular.ttf"));
 
-const favicon = new URL(
-    "../../../public/favicon_hq.png",
-    import.meta.url
-).toString();
+const favicon = readFile(join(cwd(), "/public/favicon_hq.png"));
 
-export const config = {
-    runtime: "edge",
+type GenerateOptions = {
+    title: string;
+    ogPreview?: string;
+    subtitle?: string;
+    author?: string;
+    date?: string;
+    readTime?: string;
+    player?: string;
 };
 
-export async function GET(req: NextRequest) {
-    const { searchParams } = req.nextUrl;
-    let title = searchParams.get("title");
-    let ogPreview = searchParams.get("ogPreview");
-    const subtitle = searchParams.get("subtitle");
-    const author = searchParams.get("author");
-    const date = searchParams.get("date");
-    const readTime = searchParams.get("readTime");
-    const player = searchParams.get("player");
-
-    let image = <img src={favicon} width={256} height={256} />; // eslint-disable-line @next/next/no-img-element, jsx-a11y/alt-text
+export async function generate({
+    title,
+    ogPreview,
+    subtitle,
+    author,
+    date,
+    readTime,
+    player,
+}: GenerateOptions) {
+    const b64 = (await favicon).toString("base64");
+    let image = (
+        // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
+        <img src={"data:image/png;base64," + b64} width={256} height={256} />
+    );
 
     if (player) {
         image = (
@@ -61,8 +63,8 @@ export async function GET(req: NextRequest) {
             "BlueDragon is an original Minecraft server featuring minigames like WackyMaze, PvPMaster, FastFall, and many more!";
     }
 
-    return new ImageResponse(
-        (
+    return new Response(
+        (await unstable_createNodejsStream(
             <div style={{ display: "flex", height: "100%", width: "100%" }}>
                 <div
                     style={{
@@ -188,32 +190,32 @@ export async function GET(req: NextRequest) {
                             "linear-gradient(90deg, #38bdf8, #1d4ed8)",
                     }}
                 />
-            </div>
-        ),
-        {
-            debug: false,
-            width: 1200,
-            height: 630,
-            fonts: [
-                {
-                    name: "Inter",
-                    data: await boldFont,
-                    style: "normal",
-                    weight: 700,
-                },
-                {
-                    name: "Inter",
-                    data: await mediumFont,
-                    style: "normal",
-                    weight: 500,
-                },
-                {
-                    name: "Inter",
-                    data: await regularFont,
-                    style: "normal",
-                    weight: 400,
-                },
-            ],
-        }
+            </div>,
+            {
+                debug: false,
+                width: 1200,
+                height: 630,
+                fonts: [
+                    {
+                        name: "Inter",
+                        data: await boldFont,
+                        style: "normal",
+                        weight: 700,
+                    },
+                    {
+                        name: "Inter",
+                        data: await mediumFont,
+                        style: "normal",
+                        weight: 500,
+                    },
+                    {
+                        name: "Inter",
+                        data: await regularFont,
+                        style: "normal",
+                        weight: 400,
+                    },
+                ],
+            }
+        )) as unknown as ReadableStream
     );
 }

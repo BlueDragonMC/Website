@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import ViewStats from "../leaderboards/components/ViewStats";
-import { getOGImageURL } from "../utils/og";
 
 export const metadata: Metadata = {
     title: "Statistics",
@@ -13,13 +12,6 @@ export const metadata: Metadata = {
         },
         description:
             "Enter a player's username to view their individual statistics.",
-        images: [
-            getOGImageURL({
-                title: "BlueDragon Statistics",
-                ogPreview:
-                    "View any player's detailed statistics and leaderboard information online.",
-            }),
-        ],
     },
 };
 
