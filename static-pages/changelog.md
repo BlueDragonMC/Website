@@ -1,10 +1,15 @@
 ---
 title: Changelog
 description: A list of everything new on the server, all in one place.
-author: Flux
+author: BlueDragon Team
 created: 2022-06-27
-modified: 2023-02-26
+modified: 2023-06-12
 ---
+
+### 2023-06-12
+#### Server
+- Fixed bug where fall damage wasn't always working
+- Fixed bug where chat was not confined to one instance
 
 ### 2023-02-26
 
