@@ -2,6 +2,14 @@ import { StaticImageData } from "next/image";
 
 // Images are statically imported so that they can have automatically-generated blur data URLs during the loading phase.
 // For more info: https://nextjs.org/docs/api-reference/next/image#blurdataurl
+import dominate1 from "@/public/games/dominate/dominate-1.png";
+import dominate2 from "@/public/games/dominate/dominate-2.png";
+import dominate3 from "@/public/games/dominate/dominate-3.png";
+import dominate4 from "@/public/games/dominate/dominate-4.png";
+import dominate5 from "@/public/games/dominate/dominate-5.png";
+import dominate6 from "@/public/games/dominate/dominate-6.png";
+
+
 import paintbrawl1 from "@/public/games/paintbrawl/paintbrawl-1.png";
 import paintbrawl2 from "@/public/games/paintbrawl/paintbrawl-2.png";
 import paintbrawl3 from "@/public/games/paintbrawl/paintbrawl-3.png";
@@ -69,7 +77,21 @@ export type Game = {
 
 export const games: Array<Game> = [
     {
+        name: "Dominate",
+        images: [dominate1, dominate3, dominate4, dominate5, dominate6],
+        description:
+            "A new spin on an old classic: rally your friends, plan your strategy, and win the battle to capture the most points!",
+        steps: [
+            "Spawn with your teammates and select a kit.",
+            "Stand on a control point to capture it and start earning points for your team.",
+            "Stand on opponents' points to retake them.",
+            "The first team to reach 1000 points wins!"
+        ]
+    },
+    {
         name: "Paintbrawl",
+        description:
+            "A fast-paced, action-packed multiplayer combat experience with tons of maps, weapons, and powerups to shake things up!",
         images: [
             paintbrawl1,
             paintbrawl2,
@@ -77,6 +99,13 @@ export const games: Array<Game> = [
             paintbrawl4,
             paintbrawl5,
         ],
+        steps: [
+            "Receive a random weapon at the beginning of the game.",
+            "Hit your enemies to earn points, or hit the ground to paint it your color.",
+            "Avoid stepping in another team's paint - this will damage you.",
+            "Earn one point for every heart of damage dealt, and a bonus five points for each kill.",
+            "The first player to reach 60 points is the winner!"
+        ]
     },
     {
         name: "Infinijump",

@@ -16,7 +16,7 @@ import {
     faShare,
     faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
-import { Nosifer } from "next/font/google";
+import { Rubik_Marker_Hatch } from "next/font/google";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
@@ -26,17 +26,18 @@ import leaderboardImage from "@/public/images/leaderboards-1.png";
 import { PropsWithChildren } from "react";
 import { leaderboards } from "./leaderboards/leaderboards";
 
-const customFont = Nosifer({ weight: "400", subsets: ["latin"] });
+const customFont = Rubik_Marker_Hatch({ weight: "400", subsets: ["latin"] });
 
 export default function Home() {
     const images = [hero1, hero2, hero3, hero5, lobby3, wackymaze1, wackymaze6];
-    const paintbrawlImages = games[0].images!;
+    const newestGameImages = games[0].images!;
 
     const lbCount = leaderboards
         .map((category) => category.leaderboards.length)
         .reduce((acc, category) => acc + category, 0);
 
     const gameModeCount = [
+        "Dominate",
         "Paintbrawl",
         "Infinijump Solo",
         "Infinijump Versus",
@@ -51,7 +52,7 @@ export default function Home() {
         "PvPMaster",
         "ArenaPvP",
         "Cave Parkour",
-        "Works Tour Parkour",
+        "World Tour Parkour",
     ].length;
 
     return (
@@ -59,7 +60,7 @@ export default function Home() {
             <section className="relative -mx-2 -mt-4 h-screen min-h-[960px] w-screen md:-mx-10">
                 <div className="absolute top-0 left-0 -z-20 h-full w-full overflow-hidden">
                     <ImageCarousel
-                        images={paintbrawlImages}
+                        images={newestGameImages}
                         altText="Gameplay Screenshot"
                         blurred={true}
                         imageWidth={512}
@@ -69,16 +70,13 @@ export default function Home() {
                     <div className="mx-auto mt-48 max-w-4xl text-center">
                         <h1 className={`font-black drop-shadow-2xl`}>
                             <span
-                                className={`my-4 block bg-gradient-to-tl from-pink-500 to-blue-500 bg-clip-text text-4xl font-black leading-[1.5] text-transparent md:text-6xl lg:text-7xl xl:text-8xl ${customFont.className}`}
+                                className={`my-4 block bg-gradient-to-tl from-red-700 to-orange-500 bg-clip-text text-5xl font-black leading-[1.5] text-transparent md:text-7xl lg:text-8xl xl:text-9xl ${customFont.className}`}
                             >
-                                Paintbrawl
+                                DOMINATE
                             </span>
                         </h1>
                         <p className="my-2 text-2xl">
-                            Introducing BlueDragon&apos;s biggest minigame yet:
-                            a fast-paced, action-packed multiplayer combat
-                            experience with tons of maps, weapons, and powerups
-                            to shake things up!
+                            A new spin on an old classic: rally your friends, plan your strategy, and win the battle to capture the most points!
                         </p>
                         <Button text="Join" href="/join" />
                         <Button
@@ -86,7 +84,7 @@ export default function Home() {
                             icon={faArrowRight}
                             iconPosition="right"
                             intent="secondary"
-                            href="/blog/2023-02-19-new-game-paintbrawl"
+                            href="/blog/2023-07-03-dominate-1-20"
                         />
                     </div>
                 </div>
@@ -105,9 +103,9 @@ export default function Home() {
                 <div id="about" className="mt-8">
                     <h2 className="text-3xl font-bold">About Us</h2>
                     <p>
-                        BlueDragon is an original Minecraft server featuring
-                        minigames like WackyMaze, PvPMaster, FastFall,
-                        Infinijump, and many&nbsp;more!
+                        BlueDragon is a Minecraft server that strives to produce
+                        high-quality, original content. Join for free to explore
+                        unique minigames like Paintbrawl, WackyMaze, and more!
                     </p>
                     <Button href="/join" icon={faShare} text="Join Now" />
                 </div>
@@ -145,7 +143,7 @@ export default function Home() {
                     <p>
                         BlueDragon has {games.length} Minecraft minigames and{" "}
                         {gameModeCount} total game modes, across all genres.
-                        Parkour, combat, we have it all.
+                        Parkour, combat, strategy, we have it all.
                     </p>
                     <Button href="/games" icon={faGamepad} text="View Games" />
                 </div>

@@ -58,7 +58,7 @@ export async function GET(req: NextRequest) {
     if (!title && !ogPreview) {
         title = "BlueDragon";
         ogPreview =
-            "BlueDragon is an original Minecraft server featuring minigames like WackyMaze, PvPMaster, FastFall, and many more!";
+            "BlueDragon is a Minecraft server that strives to produce high-quality, original content. Join for free to explore unique minigames like Paintbrawl, WackyMaze, and more!";
     }
 
     return new ImageResponse(

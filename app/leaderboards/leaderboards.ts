@@ -1,5 +1,20 @@
 export const leaderboards: Array<Category> = [
     {
+        name: "Dominate",
+        leaderboards: [
+            {
+                name: "Most Wins",
+                statName: "Wins",
+                stat: "game_dominate_wins"
+            },
+            {
+                name: "Most Kills",
+                statName: "Kills",
+                stat: "game_dominate_kills"
+            }
+        ]
+    },
+    {
         name: "Paintbrawl",
         mode: "General Statistics",
         leaderboards: [

@@ -18,9 +18,9 @@ export default function Footer() {
                     <Link href="/">BlueDragon</Link>
                 </p>
                 <p>
-                    BlueDragon is an original Minecraft server featuring
-                    minigames like WackyMaze, PvPMaster, FastFall, and
-                    many&nbsp;more!
+                    BlueDragon is a Minecraft server that strives to produce
+                    high-quality, original content. Join for free to explore
+                    unique minigames like Paintbrawl, WackyMaze, and more!
                 </p>
                 <p>
                     The server IP is{" "}

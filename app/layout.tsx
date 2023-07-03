@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     },
     applicationName: "BlueDragon",
     description:
-        "BlueDragon is an original Minecraft server featuring minigames like WackyMaze, PvPMaster, FastFall, and many more!",
+        "BlueDragon is a Minecraft server that strives to produce high-quality, original content. Join for free to explore unique minigames like Paintbrawl, WackyMaze, and more!",
     openGraph: {
         type: "website",
         title: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
             template: "%s | BlueDragon",
         },
         description:
-            "BlueDragon is an original Minecraft server featuring minigames like WackyMaze, PvPMaster, FastFall, and many more!",
+            "BlueDragon is a Minecraft server that strives to produce high-quality, original content. Join for free to explore unique minigames like Paintbrawl, WackyMaze, and more!",
         images: [new URL("/api/og", BASE_PATH)],
     },
     themeColor: "#2792f7",

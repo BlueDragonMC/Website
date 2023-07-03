@@ -9,7 +9,7 @@ export default function Page() {
             <h1 className="text-3xl font-bold">How To Join</h1>
             <ul>
                 <Step number={1}>
-                    Launch Minecraft 1.19.2{" "}
+                    Launch Minecraft 1.20.1{" "}
                     <em>(This is the only version that BlueDragon supports)</em>
                 </Step>
                 <Step number={2}>
