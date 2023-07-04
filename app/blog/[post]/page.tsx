@@ -1,14 +1,13 @@
-import "photoswipe/dist/photoswipe.css";
-import React from "react";
-import MDX from "@/components/mdx/MDX";
+import { getArticles, getFrontMatter } from "@/app/utils/articles";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
+import MDX from "@/components/mdx/MDX";
 import {
     faChevronCircleLeft,
     faChevronCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-import { getArticles, getFrontMatter } from "@/app/utils/articles";
 import { Metadata } from "next";
+import Link from "next/link";
+import "photoswipe/dist/photoswipe.css";
 
 export const dynamic = "force-static";
 
@@ -61,7 +60,6 @@ export default async function Page({
 
     return (
         <main className="prose mx-auto max-w-prose dark:prose-invert">
-            {/* @ts-expect-error Server Component */}
             <MDX dirName="articles" slug={post} />
             <div className="not-prose mt-16 grid w-full grid-cols-1 gap-8 md:grid-cols-2">
                 {prev && (
@@ -88,7 +86,7 @@ export default async function Page({
                             Next
                             <FontAwesomeIcon
                                 icon={faChevronCircleRight}
-                                className="mr-2 h-4 w-4 md:mr-0 md:ml-2"
+                                className="mr-2 h-4 w-4 md:ml-2 md:mr-0"
                             />
                         </p>
                         <p className="font-medium">{next?.[1]?.data?.title}</p>

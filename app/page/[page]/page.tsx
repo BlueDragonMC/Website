@@ -45,7 +45,6 @@ export default async function Page({
 }) {
     return (
         <main className="prose mx-auto max-w-prose dark:prose-invert">
-            {/* @ts-expect-error Server Component */}
             <MDX dirName="static-pages" slug={page} />
         </main>
     );

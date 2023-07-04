@@ -102,6 +102,11 @@ const nextConfig = {
                 permanent: true,
             },
             {
+                source: "/p/about",
+                destination: "/about",
+                permanent: true,
+            },
+            {
                 source: "/discord",
                 destination: "https://discord.gg/3gvSPdW",
                 permanent: false,
