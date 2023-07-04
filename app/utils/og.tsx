@@ -5,8 +5,8 @@ import {
     faClock,
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { unstable_createNodejsStream } from "@vercel/og";
 import { readFile } from "fs/promises";
+import { ImageResponse } from "next/server";
 import { join } from "path";
 import { cwd } from "process";
 
@@ -63,8 +63,8 @@ export async function generate({
             "BlueDragon is a Minecraft server that strives to produce high-quality, original content. Join for free to explore unique minigames like Paintbrawl, WackyMaze, and more!";
     }
 
-    return new Response(
-        (await unstable_createNodejsStream(
+    return new ImageResponse(
+        (
             <div style={{ display: "flex", height: "100%", width: "100%" }}>
                 <div
                     style={{
@@ -190,32 +190,32 @@ export async function generate({
                             "linear-gradient(90deg, #38bdf8, #1d4ed8)",
                     }}
                 />
-            </div>,
-            {
-                debug: false,
-                width: 1200,
-                height: 630,
-                fonts: [
-                    {
-                        name: "Inter",
-                        data: await boldFont,
-                        style: "normal",
-                        weight: 700,
-                    },
-                    {
-                        name: "Inter",
-                        data: await mediumFont,
-                        style: "normal",
-                        weight: 500,
-                    },
-                    {
-                        name: "Inter",
-                        data: await regularFont,
-                        style: "normal",
-                        weight: 400,
-                    },
-                ],
-            }
-        )) as unknown as ReadableStream
+            </div>
+        ),
+        {
+            debug: false,
+            width: 1200,
+            height: 630,
+            fonts: [
+                {
+                    name: "Inter",
+                    data: await boldFont,
+                    style: "normal",
+                    weight: 700,
+                },
+                {
+                    name: "Inter",
+                    data: await mediumFont,
+                    style: "normal",
+                    weight: 500,
+                },
+                {
+                    name: "Inter",
+                    data: await regularFont,
+                    style: "normal",
+                    weight: 400,
+                },
+            ],
+        }
     );
 }

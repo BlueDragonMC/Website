@@ -1,8 +1,10 @@
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import { faCalendar, faUser } from "@fortawesome/free-solid-svg-icons";
+import { readFile } from "fs/promises";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import path from "path";
 import { getPlaiceholder } from "plaiceholder";
 import React from "react";
 import { getArticles, getFrontMatter } from "../utils/articles";
@@ -19,7 +21,6 @@ export default async function Page() {
                 {articles.map((article) => {
                     return (
                         <React.Fragment key={article}>
-                            {/* @ts-expect-error Server Component */}
                             <Article slug={article} />
                         </React.Fragment>
                     );
@@ -33,11 +34,13 @@ async function Article({ slug }: { slug: string }) {
     const frontMatter = (await getFrontMatter("articles", slug)) ?? notFound();
     const data = frontMatter.data;
 
-    let base64, img;
+    let base64, metadata;
     if (data.image) {
-        const placeholder = await getPlaiceholder(data.image);
+        const placeholder = await getPlaiceholder(
+            await readFile(path.join("./public", data.image))
+        );
         base64 = placeholder.base64;
-        img = placeholder.img;
+        metadata = placeholder.metadata;
     }
 
     const created = new Intl.DateTimeFormat(undefined, {
@@ -52,9 +55,9 @@ async function Article({ slug }: { slug: string }) {
                     data.image ? "" : "flex flex-col justify-center"
                 }`}
             >
-                {img && (
+                {metadata && (
                     <Image
-                        src={img}
+                        src={data.image}
                         blurDataURL={base64}
                         placeholder="blur"
                         loading="lazy"

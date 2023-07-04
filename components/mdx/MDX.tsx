@@ -8,8 +8,8 @@ import { notFound } from "next/navigation";
 import { join } from "path";
 import { ComponentPropsWithoutRef, Fragment } from "react";
 import remarkGfm from "remark-gfm";
-import FontAwesomeIcon from "../FontAwesomeIcon";
 import Gallery from "../client/Gallery";
+import FontAwesomeIcon from "../FontAwesomeIcon";
 import styles from "./mdx.module.css";
 
 let header: React.ReactElement[] = [];
@@ -61,7 +61,7 @@ export default async function MDX({
         notFound();
     }
     const source = (await readFile(join(process.cwd(), dirName, p))).toString();
-    const { content, frontmatter } = await compileMDX({
+    const { content, frontmatter } = await compileMDX<Record<string, string>>({
         source: source,
         options: {
             parseFrontmatter: true,

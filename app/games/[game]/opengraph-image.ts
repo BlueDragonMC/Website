@@ -7,7 +7,7 @@ export default async function OG({
 }: {
     params: { game: string };
 }) {
-    const title = decodeURIComponent(game).toLowerCase().replaceAll(/-/g, " ");
+    const title = decodeURIComponent(game).toLowerCase().replace(/-/g, " ");
     const selected = games.find((g) => g.name.toLowerCase() === title);
 
     if (!selected) {

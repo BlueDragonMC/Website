@@ -1,8 +1,8 @@
-import "./globals.css";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { inter } from "./font";
+import Navbar from "@/components/Navbar";
 import { Metadata } from "next";
+import { inter } from "./font";
+import "./globals.css";
 import { BASE_PATH } from "./vars";
 
 export const metadata: Metadata = {
@@ -27,7 +27,6 @@ export const metadata: Metadata = {
         },
         description:
             "BlueDragon is a Minecraft server that strives to produce high-quality, original content. Join for free to explore unique minigames like Paintbrawl, WackyMaze, and more!",
-        images: [new URL("/api/og", BASE_PATH)],
     },
     themeColor: "#2792f7",
     colorScheme: "dark light",
