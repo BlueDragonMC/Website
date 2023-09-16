@@ -13,7 +13,7 @@ I have been working on a partial rewrite to our backend systems that will hopefu
 
 ### How did our system work before?
 
-For the time being, BlueDragon is hosted on a single basemetal node, which gives us great flexibility over how we run our server. Every game server was run in its own [Docker container](https://docker.com). Containers are a very lightweight way to separate applications from each other; each server gets its own container and has its own overlay file system and ports, and containers can network with each other using their names.
+For the time being, BlueDragon is hosted on a single baremetal node, which gives us great flexibility over how we run our server. Every game server was run in its own [Docker container](https://docker.com). Containers are a very lightweight way to separate applications from each other; each server gets its own container and has its own overlay file system and ports, and containers can network with each other using their names.
 
 However, using containers alone has some issues. What happens if a container goes down? How does the [proxy](https://velocitypowered.com/) know which servers are online and how to connect to them? How do we update our servers?
 
