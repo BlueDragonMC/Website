@@ -1,15 +1,15 @@
 import ServerImage from "@/app/blog/[post]/components/ServerImage";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faClock, faPencil, faUser } from "@fortawesome/free-solid-svg-icons";
-import { readdir, readFile } from "fs/promises";
+import { readFile, readdir } from "fs/promises";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { join } from "path";
 import { ComponentPropsWithoutRef, Fragment } from "react";
 import remarkGfm from "remark-gfm";
-import Gallery from "../client/Gallery";
 import FontAwesomeIcon from "../FontAwesomeIcon";
+import Gallery from "../client/Gallery";
 import styles from "./mdx.module.css";
 
 let header: React.ReactElement[] = [];

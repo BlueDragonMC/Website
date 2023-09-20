@@ -2,7 +2,6 @@
 const nextConfig = {
     reactStrictMode: true,
     experimental: {
-        appDir: true,
         serverComponentsExternalPackages: [
             "gray-matter",
             "mdast-util-find-and-replace",

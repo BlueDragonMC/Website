@@ -4,7 +4,7 @@ import { getArticles } from "@/app/utils/articles";
 import { BASE_PATH, MONGO_HOSTNAME } from "@/app/vars";
 import { GrayMatterFile } from "gray-matter";
 import { fromMarkdown } from "mdast-util-from-markdown";
-import { Node } from "mdast-util-from-markdown/lib";
+import type { Nodes } from "mdast-util-from-markdown/lib";
 import { Document, MongoClient, WithId } from "mongodb";
 import { EnumChangefreq, Img, SitemapItemLoose, SitemapStream } from "sitemap";
 import { Readable } from "stream";
@@ -119,7 +119,7 @@ function getImages(file: GrayMatterFile<Buffer>): Img[] {
     return traverse(ast);
 }
 
-function traverse(node: Node): Img[] {
+function traverse(node: Nodes): Img[] {
     const images: Img[] = [];
     if ("children" in node) {
         for (const child of node.children) {

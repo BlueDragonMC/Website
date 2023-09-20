@@ -15,7 +15,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN node -v && npm run lint
 RUN --mount=type=cache,target=/app/.next/cache npm run build
 
 # Production image, copy all the files and run next
