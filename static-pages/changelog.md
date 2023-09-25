@@ -3,21 +3,32 @@ title: Changelog
 description: A list of everything new on the server, all in one place.
 author: BlueDragon Team
 created: 2022-06-27
-modified: 2023-07-03
+modified: 2023-09-23
 ---
+
+## 2023-09-23
+
+#### Server
+
+- Made BedWars wool appear in the shop as your team's color instead of changing its color when placed in the world
 
 ## 2023-07-03
 
 #### Server
+
 - Added [Dominate](/blog/2023-07-03-dominate-1-20)
 - Added tic-tac-toe minigame to the lobby
 - Updated to 1.20.1
+
 #### Website
+
 - Created a new homepage design featuring Dominate.
 - Added Dominate game and leaderboards.
 
 ### 2023-06-12
+
 #### Server
+
 - Fixed bug where fall damage wasn't always working
 - Fixed bug where chat was not confined to one instance
 
