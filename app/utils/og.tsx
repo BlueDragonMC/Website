@@ -6,7 +6,7 @@ import {
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { readFile } from "fs/promises";
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 import { join } from "path";
 import { cwd } from "process";
 

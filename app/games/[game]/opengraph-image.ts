@@ -16,7 +16,7 @@ export default async function OG({
 
     return generate({
         title: selected.name,
-        subtitle: "BlueDragon Minecraft minigame",
+        subtitle: "A Minecraft minigame on BlueDragon",
         ogPreview: selected.description,
     });
 }

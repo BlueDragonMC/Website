@@ -1,9 +1,9 @@
 import Step from "@/components/Step";
+import { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import "photoswipe/dist/photoswipe.css";
 import { Game, games } from "../games";
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import { Metadata } from "next";
 import GalleryComponent from "./GalleryComponent";
 
 export function generateMetadata({
@@ -25,11 +25,6 @@ export function generateMetadata({
                 absolute: `${selected.name} | BlueDragon`,
             },
             description: selected.description,
-            images: [
-                // ...(selected.images?.map(
-                //     (img) => new URL(img.src, BASE_PATH)
-                // ) ?? []),
-            ],
         },
     };
 }
