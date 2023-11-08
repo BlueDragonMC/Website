@@ -3,8 +3,16 @@ title: Changelog
 description: A list of everything new on the server, all in one place.
 author: BlueDragon Team
 created: 2022-06-27
-modified: 2023-09-23
+modified: 2023-11-07
 ---
+
+## 2023-11-07
+
+#### Server
+
+- Added clickable links to the `/version` command
+- Added some status information to the sidebar in most games ("Waiting for players...", "Starting soon...", etc.)
+- Fixed an issue where players were automatically re-routed to a different server instead of being kicked
 
 ## 2023-09-23
 
