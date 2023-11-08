@@ -1,6 +1,5 @@
 import { getLeaderboard } from "@/app/leaderboards/leaderboards";
-import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { client } from "../../mongo";
 
 export const dynamic = "force-dynamic";
@@ -11,15 +10,6 @@ export async function fetchPosition(
     stat: string,
     sortDirection: 1 | -1 = -1
 ) {
-    const filter: { [key: string]: { [key: string]: any } } = {};
-    const sort: { [key: string]: number } = {};
-
-    filter[`statistics.${stat}`] = {
-        $exists: true,
-    };
-
-    sort[`statistics.${stat}`] = sortDirection;
-
     const pos = await (
         await client
     )
@@ -27,11 +17,17 @@ export async function fetchPosition(
         .collection("players")
         .aggregate([
             {
-                $match: filter,
+                $match: {
+                    [`statistics.${stat}`]: {
+                        $exists: true,
+                    },
+                },
             },
             {
                 $setWindowFields: {
-                    sortBy: sort,
+                    sortBy: {
+                        [`statistics.${stat}`]: sortDirection,
+                    },
                     output: {
                         position: {
                             $documentNumber: {},
