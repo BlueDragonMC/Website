@@ -3,8 +3,23 @@ title: Changelog
 description: A list of everything new on the server, all in one place.
 author: BlueDragon Team
 created: 2022-06-27
-modified: 2023-11-07
+modified: 2023-11-09
 ---
+
+## 2023-11-09
+
+#### Server
+
+- Added a new WackyMaze map: Orbit
+
+## 2023-11-08
+
+#### Server
+
+- Reworked our internal configuration system to make it easier to add more customization to specific maps
+- Rewrote our internal module resolution/dependency system to make it more robust
+- Added a new Burst Gun to Paintbrawl
+- Fixed an issue in Paintbrawl where paintballs would be stopped by powerups
 
 ## 2023-11-07
 
@@ -19,6 +34,12 @@ modified: 2023-11-07
 #### Server
 
 - Made BedWars wool appear in the shop as your team's color instead of changing its color when placed in the world
+
+## 2023-07-26
+
+#### Server
+
+- Added three new block sets to FastFall: Desert, Cave, and Taiga
 
 ## 2023-07-03
 
