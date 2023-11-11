@@ -6,6 +6,14 @@ created: 2022-06-27
 modified: 2023-11-09
 ---
 
+## 2023-11-10
+
+#### Server
+
+- Fixed wooden doors in all games
+- Fixed an issue in PvPMaster where the scoreboard did not update when players' armor levels changed
+- Moved two spawn points in SkyFall to their correct locations
+
 ## 2023-11-09
 
 #### Server
