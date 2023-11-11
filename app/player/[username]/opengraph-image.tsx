@@ -1,4 +1,4 @@
-import { fetchPlayer } from "@/app/api/player/route";
+import { fetchPlayer } from "@/app/api/player/playerUtils";
 import { generate } from "@/app/utils/og";
 import { notFound } from "next/navigation";
 

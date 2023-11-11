@@ -1,4 +1,4 @@
-import { fetchLeaderboard } from "@/app/api/leaderboard/route";
+import { fetchLeaderboard } from "@/app/api/leaderboard/leaderboardUtils";
 import Step from "@/components/Step";
 import { Metadata } from "next";
 import Link from "next/link";

@@ -1,6 +1,6 @@
 import { getLeaderboard } from "@/app/leaderboards/leaderboards";
 import { NextRequest, NextResponse } from "next/server";
-import { client } from "../mongo";
+import { fetchLeaderboard } from "./leaderboardUtils";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 300; // 5 minutes
@@ -14,37 +14,6 @@ export type LeaderboardResponse = {
         value: number;
     }>;
 };
-
-export async function fetchLeaderboard(
-    stat: string,
-    sort: 1 | -1,
-    limit: number = 50
-) {
-    const filter: { [key: string]: { [key: string]: any } } = {};
-
-    filter[`statistics.${stat}`] = {
-        $exists: true,
-    };
-
-    return (
-        // Get a list of MongoDB documents matching the selection
-        (
-            await (
-                await client
-            )
-                .db("bluedragon")
-                .collection("players")
-                .find(filter)
-                .sort("statistics." + stat, sort)
-                .limit(limit)
-                .toArray()
-        ).map((row) => ({
-            uuid: row._id.toString(),
-            username: row["username"],
-            value: row["statistics"][stat],
-        }))
-    );
-}
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;

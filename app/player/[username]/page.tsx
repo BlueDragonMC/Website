@@ -1,20 +1,20 @@
+import { fetchPosition } from "@/app/api/leaderboard/leaderboardUtils";
+import { fetchPlayer } from "@/app/api/player/playerUtils";
 import {
     format,
     getLeaderboard,
     leaderboards,
 } from "@/app/leaderboards/leaderboards";
+import FontAwesomeIcon from "@/components/FontAwesomeIcon";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
+import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import en from "javascript-time-ago/locale/en";
 import { PropsWithChildren } from "react";
 import RelativeDate from "./components/RelativeDate";
-import FontAwesomeIcon from "@/components/FontAwesomeIcon";
-import { Metadata } from "next";
-import { fetchPlayer } from "@/app/api/player/route";
-import { fetchPosition } from "@/app/api/leaderboard/position/route";
-import Image from "next/image";
 
 TimeAgo.addDefaultLocale(en);
 
@@ -161,7 +161,7 @@ export default async function Player({
             <Statistic name="Owned Cosmetics" value={info.cosmeticCount} />
             {leaderboards.map((category) => (
                 <div key={category.mode ?? category.name}>
-                    <h1 className="mt-6 mb-2 text-center text-2xl font-bold">
+                    <h1 className="mb-2 mt-6 text-center text-2xl font-bold">
                         {category.mode
                             ? `${category.name}: ${category.mode}`
                             : category.name}
