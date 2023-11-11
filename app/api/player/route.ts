@@ -38,10 +38,7 @@ export async function fetchPlayer(username: string) {
     });
 
     const xp = doc["experience"] as number;
-    const level =
-        xp < 45000
-            ? Math.log(xp / 1000 + 1) / Math.log(1.2) + 1
-            : xp / 10000 + 18;
+    const level = Math.sqrt(xp / 20);
 
     return {
         username: doc["username"],
