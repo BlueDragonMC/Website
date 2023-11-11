@@ -13,6 +13,7 @@ modified: 2023-11-09
 - Fixed wooden doors in all games
 - Fixed an issue in PvPMaster where the scoreboard did not update when players' armor levels changed
 - Moved two spawn points in SkyFall to their correct locations
+- Changed the leveling formula to be based on a square-root curve instead of logarithmic growth
 
 ## 2023-11-09
 

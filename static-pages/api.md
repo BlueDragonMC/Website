@@ -66,7 +66,7 @@ https://bluedragonmc.com/api/player?username=wsad_
 
 - `firstLogin` may not be present on some users.
 - `firstLogin` and `lastLogin` are measured as [Unix timestamps](https://en.wikipedia.org/wiki/Unix_time).
-- A player's `level` is directly based on their `xp`. See the formula [here](/github/Website/blob/cd9645154f0c41bf3d92cbf237bb4affa830aa3c/pages/api/player.ts#L35-L38).
+- A player's `level` is directly based on their `xp`. See the formula [here](/github/Website/blob/39261906168497c7f9cbc4a13155fe45420197c3/pages/api/player.ts#L41).
 - The `meta.prefix` and `meta.rankcolor` may not be present on users without a rank.
 - If a player has not logged in to BlueDragon yet, the API will return a `404` error with the text `"Not found"`.
 
