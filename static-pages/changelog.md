@@ -6,6 +6,12 @@ created: 2022-06-27
 modified: 2023-11-09
 ---
 
+## 2023-12-03
+
+#### Server
+
+- Fixed some desync issues between the Minecraft servers and the matchmaking/player tracking service
+
 ## 2023-11-10
 
 #### Server
