@@ -10,6 +10,7 @@ modified: 2023-11-09
 
 #### Server
 
+- Fixed an issue where absorption would prevent players from properly taking damage
 - Fixed some desync issues between the Minecraft servers and the matchmaking/player tracking service
 
 ## 2023-11-10
