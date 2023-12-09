@@ -6,6 +6,11 @@ const nextConfig = {
             "gray-matter",
             "mdast-util-find-and-replace",
         ],
+        outputFileTracingIncludes: {
+            // This is a workaround to force nft to trace Sharp binaries,
+            // which will cause them to be included in the Docker image.
+            "/": ["./node_modules/@img/**"],
+        },
     },
     output: "standalone",
     images: {
