@@ -72,7 +72,44 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <head />
+            <head>
+                <link
+                    href="/rss/blog/atom.xml"
+                    type="application/atom+xml"
+                    rel="alternate"
+                    title="Atom Blog feed"
+                />
+                <link
+                    href="/rss/blog/feed.xml"
+                    type="application/rss+xml"
+                    rel="alternate"
+                    title="RSS Blog feed"
+                />
+                <link
+                    href="/rss/blog/atom.xml"
+                    type="application/json"
+                    rel="alternate"
+                    title="JSON Blog feed"
+                />
+                <link
+                    href="/rss/changelog/atom.xml"
+                    type="application/atom+xml"
+                    rel="alternate"
+                    title="Atom Changelog feed"
+                />
+                <link
+                    href="/rss/changelog/feed.xml"
+                    type="application/rss+xml"
+                    rel="alternate"
+                    title="RSS Changelog feed"
+                />
+                <link
+                    href="/rss/changelog/atom.xml"
+                    type="application/json"
+                    rel="alternate"
+                    title="JSON Changelog feed"
+                />
+            </head>
             <body className={`min-h-screen ${inter.className}`}>
                 <Navbar />
                 <div className={"min-h-screen px-2 pt-4 md:px-10"}>

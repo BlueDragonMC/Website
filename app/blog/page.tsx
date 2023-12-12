@@ -1,5 +1,5 @@
 import FontAwesomeIcon from "@/components/FontAwesomeIcon";
-import { faCalendar, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faRss, faUser } from "@fortawesome/free-solid-svg-icons";
 import { readFile } from "fs/promises";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,6 +17,20 @@ export default async function Page() {
     return (
         <main>
             <h1 className="mb-3 text-3xl font-bold">Blog Posts</h1>
+            <p className="my-4">
+                <Link href="/rss/blog/feed.xml" target="_blank">
+                    <FontAwesomeIcon icon={faRss} className="mr-1" />
+                    RSS
+                </Link>{" "}
+                &middot;{" "}
+                <Link href="/rss/blog/atom.xml" target="_blank">
+                    Atom
+                </Link>{" "}
+                &middot;{" "}
+                <Link href="/rss/blog/feed.json" target="_blank">
+                    JSON
+                </Link>
+            </p>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                 {articles.map((article) => {
                     return (

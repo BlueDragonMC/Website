@@ -1,6 +1,11 @@
 import ServerImage from "@/app/blog/[post]/components/ServerImage";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faClock, faPencil, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+    faClock,
+    faPencil,
+    faRss,
+    faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { readFile, readdir } from "fs/promises";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Link from "next/link";
@@ -44,6 +49,7 @@ const components = {
             );
         }
     },
+    FontAwesomeIcon,
 };
 
 export default async function MDX({
@@ -67,6 +73,9 @@ export default async function MDX({
             parseFrontmatter: true,
             mdxOptions: {
                 remarkPlugins: [remarkGfm],
+            },
+            scope: {
+                faRss,
             },
         },
         /* @ts-expect-error Types don't match because one of the components is a Server Component, so it's an async function. */

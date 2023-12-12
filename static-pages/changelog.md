@@ -6,6 +6,14 @@ created: 2022-06-27
 modified: 2023-11-09
 ---
 
+<p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
+
+## 2023-12-11
+
+#### Website
+
+- Added an RSS feed to the blog and changelog
+
 ## 2023-12-03
 
 #### Server
@@ -41,7 +49,7 @@ modified: 2023-11-09
 
 #### Server
 
-- Added clickable links to the `/version` command
+- Added clickable as to the `/version` command
 - Added some status information to the sidebar in most games ("Waiting for players...", "Starting soon...", etc.)
 - Fixed an issue where players were automatically re-routed to a different server instead of being kicked
 

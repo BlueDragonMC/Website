@@ -22,12 +22,12 @@ export default function GalleryComponent({ selected }: { selected: Game }) {
                                 src={img}
                                 placeholder="blur"
                                 loading="lazy"
-                                className="mr-4 mb-4 inline cursor-pointer rounded-md"
+                                className="mb-4 mr-4 inline cursor-pointer rounded-md"
                                 alt="Gameplay screenshot"
                                 width={img.width / 4}
                                 height={img.height / 4}
                                 ref={
-                                    ref as React.MutableRefObject<HTMLImageElement>
+                                    ref as unknown as React.MutableRefObject<HTMLImageElement>
                                 }
                                 onClick={open}
                             />

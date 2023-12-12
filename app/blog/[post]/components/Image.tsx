@@ -41,7 +41,9 @@ export default function Image({
                     alt={alt}
                     width={width > 1000 ? width / 2 : width}
                     height={width > 1000 ? height / 2 : height}
-                    ref={ref as React.MutableRefObject<HTMLImageElement>}
+                    ref={
+                        ref as unknown as React.MutableRefObject<HTMLImageElement>
+                    }
                     onClick={open}
                 />
             )}
