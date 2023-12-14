@@ -6,7 +6,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import path from "path";
 import { getPlaiceholder } from "plaiceholder";
-import React from "react";
 import { getArticles, getFrontMatter } from "../utils/articles";
 
 export const dynamic = "force-static";
@@ -15,7 +14,7 @@ export default async function Page() {
     const articles = (await getArticles()).map((article) => article[0]);
 
     return (
-        <main>
+        <main className="mx-auto max-w-prose px-4">
             <h1 className="mb-3 text-3xl font-bold">Blog Posts</h1>
             <p className="my-4">
                 <Link href="/rss/blog/feed.xml" target="_blank">
@@ -31,13 +30,9 @@ export default async function Page() {
                     JSON
                 </Link>
             </p>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="flex flex-col gap-10">
                 {articles.map((article) => {
-                    return (
-                        <React.Fragment key={article}>
-                            <Article slug={article} />
-                        </React.Fragment>
-                    );
+                    return <Article slug={article} key={article} />;
                 })}
             </div>
         </main>
@@ -64,11 +59,7 @@ async function Article({ slug }: { slug: string }) {
 
     return (
         <Link href={"/blog/" + slug}>
-            <div
-                className={`group rounded-lg bg-gray-200 shadow-lg transition-all hover:bg-gray-300 hover:shadow-2xl dark:bg-neutral-900 dark:hover:bg-neutral-800 md:h-[26rem] ${
-                    data.image ? "" : "flex flex-col justify-center"
-                }`}
-            >
+            <div className="group rounded-lg bg-gray-200 shadow-lg transition-all hover:bg-gray-300 hover:shadow-2xl dark:bg-neutral-900 dark:hover:bg-neutral-800">
                 {metadata && (
                     <Image
                         src={data.image}
@@ -78,8 +69,8 @@ async function Article({ slug }: { slug: string }) {
                         alt={data["image-alt"] ?? data.title}
                         width={1024}
                         height={0}
-                        className="h-48 w-full rounded-t-lg object-cover transition-all group-hover:brightness-75"
-                    ></Image>
+                        className="h-24 w-full rounded-t-lg object-cover transition-all group-hover:brightness-75"
+                    />
                 )}
                 <div className="p-3">
                     <h1 className="mb-auto text-2xl font-medium">

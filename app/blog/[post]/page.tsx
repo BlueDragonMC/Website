@@ -61,7 +61,7 @@ export default async function Page({
     return (
         <main className="prose mx-auto max-w-prose dark:prose-invert">
             <MDX dirName="articles" slug={post} />
-            <div className="not-prose mt-16 grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+            <div className="not-prose mt-16 grid w-full grid-cols-1 gap-8 print:hidden md:grid-cols-2">
                 {prev && (
                     <Link
                         href={"/blog/" + prev[0]}

@@ -1,18 +1,14 @@
-import Link from "next/link";
-import FontAwesomeIcon from "./FontAwesomeIcon";
 import {
+    faDiscord,
     faGithub,
     faTwitter,
-    faDiscord,
 } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
+import FontAwesomeIcon from "./FontAwesomeIcon";
 
 export default function Footer() {
     return (
-        <footer
-            className={
-                "min-h-64 relative z-40 mt-36 grid grid-cols-2 gap-2 bg-neutral-300 px-4 py-8 dark:bg-neutral-900 md:grid-cols-3 md:gap-8 lg:grid-cols-6"
-            }
-        >
+        <footer className="min-h-64 relative z-40 mt-36 grid grid-cols-2 gap-2 bg-neutral-300 px-4 py-8 dark:bg-neutral-900 print:hidden md:grid-cols-3 md:gap-8 lg:grid-cols-6">
             <div className="col-span-2 md:col-span-3 lg:col-span-2">
                 <p className={"text-2xl font-bold"}>
                     <Link href="/">BlueDragon</Link>
