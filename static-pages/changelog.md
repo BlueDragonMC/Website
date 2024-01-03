@@ -8,6 +8,12 @@ modified: 2023-11-09
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
 
+## 2023-12-31
+
+#### Server
+
+- Fixed a few bugs with the party system
+
 ## 2023-12-11
 
 #### Website
