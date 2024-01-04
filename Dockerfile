@@ -9,7 +9,7 @@ WORKDIR /app
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json ./
 RUN npm ci
-RUN npm install --os=linuxmusl --cpu=x64 sharp
+RUN npm install --os=linux --libc=musl --cpu=x64 sharp
 
 # Rebuild the source code only when needed
 FROM base AS builder
