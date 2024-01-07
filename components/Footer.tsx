@@ -39,7 +39,13 @@ export default function Footer() {
                     Player Stats
                 </Link>
                 <Link href="/page/api" className="font-medium underline">
-                    API
+                    Player API
+                </Link>
+                <Link
+                    href="https://developer.bluedragonmc.com"
+                    className="font-medium underline"
+                >
+                    Developer Docs
                 </Link>
             </div>
             <div className="flex flex-col leading-10">
