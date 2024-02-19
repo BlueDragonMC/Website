@@ -3,10 +3,17 @@ title: Changelog
 description: A list of everything new on the server, all in one place.
 author: BlueDragon Team
 created: 2022-06-27
-modified: 2023-11-09
+modified: 2024-02-18
 ---
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
+
+## 2024-02-18
+
+#### Server
+
+- Fixed a bug with `/p warp` where it incorrectly considered some games full and prevented the leader from warping
+- Fixed a bug with `/p list` where no chat feedback was given when the player was not in a party
 
 ## 2023-12-31
 
