@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { leaderboards } from "./leaderboards";
-import { games } from "../games/games";
-import { Fragment } from "react";
 import Card from "@/components/Card";
-import Image from "next/image";
+import Link from "next/link";
+import { Fragment } from "react";
+import { games } from "../games/games";
+import { leaderboards } from "./leaderboards";
 
 export default function Page() {
     return (
@@ -14,7 +13,7 @@ export default function Page() {
                 Click a leaderboard below to view the top players in a category.
             </p>
 
-            <main className="mt-8 grid grid-cols-1 gap-8 overflow-x-auto md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <main className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {leaderboards.map((category, i) => {
                     const game = games.find(
                         (game) => game.name === category.name
