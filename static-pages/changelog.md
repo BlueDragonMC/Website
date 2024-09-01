@@ -3,10 +3,20 @@ title: Changelog
 description: A list of everything new on the server, all in one place.
 author: BlueDragon Team
 created: 2022-06-27
-modified: 2024-02-18
+modified: 2024-08-31
 ---
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
+
+## 2024-08-31
+
+#### Server
+
+- Updated to 1.21
+- Added a new game: **HueHunters**! This is our submission to the 2024 Minestom Game Jam under the theme "Color changes everything."
+- Fixed a bug with Skyfall where players didn't take damage from the void
+- Fixed a bug where the message sent when the party leader disconnects wasn't translated properly
+- Fixed a bug with the `/party` command where players on other servers couldn't be found
 
 ## 2024-06-06
 
