@@ -17,6 +17,7 @@ modified: 2024-08-31
 - Fixed a bug with Skyfall where players didn't take damage from the void
 - Fixed a bug where the message sent when the party leader disconnects wasn't translated properly
 - Fixed a bug with the `/party` command where players on other servers couldn't be found
+- Fixed a bug where players' natural regeneration rates would be increased after playing multiple games
 
 ## 2024-06-06
 
