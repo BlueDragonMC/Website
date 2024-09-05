@@ -8,6 +8,14 @@ modified: 2024-08-31
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
 
+## 2024-09-03
+
+#### Server
+
+- Fixed a bug where player knockback was incorrect in Dominate and Paintbrawl
+- Fixed a bug where blocks like short grass, tall grass, and leaves would drop in item form when broken
+- Fixed a bug where players would be invisible to others after leaving HueHunters
+
 ## 2024-08-31
 
 #### Server
