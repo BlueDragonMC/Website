@@ -2,13 +2,15 @@ import { StaticImageData } from "next/image";
 
 // Images are statically imported so that they can have automatically-generated blur data URLs during the loading phase.
 // For more info: https://nextjs.org/docs/api-reference/next/image#blurdataurl
+import huehunters1 from "@/public/games/huehunters/huehunters-1.png";
+import huehunters2 from "@/public/games/huehunters/huehunters-2.png";
+import huehunters3 from "@/public/games/huehunters/huehunters-3.png";
+
 import dominate1 from "@/public/games/dominate/dominate-1.png";
-import dominate2 from "@/public/games/dominate/dominate-2.png";
 import dominate3 from "@/public/games/dominate/dominate-3.png";
 import dominate4 from "@/public/games/dominate/dominate-4.png";
 import dominate5 from "@/public/games/dominate/dominate-5.png";
 import dominate6 from "@/public/games/dominate/dominate-6.png";
-
 
 import paintbrawl1 from "@/public/games/paintbrawl/paintbrawl-1.png";
 import paintbrawl2 from "@/public/games/paintbrawl/paintbrawl-2.png";
@@ -62,9 +64,9 @@ import pvpmaster3 from "@/public/games/pvpmaster/pvpmaster-3.png";
 import pvpmaster4 from "@/public/games/pvpmaster/pvpmaster-4.png";
 import pvpmaster5 from "@/public/games/pvpmaster/pvpmaster-5.png";
 
+import lobby3 from "@/public/games/lobby/lobby-3.png";
 import lobby5 from "@/public/games/lobby/lobby-5.png";
 import lobby6 from "@/public/games/lobby/lobby-6.png";
-import lobby3 from "@/public/games/lobby/lobby-3.png";
 import lobby7 from "@/public/games/lobby/lobby-7.png";
 import lobby8 from "@/public/games/lobby/lobby-8.png";
 
@@ -77,6 +79,28 @@ export type Game = {
 
 export const games: Array<Game> = [
     {
+        name: "HueHunters",
+        images: [huehunters1, huehunters2, huehunters3],
+        description: "A hide-and-seek minigame with an X-ray twist.",
+        steps: {
+            Hiders: [
+                "Spawn in a random location.",
+                "Right click with the scaffolding item in your hotbar to disguise as a block.",
+                "Evade seekers by jumping through small holes and blending in with surrounding blocks.",
+                "When time runs out, the hiders win!",
+            ],
+            Hunters: [
+                "Make blocks disappear by holding an item that matches their color.",
+                "Find the hiders among piles of colored blocks and chase them down.",
+                "When all hiders are found before the time runs out, the seekers win!",
+            ],
+            "Hunter's Helpers": [
+                "When a hider is found, they become a Hunter's Helper.",
+                "Helpers can tag hiders, making them glow for hunters, but they cannot deal damage.",
+            ],
+        },
+    },
+    {
         name: "Dominate",
         images: [dominate1, dominate3, dominate4, dominate5, dominate6],
         description:
@@ -85,8 +109,8 @@ export const games: Array<Game> = [
             "Spawn with your teammates and select a kit.",
             "Stand on a control point to capture it and start earning points for your team.",
             "Stand on opponents' points to retake them.",
-            "The first team to reach 1000 points wins!"
-        ]
+            "The first team to reach 1000 points wins!",
+        ],
     },
     {
         name: "Paintbrawl",
@@ -104,8 +128,8 @@ export const games: Array<Game> = [
             "Hit your enemies to earn points, or hit the ground to paint it your color.",
             "Avoid stepping in another team's paint - this will damage you.",
             "Earn one point for every heart of damage dealt, and a bonus five points for each kill.",
-            "The first player to reach 60 points is the winner!"
-        ]
+            "The first player to reach 60 points is the winner!",
+        ],
     },
     {
         name: "Infinijump",

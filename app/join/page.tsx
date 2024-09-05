@@ -5,11 +5,11 @@ export default function Page() {
     const emphasis = "text-green-500 dark:text-amber-500 font-bold";
 
     return (
-        <main>
+        <main className="mx-auto mt-10 max-w-prose">
             <h1 className="text-3xl font-bold">How To Join</h1>
             <ul>
                 <Step number={1}>
-                    Launch Minecraft 1.20.1{" "}
+                    Launch Minecraft 1.21{" "}
                     <em>(This is the only version that BlueDragon supports)</em>
                 </Step>
                 <Step number={2}>

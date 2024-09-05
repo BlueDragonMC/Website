@@ -1,18 +1,33 @@
 export const leaderboards: Array<Category> = [
     {
+        name: "HueHunters",
+        leaderboards: [
+            {
+                name: "Most Wins",
+                statName: "Wins",
+                stat: "game_huehunters_wins",
+            },
+            {
+                name: "Most Kills",
+                statName: "Kills",
+                stat: "game_huehunters_kills",
+            },
+        ],
+    },
+    {
         name: "Dominate",
         leaderboards: [
             {
                 name: "Most Wins",
                 statName: "Wins",
-                stat: "game_dominate_wins"
+                stat: "game_dominate_wins",
             },
             {
                 name: "Most Kills",
                 statName: "Kills",
-                stat: "game_dominate_kills"
-            }
-        ]
+                stat: "game_dominate_kills",
+            },
+        ],
     },
     {
         name: "Paintbrawl",
