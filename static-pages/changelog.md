@@ -8,6 +8,20 @@ modified: 2024-08-31
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
 
+## 2024-09-14
+
+#### Server
+
+- Fixed a bug where game servers occasionally hang after a game ends, causing players to timeout until the server restarts
+- Fixed a bug in HueHunters where Hunters' Helpers were not able to damage hiders who were snapped to their current block
+
+## 2024-09-07
+
+#### Server
+
+- Fixed a bug in BedWars where breaking one half of a bed would not automatically break the other half
+- Fixed a bug where item generators' countdown displays were out of sync with their actual item drop timers
+
 ## 2024-09-03
 
 #### Server
