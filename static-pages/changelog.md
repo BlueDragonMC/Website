@@ -8,6 +8,33 @@ modified: 2024-08-31
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
 
+## 2024-12-28
+
+#### Server
+
+- Added HueHunters X-ray sound cosmetics
+- Added borders to all Lobby menus
+
+## 2024-12-24
+
+#### Server
+
+- Fixed the `/p warp` command
+- Fixed an issue where players would get stuck on the "Loading terrain" screen after trying to join a game
+- Added more details to the map selector GUI in the Lobby
+
+## 2024-12-23
+
+#### Server
+
+- Added party Marathon feature
+  - To start a Marathon, type `/party marathon start <minutes>`, with `<minutes>` being the duration of the Marathon.
+  - During a Marathon, when players earn coins, they gain points on a leaderboard.
+  - At the end of the Marathon, the player with the most coins earned wins!
+- Added borders to the cosmetics GUIs
+- Revamped the game menus in the Lobby and improved the back buttons
+- Fixed a bug in Infinijump on Race mode where players respawned facing the wrong direction and at the edge of the block
+
 ## 2024-09-14
 
 #### Server
