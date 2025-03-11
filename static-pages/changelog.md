@@ -8,6 +8,18 @@ modified: 2024-08-31
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
 
+## 2025-03-10
+
+#### Server
+
+- Updated to Minecraft 1.21.4
+- Greatly improved the accuracy of all projectiles thanks to [AtlasProjectiles](https://github.com/AtlasEngineCa/AtlasProjectiles)
+
+#### Paintbrawl
+
+- Removed the slime block jump cooldown
+- Paintballs can now go through portals
+
 ## 2024-12-28
 
 #### Server
@@ -33,7 +45,7 @@ modified: 2024-08-31
   - At the end of the Marathon, the player with the most coins earned wins!
 - Added borders to the cosmetics GUIs
 - Revamped the game menus in the Lobby and improved the back buttons
-- Fixed a bug in Infinijump on Race mode where players respawned facing the wrong direction and at the edge of the block
+- Fixed a bug in Infinijump on Race mode where players respawned at the edge of the block facing the wrong direction
 
 ## 2024-09-14
 
