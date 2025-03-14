@@ -8,6 +8,12 @@ modified: 2024-08-31
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
 
+## 2025-03-13
+
+#### SkyWars
+
+- Fixed a bug that made chests at the middle island have the same loot as those on the outer islands
+
 ## 2025-03-10
 
 #### Server
@@ -19,6 +25,10 @@ modified: 2024-08-31
 
 - Removed the slime block jump cooldown
 - Paintballs can now go through portals
+
+#### HueHunters
+
+- Using the pick block key (middle click by default) now allows seekers to pick matching colors from the world
 
 ## 2024-12-28
 
