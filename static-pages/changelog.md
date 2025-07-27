@@ -8,6 +8,59 @@ modified: 2024-08-31
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
 
+## 2025-07-11
+
+#### Server
+
+- Update to Minecraft 1.21.7
+
+## 2025-05-26
+
+#### Lobby
+
+- Players can now punch a game NPC to Quick Join that game
+- Gave everyone permission to use the map selector
+
+#### HueHunters
+
+- Fixed a bug where hiders that were snapped to a block wouldn't glow when attacked by a hunter's helper
+
+#### FastFall
+
+- Players can now punch other players, causing knockback and dealing no damage
+
+## 2025-05-14
+
+#### BedWars
+
+- Made purchases of armor and swords replace old items
+- Fixed a bug where players could not purchase items from the shop using items in their offhand
+
+## 2025-05-07
+
+#### Server
+
+- Fixed GUIs not responding to clicks after being closed and reopened
+
+#### BedWars
+
+- Killing a player now only gives the killer items obtainable from the forge and other item generators, including iron and gold ingots, diamonds, and emeralds
+
+## 2025-05-03
+
+#### Server
+
+- Fixed fireballs not exploding on impact
+- Added a cooldown to ender pearls
+- Fixed thrown ender pearls not being removed on death
+- Fixed arrow damage and flame enchantment and remove arrows after they have been on the ground for 60 seconds
+
+## 2025-04-01
+
+#### Server
+
+- Updated to Minecraft 1.21.5
+
 ## 2025-03-13
 
 #### SkyWars
