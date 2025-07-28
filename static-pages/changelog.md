@@ -8,11 +8,18 @@ modified: 2024-08-31
 
 <p className="my-4"><a href="/rss/changelog/feed.xml" target="_blank"><FontAwesomeIcon icon={faRss} className="mr-1" />RSS</a> &middot; <a href="/rss/changelog/atom.xml" target="_blank">Atom</a> &middot; <a href="/rss/changelog/feed.json" target="_blank">JSON</a></p>
 
+## 2025-07-28
+
+#### Server
+
+- Updated to Minecraft 1.21.8
+- Added the ability to queue up Jukebox songs
+
 ## 2025-07-11
 
 #### Server
 
-- Update to Minecraft 1.21.7
+- Updated to Minecraft 1.21.7
 
 ## 2025-05-26
 
@@ -66,6 +73,14 @@ modified: 2024-08-31
 #### SkyWars
 
 - Fixed a bug that made chests at the middle island have the same loot as those on the outer islands
+
+#### FastFall
+
+- Removed fall damage when landing on slime blocks while sneaking
+
+#### Server
+
+- Improved fall damage mechanics to behave more closely to vanilla Minecraft, especially when landing on corners or edges of blocks
 
 ## 2025-03-10
 
