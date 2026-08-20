@@ -1,0 +1,37 @@
+---
+import Step from "../components/Step.astro";
+import Layout from "../layouts/Layout.astro";
+
+const emphasis = "text-green-500 dark:text-amber-500 font-bold";
+---
+
+<Layout ogImage={`${Astro.site}join/opengraph-image.png`}>
+  <main class="mx-auto mt-10 max-w-prose">
+    <h1 class="text-3xl font-bold">How To Join</h1>
+    <ul>
+      <Step number={1}>
+        Launch Minecraft 26.2{" "}
+        <em>(This is the only version that BlueDragon supports)</em>
+      </Step>
+      <Step number={2}>
+        Click <span class={emphasis}>Multiplayer</span>, then{" "}
+        <span class={emphasis}>Add Server</span>.
+      </Step>
+      <Step number={3}>
+        Enter <code>bluedragonmc.com</code> in the{" "}
+        <span class={emphasis}>Server Address</span> box and click <span
+          class={emphasis}>Done</span
+        >.
+      </Step>
+      <Step number={4}>
+        Double click on the server you just added.{" "}
+        <span class="font-medium text-green-500"> That&apos;s it! 🎉 </span>
+      </Step>
+      <Step number={5}>
+        <em>(Optional)</em>{" "}
+        <a href="/games" class="font-medium underline"> Check out our games </a>
+        , or join the server to see them firsthand!
+      </Step>
+    </ul>
+  </main>
+</Layout>

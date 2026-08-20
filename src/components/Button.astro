@@ -1,0 +1,32 @@
+---
+interface Props {
+  href: string;
+  intent?: "primary" | "secondary";
+  iconPosition?: "left" | "right";
+}
+
+const { href, intent = "primary", iconPosition = "left" } = Astro.props;
+
+const classes =
+  intent === "primary"
+    ? "bg-blue-700 hover:bg-blue-800 focus:bg-blue-900"
+    : "bg-gray-500 hover:bg-gray-600 focus:bg-gray-700";
+---
+
+<a href={href} class="inline-block mt-2 mr-2">
+  <button
+    class={`inline-flex gap-2 rounded-md px-4 py-2 text-white cursor-pointer ${classes} ${
+      iconPosition === "right" && "flex-row-reverse"
+    }`}>
+    {
+      Astro.slots.has("icon") && (
+        <span class="fill-black dark:fill-white [&>svg]:align-middle [&>svg]:inline [&>svg]:size-6">
+          <slot name="icon" />
+        </span>
+      )
+    }
+    <span class="align-middle font-medium">
+      <slot />
+    </span>
+  </button>
+</a>

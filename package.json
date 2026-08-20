@@ -1,54 +1,48 @@
 {
-  "name": "bdn-website",
-  "version": "0.1.0",
-  "private": true,
+  "name": "website",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "network": "next dev -H 0.0.0.0"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@plaiceholder/next": "^3.0.0",
-    "@types/node": "20.14.2",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
-    "@types/showdown": "^2.0.6",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.3",
-    "feed": "^4.2.2",
-    "gray-matter": "^4.0.3",
-    "javascript-time-ago": "^2.5.10",
-    "mdast-util-from-markdown": "^2.0.1",
+    "@astrojs/markdown-satteri": "^0.3.7",
+    "@astrojs/mdx": "^7.0.7",
+    "@astrojs/node": "^11.1.4",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource/rubik-marker-hatch": "^5.3.0",
+    "@iconify-json/fa7-solid": "^1.2.5",
+    "@iconify-json/mdi": "^1.2.3",
+    "@resvg/resvg-wasm": "^2.6.2",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.4",
+    "astro-icon": "^1.2.0",
+    "feed": "^6.0.0",
+    "image-size": "^2.0.2",
+    "javascript-time-ago": "^2.6.4",
+    "mdast-util-from-markdown": "^2.0.3",
     "minecraft-server-util": "^5.4.4",
-    "mongodb": "^6.7.0",
-    "next": "^14.2.3",
-    "next-mdx-remote": "^5.0.0",
-    "plaiceholder": "^3.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-photoswipe-gallery": "^3.0.1",
-    "remark-gfm": "^4.0.0",
-    "sharp": "^0.33.4",
+    "mongodb": "^7.5.0",
+    "photoswipe": "^5.4.4",
+    "satori": "^0.29.1",
     "showdown": "^2.1.0",
-    "sitemap": "^8.0.0",
-    "typescript": "5.4.5"
+    "sitemap": "^9.0.1",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "prettier": "^3.3.1",
-    "prettier-plugin-tailwindcss": "^0.6.1",
-    "tailwindcss": "^3.4.4"
+    "@astrojs/check": "^0.9.10",
+    "@types/image-size": "^0.8.0",
+    "@types/showdown": "^2.0.6",
+    "typescript": "^6.0.3"
   },
-  "overrides": {
-    "@plaiceholder/next": {
-      "next": "$next"
-    }
+  "allowScripts": {
+    "esbuild@0.28.1": true
   }
 }

@@ -1,0 +1,28 @@
+---
+interface Props {
+  code: number;
+}
+
+const { code } = Astro.props;
+---
+
+<div class="flex flex-col items-center justify-center h-[70vh]">
+  <div
+    class="flex h-1/2 flex-col justify-end bg-opacity-25 bg-cover bg-center bg-no-repeat main-404-div">
+    <h1 class="text-center text-9xl font-black">{code}</h1>
+    <p class="text-center font-medium">
+      <slot />
+    </p>
+  </div>
+</div>
+
+<style>
+  .main-404-div {
+    background-image:
+      linear-gradient(
+        rgba(var(--background-rgb), 0) 0%,
+        rgba(var(--background-rgb), 1) 75%
+      ),
+      url(/favicon_hq.png);
+  }
+</style>

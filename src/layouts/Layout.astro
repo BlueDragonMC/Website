@@ -1,0 +1,93 @@
+---
+import "@fontsource-variable/inter/wght.css";
+import "@fontsource/rubik-marker-hatch";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "BlueDragon | Minecraft Minigames",
+  description = "BlueDragon is a Minecraft server that strives to produce high-quality, original content. Join for free to explore unique minigames like Paintbrawl, WackyMaze, and more!",
+  ogImage,
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon-128.png" sizes="128x128" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon-196x196.png"
+      sizes="196x196"
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#2792f7" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="application-name" content="BlueDragon" />
+    <meta name="description" content={description} />
+    <meta property="og:site_name" content="BlueDragon" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      href="/rss/blog/atom.xml"
+      type="application/atom+xml"
+      rel="alternate"
+      title="Atom Blog feed"
+    />
+    <link
+      href="/rss/blog/feed.xml"
+      type="application/rss+xml"
+      rel="alternate"
+      title="RSS Blog feed"
+    />
+    <link
+      href="/rss/blog/feed.json"
+      type="application/json"
+      rel="alternate"
+      title="JSON Blog feed"
+    />
+    <link
+      href="/rss/changelog/atom.xml"
+      type="application/atom+xml"
+      rel="alternate"
+      title="Atom Changelog feed"
+    />
+    <link
+      href="/rss/changelog/feed.xml"
+      type="application/rss+xml"
+      rel="alternate"
+      title="RSS Changelog feed"
+    />
+    <link
+      href="/rss/changelog/feed.json"
+      type="application/json"
+      rel="alternate"
+      title="JSON Changelog feed"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen font-inter">
+    <Navbar />
+    <div class={"min-h-screen px-2 pt-4 md:px-10"}>
+      <slot />
+    </div>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,31 @@
+---
+interface Props {
+  date?: Date;
+  text?: string;
+}
+
+const { date, text } = Astro.props;
+---
+
+{
+  date ? (
+    <span
+      title={
+        date
+          ? new Intl.DateTimeFormat(undefined, {
+              dateStyle: "long",
+              timeStyle: "long",
+            }).format(date)
+          : "Unknown"
+      }>
+      {text}
+    </span>
+  ) : (
+    <span>
+      {new Intl.DateTimeFormat(undefined, {
+        dateStyle: "short",
+        timeStyle: "short",
+      }).format()}
+    </span>
+  )
+}

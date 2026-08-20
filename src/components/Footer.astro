@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer
+  class="min-h-64 relative z-40 mt-36 grid grid-cols-2 gap-2 bg-neutral-300 px-4 py-8 dark:bg-neutral-900 print:hidden md:grid-cols-3 md:gap-8 lg:grid-cols-6">
+  <div class="col-span-2 md:col-span-3 lg:col-span-2">
+    <p class={"text-2xl font-bold"}>
+      <a href="/">BlueDragon</a>
+    </p>
+    <p>
+      BlueDragon is a Minecraft server that strives to produce high-quality,
+      original content. Join for free to explore unique minigames like
+      Paintbrawl, WackyMaze, and more!
+    </p>
+    <p>
+      The server IP is{" "}
+      <code class="font-bold">bluedragonmc.com</code>.{" "}
+      <a href="/join" class="font-medium underline"> Join&nbsp;today! </a>
+    </p>
+  </div>
+  {/* Second row */}
+  <div class="flex flex-col leading-10 lg:col-start-4">
+    <p class="font-bold">Server</p>
+    <a href="/games" class="font-medium underline"> Games </a>
+    <a href="/leaderboards" class="font-medium underline"> Leaderboards </a>
+    <a href="/player" class="font-medium underline"> Player Stats </a>
+    <a href="/page/api" class="font-medium underline"> Player API </a>
+    <a href="https://developer.bluedragonmc.com" class="font-medium underline">
+      Developer Docs
+    </a>
+  </div>
+  <div class="flex flex-col leading-10">
+    <p class="font-bold">Community</p>
+    <a href="/blog" class="font-medium underline"> Blog </a>
+    <a href="/page/changelog" class="font-medium underline"> Changelog </a>
+    <a href="/page/rules" class="font-medium underline"> Server Rules </a>
+    <a href="/status" class="font-medium underline"> Server&nbsp;Status </a>
+    <a href="/page/oss" class="font-medium underline"> Open&#8209;Source </a>
+  </div>
+  <div class="col-span-1 flex flex-col leading-10 sm:col-span-2 md:col-span-1">
+    <p class="font-bold">Follow Us</p>
+    <a href="/github">
+      <Icon
+        name="mdi:github"
+        class="inline h-6 w-6 fill-black align-middle dark:fill-white"
+      />
+      <span class="ml-2 underline">GitHub</span>
+    </a>
+    <a href="/discord">
+      <Icon
+        name="mdi:discord"
+        class="inline h-6 w-6 fill-black align-middle dark:fill-white"
+      />
+      <span class="ml-2 underline">Discord</span>
+    </a>
+    <a href="/twitter">
+      <Icon
+        name="mdi:twitter"
+        class="inline h-6 w-6 fill-black align-middle dark:fill-white"
+      />
+      <span class="ml-2 underline">Twitter</span>
+    </a>
+  </div>
+</footer>

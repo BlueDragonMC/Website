@@ -1,0 +1,31 @@
+---
+interface Props {
+  text: string;
+  href: string;
+  active?: boolean;
+  color?: string;
+  activeColor?: string;
+}
+
+const { text, href, active, color, activeColor } = Astro.props;
+
+const path = Astro.url.pathname;
+const isActive =
+  active || path === href || (href !== "/" && path?.startsWith(href));
+const activeColorClasses =
+  activeColor ?? "bg-slate-500 font-bold hover:bg-slate-400";
+const inactiveColorClasses = color ?? "hover:bg-slate-600";
+---
+
+<a
+  href={href}
+  class={`${
+    isActive ? activeColorClasses : inactiveColorClasses
+  } rounded-md p-2 text-base font-medium text-white transition-colors`}>
+  <span class="hidden md:inline" id={`header-nav-item-${text}`}>
+    {text}
+  </span>
+  <span class="md:hidden" aria-labelledby={`header-nav-item-${text}`}>
+    {Astro.slots.has("icon") && <slot name="icon" />}
+  </span>
+</a>

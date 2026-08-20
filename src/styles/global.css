@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+.font-rubik-marker-hatch {
+  font-family: "Rubik Marker Hatch";
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-inter {
+  font-family: "Inter Variable", sans-serif;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 214, 219, 220;
+  --max-width: 1100px;
+  --border-radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html,
+  body {
+    max-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background-color: rgb(var(--background-rgb));
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: dark;
+    }
+  }
+}
+
+/*
+  These prose overrides match the customizations that were previously made
+  through the Tailwind config's `typography` theme extension.
+*/
+.prose {
+  /* Remove "`" before and after inline code elements and blockquotes */
+  code::before {
+    content: none;
+  }
+  code::after {
+    content: none;
+  }
+  blockquote p::before {
+    content: none;
+  }
+  blockquote p::after {
+    content: none;
+  }
+
+  /* Make bullets and other border elements more visible */
+  --tw-prose-bullets: var(--color-slate-500);
+  --tw-prose-invert-bullets: var(--color-slate-300);
+  --tw-prose-quote-borders: var(--color-slate-400);
+  --tw-prose-th-borders: var(--color-slate-400);
+  --tw-prose-td-borders: var(--color-slate-400);
+}
+
+/*
+  Makes the first column of a table row take up only the space it needs,
+  and allows the second column to take up the remaining space.
+  !important is required because Tailwind's prose styles override this.
+*/
+.row {
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr) !important;
+}

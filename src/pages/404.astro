@@ -1,0 +1,12 @@
+---
+import ErrorPage from "../components/ErrorPage.astro";
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = false;
+---
+
+<Layout>
+  <ErrorPage code={404}>
+    The page you are looking for was moved or does not exist.
+  </ErrorPage>
+</Layout>

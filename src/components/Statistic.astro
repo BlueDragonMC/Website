@@ -1,0 +1,45 @@
+---
+interface Props {
+  name: string;
+  value?: string | number | undefined;
+  stat?: string;
+  position?: number;
+}
+
+const { name, value, stat, position } = Astro.props;
+
+const getColor = (position: number): string => {
+  if (position === 1)
+    return "font-medium text-yellow-600 dark:text-yellow-500";
+  if (position === 2)
+    return "font-medium text-orange-600 dark:text-orange-500";
+  if (position === 3) return "font-medium text-red-600 dark:text-red-500";
+
+  return "font-normal text-gray-600 dark:text-gray-300";
+};
+---
+
+<p class="mx-auto flex w-72 justify-between lg:w-96">
+  <span class="font-medium">
+    {stat ? (
+      <a href={`/leaderboards/${stat}`} class="underline">
+        {name}
+      </a>
+    ) : (
+      name
+    )}
+  </span>
+  <span
+    class={value !== undefined ? "font-medium text-blue-600" : "text-gray-600"}>
+    {Astro.slots.has("default") ? (
+      <slot />
+    ) : (
+      value ?? "-"
+    )}
+    {position ? (
+      <span class={getColor(position)}> (#{position})</span>
+    ) : (
+      <></>
+    )}
+  </span>
+</p>

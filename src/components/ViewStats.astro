@@ -1,0 +1,42 @@
+---
+---
+
+<form class="inline-flex" data-view-stats>
+  <input
+    type="text"
+    placeholder="Username"
+    class="h-10 w-full rounded-l-lg border border-gray-100 bg-gray-100 px-2 py-2 text-gray-700 outline-none"
+  />
+  <span class="flex items-center rounded-r-lg bg-gray-100 font-bold text-gray-100">
+    <a role="button" href="/player/">
+      <input
+        type="submit"
+        role="button"
+        class="h-10 w-max rounded-r-lg bg-blue-600 py-2 px-4 text-lg font-medium text-white hover:bg-blue-700"
+        value="View Stats"
+      />
+    </a>
+  </span>
+</form>
+
+<script>
+  const form = document.querySelector("[data-view-stats]");
+  const input = form?.querySelector('input[type="text"]') as
+    | HTMLInputElement
+    | null;
+
+  const go = () => {
+    if (input && input.value) {
+      window.location.href = `/player/${encodeURIComponent(input.value)}`;
+    }
+  };
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    go();
+  });
+
+  form?.querySelector('a[role="button"]')?.addEventListener("click", () => {
+    go();
+  });
+</script>

@@ -1,0 +1,47 @@
+---
+import Card from "@/src/components/Card.astro";
+import Layout from "@/src/layouts/Layout.astro";
+import { games } from "@/src/constants/games";
+import { leaderboards } from "@/src/constants/leaderboards";
+---
+
+<Layout ogImage={`${Astro.site}leaderboards/opengraph-image.png`}>
+  <h1 class="text-3xl font-bold">Leaderboards</h1>
+
+  <p>Click a leaderboard below to view the top players in a category.</p>
+
+  <main
+    class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+    {
+      leaderboards.map((category) => {
+        const game = games.find((game) => game.name === category.name);
+        const modeIndex = leaderboards
+          .filter((cat) => cat.name === category.name)
+          .indexOf(category);
+        if (!game) return;
+        return (
+          <Card
+            imageAlt="Game screenshot"
+            imageSrc={
+              game.images?.[modeIndex % game.images?.length]
+            }>
+            <h2 class="text-2xl font-bold">{category.name}</h2>
+            <h3
+              class="text-xl font-semibold text-gray-700 dark:text-neutral-400">
+              {category.mode ?? "All Modes"}
+            </h3>
+            {
+              category.leaderboards.map((lb) => {
+                return (
+                  <a href={`/leaderboards/${lb.stat}`}>
+                    <p class="font-medium underline">{lb.name}</p>
+                  </a>
+                );
+              })
+            }
+          </Card>
+        );
+      })
+    }
+  </main>
+</Layout>

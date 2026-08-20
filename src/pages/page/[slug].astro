@@ -1,0 +1,34 @@
+---
+import Layout from "@/src/layouts/Layout.astro";
+import MDX from "@/src/components/MDX.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+  const pages = await getCollection("staticPages");
+  return pages.map((page) => ({
+    params: { slug: page.id },
+  }));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+const page = (await getCollection("staticPages")).find((p) => p.id === slug);
+
+if (!page) {
+  return Astro.rewrite("/404");
+}
+
+const title = page.data.title;
+const description = page.data.description;
+---
+
+<Layout
+  title={title}
+  description={description}
+  ogImage={`${Astro.site}page/${slug}/opengraph-image.png`}>
+  <main class="prose mx-auto max-w-prose dark:prose-invert">
+    <MDX entry={page} />
+  </main>
+</Layout>

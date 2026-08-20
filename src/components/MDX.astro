@@ -1,0 +1,89 @@
+---
+import { Icon } from "astro-icon/components";
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+type Entry = CollectionEntry<"blog"> | CollectionEntry<"staticPages">;
+
+interface Props {
+  entry: Entry;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const data = entry.data as {
+  title: string;
+  author?: string;
+  created?: Date | string;
+  modified?: Date | string;
+};
+
+const fmt = new Intl.DateTimeFormat(undefined, {
+  dateStyle: "medium",
+});
+
+const created = data.created ? fmt.format(new Date(data.created)) : undefined;
+const modified = data.modified ? fmt.format(new Date(data.modified)) : undefined;
+---
+
+<image-gallery>
+  <h1 class="mb-0">{data.title}</h1>
+  <p class="mt-2">
+    {data.author && (
+      <span class="mr-4 whitespace-nowrap">
+        <Icon
+          name="fa7-solid:user"
+          class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
+        />
+        {"Posted by: " + data.author}
+      </span>
+    )}
+    {created && (
+      <span class="mr-4 whitespace-nowrap">
+        <Icon
+          name="fa7-solid:clock"
+          class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
+        />
+        {"Created: " + created}
+      </span>
+    )}
+    {modified && created !== modified && (
+      <span class="mr-4 whitespace-nowrap">
+        <Icon
+          name="fa7-solid:pencil"
+          class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
+        />
+        {"Last Modified: " + modified}
+      </span>
+    )}
+  </p>
+  <Content />
+</image-gallery>
+
+<style>
+  image-gallery {
+    display: block;
+  }
+</style>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import "photoswipe/style.css";
+
+  class ImageGallery extends HTMLElement {
+    connectedCallback() {
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: this,
+        children: this.querySelectorAll("a[data-pswp-width]"),
+        pswpModule: () => import("photoswipe"),
+      });
+
+      lightbox.init();
+    }
+  }
+
+  if (!customElements.get("image-gallery")) {
+    customElements.define("image-gallery", ImageGallery);
+  }
+</script>

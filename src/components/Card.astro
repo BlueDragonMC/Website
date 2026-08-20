@@ -1,0 +1,31 @@
+---
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  imageSrc?: ImageMetadata;
+  imageAlt?: string;
+}
+
+const { imageSrc, imageAlt } = Astro.props;
+---
+
+<div
+  class="group rounded-lg bg-gray-200 shadow-lg transition-all hover:bg-gray-300 hover:shadow-2xl dark:bg-neutral-900 dark:hover:bg-neutral-800">
+  {
+    imageSrc && imageAlt && (
+      <div class="overflow-hidden rounded-t-md">
+        <img
+          src={imageSrc.src}
+          alt={imageAlt}
+          class="inline-block h-32 w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-75"
+        />
+      </div>
+    )
+  }
+  <div
+    class={`p-3 ${
+      imageSrc === undefined ? "flex h-full flex-col justify-center" : ""
+    }`}>
+    <slot />
+  </div>
+</div>

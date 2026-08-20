@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "@/src/layouts/Layout.astro";
+import MDX from "@/src/components/MDX.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+  const articles = await getCollection("blog");
+  return articles.map((article) => ({
+    params: { post: article.id },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.params;
+const articles = (await getCollection("blog")).toSorted(
+  (a, b) => b.data.created.getTime() - a.data.created.getTime()
+);
+const currentIndex = articles.findIndex((other) => other.id === post);
+const article = articles[currentIndex];
+
+if (!article) {
+  return Astro.rewrite("/404");
+}
+
+const next = articles[currentIndex + 1];
+const prev = articles[currentIndex - 1];
+
+const title = article.data.title
+  ? `${article.data.title} | BlueDragon Blog`
+  : "BlueDragon Blog";
+
+const description = article.data.description;
+
+const ogImage = article.data.image
+  ? `${Astro.site}${article.data.image.src.replace(/^\//, "")}`
+  : `${Astro.site}blog/${article.id}/opengraph-image.png`;
+---
+
+<Layout title={title} description={description} ogImage={ogImage}>
+  <main class="prose mx-auto max-w-prose dark:prose-invert">
+    <MDX entry={article} />
+    <div
+      class="not-prose mt-16 grid w-full grid-cols-1 gap-8 print:hidden md:grid-cols-2">
+      {
+        prev && (
+          <a
+            href={"/blog/" + prev.id}
+            class="block w-full rounded-md border border-gray-500 p-4 hover:border-2 hover:border-blue-800 hover:p-3.75">
+            <p class="font-bold">
+              <Icon
+                name="fa7-solid:chevron-circle-left"
+                class="mr-2 h-4 w-4"
+              />
+              Previous
+            </p>
+            <p class="font-medium">{prev?.data?.title}</p>
+          </a>
+        )
+      }
+      {
+        next && (
+          <a
+            href={"/blog/" + next.id}
+            class="block w-full justify-self-end rounded-md border border-gray-500 p-4 hover:border-2 hover:border-blue-800 hover:p-3.75 md:col-start-2 md:text-right">
+            <p class="flex flex-row-reverse items-center justify-end font-bold md:flex-row">
+              Next
+              <Icon
+                name="fa7-solid:chevron-circle-right"
+                class="mr-2 h-4 w-4 md:ml-2 md:mr-0"
+              />
+            </p>
+            <p class="font-medium">{next?.data?.title}</p>
+          </a>
+        )
+      }
+    </div>
+  </main>
+</Layout>

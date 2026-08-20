@@ -1,0 +1,68 @@
+---
+interface Props {
+  images: Array<ImageMetadata>;
+  altText: string | string[];
+  blurred?: boolean;
+  imageWidth?: number;
+  delay?: number;
+}
+
+const {
+  images,
+  altText,
+  blurred = false,
+  imageWidth = 512,
+  delay = 5.0,
+} = Astro.props;
+---
+
+<image-carousel data-delay={delay}>
+  <div class="relative h-full w-full">
+    {
+      images.map((img, i) => (
+        <img
+          src={img.src}
+          class={`absolute top-0 left-0 h-full w-full select-none object-cover transition-opacity duration-[2.5s] ${
+            blurred && "scale-110 blur-sm brightness-[.3]"
+          }`}
+          alt={Array.isArray(altText) ? altText[i] : altText}
+          width={imageWidth}
+          loading={i <= 2 ? "eager" : "lazy"}
+        />
+      ))
+    }
+  </div>
+</image-carousel>
+
+<script>
+  class ImageCarousel extends HTMLElement {
+    connectedCallback() {
+      const delay = parseFloat(this.dataset.delay ?? "5.0");
+      const length = this.querySelectorAll("img").length;
+
+      let currentIndex = 0;
+
+      for (const image of this.querySelectorAll("img:not(:first-child)")) {
+        (image as HTMLImageElement).style.opacity = "0";
+      }
+
+      const update = () => {
+        const prevIndex = currentIndex;
+        currentIndex = (currentIndex + 1) % length;
+
+        const toHide = this.querySelector(
+          `img:nth-child(${prevIndex + 1})`,
+        ) as HTMLImageElement;
+        const toShow = this.querySelector(
+          `img:nth-child(${currentIndex + 1})`,
+        ) as HTMLImageElement;
+
+        setTimeout(() => (toHide.style.opacity = "0"), delay * 1000);
+        toShow.style.opacity = "1";
+      };
+
+      setInterval(update, delay * 1000);
+    }
+  }
+  customElements.define("image-carousel", ImageCarousel);
+</script>

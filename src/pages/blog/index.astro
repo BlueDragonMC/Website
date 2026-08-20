@@ -1,0 +1,33 @@
+---
+import ArticleCard from "@/src/components/ArticleCard.astro";
+import Layout from "@/src/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const articles = (await getCollection("blog")).toSorted(
+  (a, b) => b.data.created.getTime() - a.data.created.getTime(),
+);
+---
+
+<Layout ogImage={`${Astro.site}blog/opengraph-image.png`}>
+  <main class="mx-auto max-w-prose px-4">
+    <h1 class="mb-3 text-3xl font-bold">Blog Posts</h1>
+    <p class="my-4">
+      <a href="/rss/blog/feed.xml" target="_blank">
+        <Icon name="fa7-solid:rss" class="mr-1 inline size-5 mb-1" />
+        RSS
+      </a>{" "}
+      &middot;{" "}
+      <a href="/rss/blog/atom.xml" target="_blank"> Atom </a>{" "}
+      &middot;{" "}
+      <a href="/rss/blog/feed.json" target="_blank"> JSON </a>
+    </p>
+    <div class="flex flex-col gap-10">
+      {
+        articles.map((article) => {
+          return <ArticleCard article={article} />;
+        })
+      }
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,7 @@
+---
+import { games } from "@/src/constants/games";
+
+return Astro.rewrite(
+  `/games/${games[0].name.toLowerCase().replaceAll(/ /g, "-")}`,
+);
+---

@@ -1,0 +1,71 @@
+---
+import Layout from "@/src/layouts/Layout.astro";
+import RelativeDate from "@/src/components/RelativeDate.astro";
+import { Icon } from "astro-icon/components";
+import { parseAddress, status } from "minecraft-server-util";
+import type { JavaStatusResponse } from "minecraft-server-util";
+
+export const prerender = false;
+
+let ping: JavaStatusResponse | null = null;
+try {
+  const address = parseAddress(
+    process.env.SERVER_IP ?? "bluedragonmc.com",
+    25565
+  );
+  if (!address) throw new Error("Invalid server address");
+  ping = await Promise.race([
+    status(address.host, address.port),
+    new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error("Request timed out")), 5000)
+    ),
+  ]);
+} catch {}
+---
+
+<Layout>
+  <main class="mx-auto w-max">
+    <h1 class="text-3xl font-bold">Server Status</h1>
+    <pre>Server IP: bluedragonmc.com</pre>
+    <p>
+      <Icon
+        name="fa7-solid:circle"
+        class="my-2 mr-4 inline h-8 w-8 align-middle"
+      />
+      {
+        ping ? (
+          <span class="font-bold text-green-500 underline">Online</span>
+        ) : (
+          <span class="font-bold text-red-500 underline">Offline</span>
+        )
+      }
+    </p>
+    {
+      ping && (
+        <>
+          <p>
+            <Icon
+              name="fa7-solid:person-running"
+              class="my-2 mr-4 inline h-8 w-8 align-middle"
+            />
+            {ping.players.online} players connected
+          </p>
+          <p>
+            <Icon
+              name="fa7-solid:server"
+              class="my-2 mr-4 inline h-8 w-8 align-middle"
+            />
+            Ping: {ping.roundTripLatency}ms
+          </p>
+        </>
+      )
+    }
+    <p>
+      <Icon
+        name="fa7-solid:calendar"
+        class="my-2 mr-4 inline h-8 w-8 align-middle"
+      />
+      Last Updated: <RelativeDate />
+    </p>
+  </main>
+</Layout>
