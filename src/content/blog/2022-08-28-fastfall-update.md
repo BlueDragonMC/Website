@@ -1,6 +1,6 @@
 ---
 title: 2022/08/28 - FastFall Update
-image: ../../../public/images/2022-08-28-fastfall-update-1.png
+image: ../../../assets/images/2022-08-28-fastfall-update-1.png
 author: Flux
 description: For our event today, we've rolled out some changes to FastFall including some new block palettes!
 created: 2022-08-28T10:12:10-04:00

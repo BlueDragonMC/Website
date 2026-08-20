@@ -1,6 +1,6 @@
 ---
 title: "New Game: Paintbrawl!"
-image: ../../../public/images/2023-02-19-new-game-paintbrawl-1.png
+image: ../../../assets/images/2023-02-19-new-game-paintbrawl-1.png
 author: ex4
 description: "Today we are launching our biggest minigame yet: Paintbrawl — a fast-paced, action-packed multiplayer combat experience!"
 created: 2023-02-19T12:00:00.000Z

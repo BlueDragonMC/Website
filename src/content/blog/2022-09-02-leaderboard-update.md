@@ -1,6 +1,6 @@
 ---
 title: 2022/09/02 - Leaderboard Update
-image: ../../../public/images/2022-09-02-leaderboard-update-1.png
+image: ../../../assets/images/2022-09-02-leaderboard-update-1.png
 author: Flux
 description: Leaderboards are updated every 5-10 minutes and displayed on maps in the lobby. They use statistics gathered by the games, such as highest score, more wins, or fastest time.
 created: 2022-09-02T21:52:10-04:00

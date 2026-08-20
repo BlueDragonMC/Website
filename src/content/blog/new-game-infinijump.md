@@ -1,6 +1,6 @@
 ---
 title: "New Game: Infinijump!"
-image: ../../../public/images/new-game-infinijump.png
+image: ../../../assets/images/new-game-infinijump.png
 author: ex4
 description: Infinijump has just been released, a twist on the classic Minecraft parkour maps and gamemodes. It features a randomly-generated endless parkour course that gets harder as the game goes on. How far will you make it?
 created: 2022-08-07T10:20:00-04:00

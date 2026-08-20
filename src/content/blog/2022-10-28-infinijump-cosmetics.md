@@ -1,6 +1,6 @@
 ---
 title: 2022/10/28 - Infinijump Cosmetics
-image: ../../../public/images/2022-10-28-infinijump-cosmetics-1.png
+image: ../../../assets/images/2022-10-28-infinijump-cosmetics-1.png
 author: Flux
 description: Hello everyone! We've just rolled out a small update today reworking some of the internals of Infinijump and adding some brand new cosmetics to the game.
 created: 2022-10-28T20:32:00-04:00

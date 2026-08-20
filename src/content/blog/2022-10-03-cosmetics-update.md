@@ -1,6 +1,6 @@
 ---
 title: 2022/10/03 - Cosmetics Update
-image: ../../../public/images/2022-10-03-cosmetics-update.png
+image: ../../../assets/images/2022-10-03-cosmetics-update.png
 author: Flux
 description: "For our latest update, we wanted to revisit and redesign a system from previous iterations of BlueDragon: Cosmetics. This time, we have put much thought into the inner workings of the system to make sure it is flexible and easy to add new cosmetic items. Look forward to some limited-time cosmetics coming with special events in the near future."
 created: 2022-10-03T20:29:00-04:00

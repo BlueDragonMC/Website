@@ -1,4 +1,6 @@
 ---
+import favicon from "@/public/favicon_hq.png";
+import logo from "@/public/logo_wordmark.png";
 import "@fontsource-variable/inter/wght.css";
 import "@fontsource/rubik-marker-hatch";
 import Footer from "../components/Footer.astro";
@@ -82,6 +84,9 @@ const {
       title="JSON Changelog feed"
     />
     <title>{title}</title>
+    <slot name="head" />
+    <link rel="preload" href={logo.src} as="image" />
+    <link rel="preload" href={favicon.src} as="image" />
   </head>
   <body class="min-h-screen font-inter">
     <Navbar />

@@ -1,6 +1,6 @@
 ---
 title: 2022/09/24 - Lobby Update
-image: ../../../public/images/2022-09-24-lobby-update-3.png
+image: ../../../assets/images/2022-09-24-lobby-update-3.png
 author: ex4
 description: We have been working on ways to make the lobby larger and more interactive, and in this post I will share a few of the biggest improvements.
 created: 2022-09-24T10:11:17-04:00

@@ -1,6 +1,6 @@
 ---
 title: "Fall Damage Glitch in FastFall"
-image: ../../../public/images/2022-08-28-fastfall-update-4.png
+image: ../../../assets/images/2022-08-28-fastfall-update-4.png
 author: ex4
 description: "Today, we've finally fixed an important issue with FastFall."
 created: 2023-06-12T12:00:00.000Z

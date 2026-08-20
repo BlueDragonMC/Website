@@ -1,6 +1,6 @@
 ---
 title: 2022/08/23 - BlueDragon Update
-image: ../../../public/images/2022-08-23-bluedragon-update.jpg
+image: ../../../assets/images/2022-08-23-bluedragon-update.jpg
 author: Flux
 description: Hello everyone, I have been working on a partial rewrite to our backend systems that will hopefully increase stability and allow us to push updates much faster.
 created: 2022-08-23T10:13:29-04:00
