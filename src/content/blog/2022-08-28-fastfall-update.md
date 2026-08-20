@@ -14,28 +14,28 @@ For our event today, we've rolled out some changes to FastFall including some ne
 #### Classic
 
 _(unchanged from the original gamemode)_
-![Ingame screenshot](/images/2022-08-28-fastfall-update-1.png)
+![Ingame screenshot](../../../assets/images/2022-08-28-fastfall-update-1.png)
 
 #### Ocean
 
-![Ingame screenshot](/images/2022-08-28-fastfall-update-2.png)
+![Ingame screenshot](../../../assets/images/2022-08-28-fastfall-update-2.png)
 
 #### Forest
 
-![Ingame screenshot](/images/2022-08-28-fastfall-update-3.png)
+![Ingame screenshot](../../../assets/images/2022-08-28-fastfall-update-3.png)
 
 #### Nether
 
-![Ingame screenshot](/images/2022-08-28-fastfall-update-4.png)
+![Ingame screenshot](../../../assets/images/2022-08-28-fastfall-update-4.png)
 
 #### Colors
 
-![Ingame screenshot](/images/2022-08-28-fastfall-update-5.png)
+![Ingame screenshot](../../../assets/images/2022-08-28-fastfall-update-5.png)
 All themes have the same chances of slime blocks and the same density, but they each have their own unique block palette.
 
 ## At-a-glance Game Status
 
-![Ingame screenshot](/images/2022-08-28-fastfall-update-6.png)
+![Ingame screenshot](../../../assets/images/2022-08-28-fastfall-update-6.png)
 We've added a new action bar that shows your position, blocks ahead, and health, all in one place.
 
 ## Leading Player

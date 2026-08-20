@@ -78,7 +78,7 @@ We are also looking into creating a development/staging server to test new featu
 Thank you everyone for reading! You can expect some more substantial, gameplay-related updates very soon. If you have any questions, please feel free to ask them on this thread or in our [Discord server](/discord).
 
 Also, here's the cute Puffin wallpaper:
-![A Puffin](/images/2022-08-23-bluedragon-update.jpg)
+![A Puffin](../../../assets/images/2022-08-23-bluedragon-update.jpg)
 _[Photo](https://unsplash.com/photos/b1NFkUR-3Fg) by [David Klaasen](https://unsplash.com/@davidklaasen) on [Unsplash](https://unsplash.com)_
 
 Have a good day,

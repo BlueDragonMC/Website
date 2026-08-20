@@ -11,7 +11,7 @@ modified: 2023-02-05T01:39:00-04:00
 BlueDragon has a new official website, and you're looking at it right now!
 
 Here's a screenshot of the homepage as of the time of writing:
-![Website screenshot from January 24th, 2023](/images/2022-01-24-new-website-1.png)
+![Website screenshot from January 24th, 2023](../../../assets/images/2022-01-24-new-website-1.png)
 
 ## Why?
 

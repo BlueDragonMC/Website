@@ -13,7 +13,7 @@ We have just released a **new game mode** for Infinijump: **Versus**.
 
 Between two and eight players can join an Infinijump Versus game. Each player gets their own world and set of parkour blocks, and the longest-surviving player wins.
 
-![](/images/2022-12-30-new-infinijump-mode.png)
+![](../../../assets/images/2022-12-30-new-infinijump-mode.png)
 
 A new category has been added to the leaderboards for both modes, Solo and Versus. The combined leaderboard is still displayed in the lobby.
 

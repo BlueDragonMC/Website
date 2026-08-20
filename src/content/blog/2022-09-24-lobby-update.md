@@ -12,13 +12,13 @@ We have been working on ways to make the lobby larger and more interactive, and 
 ## Combat Zone
 
 Want to have a quick fight before you join a minigame? Now you can!
-![](/images/2022-09-24-lobby-update-1.png)
+![](../../../assets/images/2022-09-24-lobby-update-1.png)
 Anyone inside the red square will have PvP enabled, and be given iron armor and a diamond sword.
 
 ## Jukebox
 
 Maybe you just want to relax while listening to some music. Well, it's your lucky day! By right-clicking the jukebox located on the ground near spawn, you can play any Minecraft music disc for everyone in the lobby to enjoy.
-![](/images/2022-09-24-lobby-update-2.png)
+![](../../../assets/images/2022-09-24-lobby-update-2.png)
 
 ## Parkour
 
@@ -34,11 +34,11 @@ A new course has also been added in the cave under spawn (see below), and some m
 ## Map Changes
 
 We have added some new areas to explore in the lobby!
-![](/images/2022-09-24-lobby-update-3.png)
+![](../../../assets/images/2022-09-24-lobby-update-3.png)
 _An underground cave featuring a brand-new parkour course._
-![](/images/2022-09-24-lobby-update-4.png)
+![](../../../assets/images/2022-09-24-lobby-update-4.png)
 _A new island to be occupied by shopkeepers in a future update._
-![](/images/2022-09-24-lobby-update-5.png)
+![](../../../assets/images/2022-09-24-lobby-update-5.png)
 _A new leaderboard island that includes the World Tour Parkour leaderboard._
 
 Have a great day!

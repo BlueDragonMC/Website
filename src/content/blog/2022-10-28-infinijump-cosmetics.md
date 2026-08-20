@@ -14,10 +14,10 @@ Hello everyone! We've just rolled out a small update today reworking some of the
 - **Standard block sets**: Red, green, and blue concrete
 - **Combination block sets**: Rainbow wool, rainbow concrete, jungle
 
-![](/images/2022-10-28-infinijump-cosmetics-1.png)
+![](../../../assets/images/2022-10-28-infinijump-cosmetics-1.png)
 _Rainbow concrete block set (Includes 16 block types - 2500 coins)_
 
-![](/images/2022-10-28-infinijump-cosmetics-2.png)
+![](../../../assets/images/2022-10-28-infinijump-cosmetics-2.png)
 _Jungle block set (Includes 17 block types - 2500 coins)_
 
 #### Misc. Improvements

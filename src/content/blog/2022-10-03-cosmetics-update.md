@@ -9,7 +9,7 @@ modified: 2022-10-03T20:29:00-04:00
 
 For our latest update, we wanted to revisit and redesign a system from previous iterations of BlueDragon: Cosmetics. This time, we have put much thought into the inner workings of the system to make sure it is flexible and easy to add new cosmetic items. Look forward to some limited-time cosmetics coming with special events in the near future.
 
-![](/images/2022-10-03-cosmetics-update.png)
+![](../../../assets/images/2022-10-03-cosmetics-update.png)
 _All cosmetic items are decorative and are bought with coins that are only earned by playing on the server. We will **never** add any pay-to-win features._
 
 ## Shop NPCs

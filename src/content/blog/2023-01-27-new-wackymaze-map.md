@@ -11,11 +11,11 @@ We've added a new map to WackyMaze: Canopy! It's a fast-paced map with many vert
 
 ## Screenshots
 
-![](/images/2023-01-27-new-wackymaze-map-1.png)
-![](/images/2023-01-27-new-wackymaze-map-2.png)
-![](/images/2023-01-27-new-wackymaze-map-3.png)
-![](/images/2023-01-27-new-wackymaze-map-4.png)
-![](/images/2023-01-27-new-wackymaze-map-5.png)
+![](../../../assets/images/2023-01-27-new-wackymaze-map-1.png)
+![](../../../assets/images/2023-01-27-new-wackymaze-map-2.png)
+![](../../../assets/images/2023-01-27-new-wackymaze-map-3.png)
+![](../../../assets/images/2023-01-27-new-wackymaze-map-4.png)
+![](../../../assets/images/2023-01-27-new-wackymaze-map-5.png)
 
 ## Other WackyMaze Changes
 

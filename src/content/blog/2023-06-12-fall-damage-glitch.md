@@ -9,7 +9,7 @@ modified: 2023-06-12T12:00:00.000Z
 
 Today, we've finally fixed an important issue with FastFall. The bug where fall damage sometimes doesn't happen is now patched.
 
-![](/images/2022-08-28-fastfall-update-4.png)
+![](../../../assets/images/2022-08-28-fastfall-update-4.png)
 
 Unfortunately, we needed to clear leaderboard times that were created with this bug, but we will be automatically granting the **Midas Boots** to anyone affected. Please contact me (ex4) or Flux on our [Discord server](https://discord.gg/3gvSPdW) if you have any questions or concerns.
 

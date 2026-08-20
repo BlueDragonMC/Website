@@ -9,7 +9,7 @@ modified: 2022-09-02T21:52:10-04:00
 
 ## All-New Leaderboards
 
-![Leaderboard display](/images/2022-09-02-leaderboard-update-1.png)
+![Leaderboard display](../../../assets/images/2022-09-02-leaderboard-update-1.png)
 _The leaderboard display in the lobby._
 
 Leaderboards are updated every 5-10 minutes and displayed on maps in the lobby. They use statistics gathered by the games, such as highest score, more wins, or fastest time.
@@ -21,8 +21,8 @@ Currently we are keeping track of the amount of wins for each game as well as so
 ## Leaderboard Browser
 
 Leaderboards which are not featured on map displays can be viewed at any time using the new Leaderboard Browser in the lobby.
-![Leaderboard browser GUI](/images/2022-09-02-leaderboard-update-2.png)
-![Leaderboard browser GUI](/images/2022-09-02-leaderboard-update-3.png)
+![Leaderboard browser GUI](../../../assets/images/2022-09-02-leaderboard-update-2.png)
+![Leaderboard browser GUI](../../../assets/images/2022-09-02-leaderboard-update-3.png)
 
 Leaderboards are grouped by category, and each category can contain a collection of leaderboards related to a game. Currently, the top 10 players are shown.
 

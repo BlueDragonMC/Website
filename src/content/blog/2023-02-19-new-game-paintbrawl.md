@@ -8,7 +8,7 @@ modified: 2023-02-19T12:00:00.000Z
 ---
 
 Today we are launching our biggest minigame yet: [**Paintbrawl**](/games/paintbrawl) — a fast-paced, action-packed multiplayer combat experience with tons of maps, weapons, and powerups to shake things up! Read on to learn a bit more about the game.
-![](/images/2023-02-19-new-game-paintbrawl-1.png)
+![](../../../assets/images/2023-02-19-new-game-paintbrawl-1.png)
 
 ## Scoring
 
@@ -23,7 +23,7 @@ The first team to reach 60 points is declared the winner!
 
 **Painting** is a mechanic unique to Paintbrawl. When a projectile you shoot touches the ground, it explodes, painting the nearby blocks with your team's color. If another player steps on your color, they will begin to take damage. Some weapons are more effective at painting than others, so pay attention to the one that you have!
 
-![](/images/2023-02-19-new-game-paintbrawl-2.png)
+![](../../../assets/images/2023-02-19-new-game-paintbrawl-2.png)
 
 ## Weapons
 
@@ -47,7 +47,7 @@ _Note: Weapon mobility refers to the amount of self-knockback that can be done w
 | Sniper Rifle  | 8 ❤️   | 1 shot / 4 seconds  | 4s          | 1        | 6                | 5          |
 | Paintbrush    | 1 ❤️   | 1 shot / second     | 3s          | 10       | 2                | 5          |
 
-![](/images/2023-02-19-new-game-paintbrawl-3.png)
+![](../../../assets/images/2023-02-19-new-game-paintbrawl-3.png)
 
 ## Powerups
 
@@ -60,7 +60,7 @@ There are currently 6 powerups, which are collectible items that provide a tempo
 - **Health Pack**: Heals you a total of 5 hearts over a period of 5 seconds.
 - **Nuke**: Detonates after 5 seconds, damaging players in a 4-block radius, destroying blocks in a 5-block radius, and painting blocks in an 8-block radius. If you move after picking up the powerup, the detonation occurs where you moved to.
 
-![](/images/2023-02-19-new-game-paintbrawl-4.png)
+![](../../../assets/images/2023-02-19-new-game-paintbrawl-4.png)
 
 ## Maps
 
