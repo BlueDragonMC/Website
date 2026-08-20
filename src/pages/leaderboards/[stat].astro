@@ -7,7 +7,7 @@ import { fetchLeaderboard } from "@/src/lib/leaderboardUtils";
 export const prerender = false;
 
 const { stat } = Astro.params;
-const lb = getLeaderboard(stat!);
+const lb = getLeaderboard(stat!) ?? getLeaderboard("statistics." + stat!);
 
 if (!lb) {
   Astro.response.status = 404;
@@ -16,7 +16,10 @@ if (!lb) {
 
 const { leaderboard: obj, category } = lb;
 
-const result = await fetchLeaderboard(stat!, lb.leaderboard.sort ?? -1);
+const result = await fetchLeaderboard(
+  lb.leaderboard.stat,
+  lb.leaderboard.sort ?? -1,
+);
 ---
 
 <Layout

@@ -13,37 +13,25 @@ import Layout from "@/src/layouts/Layout.astro";
 
   <main
     class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-    <Card imageAlt="Game screenshot" imageSrc={hero5}>
-      <h2 class="text-2xl font-bold">{"General"}</h2>
-      <h3 class="text-xl font-semibold text-gray-700 dark:text-neutral-400">
-        Network-Wide
-      </h3>
-
-      <a href={`/leaderboards/total_xp`}>
-        <p class="font-medium underline">Experience</p>
-      </a>
-      <a href={`/leaderboards/total_coins`}>
-        <p class="font-medium underline">Coins</p>
-      </a>
-    </Card>
     {
       leaderboards.map((category) => {
         const game = games.find((game) => game.name === category.name);
         const modeIndex = leaderboards
           .filter((cat) => cat.name === category.name)
           .indexOf(category);
-        if (!game) return;
+        const image = game
+          ? game.images?.[modeIndex % game.images?.length]
+          : hero5;
         return (
-          <Card
-            imageAlt="Game screenshot"
-            imageSrc={game.images?.[modeIndex % game.images?.length]}>
+          <Card imageAlt="Game screenshot" imageSrc={image}>
             <h2 class="text-2xl font-bold">{category.name}</h2>
             <h3 class="text-xl font-semibold text-gray-700 dark:text-neutral-400">
               {category.mode ?? "All Modes"}
             </h3>
             {category.leaderboards.map((lb) => {
               return (
-                <a href={`/leaderboards/${lb.stat}`}>
+                <a
+                  href={`/leaderboards/${lb.stat.replaceAll("statistics.", "")}`}>
                   <p class="font-medium underline">{lb.name}</p>
                 </a>
               );
