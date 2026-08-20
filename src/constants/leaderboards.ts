@@ -1,16 +1,31 @@
 export const leaderboards: Array<Category> = [
   {
+    name: "Network-Wide",
+    leaderboards: [
+      {
+        name: "Most Experience",
+        statName: "Total Experience",
+        stat: "experience",
+      },
+      {
+        name: "Most Coins",
+        statName: "Coins",
+        stat: "coins",
+      },
+    ],
+  },
+  {
     name: "HueHunters",
     leaderboards: [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_huehunters_wins",
+        stat: "statistics.game_huehunters_wins",
       },
       {
         name: "Most Kills",
         statName: "Kills",
-        stat: "game_huehunters_kills",
+        stat: "statistics.game_huehunters_kills",
       },
     ],
   },
@@ -20,12 +35,12 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_dominate_wins",
+        stat: "statistics.game_dominate_wins",
       },
       {
         name: "Most Kills",
         statName: "Kills",
-        stat: "game_dominate_kills",
+        stat: "statistics.game_dominate_kills",
       },
     ],
   },
@@ -36,26 +51,26 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_paintbrawl_wins",
+        stat: "statistics.game_paintbrawl_wins",
       },
       {
         name: "Most Kills",
         statName: "Kills",
-        stat: "game_paintbrawl_kills",
+        stat: "statistics.game_paintbrawl_kills",
       },
       {
         name: "Most Powerups Claimed",
         statName: "Powerups Claimed",
-        stat: "game_paintbrawl_powerups_claimed",
+        stat: "statistics.game_paintbrawl_powerups_claimed",
       },
       {
         name: "Total Points",
-        stat: "game_paintbrawl_total_points",
+        stat: "statistics.game_paintbrawl_total_points",
       },
       {
         name: "Most Blocks Vacuumed",
         statName: "Blocks Vacuumed",
-        stat: "game_paintbrawl_blocks_vacuumed",
+        stat: "statistics.game_paintbrawl_blocks_vacuumed",
       },
     ],
   },
@@ -66,27 +81,27 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Kills (Sniper Rifle)",
         statName: "Sniper Rifle Kills",
-        stat: "game_paintbrawl_kills_snowball_sniper_rifle",
+        stat: "statistics.game_paintbrawl_kills_snowball_sniper_rifle",
       },
       {
         name: "Most Kills (Machine Gun)",
         statName: "Machine Gun Kills",
-        stat: "game_paintbrawl_kills_snowball_machine_gun",
+        stat: "statistics.game_paintbrawl_kills_snowball_machine_gun",
       },
       {
         name: "Most Kills (Paintball Gun)",
         statName: "Paintball Gun Kills",
-        stat: "game_paintbrawl_kills_snowball_paintball_gun",
+        stat: "statistics.game_paintbrawl_kills_snowball_paintball_gun",
       },
       {
         name: "Most Kills (Paintbrush)",
         statName: "Paintbrush Kills",
-        stat: "game_paintbrawl_kills_snowball_paintbrush",
+        stat: "statistics.game_paintbrawl_kills_snowball_paintbrush",
       },
       {
         name: "Most Kills (Shotgun)",
         statName: "Shotgun Kills",
-        stat: "game_paintbrawl_kills_snowball_shotgun",
+        stat: "statistics.game_paintbrawl_kills_snowball_shotgun",
       },
     ],
   },
@@ -96,12 +111,12 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_wackymaze_wins",
+        stat: "statistics.game_wackymaze_wins",
       },
       {
         name: "Most Whacks",
         statName: "Whacks",
-        stat: "game_wackymaze_whacks",
+        stat: "statistics.game_wackymaze_whacks",
       },
     ],
   },
@@ -111,17 +126,17 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_skywars_wins",
+        stat: "statistics.game_skywars_wins",
       },
       {
         name: "Most Kills",
         statName: "Kills",
-        stat: "game_skywars_kills",
+        stat: "statistics.game_skywars_kills",
       },
       {
         name: "Most Deaths",
         statName: "Deaths",
-        stat: "game_skywars_deaths",
+        stat: "statistics.game_skywars_deaths",
       },
     ],
   },
@@ -131,17 +146,17 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_skyfall_wins",
+        stat: "statistics.game_skyfall_wins",
       },
       {
         name: "Most Kills",
         statName: "Kills",
-        stat: "game_skyfall_kills",
+        stat: "statistics.game_skyfall_kills",
       },
       {
         name: "Most Deaths",
         statName: "Deaths",
-        stat: "game_skyfall_deaths",
+        stat: "statistics.game_skyfall_deaths",
       },
     ],
   },
@@ -151,22 +166,22 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_bedwars_wins",
+        stat: "statistics.game_bedwars_wins",
       },
       {
         name: "Most Kills",
         statName: "Kills",
-        stat: "game_bedwars_kills",
+        stat: "statistics.game_bedwars_kills",
       },
       {
         name: "Most Deaths",
         statName: "Deaths",
-        stat: "game_bedwars_deaths",
+        stat: "statistics.game_bedwars_deaths",
       },
       {
         name: "Most Beds Broken",
         statName: "Beds Broken",
-        stat: "game_bedwars_beds_broken",
+        stat: "statistics.game_bedwars_beds_broken",
       },
     ],
   },
@@ -177,15 +192,15 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_infinijump_wins_versus",
+        stat: "statistics.game_infinijump_wins_versus",
       },
       {
         name: "Highest Score",
-        stat: "game_infinijump_highest_score_versus",
+        stat: "statistics.game_infinijump_highest_score_versus",
       },
       {
         name: "Total Points",
-        stat: "game_infinijump_total_points_versus",
+        stat: "statistics.game_infinijump_total_points_versus",
       },
     ],
   },
@@ -196,11 +211,11 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_infinijump_wins_race",
+        stat: "statistics.game_infinijump_wins_race",
       },
       {
         name: "Total Points",
-        stat: "game_infinijump_total_points_race",
+        stat: "statistics.game_infinijump_total_points_race",
       },
     ],
   },
@@ -210,11 +225,11 @@ export const leaderboards: Array<Category> = [
     leaderboards: [
       {
         name: "Highest Score",
-        stat: "game_infinijump_highest_score_solo",
+        stat: "statistics.game_infinijump_highest_score_solo",
       },
       {
         name: "Total Points",
-        stat: "game_infinijump_total_points_solo",
+        stat: "statistics.game_infinijump_total_points_solo",
       },
     ],
   },
@@ -224,12 +239,12 @@ export const leaderboards: Array<Category> = [
     leaderboards: [
       {
         name: "Highest Score",
-        stat: "game_infinijump_highest_score",
+        stat: "statistics.game_infinijump_highest_score",
       },
 
       {
         name: "Total Points",
-        stat: "game_infinijump_total_points",
+        stat: "statistics.game_infinijump_total_points",
       },
     ],
   },
@@ -238,14 +253,14 @@ export const leaderboards: Array<Category> = [
     leaderboards: [
       {
         name: "Fastest Time",
-        stat: "game_fastfall_best_time",
+        stat: "statistics.game_fastfall_best_time",
         format: "time",
         sort: 1,
       },
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_fastfall_wins",
+        stat: "statistics.game_fastfall_wins",
       },
     ],
   },
@@ -255,17 +270,17 @@ export const leaderboards: Array<Category> = [
       {
         name: "Most Wins",
         statName: "Wins",
-        stat: "game_pvpmaster_wins",
+        stat: "statistics.game_pvpmaster_wins",
       },
       {
         name: "Most Kills",
         statName: "Kills",
-        stat: "game_pvpmaster_kills",
+        stat: "statistics.game_pvpmaster_kills",
       },
       {
         name: "Most Deaths",
         statName: "Deaths",
-        stat: "game_pvpmaster_deaths",
+        stat: "statistics.game_pvpmaster_deaths",
       },
     ],
   },
@@ -275,7 +290,7 @@ export const leaderboards: Array<Category> = [
     leaderboards: [
       {
         name: "Fastest Time",
-        stat: "lobby_parkour_world_tour_best_time",
+        stat: "statistics.lobby_parkour_world_tour_best_time",
         format: "time",
         sort: 1,
       },
@@ -287,7 +302,7 @@ export const leaderboards: Array<Category> = [
     leaderboards: [
       {
         name: "Fastest Time",
-        stat: "lobby_parkour_cave_best_time",
+        stat: "statistics.lobby_parkour_cave_best_time",
         format: "time",
         sort: 1,
       },

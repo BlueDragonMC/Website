@@ -1,6 +1,7 @@
-import { LP_HOSTNAME } from "./vars";
+import { leaderboards } from "../constants/leaderboards";
+import { getNested } from "./leaderboardUtils";
 import { client } from "./mongo";
-import { getLeaderboard } from "../constants/leaderboards";
+import { LP_HOSTNAME } from "./vars";
 
 export type LuckPermsUserMeta = {
   primaryGroup: string;
@@ -9,7 +10,9 @@ export type LuckPermsUserMeta = {
 };
 
 export async function fetchPlayer(username: string) {
-  const doc = await (await client)
+  const doc = await (
+    await client
+  )
     .db("bluedragon")
     .collection("players")
     .findOne({ usernameLower: username.toLowerCase() });
@@ -19,11 +22,13 @@ export async function fetchPlayer(username: string) {
   const permissionInfo = await fetchMeta(doc._id.toString());
 
   const stats: { [key: string]: number } = {};
-  Object.keys(doc["statistics"]).forEach((stat) => {
-    if (getLeaderboard(stat) !== null) {
-      stats[stat] = doc["statistics"][stat];
+
+  for (const leaderboard of leaderboards.flatMap((it) => it.leaderboards)) {
+    const value = getNested<number>(doc, leaderboard.stat);
+    if (value !== undefined) {
+      stats[leaderboard.stat] = value;
     }
-  });
+  }
 
   const xp = doc["experience"] as number;
   const level = Math.sqrt(xp / 20);

@@ -1,15 +1,15 @@
 ---
-import Layout from "@/src/layouts/Layout.astro";
 import RelativeDate from "@/src/components/RelativeDate.astro";
 import Statistic from "@/src/components/Statistic.astro";
-import { Icon } from "astro-icon/components";
-import { fetchPlayer } from "@/src/lib/playerUtils";
-import { fetchPosition } from "@/src/lib/leaderboardUtils";
 import {
   format,
   getLeaderboard,
   leaderboards,
 } from "@/src/constants/leaderboards";
+import Layout from "@/src/layouts/Layout.astro";
+import { fetchPosition } from "@/src/lib/leaderboardUtils";
+import { fetchPlayer } from "@/src/lib/playerUtils";
+import { Icon } from "astro-icon/components";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 
@@ -51,13 +51,13 @@ await Promise.all(
     return fetchPosition(
       info.username,
       stat,
-      getLeaderboard(stat)?.leaderboard.sort ?? -1
+      getLeaderboard(stat)?.leaderboard.sort ?? -1,
     ).then((info) => {
       if (info !== undefined) {
         ranks[info.statistic] = info.position;
       }
     });
-  })
+  }),
 );
 ---
 
@@ -103,9 +103,7 @@ await Promise.all(
 
     <Statistic
       name="First Login"
-      value={
-        info.firstLogin ? timeAgo.format(info.firstLogin) : undefined
-      }>
+      value={info.firstLogin ? timeAgo.format(info.firstLogin) : undefined}>
       <RelativeDate
         date={info.firstLogin}
         text={info.firstLogin ? timeAgo.format(info.firstLogin) : "-"}
@@ -119,9 +117,10 @@ await Promise.all(
         text={info.lastLogin ? timeAgo.format(info.lastLogin) : "-"}
       />
     </Statistic>
-    <Statistic name="Network Level" value={Math.round(info.level * 100) / 100} />
-    <Statistic name="Total Experience" value={info.xp} />
-    <Statistic name="Coins" value={info.coins} />
+    <Statistic
+      name="Network Level"
+      value={Math.round(info.level * 100) / 100}
+    />
     <Statistic name="Owned Cosmetics" value={info.cosmeticCount} />
     {
       leaderboards.map((category) => (
@@ -131,16 +130,14 @@ await Promise.all(
               ? `${category.name}: ${category.mode}`
               : category.name}
           </h1>
-          {
-            category.leaderboards.map((lb) => (
-              <Statistic
-                name={lb.statName ?? lb.name}
-                stat={lb.stat}
-                value={format(lb.format, info.stats[lb.stat])}
-                position={ranks[lb.stat]}
-              />
-            ))
-          }
+          {category.leaderboards.map((lb) => (
+            <Statistic
+              name={lb.statName ?? lb.name}
+              stat={lb.stat}
+              value={format(lb.format, info.stats[lb.stat])}
+              position={ranks[lb.stat]}
+            />
+          ))}
         </div>
       ))
     }

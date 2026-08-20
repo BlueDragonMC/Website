@@ -1,8 +1,9 @@
 ---
+import hero5 from "@/assets/hero/5.png";
 import Card from "@/src/components/Card.astro";
-import Layout from "@/src/layouts/Layout.astro";
 import { games } from "@/src/constants/games";
 import { leaderboards } from "@/src/constants/leaderboards";
+import Layout from "@/src/layouts/Layout.astro";
 ---
 
 <Layout ogImage={`${Astro.site}leaderboards/opengraph-image.png`}>
@@ -12,6 +13,19 @@ import { leaderboards } from "@/src/constants/leaderboards";
 
   <main
     class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+    <Card imageAlt="Game screenshot" imageSrc={hero5}>
+      <h2 class="text-2xl font-bold">{"General"}</h2>
+      <h3 class="text-xl font-semibold text-gray-700 dark:text-neutral-400">
+        Network-Wide
+      </h3>
+
+      <a href={`/leaderboards/total_xp`}>
+        <p class="font-medium underline">Experience</p>
+      </a>
+      <a href={`/leaderboards/total_coins`}>
+        <p class="font-medium underline">Coins</p>
+      </a>
+    </Card>
     {
       leaderboards.map((category) => {
         const game = games.find((game) => game.name === category.name);
@@ -22,23 +36,18 @@ import { leaderboards } from "@/src/constants/leaderboards";
         return (
           <Card
             imageAlt="Game screenshot"
-            imageSrc={
-              game.images?.[modeIndex % game.images?.length]
-            }>
+            imageSrc={game.images?.[modeIndex % game.images?.length]}>
             <h2 class="text-2xl font-bold">{category.name}</h2>
-            <h3
-              class="text-xl font-semibold text-gray-700 dark:text-neutral-400">
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-neutral-400">
               {category.mode ?? "All Modes"}
             </h3>
-            {
-              category.leaderboards.map((lb) => {
-                return (
-                  <a href={`/leaderboards/${lb.stat}`}>
-                    <p class="font-medium underline">{lb.name}</p>
-                  </a>
-                );
-              })
-            }
+            {category.leaderboards.map((lb) => {
+              return (
+                <a href={`/leaderboards/${lb.stat}`}>
+                  <p class="font-medium underline">{lb.name}</p>
+                </a>
+              );
+            })}
           </Card>
         );
       })

@@ -1,13 +1,14 @@
+import type { Document, WithId } from "mongodb";
 import { client } from "./mongo";
 
 export async function fetchLeaderboard(
-  stat: string,
+  key: string,
   sort: 1 | -1,
-  limit: number = 50
+  limit: number = 50,
 ) {
   const filter: { [key: string]: { [key: string]: any } } = {};
 
-  filter[`statistics.${stat}`] = {
+  filter[key] = {
     $exists: true,
   };
 
@@ -20,30 +21,39 @@ export async function fetchLeaderboard(
         .db("bluedragon")
         .collection("players")
         .find(filter)
-        .sort("statistics." + stat, sort)
+        .sort(key, sort)
         .limit(limit)
         .toArray()
     ).map((row) => ({
       uuid: row._id.toString(),
       username: row["username"],
-      value: row["statistics"][stat],
+      value: getNested<number>(row, key),
     }))
   );
 }
 
+export function getNested<T>(row: WithId<Document>, key: string): T {
+  const split = key.split(".");
+  let value = row;
+  for (const part of split) {
+    value = value[part];
+  }
+  return value as unknown as T;
+}
+
 export async function fetchPosition(
   username: string,
-  stat: string,
-  sortDirection: 1 | -1 = -1
+  key: string,
+  sortDirection: 1 | -1 = -1,
 ) {
   const filter: { [key: string]: { [key: string]: any } } = {};
   const sort: { [key: string]: number } = {};
 
-  filter[`statistics.${stat}`] = {
+  filter[key] = {
     $exists: true,
   };
 
-  sort[`statistics.${stat}`] = sortDirection;
+  sort[key] = sortDirection;
 
   const pos = await (
     await client
@@ -88,7 +98,7 @@ export async function fetchPosition(
   return {
     uuid: doc._id,
     username: doc.username,
-    statistic: stat,
+    statistic: key,
     position: doc.position,
   };
 }
