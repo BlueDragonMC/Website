@@ -1,17 +1,20 @@
-import { generate } from "@/src/lib/og";
 import { getLeaderboard, leaderboards } from "@/src/constants/leaderboards";
+import { generate } from "@/src/lib/og";
 import type { GetStaticPaths } from "astro";
 
 export const prerender = true;
 
 export const getStaticPaths = (() => {
   return leaderboards.flatMap((category) =>
-    category.leaderboards.map((lb) => ({ params: { stat: lb.stat } }))
+    category.leaderboards.map((lb) => ({
+      params: { stat: lb.stat.replace(/^statistics\./, "") },
+    })),
   );
 }) satisfies GetStaticPaths;
 
 export async function GET({ params }: { params: { stat: string } }) {
-  const lbInfo = getLeaderboard(params.stat);
+  const lbInfo =
+    getLeaderboard(params.stat) ?? getLeaderboard("statistics." + params.stat);
 
   if (!lbInfo) return new Response(null, { status: 404 });
 

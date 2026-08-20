@@ -31,7 +31,7 @@ import Layout from "@/src/layouts/Layout.astro";
             {category.leaderboards.map((lb) => {
               return (
                 <a
-                  href={`/leaderboards/${lb.stat.replaceAll("statistics.", "")}`}>
+                  href={`/leaderboards/${lb.stat.replace(/^statistics\./, "")}`}>
                   <p class="font-medium underline">{lb.name}</p>
                 </a>
               );
