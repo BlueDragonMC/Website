@@ -1,6 +1,7 @@
 import { imageSize } from "image-size";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const isElement = (node) =>
   node && node.type === "element" && typeof node.tagName === "string";
@@ -103,39 +104,50 @@ export const rehypeGalleryImages = {
       visit(img, ctx) {
         const parent = ctx.parent(img);
         if (isElement(parent) && parent.tagName === "a") return;
-        return transformImage(img, ctx);
+        // ctx.data is scoped to the document being rendered, so this is
+        // true only for the first transformed image of each post.
+        const priority = !ctx.data.__gallerySawImage;
+        ctx.data.__gallerySawImage = true;
+        return transformImage(img, ctx, priority);
       },
     },
   ],
 };
 
-async function transformImage(node, ctx) {
+async function transformImage(node, ctx, priority) {
   const props = node.properties || {};
   const src = props.src;
   if (typeof src !== "string") return;
 
+  let filePath;
+  if (src.startsWith("/")) {
+    filePath = join(process.cwd(), "public", src);
+  } else if (ctx.fileURL) {
+    const resolved = new URL(src, ctx.fileURL);
+    if (resolved.protocol !== "file:") return;
+    filePath = fileURLToPath(resolved);
+  } else {
+    return;
+  }
+
   let dimensions;
   try {
-    const buffer = await readFile(
-      join(process.cwd(), "public", src.replace(/^\/+/, "")),
-    );
-    dimensions = imageSize(buffer);
+    dimensions = imageSize(await readFile(filePath));
   } catch {
     return;
   }
   if (!dimensions || !dimensions.width || !dimensions.height) return;
 
   const { width, height } = dimensions;
-  const halfWidth = Math.round(width / 2);
-  const halfHeight = Math.round(height / 2);
-  const thumbWidth = width > 1000 ? halfWidth : width;
-  const thumbHeight = width > 1000 ? halfHeight : height;
 
+  // The image is emitted in multiple build-time variants (image.layout:
+  // "constrained"). The sizes hint matches the prose column width so
+  // browsers pick a small variant inline; the gallery script points the
+  // lightbox at the largest variant for full-size viewing.
   ctx.replaceNode(node, {
     type: "element",
     tagName: "a",
     properties: {
-      href: src,
       "data-pswp-width": width,
       "data-pswp-height": height,
     },
@@ -146,10 +158,14 @@ async function transformImage(node, ctx) {
         properties: {
           src,
           alt: props.alt ?? "Image",
-          width: thumbWidth,
-          height: thumbHeight,
-          loading: "lazy",
-          class: ["cursor-pointer", "rounded-md"],
+          width,
+          height,
+          sizes: "(min-width: 768px) 720px, 100vw",
+          // Mirror what the `priority` prop does on Astro's <Image>:
+          loading: priority ? "eager" : "lazy",
+          decoding: priority ? "sync" : "async",
+          fetchpriority: priority ? "high" : undefined,
+          class: "cursor-pointer rounded-md",
         },
         children: [],
       },

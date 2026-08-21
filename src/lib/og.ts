@@ -233,7 +233,7 @@ export async function generate({
 
   return new Response(new Uint8Array(png), {
     headers: {
-      "Content-Type": "text/svg",
+      "Content-Type": "image/png",
       "Cache-Control": "public, max-age=86400, stale-while-revalidate",
     },
   });

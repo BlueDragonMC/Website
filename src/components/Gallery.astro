@@ -1,5 +1,5 @@
 ---
-import { getImage } from "astro:assets";
+import { Image } from "astro:assets";
 
 interface Props {
   images: Array<ImageMetadata>;
@@ -7,10 +7,6 @@ interface Props {
 }
 
 const { images, altText } = Astro.props;
-
-const thumbnails = await Promise.all(
-  images.map((image) => getImage({ src: image, width: 480 })),
-);
 ---
 
 <image-gallery>
@@ -20,9 +16,10 @@ const thumbnails = await Promise.all(
         href={img.src}
         data-pswp-width={img.width}
         data-pswp-height={img.height}>
-        <img
+        <Image
           class="mb-4 mr-4 inline cursor-pointer rounded-md"
-          src={thumbnails[i].src}
+          src={images[i]}
+          width={480}
           alt={Array.isArray(altText) ? altText[i] : altText}
         />
       </a>

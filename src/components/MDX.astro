@@ -24,39 +24,47 @@ const fmt = new Intl.DateTimeFormat(undefined, {
 });
 
 const created = data.created ? fmt.format(new Date(data.created)) : undefined;
-const modified = data.modified ? fmt.format(new Date(data.modified)) : undefined;
+const modified = data.modified
+  ? fmt.format(new Date(data.modified))
+  : undefined;
 ---
 
 <image-gallery>
   <h1 class="mb-0">{data.title}</h1>
   <p class="mt-2">
-    {data.author && (
-      <span class="mr-4 whitespace-nowrap">
-        <Icon
-          name="fa7-solid:user"
-          class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
-        />
-        {"Posted by: " + data.author}
-      </span>
-    )}
-    {created && (
-      <span class="mr-4 whitespace-nowrap">
-        <Icon
-          name="fa7-solid:clock"
-          class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
-        />
-        {"Created: " + created}
-      </span>
-    )}
-    {modified && created !== modified && (
-      <span class="mr-4 whitespace-nowrap">
-        <Icon
-          name="fa7-solid:pencil"
-          class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
-        />
-        {"Last Modified: " + modified}
-      </span>
-    )}
+    {
+      data.author && (
+        <span class="mr-4 whitespace-nowrap">
+          <Icon
+            name="fa7-solid:user"
+            class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
+          />
+          {"Posted by: " + data.author}
+        </span>
+      )
+    }
+    {
+      created && (
+        <span class="mr-4 whitespace-nowrap">
+          <Icon
+            name="fa7-solid:clock"
+            class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
+          />
+          {"Created: " + created}
+        </span>
+      )
+    }
+    {
+      modified && created !== modified && (
+        <span class="mr-4 whitespace-nowrap">
+          <Icon
+            name="fa7-solid:pencil"
+            class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
+          />
+          {"Last Modified: " + modified}
+        </span>
+      )
+    }
   </p>
   <Content />
 </image-gallery>
@@ -73,6 +81,14 @@ const modified = data.modified ? fmt.format(new Date(data.modified)) : undefined
 
   class ImageGallery extends HTMLElement {
     connectedCallback() {
+      this.querySelectorAll("a[data-pswp-width]").forEach((a) => {
+        const img = a.querySelector("img");
+        const src = img?.getAttribute("src");
+        if (src && !a.hasAttribute("href")) {
+          a.setAttribute("href", src);
+        }
+      });
+
       const lightbox = new PhotoSwipeLightbox({
         gallery: this,
         children: this.querySelectorAll("a[data-pswp-width]"),

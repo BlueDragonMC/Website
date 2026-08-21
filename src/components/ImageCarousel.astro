@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   images: Array<ImageMetadata>;
   altText: string | string[];
@@ -20,14 +22,14 @@ const {
   <div class="relative h-full w-full">
     {
       images.map((img, i) => (
-        <img
-          src={img.src}
+        <Image
+          src={img}
           class={`absolute top-0 left-0 h-full w-full select-none object-cover transition-opacity duration-[2.5s] ${
             blurred && "scale-110 blur-sm brightness-[.3]"
           }`}
           alt={Array.isArray(altText) ? altText[i] : altText}
           width={imageWidth}
-          loading={i <= 2 ? "eager" : "lazy"}
+          priority={i == 0}
         />
       ))
     }

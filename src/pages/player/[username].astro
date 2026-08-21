@@ -10,6 +10,7 @@ import Layout from "@/src/layouts/Layout.astro";
 import { fetchPosition } from "@/src/lib/leaderboardUtils";
 import { fetchPlayer } from "@/src/lib/playerUtils";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 
@@ -63,10 +64,11 @@ await Promise.all(
 
 <Layout
   title={`${info.username}'s Stats`}
-  ogImage={`${Astro.site}player/${username}/opengraph-image.png`}>
+  ogImage={new URL(`/player/${username}/opengraph-image.png`, Astro.site)}>
   <main>
     <h1 class="text-center text-3xl font-bold">
-      <img
+      <Image
+        priority
         src={`https://minotar.net/helm/${nonDashedUUID}/16`}
         alt={`${username}'s Minecraft player head`}
         width={32}

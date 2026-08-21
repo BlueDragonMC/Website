@@ -8,6 +8,6 @@ export async function GET({ site }: APIContext) {
       headers: {
         "Content-Type": "application/json",
       },
-    }
+    },
   );
 }

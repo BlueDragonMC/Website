@@ -12,9 +12,13 @@ export default defineConfig({
   site:
     process.env.NODE_ENV === "production"
       ? "https://bluedragonmc.com"
-      : "http://localhost:3000",
-
+      : `http://localhost:${process.env.PORT ?? 4321}`,
   adapter: node({ mode: "standalone" }),
+
+  image: {
+    layout: "constrained",
+    breakpoints: [828],
+  },
 
   vite: {
     plugins: [tailwindcss()],

@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 const emphasis = "text-green-500 dark:text-amber-500 font-bold";
 ---
 
-<Layout ogImage={`${Astro.site}join/opengraph-image.png`}>
+<Layout ogImage={new URL(`/opengraph-image.png`, Astro.site)}>
   <main class="mx-auto mt-10 max-w-prose">
     <h1 class="text-3xl font-bold">How To Join</h1>
     <ul>
@@ -29,7 +29,7 @@ const emphasis = "text-green-500 dark:text-amber-500 font-bold";
       </Step>
       <Step number={5}>
         <em>(Optional)</em>{" "}
-        <a href="/games" class="font-medium underline"> Check out our games </a>
+        <a href="/games" class="font-medium underline">Check out our games</a>
         , or join the server to see them firsthand!
       </Step>
     </ul>

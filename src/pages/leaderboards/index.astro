@@ -6,7 +6,7 @@ import { leaderboards } from "@/src/constants/leaderboards";
 import Layout from "@/src/layouts/Layout.astro";
 ---
 
-<Layout ogImage={`${Astro.site}leaderboards/opengraph-image.png`}>
+<Layout ogImage={new URL(`/leaderboards/opengraph-image.png`, Astro.site)}>
   <h1 class="text-3xl font-bold">Leaderboards</h1>
 
   <p>Click a leaderboard below to view the top players in a category.</p>

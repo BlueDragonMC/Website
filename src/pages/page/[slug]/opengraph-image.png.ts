@@ -12,7 +12,9 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 export async function GET({ params }: { params: { slug: string } }) {
-  const page = (await getCollection("staticPages")).find((p) => p.id === params.slug);
+  const page = (await getCollection("staticPages")).find(
+    (p) => p.id === params.slug,
+  );
 
   if (!page) return new Response(null, { status: 404 });
 

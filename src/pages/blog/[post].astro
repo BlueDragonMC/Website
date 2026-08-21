@@ -1,8 +1,8 @@
 ---
-import { Icon } from "astro-icon/components";
-import Layout from "@/src/layouts/Layout.astro";
 import MDX from "@/src/components/MDX.astro";
+import Layout from "@/src/layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
 export const prerender = true;
@@ -16,7 +16,7 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.params;
 const articles = (await getCollection("blog")).toSorted(
-  (a, b) => b.data.created.getTime() - a.data.created.getTime()
+  (a, b) => b.data.created.getTime() - a.data.created.getTime(),
 );
 const currentIndex = articles.findIndex((other) => other.id === post);
 const article = articles[currentIndex];
@@ -35,8 +35,8 @@ const title = article.data.title
 const description = article.data.description;
 
 const ogImage = article.data.image
-  ? `${Astro.site}${article.data.image.src.replace(/^\//, "")}`
-  : `${Astro.site}blog/${article.id}/opengraph-image.png`;
+  ? new URL(article.data.image.src.replace(/^\//, ""), Astro.site)
+  : new URL(`/blog/${article.id}/opengraph-image.png`, Astro.site);
 ---
 
 <Layout title={title} description={description} ogImage={ogImage}>
@@ -50,10 +50,7 @@ const ogImage = article.data.image
             href={"/blog/" + prev.id}
             class="block w-full rounded-md border border-gray-500 p-4 hover:border-2 hover:border-blue-800 hover:p-3.75">
             <p class="font-bold">
-              <Icon
-                name="fa7-solid:chevron-circle-left"
-                class="mr-2 h-4 w-4"
-              />
+              <Icon name="fa7-solid:chevron-circle-left" class="mr-2 h-4 w-4" />
               Previous
             </p>
             <p class="font-medium">{prev?.data?.title}</p>

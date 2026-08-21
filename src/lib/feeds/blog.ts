@@ -4,7 +4,7 @@ import showdown from "showdown";
 
 export const generateRssFeed = async (siteURL: string) => {
   const posts = (await getCollection("blog")).toSorted(
-    (a, b) => b.data.created.getTime() - a.data.created.getTime()
+    (a, b) => b.data.created.getTime() - a.data.created.getTime(),
   );
 
   const date = new Date();
@@ -50,4 +50,4 @@ export const generateRssFeed = async (siteURL: string) => {
   });
 
   return feed;
-}
+};

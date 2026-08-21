@@ -24,7 +24,7 @@ const result = await fetchLeaderboard(
 
 <Layout
   title={`${category.name}: ${obj.name}`}
-  ogImage={`${Astro.site}leaderboards/${stat}/opengraph-image.png`}>
+  ogImage={new URL(`/leaderboards/${stat}/opengraph-image.png`, Astro.site)}>
   <main>
     <h1 class="text-center text-3xl font-bold">{obj.name}</h1>
     <h2 class="text-center text-xl">

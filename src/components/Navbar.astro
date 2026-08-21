@@ -2,6 +2,7 @@
 import favicon from "@/public/favicon_hq.png";
 import logo from "@/public/logo_wordmark.png";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import NavItem from "../components/NavItem.astro";
 ---
 
@@ -10,15 +11,17 @@ import NavItem from "../components/NavItem.astro";
     class={`fixed top-0 z-50 flex h-16 w-full items-center justify-center bg-gray-900 md:justify-between`}>
     <div class={`flex items-center justify-center md:justify-start`}>
       <a href="/">
-        <img
-          src={logo.src}
+        <Image
+          priority
+          src={logo}
           class="mx-4 hidden md:block"
           alt="BlueDragon Logo"
           height={30}
           width={155}
         />
-        <img
-          src={favicon.src}
+        <Image
+          priority
+          src={favicon}
           class="mx-4 md:hidden"
           alt="BlueDragon Logo"
           height={48}

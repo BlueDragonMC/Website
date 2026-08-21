@@ -11,7 +11,7 @@ const dateRegex = /^([\d]{4})-([\d]{2})-([\d]{2})$/;
  */
 export const generateRssFeed = async (siteURL: string) => {
   const changelog = await getCollection("staticPages").then((pages) =>
-    pages.find((page) => page.id === "changelog")
+    pages.find((page) => page.id === "changelog"),
   );
 
   const content = changelog?.body ?? "";
@@ -31,7 +31,7 @@ export const generateRssFeed = async (siteURL: string) => {
         if (lastHeaderOffset !== null) {
           const item = content.substring(
             lastHeaderOffset,
-            child.position!.start.offset! - child.position!.start.column
+            child.position!.start.offset! - child.position!.start.column,
           );
           items.push({
             date: lastHeaderText,
@@ -93,4 +93,4 @@ export const generateRssFeed = async (siteURL: string) => {
   });
 
   return feed;
-}
+};

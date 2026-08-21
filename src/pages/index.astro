@@ -9,6 +9,7 @@ import hero5 from "@/assets/hero/5.png";
 import jukeboxImage from "@/assets/images/jukebox-1.png";
 import leaderboardImage from "@/assets/images/leaderboards-1.png";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import Button from "../components/Button.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
 import { games } from "../constants/games";
@@ -23,7 +24,7 @@ const lbCount = leaderboards
   .reduce((acc, category) => acc + category, 0);
 ---
 
-<Layout ogImage={`${Astro.site}opengraph-image.png`}>
+<Layout ogImage={new URL("/opengraph-image.png", Astro.site)}>
   <main>
     <section class="relative -mx-2 -mt-4 h-screen min-h-240 w-screen md:-mx-10">
       <div class="absolute top-0 left-0 -z-20 h-full w-full overflow-hidden">
@@ -136,8 +137,8 @@ const lbCount = leaderboards
           Join Now
         </Button>
       </div>
-      <img
-        src={jukeboxImage.src}
+      <Image
+        src={jukeboxImage}
         alt="Jukebox menu screenshot"
         class="my-4 rounded-lg"
       />
@@ -145,8 +146,8 @@ const lbCount = leaderboards
   </main>
   <section
     class="my-10 mx-auto grid grid-cols-1 gap-x-8 lg:max-w-[130ch] lg:grid-cols-2">
-    <img
-      src={leaderboardImage.src}
+    <Image
+      src={leaderboardImage}
       alt="Lobby leaderboard screenshot"
       class="row-start-2 my-4 max-h-72 rounded-lg object-cover lg:row-start-1"
     />

@@ -24,7 +24,7 @@ export const getStaticPaths = (() => {
 const steps = game.steps;
 ---
 
-<Layout ogImage={`${Astro.site}games/${game.name.toLowerCase().replaceAll(/ /g, "-")}/opengraph-image.png`}>
+<Layout ogImage={new URL(`/games/${game.name.toLowerCase().replaceAll(/ /g, "-")}/opengraph-image.png`, Astro.site)}>
   <main>
     <h1 class="mb-2 text-3xl font-bold">{game.name}</h1>
     {
