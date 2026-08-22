@@ -22,7 +22,7 @@ const getColor = (position: number): string => {
 <p class="mx-auto flex w-72 justify-between lg:w-96">
   <span class="font-medium">
     {stat ? (
-      <a href={`/leaderboards/${stat}`} class="underline">
+      <a href={`/leaderboards/${stat?.replace(/^statistics\./, "")}`} class="underline">
         {name}
       </a>
     ) : (

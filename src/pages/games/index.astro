@@ -1,7 +1,16 @@
 ---
+import GamePage from "@/src/components/GamePage.astro";
 import { games } from "@/src/constants/games";
-
-return Astro.rewrite(
-  `/games/${games[0].name.toLowerCase().replaceAll(/ /g, "-")}`,
-);
+import Layout from "@/src/layouts/Layout.astro";
 ---
+
+<Layout
+  title="Games"
+  description="All of the minigames on the BlueDragon Minecraft server."
+  ogImage={new URL("/games/opengraph-image.png", Astro.site)}
+  canonical={new URL(
+    `/games/${games[0].name.toLowerCase().replaceAll(/ /g, "-")}`,
+    Astro.site,
+  )}>
+  <GamePage game={games[0]} />
+</Layout>

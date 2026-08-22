@@ -1,0 +1,53 @@
+---
+import { games, type Game } from "@/src/constants/games";
+import Gallery from "@/src/components/Gallery.astro";
+import Step from "@/src/components/Step.astro";
+
+interface Props {
+  game: Game;
+}
+
+const { game } = Astro.props;
+const steps = game.steps;
+---
+
+<main>
+  <h1 class="mb-2 text-3xl font-bold">{game.name}</h1>
+  {
+    games.map((other) => {
+      return (
+        <a
+          href={`/games/${other.name.toLowerCase().replaceAll(/ /g, "-")}`}
+          class={`${
+            game.name == other.name
+              ? "bg-blue-700 text-white"
+              : "mb-2 bg-slate-200 text-black"
+          } mr-2 inline-block cursor-pointer rounded-md p-2 font-medium transition-colors`}>
+          {other.name}
+        </a>
+      );
+    })
+  }
+
+  <p class="my-5">{game.description}</p>
+  <Gallery images={game.images ?? []} altText="Gameplay screenshot" />
+  {game.steps && <h2 class="mb-4 text-2xl font-bold">How to Play</h2>}
+  {
+    Array.isArray(steps)
+      ? steps?.map((step, i) => {
+          return <Step number={i + 1}>{step}</Step>;
+        })
+      : Object.keys(steps ?? {}).map((mode) => {
+          if (!steps) return <></>;
+          const modeSteps = steps[mode];
+          return (
+            <div>
+              <h3 class="text-xl font-bold">{mode}</h3>
+              {modeSteps.map((step, i) => {
+                return <Step number={i + 1}>{step}</Step>;
+              })}
+            </div>
+          );
+        })
+  }
+</main>

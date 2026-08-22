@@ -23,7 +23,9 @@ try {
 } catch {}
 ---
 
-<Layout>
+<Layout
+  title="Server Status"
+  ogImage={new URL("/status/opengraph-image.png", Astro.site)}>
   <main class="mx-auto w-max">
     <h1 class="text-3xl font-bold">Server Status</h1>
     <pre>Server IP: bluedragonmc.com</pre>

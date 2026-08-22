@@ -22,6 +22,19 @@ const newestGameImages = games[0].images!;
 const lbCount = leaderboards
   .map((category) => category.leaderboards.length)
   .reduce((acc, category) => acc + category, 0);
+
+// Games whose steps are keyed by mode have one mode per key; all others have
+// one. HueHunters' step keys are roles, not modes, so it counts as one.
+const gameModeCount = games.reduce(
+  (acc, game) =>
+    acc +
+    (!game.steps ||
+    Array.isArray(game.steps) ||
+    game.name === "HueHunters"
+      ? 1
+      : Object.keys(game.steps).length),
+  0,
+);
 ---
 
 <Layout ogImage={new URL("/opengraph-image.png", Astro.site)}>
@@ -114,8 +127,8 @@ const lbCount = leaderboards
         <h2 class="text-3xl font-bold">Game Selection</h2>
         <p>
           BlueDragon has {games.length} Minecraft minigames and{" "}
-          {games.length} total game modes, across all genres. Parkour, combat, strategy,
-          we have it all.
+          {gameModeCount} total game modes, across all genres. Parkour, combat,
+          strategy, we have it all.
         </p>
         <Button href="/games">
           <Icon slot="icon" name="fa7-solid:gamepad" />

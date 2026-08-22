@@ -7,7 +7,18 @@ import { fetchLeaderboard } from "@/src/lib/leaderboardUtils";
 export const prerender = false;
 
 const { stat } = Astro.params;
-const lb = getLeaderboard(stat!) ?? getLeaderboard("statistics." + stat!);
+
+if (stat!.startsWith("statistics.")) {
+  return Astro.redirect(
+    new URL(
+      `/leaderboards/${stat!.slice("statistics.".length)}`,
+      Astro.url.origin,
+    ),
+    301,
+  );
+}
+
+const lb = getLeaderboard(stat!) ?? getLeaderboard(`statistics.${stat}`);
 
 if (!lb) {
   Astro.response.status = 404;

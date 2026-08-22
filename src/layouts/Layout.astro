@@ -9,13 +9,29 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string | URL;
+  /** Set false to use `title` verbatim instead of appending "| BlueDragon". */
+  template?: boolean;
+  ogType?: "website" | "article" | "profile";
+  noIndex?: boolean;
+  canonical?: string | URL;
 }
 
 const {
-  title = "BlueDragon | Minecraft Minigames",
+  title,
   description = "BlueDragon is a Minecraft server that strives to produce high-quality, original content. Join for free to explore unique minigames like Paintbrawl, WackyMaze, and more!",
   ogImage,
+  template = true,
+  ogType = "website",
+  noIndex = false,
+  canonical,
 } = Astro.props;
+
+const fullTitle =
+  title === undefined
+    ? "BlueDragon | Minecraft Minigames"
+    : template
+      ? `${title} | BlueDragon`
+      : title;
 ---
 
 <html lang="en">
@@ -38,13 +54,17 @@ const {
     <meta name="color-scheme" content="dark light" />
     <meta name="application-name" content="BlueDragon" />
     <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {noIndex && <meta name="robots" content="noindex" />}
     <meta property="og:site_name" content="BlueDragon" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     {ogImage && <meta property="og:image" content={ogImage} />}
-    {ogImage && <meta name="twitter:image" content={ogImage} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
     <link
       href="/rss/blog/atom.xml"
       type="application/atom+xml"
@@ -81,7 +101,7 @@ const {
       rel="alternate"
       title="JSON Changelog feed"
     />
-    <title>{title}</title>
+    <title>{fullTitle}</title>
     <slot name="head" />
   </head>
   <body class="min-h-screen font-inter">

@@ -39,7 +39,11 @@ const ogImage = article.data.image
   : new URL(`/blog/${article.id}/opengraph-image.png`, Astro.site);
 ---
 
-<Layout title={title} description={description} ogImage={ogImage}>
+<Layout
+  title={title}
+  template={false}
+  description={description}
+  ogImage={ogImage}>
   <main class="prose mx-auto max-w-prose dark:prose-invert">
     <MDX entry={article} />
     <div

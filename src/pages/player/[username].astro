@@ -64,6 +64,8 @@ await Promise.all(
 
 <Layout
   title={`${info.username}'s Stats`}
+  description={`View ${info.username}'s BlueDragon profile and statistics online.`}
+  ogType="profile"
   ogImage={new URL(`/player/${username}/opengraph-image.png`, Astro.site)}>
   <main>
     <h1 class="text-center text-3xl font-bold">

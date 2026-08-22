@@ -64,7 +64,7 @@ export async function GET({ site }: APIContext) {
   leaderboards.forEach((category) => {
     category.leaderboards.forEach((lb) => {
       fields.push({
-        url: `/leaderboards/${lb.stat}`,
+        url: `/leaderboards/${lb.stat.replace(/^statistics\./, "")}`,
         changefreq: EnumChangefreq.ALWAYS,
       });
     });
