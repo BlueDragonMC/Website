@@ -1,8 +1,3 @@
-import { imageSize } from "image-size";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
-import { fileURLToPath } from "node:url";
-
 const isElement = (node) =>
   node && node.type === "element" && typeof node.tagName === "string";
 
@@ -114,31 +109,10 @@ export const rehypeGalleryImages = {
   ],
 };
 
-async function transformImage(node, ctx, priority) {
+function transformImage(node, ctx, priority) {
   const props = node.properties || {};
   const src = props.src;
   if (typeof src !== "string") return;
-
-  let filePath;
-  if (src.startsWith("/")) {
-    filePath = join(process.cwd(), "public", src);
-  } else if (ctx.fileURL) {
-    const resolved = new URL(src, ctx.fileURL);
-    if (resolved.protocol !== "file:") return;
-    filePath = fileURLToPath(resolved);
-  } else {
-    return;
-  }
-
-  let dimensions;
-  try {
-    dimensions = imageSize(await readFile(filePath));
-  } catch {
-    return;
-  }
-  if (!dimensions || !dimensions.width || !dimensions.height) return;
-
-  const { width, height } = dimensions;
 
   // The image is emitted in multiple build-time variants (image.layout:
   // "constrained"). The sizes hint matches the prose column width so
@@ -148,8 +122,7 @@ async function transformImage(node, ctx, priority) {
     type: "element",
     tagName: "a",
     properties: {
-      "data-pswp-width": width,
-      "data-pswp-height": height,
+      "data-pswp": "",
     },
     children: [
       {
@@ -158,8 +131,6 @@ async function transformImage(node, ctx, priority) {
         properties: {
           src,
           alt: props.alt ?? "Image",
-          width,
-          height,
           sizes: "(min-width: 768px) 720px, 100vw",
           // Mirror what the `priority` prop does on Astro's <Image>:
           loading: priority ? "eager" : "lazy",

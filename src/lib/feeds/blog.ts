@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 import { Feed } from "feed";
-import showdown from "showdown";
+import { markdownToHtml } from "./markdown";
 
 export const generateRssFeed = async (siteURL: string) => {
   const posts = (await getCollection("blog")).toSorted(
@@ -26,10 +26,7 @@ export const generateRssFeed = async (siteURL: string) => {
     },
   });
 
-  const converter = new showdown.Converter();
-  converter.setFlavor("github");
-
-  posts.forEach((post) => {
+  for (const post of posts) {
     const { data, body } = post;
     const url = `${siteURL}/blog/${post.id}`;
 
@@ -38,7 +35,7 @@ export const generateRssFeed = async (siteURL: string) => {
       id: url,
       link: url,
       description: data.description,
-      content: converter.makeHtml(body ?? ""),
+      content: await markdownToHtml(body ?? ""),
       author: [
         {
           name: data.author,
@@ -47,7 +44,7 @@ export const generateRssFeed = async (siteURL: string) => {
       ],
       date: new Date(data.created),
     });
-  });
+  }
 
   return feed;
 };

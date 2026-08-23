@@ -90,9 +90,18 @@ const modifiedISO = data.modified
 
   class ImageGallery extends HTMLElement {
     connectedCallback() {
-      this.querySelectorAll("a[data-pswp-width]").forEach((a) => {
+      this.querySelectorAll("a[data-pswp]").forEach((a) => {
         const img = a.querySelector("img");
-        const src = img?.getAttribute("src");
+        if (!img) return;
+
+        const width = img.getAttribute("width");
+        const height = img.getAttribute("height");
+        if (width && height) {
+          a.setAttribute("data-pswp-width", width);
+          a.setAttribute("data-pswp-height", height);
+        }
+
+        const src = img.getAttribute("src");
         if (src && !a.hasAttribute("href")) {
           a.setAttribute("href", src);
         }

@@ -24,21 +24,17 @@
     "astro": "^7.2.4",
     "astro-icon": "^1.2.0",
     "feed": "^6.0.0",
-    "image-size": "^2.0.2",
     "javascript-time-ago": "^2.6.4",
     "mdast-util-from-markdown": "^2.0.3",
     "minecraft-server-util": "^5.4.4",
     "mongodb": "^7.5.0",
     "photoswipe": "^5.4.4",
     "satori": "^0.29.1",
-    "showdown": "^2.1.0",
     "sitemap": "^9.0.1",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@types/image-size": "^0.8.0",
-    "@types/showdown": "^2.0.6",
     "typescript": "^6.0.3"
   },
   "allowScripts": {

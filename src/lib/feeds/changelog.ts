@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content";
 import { Feed } from "feed";
 import { fromMarkdown } from "mdast-util-from-markdown";
-import showdown from "showdown";
+import { markdownToHtml } from "./markdown";
 
 const dateRegex = /^([\d]{4})-([\d]{2})-([\d]{2})$/;
 
@@ -68,12 +68,9 @@ export const generateRssFeed = async (siteURL: string) => {
     },
   });
 
-  const converter = new showdown.Converter();
-  converter.setFlavor("github");
-
-  items.forEach(({ date, description }) => {
+  for (const { date, description } of items) {
     if (date === null) {
-      return;
+      continue;
     }
 
     feed.addItem({
@@ -81,7 +78,7 @@ export const generateRssFeed = async (siteURL: string) => {
       id: `${siteURL}/page/changelog#${date}`,
       link: `${siteURL}/page/changelog`,
       description: description,
-      content: converter.makeHtml(description),
+      content: await markdownToHtml(description),
       author: [
         {
           name: "BlueDragon Staff",
@@ -90,7 +87,7 @@ export const generateRssFeed = async (siteURL: string) => {
       ],
       date: new Date(new Date(date).getTime() + 43_200_000), // Add half a day to dates to align better with EST
     });
-  });
+  }
 
   return feed;
 };
