@@ -43,7 +43,13 @@ const ogImage = article.data.image
   title={title}
   template={false}
   description={description}
-  ogImage={ogImage}>
+  ogType="article"
+  ogImage={ogImage}
+  publishedTime={article.data.created}
+  modifiedTime={article.data.modified}
+  author={article.data.author}
+  ogImageWidth={article.data.image?.width}
+  ogImageHeight={article.data.image?.height}>
   <main class="prose mx-auto max-w-prose dark:prose-invert">
     <MDX entry={article} />
     <div

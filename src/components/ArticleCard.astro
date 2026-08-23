@@ -25,19 +25,21 @@ const created = new Intl.DateTimeFormat(undefined, {
           alt={article.data.title}
           width={1024}
           height={0}
+          widths={[320, 544, 768]}
+          sizes="(min-width: 48rem) 34rem, calc(100vw - 2rem)"
           class="h-24 w-full rounded-t-lg object-cover transition-all group-hover:brightness-75"
         />
       )
     }
     <div class="p-3">
-      <h1 class="mb-auto text-2xl font-medium">
+      <h2 class="mb-auto text-2xl font-medium">
         {article.data.title}
-      </h1>
+      </h2>
       <div class="flex flex-wrap items-center py-3">
         <Icon name="fa7-solid:user" class="mr-2 size-4 align-middle" />
         <span class="font-medium">{article.data.author}</span>
         <Icon name="fa7-solid:calendar" class="mx-2 size-4 align-middle" />
-        <span>{created}</span>
+        <time datetime={article.data.created.toISOString()}>{created}</time>
       </div>
       <p
         class={`text-gray-800 dark:text-gray-300 ${

@@ -1,0 +1,12 @@
+---
+import NotFoundPage from "../components/NotFoundPage.astro";
+
+// This page is a server-rendered version of /404. Astro.rewrite can't target
+// prerendered pages, so instead of rewriting to /404, we rewrite here, which
+// has the same content, but is rendered at runtime instead of at build time.
+export const prerender = false;
+
+Astro.response.status = 404;
+---
+
+<NotFoundPage />

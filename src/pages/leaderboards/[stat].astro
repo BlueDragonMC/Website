@@ -22,14 +22,14 @@ const lb = getLeaderboard(stat!) ?? getLeaderboard(`statistics.${stat}`);
 
 if (!lb) {
   Astro.response.status = 404;
-  return Astro.rewrite("/404");
+  return Astro.rewrite("/404-server");
 }
 
 const { leaderboard: obj, category } = lb;
 
 const result = await fetchLeaderboard(
-  lb.leaderboard.stat,
-  lb.leaderboard.sort ?? -1,
+  obj.stat,
+  obj.sort ?? -1,
 );
 ---
 
@@ -63,3 +63,4 @@ const result = await fetchLeaderboard(
     </div>
   </main>
 </Layout>
+

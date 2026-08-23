@@ -1,14 +1,7 @@
 ---
-import ErrorPage from "../components/ErrorPage.astro";
-import Layout from "../layouts/Layout.astro";
+import NotFoundPage from "../components/NotFoundPage.astro";
 
-export const prerender = false;
+export const prerender = true;
 ---
 
-<Layout
-  noIndex
-  ogImage={new URL("/opengraph-image.png", Astro.site)}>
-  <ErrorPage code={404}>
-    The page you are looking for was moved or does not exist.
-  </ErrorPage>
-</Layout>
+<NotFoundPage />

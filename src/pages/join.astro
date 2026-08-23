@@ -5,7 +5,10 @@ import Layout from "../layouts/Layout.astro";
 const emphasis = "text-green-500 dark:text-amber-500 font-bold";
 ---
 
-<Layout ogImage={new URL(`/opengraph-image.png`, Astro.site)}>
+<Layout
+  title="How To Join"
+  description="Join the BlueDragon Minecraft server in minutes: just add bluedragonmc.com as a server in Minecraft and start playing!"
+  ogImage={new URL(`/opengraph-image.png`, Astro.site)}>
   <main class="mx-auto mt-10 max-w-prose">
     <h1 class="text-3xl font-bold">How To Join</h1>
     <ul>

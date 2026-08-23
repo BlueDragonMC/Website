@@ -2,13 +2,13 @@
 @plugin "@tailwindcss/typography";
 
 .font-rubik-marker-hatch {
-  font-family: "Rubik Marker Hatch";
+  font-family: var(--font-rubik-marker-hatch);
   font-weight: 400;
   font-style: normal;
 }
 
 .font-inter {
-  font-family: "Inter Variable", sans-serif;
+  font-family: var(--font-inter);
 }
 
 :root {

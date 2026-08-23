@@ -16,48 +16,87 @@ const {
   imageWidth = 512,
   delay = 5.0,
 } = Astro.props;
+
+const imgClass = `absolute top-0 left-0 h-full w-full select-none object-cover transition-opacity duration-[2.5s] ${
+  blurred && "scale-110 blur-sm brightness-[.3]"
+}`;
+const altFor = (i: number) => (Array.isArray(altText) ? altText[i] : altText);
 ---
 
-<image-carousel data-delay={delay}>
-  <div class="relative h-full w-full">
+<image-carousel data-delay={delay} data-count={images.length}>
+  <div class="relative h-full w-full" data-slides>
+    <Image src={images[0]} class={imgClass} alt={altFor(0)} width={imageWidth} priority />
     {
-      images.map((img, i) => (
-        <Image
-          src={img}
-          class={`absolute top-0 left-0 h-full w-full select-none object-cover transition-opacity duration-[2.5s] ${
-            blurred && "scale-110 blur-sm brightness-[.3]"
-          }`}
-          alt={Array.isArray(altText) ? altText[i] : altText}
-          width={imageWidth}
-          priority={i == 0}
-        />
-      ))
+      images.length > 1 && (
+        <template data-slides-template>
+          {images.slice(1).map((img, i) => (
+            <Image
+              src={img}
+              class={`${imgClass} opacity-0`}
+              alt={altFor(i + 1)}
+              width={imageWidth}
+              loading="lazy"
+            />
+          ))}
+        </template>
+      )
     }
   </div>
 </image-carousel>
 
 <script>
+  const scheduleIdle =
+    window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 200));
+
   class ImageCarousel extends HTMLElement {
     connectedCallback() {
       const delay = parseFloat(this.dataset.delay ?? "5.0");
-      const length = this.querySelectorAll("img").length;
+      const count = parseInt(this.dataset.count ?? "1", 10);
+      const container = this.querySelector<HTMLElement>("[data-slides]");
+      const template = this.querySelector<HTMLTemplateElement>(
+        "[data-slides-template]",
+      );
 
+      let injected = template === null;
       let currentIndex = 0;
 
-      for (const image of this.querySelectorAll("img:not(:first-child)")) {
-        (image as HTMLImageElement).style.opacity = "0";
+      // Slides beyond the first are inert <template> content, so the browser
+      // doesn't fetch their images during page load. Inject them once the
+      // page has loaded and the main thread is idle.
+      const injectSlides = () => {
+        if (injected || !container || !template) return;
+        injected = true;
+        container.append(template.content.cloneNode(true));
+        template.remove();
+        this.querySelectorAll("img:not(:first-child)").forEach((img) => {
+          (img as HTMLImageElement).style.opacity = "0";
+        });
+      };
+
+      if (!injected) {
+        if (document.readyState === "complete") {
+          scheduleIdle(() => injectSlides());
+        } else {
+          window.addEventListener("load", () => scheduleIdle(() => injectSlides()), {
+            once: true,
+          });
+        }
       }
 
       const update = () => {
+        injectSlides();
+
         const prevIndex = currentIndex;
-        currentIndex = (currentIndex + 1) % length;
+        currentIndex = (currentIndex + 1) % count;
 
         const toHide = this.querySelector(
-          `img:nth-child(${prevIndex + 1})`,
-        ) as HTMLImageElement;
+          `[data-slides] img:nth-child(${prevIndex + 1})`,
+        ) as HTMLImageElement | null;
         const toShow = this.querySelector(
-          `img:nth-child(${currentIndex + 1})`,
-        ) as HTMLImageElement;
+          `[data-slides] img:nth-child(${currentIndex + 1})`,
+        ) as HTMLImageElement | null;
+
+        if (!toShow || !toHide) return;
 
         setTimeout(() => (toHide.style.opacity = "0"), delay * 1000);
         toShow.style.opacity = "1";

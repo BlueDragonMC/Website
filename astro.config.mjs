@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 import node from "@astrojs/node";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import { rehypeGalleryImages, rehypeResponsiveTables } from "./rehype.mjs";
 
 // https://astro.build/config
@@ -19,6 +19,21 @@ export default defineConfig({
     layout: "constrained",
     breakpoints: [828],
   },
+
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      weights: ["100 900"],
+      styles: ["normal"],
+    },
+    {
+      provider: fontProviders.google(),
+      name: "Rubik Marker Hatch",
+      cssVariable: "--font-rubik-marker-hatch",
+    },
+  ],
 
   vite: {
     plugins: [tailwindcss()],

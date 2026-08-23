@@ -23,7 +23,7 @@ const { username } = Astro.params;
 const info = await fetchPlayer(username!);
 if (!info) {
   Astro.response.status = 404;
-  return Astro.rewrite("/404");
+  return Astro.rewrite("/404-server");
 }
 
 const nonDashedUUID = info.uuid.replaceAll(/-/g, "");
@@ -71,10 +71,11 @@ await Promise.all(
     <h1 class="text-center text-3xl font-bold">
       <Image
         priority
-        src={`https://minotar.net/helm/${nonDashedUUID}/16`}
+        src={`/api/head/${nonDashedUUID}.png`}
         alt={`${username}'s Minecraft player head`}
         width={32}
         height={32}
+        widths={[16]}
         class="inline rounded-sm align-middle [image-rendering:pixelated]"
       />
       <span class="ml-2">{username}</span>
@@ -129,11 +130,11 @@ await Promise.all(
     {
       leaderboards.map((category) => (
         <div>
-          <h1 class="mb-2 mt-6 text-center text-2xl font-bold">
+          <h2 class="mb-2 mt-6 text-center text-2xl font-bold">
             {category.mode
               ? `${category.name}: ${category.mode}`
               : category.name}
-          </h1>
+          </h2>
           {category.leaderboards.map((lb) => (
             <Statistic
               name={lb.statName ?? lb.name}

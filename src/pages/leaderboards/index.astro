@@ -6,7 +6,10 @@ import { leaderboards } from "@/src/constants/leaderboards";
 import Layout from "@/src/layouts/Layout.astro";
 ---
 
-<Layout ogImage={new URL(`/leaderboards/opengraph-image.png`, Astro.site)}>
+<Layout
+  title="Leaderboards"
+  description="View the top players across every game mode and statistic on the BlueDragon Minecraft server."
+  ogImage={new URL(`/leaderboards/opengraph-image.png`, Astro.site)}>
   <h1 class="text-3xl font-bold">Leaderboards</h1>
 
   <p>Click a leaderboard below to view the top players in a category.</p>

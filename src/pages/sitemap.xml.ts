@@ -1,15 +1,34 @@
-import type { APIContext } from "astro";
+import type { APIContext, ImageMetadata } from "astro";
 import { getCollection } from "astro:content";
-import { once } from "events";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import type { Img, SitemapItemLoose } from "sitemap";
 import { EnumChangefreq, SitemapStream } from "sitemap";
-import { Readable, Writable } from "stream";
+import { Readable } from "stream";
 import { games } from "../constants/games";
 import { leaderboards } from "../constants/leaderboards";
 import { client } from "../lib/mongo";
 
 export const prerender = false;
+
+/**
+ * Maps asset filenames to their publicly served URLs,
+ * e.g. "foo.png" -> "/_astro/foo.BOHXn1w4.jpg".
+ * Used for image sitemap entries.
+ */
+const emittedUrlsByName = new Map<string, string>();
+
+for (const [path, module] of Object.entries(
+  import.meta.glob<{ default: ImageMetadata | string }>(
+    "/assets/**/*.{png,jpg,jpeg,webp,gif,avif,svg}",
+    { eager: true },
+  ),
+)) {
+  const asset = module.default;
+  const name = path.split("/").pop();
+  if (name && asset) {
+    emittedUrlsByName.set(name, typeof asset === "string" ? asset : asset.src);
+  }
+}
 
 export async function GET({ site }: APIContext) {
   const articles = await getCollection("blog");
@@ -27,7 +46,9 @@ export async function GET({ site }: APIContext) {
       img: articles
         .map((article) => {
           return {
-            url: article.data.image?.src,
+            url: article.data.image
+              ? absoluteUrl(article.data.image.src, site)
+              : undefined,
             title: article.data.title,
           };
         })
@@ -57,7 +78,7 @@ export async function GET({ site }: APIContext) {
   games.forEach((game) => {
     fields.push({
       url: `/games/${game.name.replaceAll(/ /g, "-").toLowerCase()}`,
-      changefreq: EnumChangefreq.WEEKLY,
+      changefreq: EnumChangefreq.MONTHLY,
     });
   });
   // Leaderboards
@@ -65,7 +86,7 @@ export async function GET({ site }: APIContext) {
     category.leaderboards.forEach((lb) => {
       fields.push({
         url: `/leaderboards/${lb.stat.replace(/^statistics\./, "")}`,
-        changefreq: EnumChangefreq.ALWAYS,
+        changefreq: EnumChangefreq.DAILY,
       });
     });
   });
@@ -74,9 +95,7 @@ export async function GET({ site }: APIContext) {
     fields.push({
       url: `/blog/${article.id}`,
       lastmod: article.data.modified?.toISOString(),
-      img: getImages({
-        content: article.body ?? "",
-      }),
+      img: getImages(article.body ?? "", site),
     });
   });
   // Static Pages
@@ -85,9 +104,7 @@ export async function GET({ site }: APIContext) {
       url: `/page/${page.id}`,
       changefreq: EnumChangefreq.DAILY,
       lastmodISO: page.data.modified?.toISOString(),
-      img: getImages({
-        content: page.body ?? "",
-      }),
+      img: getImages(page.body ?? "", site),
     });
   });
   // Players
@@ -95,7 +112,7 @@ export async function GET({ site }: APIContext) {
     ...((await getPlayers()).map((player) => {
       return {
         url: `/player/${player.username}`,
-        changefreq: EnumChangefreq.ALWAYS,
+        changefreq: EnumChangefreq.DAILY,
         lastmodISO: player.lastJoinDate
           ? new Date(player.lastJoinDate).toISOString()
           : undefined,
@@ -103,30 +120,16 @@ export async function GET({ site }: APIContext) {
     }) as SitemapItemLoose[]),
   );
 
-  const stream = new SitemapStream({ hostname: site?.href ?? "" });
-  const readable = Readable.from(fields);
-  const chunks: Buffer[] = [];
-  const writable = new Writable({
-    write(chunk, _enc, cb) {
-      chunks.push(chunk as Buffer);
-      cb();
-    },
-  });
-  readable.pipe(stream).pipe(writable);
-  await once(writable, "finish");
+  const sitemap = new SitemapStream({ hostname: site?.href ?? "" });
+  Readable.from(fields).pipe(sitemap);
 
-  return new Response(Buffer.concat(chunks).toString(), {
+  return new Response(Readable.toWeb(sitemap) as unknown as ReadableStream, {
     status: 200,
     headers: {
       "Content-Type": "application/xml",
       "Cache-Control": "public, max-age=86400, stale-while-revalidate",
     },
   });
-}
-
-function getImages(file: { content: string }): Img[] {
-  const ast = fromMarkdown(file.content, "utf-8");
-  return traverse(ast as unknown as MarkdownNode);
 }
 
 type MarkdownNode = {
@@ -136,27 +139,56 @@ type MarkdownNode = {
   alt?: string;
 };
 
-function traverse(node: MarkdownNode): Img[] {
-  const images: Img[] = [];
-  if (node.children) {
-    for (const child of node.children) {
-      for (const img of traverse(child)) {
-        images.push(img);
-      }
-    }
-  } else if (node.type === "image" && node.url) {
-    images.push({
-      url: node.url,
-      caption: node.alt ? node.alt : undefined,
-    });
+function absoluteUrl(url: string, site?: URL): string {
+  try {
+    return new URL(url, site).href;
+  } catch {
+    return url;
   }
+}
+
+function getImages(content: string, site?: URL): Img[] {
+  const images: Img[] = [];
+
+  const visit = (node: MarkdownNode) => {
+    for (const child of node.children ?? []) visit(child);
+    if (node.type !== "image" || !node.url) return;
+
+    // Relative file paths need to be resolved to their actual public paths,
+    // e.g. "../../assets/image.png" -> "/_astro/image.BOHXn1w4.png"
+    const isAbsolute =
+      node.url.startsWith("/") || /^(https?:)?\/\//.test(node.url);
+    const emitted = isAbsolute
+      ? node.url
+      : emittedUrlsByName.get(
+          decodeURIComponent(node.url.split("/").pop() ?? ""),
+        );
+    if (!emitted) return;
+
+    images.push({
+      url: absoluteUrl(emitted, site),
+      caption: node.alt,
+    });
+  };
+
+  visit(fromMarkdown(content, "utf-8") as unknown as MarkdownNode);
   return images;
 }
 
-async function getPlayers() {
-  return (await client)
+async function getPlayers(): Promise<
+  Array<{ username: string; lastJoinDate?: Date }>
+> {
+  const docs = await (
+    await client
+  )
     .db("bluedragon")
     .collection("players")
     .find({}, { projection: { _id: 0, username: 1, lastJoinDate: 1 } })
     .toArray();
+  return docs.map((doc) => ({
+    username: doc.username as string,
+    lastJoinDate: doc.lastJoinDate
+      ? new Date(doc.lastJoinDate as string | number | Date)
+      : undefined,
+  }));
 }

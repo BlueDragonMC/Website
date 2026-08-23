@@ -27,6 +27,13 @@ const created = data.created ? fmt.format(new Date(data.created)) : undefined;
 const modified = data.modified
   ? fmt.format(new Date(data.modified))
   : undefined;
+
+const createdISO = data.created
+  ? new Date(data.created).toISOString()
+  : undefined;
+const modifiedISO = data.modified
+  ? new Date(data.modified).toISOString()
+  : undefined;
 ---
 
 <image-gallery>
@@ -50,7 +57,8 @@ const modified = data.modified
             name="fa7-solid:clock"
             class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
           />
-          {"Created: " + created}
+          {"Created: "}
+          <time datetime={createdISO}>{created}</time>
         </span>
       )
     }
@@ -61,7 +69,8 @@ const modified = data.modified
             name="fa7-solid:pencil"
             class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
           />
-          {"Last Modified: " + modified}
+          {"Last Modified: "}
+          <time datetime={modifiedISO}>{modified}</time>
         </span>
       )
     }

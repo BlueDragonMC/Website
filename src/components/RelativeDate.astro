@@ -1,31 +1,29 @@
 ---
 interface Props {
-  date?: Date;
+  date?: Date | number | string;
   text?: string;
 }
 
-const { date, text } = Astro.props;
+const { date: dateIn, text } = Astro.props;
+const date = dateIn === undefined ? undefined : new Date(dateIn);
 ---
 
 {
   date ? (
-    <span
-      title={
-        date
-          ? new Intl.DateTimeFormat(undefined, {
-              dateStyle: "long",
-              timeStyle: "long",
-            }).format(date)
-          : "Unknown"
-      }>
+    <time
+      datetime={date.toISOString()}
+      title={new Intl.DateTimeFormat(undefined, {
+        dateStyle: "long",
+        timeStyle: "long",
+      }).format(date)}>
       {text}
-    </span>
+    </time>
   ) : (
-    <span>
+    <time datetime={new Date().toISOString()}>
       {new Intl.DateTimeFormat(undefined, {
         dateStyle: "short",
         timeStyle: "short",
       }).format()}
-    </span>
+    </time>
   )
 }
