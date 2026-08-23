@@ -19,11 +19,6 @@ const date = dateIn === undefined ? undefined : new Date(dateIn);
       {text}
     </time>
   ) : (
-    <time datetime={new Date().toISOString()}>
-      {new Intl.DateTimeFormat(undefined, {
-        dateStyle: "short",
-        timeStyle: "short",
-      }).format()}
-    </time>
+    <span title="Unknown">-</span>
   )
 }
