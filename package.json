@@ -21,7 +21,7 @@
     "@resvg/resvg-wasm": "^2.6.2",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.2.4",
+    "astro": "^7.3.2",
     "astro-icon": "^1.2.0",
     "feed": "^6.0.0",
     "javascript-time-ago": "^2.6.4",
