@@ -55,7 +55,8 @@ export default defineConfig({
     "/t/blog": "/blog",
     "/d/16-20220902-leaderboard-update": "/blog/2022-09-02-leaderboard-update",
     "/d/11-new-game-infinijump": "/blog/new-game-infinijump",
-    "/d/14-acknowledgements": "/page/oss",
+    "/d/14-acknowledgements": "/oss",
+    "/page/oss": "/oss",
     "/d/17-20220917-stability-improvements":
       "/blog/2022-09-17-stability-improvements",
     "/d/15-20220828-fastfall-update": "/blog/2022-08-28-fastfall-update",

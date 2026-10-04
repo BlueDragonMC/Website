@@ -73,6 +73,10 @@ export async function GET({ site }: APIContext) {
       url: "/status",
       changefreq: EnumChangefreq.ALWAYS,
     },
+    {
+      url: "/oss",
+      changefreq: EnumChangefreq.WEEKLY,
+    },
   ];
   // Games
   games.forEach((game) => {

@@ -1,0 +1,246 @@
+---
+import Layout from "@/src/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import rawData from "@/src/data/oss-licenses.json";
+
+interface PackageEntry {
+  ecosystem: "maven" | "npm" | "cargo" | "container" | "artifact";
+  name: string;
+  version: string;
+  license: string;
+  direct: boolean;
+  licenseRaw?: string;
+  url?: string;
+  licenseUrl?: string;
+  modules: string[];
+}
+
+interface AuditData {
+  generatedAt: string;
+  modules: Array<{ id: string; type: string; repo?: string }>;
+  packages: PackageEntry[];
+}
+
+export const prerender = true;
+
+const data = rawData as AuditData;
+
+const ECOSYSTEM_LABELS: Record<PackageEntry["ecosystem"], string> = {
+  maven: "Maven / Gradle",
+  npm: "npm",
+  cargo: "Cargo",
+  container: "Container",
+  artifact: "Downloaded artifact",
+};
+
+const COPYLEFT = /\b(?:A?GPL|LGPL|SSPL|EUPL)\b/i;
+
+const packages = data.packages;
+const moduleIds = data.modules.map((module) => module.id);
+const ecosystems = [...new Set(packages.map((pkg) => pkg.ecosystem))];
+const lastUpdated = new Intl.DateTimeFormat(undefined, { dateStyle: "long" }).format(
+  new Date(data.generatedAt),
+);
+---
+
+<Layout
+  title="Open-Source Software"
+  description="At BlueDragon, we make and use open-source software daily. Here is a list of the technologies that make the server possible."
+>
+  <main class="mx-auto max-w-6xl pb-16">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold">Open-Source Software</h1>
+      <p class="mt-3 max-w-3xl text-slate-600 dark:text-slate-300">
+        At BlueDragon, we make and use open-source software daily. Here is a list of the technologies that make the server possible.
+      </p>
+    </header>
+
+    <section class="mb-4 flex flex-wrap items-center gap-3">
+      <label class="relative grow sm:max-w-xs">
+        <Icon
+          name="fa7-solid:magnifying-glass"
+          class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500 dark:text-slate-400"
+        />
+        <input
+          id="oss-search"
+          type="search"
+          placeholder="Search packages, licenses, modules…"
+          class="w-full rounded-lg border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-transparent"
+        />
+      </label>
+
+      <select
+        id="oss-ecosystem"
+        class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-transparent"
+      >
+        <option value="">All ecosystems</option>
+        {ecosystems.map((eco) => <option value={eco}>{ECOSYSTEM_LABELS[eco]}</option>)}
+      </select>
+
+      <select
+        id="oss-module"
+        class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-transparent"
+      >
+        <option value="">All modules</option>
+        {moduleIds.map((id) => <option value={id}>{id}</option>)}
+      </select>
+
+      <label class="flex items-center gap-2 text-sm">
+        <input id="oss-direct" type="checkbox" class="h-4 w-4" />
+        Direct only
+      </label>
+
+      <label class="flex items-center gap-2 text-sm">
+        <input id="oss-copyleft" type="checkbox" class="h-4 w-4" />
+        Copyleft only
+      </label>
+
+      <span id="oss-count" class="ml-auto text-sm text-slate-600 dark:text-slate-400"></span>
+    </section>
+
+    <div
+      class="overflow-x-auto rounded-xl border border-slate-400/70 bg-white dark:border-neutral-700 dark:bg-neutral-900"
+    >
+      <table class="w-full border-collapse text-left text-sm">
+        <thead class="bg-slate-100 text-slate-700 dark:bg-neutral-800 dark:text-slate-200">
+          <tr>
+            <th class="px-4 py-3 font-semibold">Package</th>
+            <th class="px-4 py-3 font-semibold">Version</th>
+            <th class="px-4 py-3 font-semibold">Scope</th>
+            <th class="px-4 py-3 font-semibold">License</th>
+            <th class="px-4 py-3 font-semibold">Ecosystem</th>
+            <th class="px-4 py-3 font-semibold">Used by</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            packages.map((pkg) => (
+              <tr
+                data-package
+                data-ecosystem={pkg.ecosystem}
+                data-modules={pkg.modules.join(" ")}
+                data-direct={pkg.direct ? "true" : "false"}
+                data-copyleft={COPYLEFT.test(pkg.license) ? "true" : "false"}
+                data-search={`${pkg.name} ${pkg.version} ${pkg.license} ${pkg.modules.join(" ")}`.toLowerCase()}
+                class="border-t border-slate-200 align-top transition-colors hover:bg-slate-100 dark:border-neutral-800 dark:hover:bg-neutral-800/60"
+              >
+                <td class="px-4 py-2">
+                  {pkg.url ? (
+                    <a
+                      href={pkg.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="font-medium text-blue-600 hover:underline dark:text-blue-400"
+                    >
+                      {pkg.name}
+                    </a>
+                  ) : (
+                    <span class="font-medium">{pkg.name}</span>
+                  )}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-slate-600 dark:text-slate-400">
+                  {pkg.version}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2">
+                  {pkg.direct ? (
+                    <span class="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-500/20 dark:text-blue-300">
+                      Direct
+                    </span>
+                  ) : (
+                    <span class="text-xs text-slate-600 dark:text-slate-400">Transitive</span>
+                  )}
+                </td>
+                <td class="px-4 py-2">
+                  {pkg.licenseUrl ? (
+                    <a
+                      href={pkg.licenseUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="hover:underline"
+                      title={pkg.licenseRaw ?? pkg.license}
+                    >
+                      {pkg.license}
+                    </a>
+                  ) : (
+                    <span title={pkg.licenseRaw ?? pkg.license}>{pkg.license}</span>
+                  )}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-slate-600 dark:text-slate-400">
+                  {ECOSYSTEM_LABELS[pkg.ecosystem]}
+                </td>
+                <td class="px-4 py-2">
+                  <div class="flex flex-wrap gap-1">
+                    {pkg.modules.map((module) => (
+                      <span class="rounded-full bg-slate-200 px-2 py-0.5 text-xs text-slate-700 dark:bg-slate-700 dark:text-slate-200">
+                        {module}
+                      </span>
+                    ))}
+                  </div>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
+      Last updated {lastUpdated}.
+    </p>
+
+    <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
+      Copyleft notice: <a
+        href="https://github.com/Steel-Foundation/SteelMC"
+        class="underline"
+        target="_blank"
+        rel="noopener">SteelMC</a
+    > is licensed under the AGPL-3.0. The steel-provider portion of SteelWorldGen transforms it to run as a server for chunk generation. All the code that links against SteelMC, and the binaries that include it, are distributed under the same license.
+      See the <a href="https://github.com/BlueDragonMC/SteelWorldGen/blob/main/LICENSE.md" class="underline"
+                 target="_blank"
+                 rel="noopener">SteelWorldGen LICENSE</a> for more details.
+    </p>
+  </main>
+</Layout>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>("#oss-search");
+  const ecosystem = document.querySelector<HTMLSelectElement>("#oss-ecosystem");
+  const module = document.querySelector<HTMLSelectElement>("#oss-module");
+  const direct = document.querySelector<HTMLInputElement>("#oss-direct");
+  const copyleft = document.querySelector<HTMLInputElement>("#oss-copyleft");
+  const count = document.querySelector<HTMLElement>("#oss-count");
+  const rows = Array.from(
+    document.querySelectorAll<HTMLTableRowElement>("[data-package]"),
+  );
+
+  function applyFilters() {
+    const query = (search?.value ?? "").trim().toLowerCase();
+    const eco = ecosystem?.value ?? "";
+    const mod = module?.value ?? "";
+    const directOnly = direct?.checked ?? false;
+    const copyleftOnly = copyleft?.checked ?? false;
+
+    let shown = 0;
+    for (const row of rows) {
+      const searchText = row.dataset.search ?? "";
+      const rowModules = row.dataset.modules ?? "";
+      let visible = true;
+      if (query && !searchText.includes(query)) visible = false;
+      if (eco && row.dataset.ecosystem !== eco) visible = false;
+      if (mod && !rowModules.split(" ").includes(mod)) visible = false;
+      if (directOnly && row.dataset.direct !== "true") visible = false;
+      if (copyleftOnly && row.dataset.copyleft !== "true") visible = false;
+      row.classList.toggle("hidden", !visible);
+      if (visible) shown++;
+    }
+    if (count) {
+      count.textContent = `${shown.toLocaleString()} of ${rows.length.toLocaleString()} packages`;
+    }
+  }
+
+  applyFilters();
+  for (const control of [search, ecosystem, module, direct, copyleft]) {
+    control?.addEventListener("input", applyFilters);
+    control?.addEventListener("change", applyFilters);
+  }
+</script>
