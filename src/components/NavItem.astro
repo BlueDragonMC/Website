@@ -21,7 +21,8 @@ const inactiveColorClasses = color ?? "hover:bg-slate-600";
   href={href}
   class={`${
     isActive ? activeColorClasses : inactiveColorClasses
-  } rounded-md p-2 text-base font-medium text-white transition-colors`}>
+  } rounded-md p-2 text-base font-medium text-white transition-colors`}
+>
   <span class="hidden md:inline" id={`header-nav-item-${text}`}>
     {text}
   </span>

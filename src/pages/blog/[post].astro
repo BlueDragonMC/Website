@@ -49,40 +49,38 @@ const ogImage = article.data.image
   modifiedTime={article.data.modified}
   author={article.data.author}
   ogImageWidth={article.data.image?.width}
-  ogImageHeight={article.data.image?.height}>
+  ogImageHeight={article.data.image?.height}
+>
   <main class="prose mx-auto max-w-prose dark:prose-invert">
     <MDX entry={article} />
-    <div
-      class="not-prose mt-16 grid w-full grid-cols-1 gap-8 print:hidden md:grid-cols-2">
-      {
-        prev && (
-          <a
-            href={"/blog/" + prev.id}
-            class="block w-full rounded-md border border-gray-500 p-4 hover:border-2 hover:border-blue-800 hover:p-3.75">
-            <p class="font-bold">
-              <Icon name="fa7-solid:chevron-circle-left" class="mr-2 h-4 w-4" />
-              Previous
-            </p>
-            <p class="font-medium">{prev?.data?.title}</p>
-          </a>
-        )
-      }
-      {
-        next && (
-          <a
-            href={"/blog/" + next.id}
-            class="block w-full justify-self-end rounded-md border border-gray-500 p-4 hover:border-2 hover:border-blue-800 hover:p-3.75 md:col-start-2 md:text-right">
-            <p class="flex flex-row-reverse items-center justify-end font-bold md:flex-row">
-              Next
-              <Icon
-                name="fa7-solid:chevron-circle-right"
-                class="mr-2 h-4 w-4 md:ml-2 md:mr-0"
-              />
-            </p>
-            <p class="font-medium">{next?.data?.title}</p>
-          </a>
-        )
-      }
+    <div class="not-prose mt-16 grid w-full grid-cols-1 gap-8 print:hidden md:grid-cols-2">
+      {prev && (
+        <a
+          href={"/blog/" + prev.id}
+          class="block w-full rounded-md border border-gray-500 p-4 hover:border-2 hover:border-blue-800 hover:p-3.75"
+        >
+          <p class="font-bold">
+            <Icon name="fa7-solid:chevron-circle-left" class="mr-2 h-4 w-4" />
+            Previous
+          </p>
+          <p class="font-medium">{prev?.data?.title}</p>
+        </a>
+      )}
+      {next && (
+        <a
+          href={"/blog/" + next.id}
+          class="block w-full justify-self-end rounded-md border border-gray-500 p-4 hover:border-2 hover:border-blue-800 hover:p-3.75 md:col-start-2 md:text-right"
+        >
+          <p class="flex flex-row-reverse items-center justify-end font-bold md:flex-row">
+            Next
+            <Icon
+              name="fa7-solid:chevron-circle-right"
+              class="mr-2 h-4 w-4 md:ml-2 md:mr-0"
+            />
+          </p>
+          <p class="font-medium">{next?.data?.title}</p>
+        </a>
+      )}
     </div>
   </main>
 </Layout>

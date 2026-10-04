@@ -66,7 +66,8 @@ await Promise.all(
   title={`${info.username}'s Stats`}
   description={`View ${info.username}'s BlueDragon profile and statistics online.`}
   ogType="profile"
-  ogImage={new URL(`/player/${username}/opengraph-image.png`, Astro.site)}>
+  ogImage={new URL(`/player/${username}/opengraph-image.png`, Astro.site)}
+>
   <main>
     <h1 class="text-center text-3xl font-bold">
       <Image
@@ -79,24 +80,24 @@ await Promise.all(
         class="inline rounded-sm align-middle [image-rendering:pixelated]"
       />
       <span class="ml-2">{username}</span>
-      {
-        rank && info.meta?.rankcolor && (
-          <span
-            class={`mx-4 rounded-full p-2 align-middle text-xs font-medium uppercase ${
-              darkRankText ? "text-black" : "text-white"
-            }`}
-            style={{ backgroundColor: info.meta?.rankcolor }}>
-            {rank}
-          </span>
-        )
-      }
+      {rank && info.meta?.rankcolor && (
+        <span
+          class={`mx-4 rounded-full p-2 align-middle text-xs font-medium uppercase ${
+            darkRankText ? "text-black" : "text-white"
+          }`}
+          style={{ backgroundColor: info.meta?.rankcolor }}
+        >
+          {rank}
+        </span>
+      )}
     </h1>
 
     <a
       class="mx-auto my-4 block w-max rounded-md bg-black p-2 text-sm text-white dark:bg-white dark:text-black"
       href={`https://namemc.com/profile/${info.uuid}`}
       rel="noopener noreferrer"
-      target="_blank">
+      target="_blank"
+    >
       <Icon
         name="fa7-solid:up-right-from-square"
         width={14}
@@ -108,7 +109,8 @@ await Promise.all(
 
     <Statistic
       name="First Login"
-      value={info.firstLogin ? timeAgo.format(info.firstLogin) : undefined}>
+      value={info.firstLogin ? timeAgo.format(info.firstLogin) : undefined}
+    >
       <RelativeDate
         date={info.firstLogin}
         text={info.firstLogin ? timeAgo.format(info.firstLogin) : "-"}
@@ -116,7 +118,8 @@ await Promise.all(
     </Statistic>
     <Statistic
       name="Last Login"
-      value={info.lastLogin ? timeAgo.format(info.lastLogin) : undefined}>
+      value={info.lastLogin ? timeAgo.format(info.lastLogin) : undefined}
+    >
       <RelativeDate
         date={info.lastLogin}
         text={info.lastLogin ? timeAgo.format(info.lastLogin) : "-"}
@@ -127,24 +130,20 @@ await Promise.all(
       value={Math.round(info.level * 100) / 100}
     />
     <Statistic name="Owned Cosmetics" value={info.cosmeticCount} />
-    {
-      leaderboards.map((category) => (
-        <div>
-          <h2 class="mb-2 mt-6 text-center text-2xl font-bold">
-            {category.mode
-              ? `${category.name}: ${category.mode}`
-              : category.name}
-          </h2>
-          {category.leaderboards.map((lb) => (
-            <Statistic
-              name={lb.statName ?? lb.name}
-              stat={lb.stat}
-              value={format(lb.format, info.stats[lb.stat])}
-              position={ranks[lb.stat]}
-            />
-          ))}
-        </div>
-      ))
-    }
+    {leaderboards.map((category) => (
+      <div>
+        <h2 class="mb-2 mt-6 text-center text-2xl font-bold">
+          {category.mode ? `${category.name}: ${category.mode}` : category.name}
+        </h2>
+        {category.leaderboards.map((lb) => (
+          <Statistic
+            name={lb.statName ?? lb.name}
+            stat={lb.stat}
+            value={format(lb.format, info.stats[lb.stat])}
+            position={ranks[lb.stat]}
+          />
+        ))}
+      </div>
+    ))}
   </main>
 </Layout>

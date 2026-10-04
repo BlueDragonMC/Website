@@ -27,40 +27,36 @@ if (!lb) {
 
 const { leaderboard: obj, category } = lb;
 
-const result = await fetchLeaderboard(
-  obj.stat,
-  obj.sort ?? -1,
-);
+const result = await fetchLeaderboard(obj.stat, obj.sort ?? -1);
 ---
 
 <Layout
   title={`${category.name}: ${obj.name}`}
-  ogImage={new URL(`/leaderboards/${stat}/opengraph-image.png`, Astro.site)}>
+  ogImage={new URL(`/leaderboards/${stat}/opengraph-image.png`, Astro.site)}
+>
   <main>
     <h1 class="text-center text-3xl font-bold">{obj.name}</h1>
     <h2 class="text-center text-xl">
       {category?.mode ? `${category?.name}: ${category?.mode}` : category?.name}
     </h2>
     <div class="mx-auto w-max">
-      {
-        result?.map((item, i) => {
-          return (
-            <Step number={i + 1}>
-              <div class="inline-flex w-72 justify-between md:w-96">
-                <span>
-                  <a
-                    href={`/player/${item.username}`}
-                    class="font-medium underline">
-                    {item.username}
-                  </a>
-                </span>
-                <span>{format(obj?.format, item.value)}</span>
-              </div>
-            </Step>
-          );
-        })
-      }
+      {result?.map((item, i) => {
+        return (
+          <Step number={i + 1}>
+            <div class="inline-flex w-72 justify-between md:w-96">
+              <span>
+                <a
+                  href={`/player/${item.username}`}
+                  class="font-medium underline"
+                >
+                  {item.username}
+                </a>
+              </span>
+              <span>{format(obj?.format, item.value)}</span>
+            </div>
+          </Step>
+        );
+      })}
     </div>
   </main>
 </Layout>
-

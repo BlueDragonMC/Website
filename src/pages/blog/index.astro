@@ -12,7 +12,8 @@ const articles = (await getCollection("blog")).toSorted(
 <Layout
   title="Blog"
   description="The latest news, updates, and changelogs from the BlueDragon Minecraft server."
-  ogImage={new URL("/blog/opengraph-image.png", Astro.site)}>
+  ogImage={new URL("/blog/opengraph-image.png", Astro.site)}
+>
   <main class="mx-auto max-w-prose px-4">
     <h1 class="mb-3 text-3xl font-bold">Blog Posts</h1>
     <p class="my-4">
@@ -21,16 +22,20 @@ const articles = (await getCollection("blog")).toSorted(
         RSS
       </a>{" "}
       &middot;{" "}
-      <a href="/rss/blog/atom.xml" target="_blank"> Atom </a>{" "}
+      <a href="/rss/blog/atom.xml" target="_blank">
+        {" "}
+        Atom{" "}
+      </a>{" "}
       &middot;{" "}
-      <a href="/rss/blog/feed.json" target="_blank"> JSON </a>
+      <a href="/rss/blog/feed.json" target="_blank">
+        {" "}
+        JSON{" "}
+      </a>
     </p>
     <div class="flex flex-col gap-10">
-      {
-        articles.map((article) => {
-          return <ArticleCard article={article} />;
-        })
-      }
+      {articles.map((article) => {
+        return <ArticleCard article={article} />;
+      })}
     </div>
   </main>
 </Layout>

@@ -10,21 +10,16 @@ const { images, altText } = Astro.props;
 ---
 
 <image-gallery>
-  {
-    images.map((img, i) => (
-      <a
-        href={img.src}
-        data-pswp-width={img.width}
-        data-pswp-height={img.height}>
-        <Image
-          class="mb-4 mr-4 inline cursor-pointer rounded-md"
-          src={images[i]}
-          width={480}
-          alt={Array.isArray(altText) ? altText[i] : altText}
-        />
-      </a>
-    ))
-  }
+  {images.map((img, i) => (
+    <a href={img.src} data-pswp-width={img.width} data-pswp-height={img.height}>
+      <Image
+        class="mb-4 mr-4 inline cursor-pointer rounded-md"
+        src={images[i]}
+        width={480}
+        alt={Array.isArray(altText) ? altText[i] : altText}
+      />
+    </a>
+  ))}
 </image-gallery>
 
 <script>

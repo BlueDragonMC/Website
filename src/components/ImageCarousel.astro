@@ -25,22 +25,26 @@ const altFor = (i: number) => (Array.isArray(altText) ? altText[i] : altText);
 
 <image-carousel data-delay={delay} data-count={images.length}>
   <div class="relative h-full w-full" data-slides>
-    <Image src={images[0]} class={imgClass} alt={altFor(0)} width={imageWidth} priority />
-    {
-      images.length > 1 && (
-        <template data-slides-template>
-          {images.slice(1).map((img, i) => (
-            <Image
-              src={img}
-              class={`${imgClass} opacity-0`}
-              alt={altFor(i + 1)}
-              width={imageWidth}
-              loading="lazy"
-            />
-          ))}
-        </template>
-      )
-    }
+    <Image
+      src={images[0]}
+      class={imgClass}
+      alt={altFor(0)}
+      width={imageWidth}
+      priority
+    />
+    {images.length > 1 && (
+      <template data-slides-template>
+        {images.slice(1).map((img, i) => (
+          <Image
+            src={img}
+            class={`${imgClass} opacity-0`}
+            alt={altFor(i + 1)}
+            width={imageWidth}
+            loading="lazy"
+          />
+        ))}
+      </template>
+    )}
   </div>
 </image-carousel>
 
@@ -77,9 +81,13 @@ const altFor = (i: number) => (Array.isArray(altText) ? altText[i] : altText);
         if (document.readyState === "complete") {
           scheduleIdle(() => injectSlides());
         } else {
-          window.addEventListener("load", () => scheduleIdle(() => injectSlides()), {
-            once: true,
-          });
+          window.addEventListener(
+            "load",
+            () => scheduleIdle(() => injectSlides()),
+            {
+              once: true,
+            },
+          );
         }
       }
 

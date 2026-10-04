@@ -39,41 +39,35 @@ const modifiedISO = data.modified
 <image-gallery>
   <h1 class="mb-0">{data.title}</h1>
   <p class="mt-2">
-    {
-      data.author && (
-        <span class="mr-4 whitespace-nowrap">
-          <Icon
-            name="fa7-solid:user"
-            class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
-          />
-          {"Posted by: " + data.author}
-        </span>
-      )
-    }
-    {
-      created && (
-        <span class="mr-4 whitespace-nowrap">
-          <Icon
-            name="fa7-solid:clock"
-            class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
-          />
-          {"Created: "}
-          <time datetime={createdISO}>{created}</time>
-        </span>
-      )
-    }
-    {
-      modified && created !== modified && (
-        <span class="mr-4 whitespace-nowrap">
-          <Icon
-            name="fa7-solid:pencil"
-            class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
-          />
-          {"Last Modified: "}
-          <time datetime={modifiedISO}>{modified}</time>
-        </span>
-      )
-    }
+    {data.author && (
+      <span class="mr-4 whitespace-nowrap">
+        <Icon
+          name="fa7-solid:user"
+          class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
+        />
+        {"Posted by: " + data.author}
+      </span>
+    )}
+    {created && (
+      <span class="mr-4 whitespace-nowrap">
+        <Icon
+          name="fa7-solid:clock"
+          class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
+        />
+        {"Created: "}
+        <time datetime={createdISO}>{created}</time>
+      </span>
+    )}
+    {modified && created !== modified && (
+      <span class="mr-4 whitespace-nowrap">
+        <Icon
+          name="fa7-solid:pencil"
+          class="mr-2 inline-block h-4 w-4 overflow-hidden align-[-0.125em]"
+        />
+        {"Last Modified: "}
+        <time datetime={modifiedISO}>{modified}</time>
+      </span>
+    )}
   </p>
   <Content />
 </image-gallery>

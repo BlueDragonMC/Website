@@ -1,0 +1,12 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Generated / package manager files
+package-lock.json
+
+# Auto-generated file
+src/data/oss-licenses.json

@@ -28,9 +28,7 @@ const lbCount = leaderboards
 const gameModeCount = games.reduce(
   (acc, game) =>
     acc +
-    (!game.steps ||
-    Array.isArray(game.steps) ||
-    game.name === "HueHunters"
+    (!game.steps || Array.isArray(game.steps) || game.name === "HueHunters"
       ? 1
       : Object.keys(game.steps).length),
   0,
@@ -48,12 +46,12 @@ const gameModeCount = games.reduce(
           imageWidth={512}
         />
       </div>
-      <div
-        class="absolute top-0 left-0 mx-auto h-full w-full rounded-lg p-4 text-white">
+      <div class="absolute top-0 left-0 mx-auto h-full w-full rounded-lg p-4 text-white">
         <div class="mx-auto mt-48 max-w-4xl text-center">
           <h1 class={`font-black drop-shadow-2xl`}>
             <span
-              class={`my-4 block bg-linear-to-tl from-red-700 to-orange-500 bg-clip-text text-5xl font-black leading-normal text-transparent md:text-7xl lg:text-8xl xl:text-9xl font-rubik-marker-hatch`}>
+              class={`my-4 block bg-linear-to-tl from-red-700 to-orange-500 bg-clip-text text-5xl font-black leading-normal text-transparent md:text-7xl lg:text-8xl xl:text-9xl font-rubik-marker-hatch`}
+            >
               DOMINATE
             </span>
           </h1>
@@ -65,7 +63,8 @@ const gameModeCount = games.reduce(
           <Button
             iconPosition="right"
             intent="secondary"
-            href="/blog/2023-07-03-dominate-1-20">
+            href="/blog/2023-07-03-dominate-1-20"
+          >
             <Icon slot="icon" name="fa7-solid:arrow-right" />
             Read the Blog Post
           </Button>
@@ -82,8 +81,7 @@ const gameModeCount = games.reduce(
         </a>
       </div>
     </section>
-    <section
-      class="my-10 mx-auto grid grid-cols-1 gap-x-8 lg:max-w-[130ch] lg:grid-cols-2">
+    <section class="my-10 mx-auto grid grid-cols-1 gap-x-8 lg:max-w-[130ch] lg:grid-cols-2">
       <div id="about" class="mt-8">
         <h2 class="text-3xl font-bold">About Us</h2>
         <p>
@@ -106,29 +104,26 @@ const gameModeCount = games.reduce(
         />
       </div>
     </section>
-    <section
-      class="my-10 mx-auto grid grid-cols-1 gap-x-8 lg:max-w-[130ch] lg:grid-cols-2">
-      <div
-        class="row-start-2 my-4 w-4/5 min-w-[24rem] rounded-lg bg-neutral-900 p-4 lg:row-start-1">
-        {
-          games.map((game, i) => (
-            <a
-              href={`/games/${game.name.toLowerCase().replaceAll(/ /g, "-")}`}
-              class="mr-2 inline-block text-2xl font-black text-neutral-500 transition-colors hover:text-neutral-200">
-              {game.name}
-              {i !== games.length - 1 && (
-                <span class="ml-2 text-2xl text-neutral-700">&middot;</span>
-              )}
-            </a>
-          ))
-        }
+    <section class="my-10 mx-auto grid grid-cols-1 gap-x-8 lg:max-w-[130ch] lg:grid-cols-2">
+      <div class="row-start-2 my-4 w-4/5 min-w-[24rem] rounded-lg bg-neutral-900 p-4 lg:row-start-1">
+        {games.map((game, i) => (
+          <a
+            href={`/games/${game.name.toLowerCase().replaceAll(/ /g, "-")}`}
+            class="mr-2 inline-block text-2xl font-black text-neutral-500 transition-colors hover:text-neutral-200"
+          >
+            {game.name}
+            {i !== games.length - 1 && (
+              <span class="ml-2 text-2xl text-neutral-700">&middot;</span>
+            )}
+          </a>
+        ))}
       </div>
       <div class="row-start-1">
         <h2 class="text-3xl font-bold">Game Selection</h2>
         <p>
-          BlueDragon has {games.length} Minecraft minigames and{" "}
-          {gameModeCount} total game modes, across all genres. Parkour, combat,
-          strategy, we have it all.
+          BlueDragon has {games.length} Minecraft minigames and {gameModeCount}{" "}
+          total game modes, across all genres. Parkour, combat, strategy, we
+          have it all.
         </p>
         <Button href="/games">
           <Icon slot="icon" name="fa7-solid:gamepad" />
@@ -136,14 +131,13 @@ const gameModeCount = games.reduce(
         </Button>
       </div>
     </section>
-    <section
-      class="my-10 mx-auto grid grid-cols-1 gap-x-8 lg:max-w-[130ch] lg:grid-cols-2">
+    <section class="my-10 mx-auto grid grid-cols-1 gap-x-8 lg:max-w-[130ch] lg:grid-cols-2">
       <div>
         <h2 class="text-3xl font-bold">Jukebox</h2>
         <p>
           Play a collection of note block songs in-game. Just type{" "}
-          <code>/play</code> and your music will play. You can play music in any game,
-          at any time, automatically continuing between games.
+          <code>/play</code> and your music will play. You can play music in any
+          game, at any time, automatically continuing between games.
         </p>
         <Button href="/join">
           <Icon slot="icon" name="fa7-solid:share" />
@@ -157,8 +151,7 @@ const gameModeCount = games.reduce(
       />
     </section>
   </main>
-  <section
-    class="my-10 mx-auto grid grid-cols-1 gap-x-8 lg:max-w-[130ch] lg:grid-cols-2">
+  <section class="my-10 mx-auto grid grid-cols-1 gap-x-8 lg:max-w-[130ch] lg:grid-cols-2">
     <Image
       src={leaderboardImage}
       alt="Lobby leaderboard screenshot"
@@ -167,11 +160,8 @@ const gameModeCount = games.reduce(
     <div class="row-start-1">
       <h2 class="text-3xl font-bold">Leaderboards</h2>
       <p>
-        You can view{" "}
-        <span class="font-bold">
-          {lbCount} leaderboards
-        </span>{" "}
-        on the BlueDragon website and in-game. Get to the top by being the best!
+        You can view <span class="font-bold">{lbCount} leaderboards</span> on
+        the BlueDragon website and in-game. Get to the top by being the best!
       </p>
       <Button href="/leaderboards">
         <Icon slot="icon" name="fa7-solid:trophy" />

@@ -17,14 +17,13 @@ const classes =
   <button
     class={`inline-flex gap-2 rounded-md px-4 py-2 text-white cursor-pointer ${classes} ${
       iconPosition === "right" && "flex-row-reverse"
-    }`}>
-    {
-      Astro.slots.has("icon") && (
-        <span class="fill-black dark:fill-white [&>svg]:align-middle [&>svg]:inline [&>svg]:size-6">
-          <slot name="icon" />
-        </span>
-      )
-    }
+    }`}
+  >
+    {Astro.slots.has("icon") && (
+      <span class="fill-black dark:fill-white [&>svg]:align-middle [&>svg]:inline [&>svg]:size-6">
+        <slot name="icon" />
+      </span>
+    )}
     <span class="align-middle font-medium">
       <slot />
     </span>

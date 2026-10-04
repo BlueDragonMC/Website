@@ -25,7 +25,8 @@ try {
 
 <Layout
   title="Server Status"
-  ogImage={new URL("/status/opengraph-image.png", Astro.site)}>
+  ogImage={new URL("/status/opengraph-image.png", Astro.site)}
+>
   <main class="mx-auto w-max">
     <h1 class="text-3xl font-bold">Server Status</h1>
     <pre>Server IP: bluedragonmc.com</pre>
@@ -34,40 +35,37 @@ try {
         name="fa7-solid:circle"
         class="my-2 mr-4 inline h-8 w-8 align-middle"
       />
-      {
-        ping ? (
-          <span class="font-bold text-green-500 underline">Online</span>
-        ) : (
-          <span class="font-bold text-red-500 underline">Offline</span>
-        )
-      }
+      {ping ? (
+        <span class="font-bold text-green-500 underline">Online</span>
+      ) : (
+        <span class="font-bold text-red-500 underline">Offline</span>
+      )}
     </p>
-    {
-      ping && (
-        <>
-          <p>
-            <Icon
-              name="fa7-solid:person-running"
-              class="my-2 mr-4 inline h-8 w-8 align-middle"
-            />
-            {ping.players.online} players connected
-          </p>
-          <p>
-            <Icon
-              name="fa7-solid:server"
-              class="my-2 mr-4 inline h-8 w-8 align-middle"
-            />
-            Ping: {ping.roundTripLatency}ms
-          </p>
-        </>
-      )
-    }
+    {ping && (
+      <>
+        <p>
+          <Icon
+            name="fa7-solid:person-running"
+            class="my-2 mr-4 inline h-8 w-8 align-middle"
+          />
+          {ping.players.online} players connected
+        </p>
+        <p>
+          <Icon
+            name="fa7-solid:server"
+            class="my-2 mr-4 inline h-8 w-8 align-middle"
+          />
+          Ping: {ping.roundTripLatency}ms
+        </p>
+      </>
+    )}
     <p>
       <Icon
         name="fa7-solid:calendar"
         class="my-2 mr-4 inline h-8 w-8 align-middle"
       />
-      Last Updated: <RelativeDate
+      Last Updated:{" "}
+      <RelativeDate
         date={new Date()}
         text={new Intl.DateTimeFormat(undefined, {
           dateStyle: "short",

@@ -8,17 +8,16 @@ const { date: dateIn, text } = Astro.props;
 const date = dateIn === undefined ? undefined : new Date(dateIn);
 ---
 
-{
-  date ? (
-    <time
-      datetime={date.toISOString()}
-      title={new Intl.DateTimeFormat(undefined, {
-        dateStyle: "long",
-        timeStyle: "long",
-      }).format(date)}>
-      {text}
-    </time>
-  ) : (
-    <span title="Unknown">-</span>
-  )
-}
+{date ? (
+  <time
+    datetime={date.toISOString()}
+    title={new Intl.DateTimeFormat(undefined, {
+      dateStyle: "long",
+      timeStyle: "long",
+    }).format(date)}
+  >
+    {text}
+  </time>
+) : (
+  <span title="Unknown">-</span>
+)}

@@ -27,7 +27,8 @@ const description = page.data.description;
 <Layout
   title={title}
   description={description}
-  ogImage={new URL(`/page/${slug}/opengraph-image.png`, Astro.site)}>
+  ogImage={new URL(`/page/${slug}/opengraph-image.png`, Astro.site)}
+>
   <main class="prose mx-auto max-w-prose dark:prose-invert">
     <MDX entry={page} />
   </main>

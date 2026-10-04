@@ -21,9 +21,9 @@
 
 <script>
   const form = document.querySelector("[data-view-stats]");
-  const input = form?.querySelector('input[type="text"]') as
-    | HTMLInputElement
-    | null;
+  const input = form?.querySelector(
+    'input[type="text"]',
+  ) as HTMLInputElement | null;
 
   const go = () => {
     if (input && input.value) {
