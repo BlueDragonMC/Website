@@ -1,7 +1,7 @@
-FROM node:24-alpine AS buildtime
+FROM node:26-alpine AS buildtime
 WORKDIR /app
 
-FROM gcr.io/distroless/nodejs24-debian13:nonroot AS runtime
+FROM gcr.io/distroless/nodejs26-debian13:nonroot AS runtime
 WORKDIR /app
 
 FROM buildtime AS all-deps
