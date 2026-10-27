@@ -31,7 +31,7 @@
     "minecraft-server-util": "^5.4.4",
     "mongodb": "^7.5.0",
     "photoswipe": "^5.4.4",
-    "satori": "^0.29.1",
+    "satori": "^0.33.5",
     "sitemap": "^9.0.1",
     "tailwindcss": "^4.3.3"
   },
