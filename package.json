@@ -29,7 +29,7 @@
     "javascript-time-ago": "^2.6.4",
     "mdast-util-from-markdown": "^2.0.3",
     "minecraft-server-util": "^5.4.4",
-    "mongodb": "^7.5.0",
+    "mongodb": "^7.8.0",
     "photoswipe": "^5.4.4",
     "satori": "^0.33.5",
     "sitemap": "^9.0.1",
