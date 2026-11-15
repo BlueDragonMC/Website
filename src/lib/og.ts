@@ -2,23 +2,29 @@ import { icons } from "@iconify-json/fa7-solid/icons.json";
 import { Resvg, initWasm } from "@resvg/resvg-wasm";
 import { readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
-import { join } from "node:path";
-import { cwd } from "node:process";
 import satori, { type SatoriOptions } from "satori";
+
+import boldFontData from "@/assets/Inter-ExtraBold.ttf?inline";
+import mediumFontData from "@/assets/Inter-Medium.ttf?inline";
+import regularFontData from "@/assets/Inter-Regular.ttf?inline";
+import faviconData from "@/public/favicon_hq.png?inline";
 
 const require = createRequire(import.meta.url);
 await initWasm(readFile(require.resolve("@resvg/resvg-wasm/index_bg.wasm")));
 
+const fromDataUrl = (dataUrl: string) =>
+  Buffer.from(dataUrl.slice(dataUrl.indexOf(",") + 1), "base64");
+
 // Bold - font weight: 700
-const boldFont = readFile(join(cwd(), "assets/Inter-ExtraBold.ttf"));
+const boldFont = fromDataUrl(boldFontData);
 
 // Medium - font weight: 500
-const mediumFont = readFile(join(cwd(), "assets/Inter-Medium.ttf"));
+const mediumFont = fromDataUrl(mediumFontData);
 
 // Regular - font weight: 400
-const regularFont = readFile(join(cwd(), "assets/Inter-Regular.ttf"));
+const regularFont = fromDataUrl(regularFontData);
 
-const favicon = readFile(join(cwd(), "public/favicon_hq.png"));
+const favicon = fromDataUrl(faviconData);
 
 export type GenerateOptions = {
   title: string;
@@ -55,7 +61,7 @@ export async function generate({
   readTime,
   player,
 }: GenerateOptions): Promise<Response> {
-  const b64 = (await favicon).toString("base64");
+  const b64 = favicon.toString("base64");
 
   let image = h("img", {
     src: "data:image/png;base64," + b64,
@@ -95,19 +101,19 @@ export async function generate({
   const fonts: SatoriOptions["fonts"] = [
     {
       name: "Inter",
-      data: await boldFont,
+      data: boldFont,
       style: "normal",
       weight: 700,
     },
     {
       name: "Inter",
-      data: await mediumFont,
+      data: mediumFont,
       style: "normal",
       weight: 500,
     },
     {
       name: "Inter",
-      data: await regularFont,
+      data: regularFont,
       style: "normal",
       weight: 400,
     },
